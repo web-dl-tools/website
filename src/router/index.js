@@ -19,7 +19,7 @@ router.beforeEach((to, from, next) => {
   if (to.matched.some(m => m.path === "/login") && authenticated) {
     next({ name: "overview" });
   } else if (to.matched.some(m => m.meta.authenticated) && !authenticated) {
-    next({ name: "auth.login" });
+    next({ name: "login" });
   } else {
     next();
   }
