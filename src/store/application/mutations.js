@@ -9,6 +9,11 @@ export const CHECK = state => {
   }
 };
 
+export const SET_TITLE = (state, title) => {
+  state.title = title;
+  document.title = `Web DL - ${title}`;
+};
+
 export const LOGIN = (state, token) => {
   localStorage.setItem("auth_token", token);
   Vue.$axios.defaults.headers.common.Authorization = `Token ${token}`;

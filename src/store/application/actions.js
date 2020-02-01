@@ -3,9 +3,9 @@ import router from "../../router";
 
 export const login = ({ commit }, payload) =>
   Vue.$axios
-    .post("auth/token", payload)
-    .then(result => {
-      commit("LOGIN", result.data.token);
+    .post("user/authenticate/", payload)
+    .then(response => {
+      commit("LOGIN", response.data.token);
       router.push({ name: "overview" }).catch(() => {});
     })
     .catch(() => Promise.reject());

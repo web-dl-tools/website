@@ -13,8 +13,11 @@ const router = new VueRouter({
 
 router.beforeEach((to, from, next) => {
   store.commit("application/CHECK");
-
   const authenticated = store.getters["application/isAuthenticated"];
+
+  if ("title" in to.meta) {
+    store.commit("application/SET_TITLE", to.meta.title);
+  }
 
   if (to.matched.some(m => m.path === "/login") && authenticated) {
     next({ name: "overview" });
