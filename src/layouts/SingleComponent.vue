@@ -1,0 +1,22 @@
+<template>
+  <v-content class="background-wallpaper-image">
+    <v-container>
+      <v-row>
+        <v-col cols="12" xs="12" sm="12" md="8" lg="6" xl="4">
+          <div class="text-center mt-10">
+            <v-icon class="justify-end" x-large color="white">
+              mdi-cloud-download-outline
+            </v-icon>
+          </div>
+          <router-view />
+        </v-col>
+      </v-row>
+    </v-container>
+  </v-content>
+</template>
+
+<script>
+export default {
+  name: "layouts.single-component"
+};
+</script>
