@@ -5,7 +5,7 @@
         <v-subheader class="pl-0">File formats</v-subheader>
       </v-col>
       <v-col cols="12">
-        <v-tabs centered grow v-model="tab" class="transparent">
+        <v-tabs centered grow v-model="tab">
           <v-tab>
             <v-badge :content="audioAndVideoFormats.length">
               Audio & Video
@@ -22,7 +22,7 @@
             </v-badge>
           </v-tab>
         </v-tabs>
-        <v-tabs-items v-model="tab" class="transparent">
+        <v-tabs-items v-model="tab">
           <v-tab-item>
             <v-row>
               <v-col
@@ -175,9 +175,3 @@ export default {
   }
 };
 </script>
-
-<style scoped>
-.transparent {
-  background: rgba(0, 0, 0, 0);
-}
-</style>

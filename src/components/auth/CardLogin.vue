@@ -30,7 +30,6 @@
     </v-card-text>
     <v-card-actions class="mb-2">
       <v-spacer />
-      <v-btn text color="secondary">Register</v-btn>
       <v-btn
         outlined
         class="mr-2"
