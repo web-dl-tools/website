@@ -1,7 +1,7 @@
 <template>
   <v-card outlined class="card-single-card mt-12">
     <v-card-title>
-      Login
+      Web DL Login
     </v-card-title>
     <v-card-subtitle>
       Authenticate with Web DL.
@@ -28,10 +28,12 @@
         />
       </v-form>
     </v-card-text>
-    <v-card-actions>
+    <v-card-actions class="mb-2">
       <v-spacer />
       <v-btn text color="secondary">Register</v-btn>
       <v-btn
+        outlined
+        class="mr-2"
         :color="error ? 'error' : 'primary'"
         :loading="loading"
         :disabled="loading || !valid"

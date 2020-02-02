@@ -21,6 +21,11 @@
           {{ menuItem.label }}
         </v-btn>
       </v-toolbar-items>
+      <v-btn icon>
+        <v-icon @click="$store.dispatch('application/logout')">
+          mdi-exit-to-app
+        </v-icon>
+      </v-btn>
     </v-toolbar>
 
     <v-content
@@ -34,6 +39,7 @@
 
     <v-fab-transition>
       <v-btn
+        v-show="$router.currentRoute.name !== 'requests.create'"
         fab
         bottom
         right
@@ -81,6 +87,9 @@ export default {
       title: "application/getTitle",
       menuItems: "application/getMenuItems"
     })
+  },
+  created() {
+    console.log(this.$router);
   }
 };
 </script>

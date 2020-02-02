@@ -23,12 +23,14 @@ export default [
       {
         path: "",
         name: "requests.overview",
-        component: () => import("../views/requests/Overview")
+        component: () => import("../views/requests/Overview"),
+        meta: {
+          title: "My requests"
+        }
       },
       {
         path: "create",
         name: "requests.create",
-        title: "Create a new request",
         component: () => import("../views/requests/Create"),
         meta: {
           title: "Create a new request"
@@ -54,34 +56,29 @@ export default [
       {
         path: "",
         name: "overview",
-        component: () => import("../components/HelloWorld"),
+        component: () => import("../views/requests/Overview"),
         meta: {
-          title: "Overview"
+          title: "My requests"
         }
-      },
-      {
-        path: "account",
-        name: "account",
-        component: () => import("../components/HelloWorld")
       }
     ],
     meta: {
       authenticated: true
     }
+  },
+  {
+    // Always leave this as last one
+    path: "*",
+    component: () => import("../layouts/SingleComponent"),
+    children: [
+      {
+        path: "*",
+        name: "error.404",
+        component: () => import("../components/errors/404")
+      }
+    ],
+    meta: {
+      authenticated: false
+    }
   }
-  // {
-  //   // Always leave this as last one
-  //   path: "*",
-  //   component: () => import("../layouts/single-card"),
-  //   children: [
-  //     {
-  //       path: "*",
-  //       name: "error.404",
-  //       component: () => import("../views/error/404")
-  //     }
-  //   ],
-  //   meta: {
-  //     authenticated: false
-  //   }
-  // }
 ];
