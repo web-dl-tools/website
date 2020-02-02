@@ -2,6 +2,8 @@ export const get = state => state.item;
 
 export const getLogs = state => state.item_logs;
 
+export const getFiles = state => state.item_files;
+
 export const getById = state => id => state.items.find(item => item.id === id);
 
 export const getAll = state => state.items;

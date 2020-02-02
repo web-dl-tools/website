@@ -29,7 +29,14 @@
                 <v-tab>Logs</v-tab>
               </v-tabs>
               <v-tabs-items v-model="tab">
-                <v-tab-item></v-tab-item>
+                <v-tab-item>
+                  <v-skeleton-loader
+                    class="pt-4"
+                    type="paragraph"
+                    v-if="files_loading"
+                  />
+                  <v-treeview class="pt-4" :items="files" v-else />
+                </v-tab-item>
                 <v-tab-item>
                   <div v-if="logs_loading">
                     <v-skeleton-loader
@@ -78,29 +85,48 @@ export default {
   data: () => ({
     tab: null,
     item_loading: true,
-    logs_loading: false
+    logs_loading: false,
+    logs_loaded: false,
+    files_loading: false,
+    files_loaded: false
   }),
   computed: {
     ...mapGetters({
       item: "requests/get",
-      logs: "requests/getLogs"
+      logs: "requests/getLogs",
+      files: "requests/getFiles"
     })
   },
   created() {
     this.$store
       .dispatch("requests/get", this.$route.params.requestId)
-      .then(() => this.retrieveLogs())
+      .then(() => this.retrieveFiles())
       .catch(() =>
         this.$router.push({ name: "requests.index" }).catch(() => {})
       )
       .finally(() => (this.item_loading = false));
   },
   methods: {
+    retrieveFiles() {
+      this.files_loading = true;
+      this.$store
+        .dispatch("requests/getFiles", this.$route.params.requestId)
+        .then(() => (this.files_loaded = true))
+        .finally(() => (this.files_loading = false));
+    },
     retrieveLogs() {
       this.logs_loading = true;
       this.$store
         .dispatch("requests/getLogs", this.$route.params.requestId)
+        .then(() => (this.logs_loaded = true))
         .finally(() => (this.logs_loading = false));
+    }
+  },
+  watch: {
+    tab(n) {
+      if (n === 1 && !this.logs_loaded) {
+        this.retrieveLogs();
+      }
     }
   }
 };

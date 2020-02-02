@@ -27,6 +27,9 @@
           <v-card-title>
             There are no active or pending requests.
           </v-card-title>
+          <v-card-subtitle>
+            Please click below to create a new request.
+          </v-card-subtitle>
           <v-card-actions>
             <v-btn
               outlined
