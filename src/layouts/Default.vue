@@ -2,8 +2,8 @@
   <div>
     <v-toolbar color="primary" dark short flat class="fixed-top">
       <v-toolbar-title>
-        <v-btn icon>
-          <v-icon @click="$router.push({ name: 'overview' }).catch(() => {})">
+        <v-btn icon @click="$router.push({ name: 'overview' }).catch(() => {})">
+          <v-icon>
             mdi-cloud-download-outline
           </v-icon>
         </v-btn>
@@ -21,11 +21,13 @@
           {{ menuItem.label }}
         </v-btn>
       </v-toolbar-items>
-      <v-btn icon>
-        <v-icon @click="$store.dispatch('application/logout')">
-          mdi-exit-to-app
-        </v-icon>
-      </v-btn>
+      <v-toolbar-items>
+        <v-btn icon>
+          <v-icon @click="$store.dispatch('application/logout')">
+            mdi-exit-to-app
+          </v-icon>
+        </v-btn>
+      </v-toolbar-items>
     </v-toolbar>
 
     <v-content
