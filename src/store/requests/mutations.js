@@ -13,6 +13,10 @@ export const GET_LOGS = (state, payload) => {
   state.item_logs = payload;
 };
 
+export const GET_FILES = (state, payload) => {
+  state.item_files = payload;
+};
+
 export const GET_ALL = (state, payload) => {
   state.items = payload;
 };

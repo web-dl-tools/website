@@ -20,6 +20,11 @@ export const getLogs = ({ commit }, id) =>
     .get(`requests/${id}/logs/`)
     .then(response => commit("GET_LOGS", response.data));
 
+export const getFiles = ({ commit }, id) =>
+  Vue.$axios
+    .get(`requests/${id}/files/`)
+    .then(response => commit("GET_FILES", response.data));
+
 export const getAll = ({ commit }) =>
   Vue.$axios
     .get("requests/")
