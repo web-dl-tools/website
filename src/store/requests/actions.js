@@ -6,12 +6,7 @@ export const create = ({ commit }, payload) =>
     .post(`requests/`, payload)
     .then(response => {
       commit("CREATE", response.data);
-      router
-        .push({
-          name: "requests.detail",
-          params: { requestId: response.data.id }
-        })
-        .catch(() => {});
+      router.push({ name: "overview" }).catch(() => {});
     })
     .catch(() => Promise.reject());
 

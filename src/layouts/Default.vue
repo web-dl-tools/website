@@ -87,9 +87,6 @@ export default {
       title: "application/getTitle",
       menuItems: "application/getMenuItems"
     })
-  },
-  created() {
-    console.log(this.$router);
   }
 };
 </script>

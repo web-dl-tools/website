@@ -1,0 +1,177 @@
+<template>
+  <div>
+    <v-row>
+      <v-col cols="12" class="py-0">
+        <v-subheader class="pl-0">File formats</v-subheader>
+      </v-col>
+      <v-col cols="12">
+        <v-tabs centered grow v-model="tab">
+          <v-tab>
+            <v-badge :content="audioAndVideoFormats.length">
+              Audio & Video
+            </v-badge>
+          </v-tab>
+          <v-tab>
+            <v-badge :content="audioOnlyFormats.length">
+              Audio only
+            </v-badge>
+          </v-tab>
+          <v-tab>
+            <v-badge :content="videoOnlyFormats.length">
+              Video only
+            </v-badge>
+          </v-tab>
+        </v-tabs>
+        <v-tabs-items v-model="tab">
+          <v-tab-item>
+            <v-row>
+              <v-col
+                v-for="format in audioAndVideoFormats"
+                :key="format.format_id"
+                cols="12"
+                md="6"
+              >
+                <v-card
+                  outlined
+                  :color="
+                    format_selection === format.format_id ? 'success--text' : ''
+                  "
+                  @click="format_selection = format.format_id"
+                >
+                  <v-card-title> .{{ format.ext }} file </v-card-title>
+                  <v-card-subtitle>
+                    {{ format.format_note }}
+                  </v-card-subtitle>
+                  <v-card-text>
+                    {{ format.width }}x{{ format.height }} &middot;
+                    {{ format.vcodec }} & {{ format.acodec }} &middot;
+                    {{ format.tbr }} KBit/s
+                  </v-card-text>
+                </v-card>
+              </v-col>
+            </v-row>
+          </v-tab-item>
+          <v-tab-item>
+            <v-row>
+              <v-col
+                v-for="format in audioOnlyFormats"
+                :key="format.format_id"
+                cols="12"
+                md="6"
+              >
+                <v-card
+                  outlined
+                  :color="
+                    format_selection === format.format_id ? 'success--text' : ''
+                  "
+                  @click="format_selection = format.format_id"
+                >
+                  <v-card-title> .{{ format.ext }} file </v-card-title>
+                  <v-card-subtitle> {{ format.abr }} KBit/s </v-card-subtitle>
+                  <v-card-text>
+                    {{ format.format_note | capitalize }} &middot;
+                    {{ format.acodec }} &middot; {{ format.asr }} Hertz
+                  </v-card-text>
+                </v-card>
+              </v-col>
+            </v-row>
+          </v-tab-item>
+          <v-tab-item>
+            <v-row>
+              <v-col
+                v-for="format in videoOnlyFormats"
+                :key="format.format_id"
+                cols="12"
+                md="6"
+              >
+                <v-card
+                  outlined
+                  :color="
+                    format_selection === format.format_id ? 'success--text' : ''
+                  "
+                  @click="format_selection = format.format_id"
+                >
+                  <v-card-title> .{{ format.ext }} file </v-card-title>
+                  <v-card-subtitle>
+                    {{ format.width }}x{{ format.height }} &middot;
+                    {{ format.fps }} fps
+                  </v-card-subtitle>
+                  <v-card-text>
+                    {{ format.format_note }} &middot;
+                    {{ format.vcodec }} &middot; {{ format.tbr }} KBit/s
+                  </v-card-text>
+                </v-card>
+              </v-col>
+            </v-row>
+          </v-tab-item>
+        </v-tabs-items>
+      </v-col>
+    </v-row>
+  </div>
+</template>
+
+<script>
+import formatters from "../../../../mixins/formatters";
+
+export default {
+  name: "components.requests.steppers.handlers.audio-visual-step",
+  mixin: [formatters],
+  data: () => ({
+    format_selection: "",
+    tab: 0
+  }),
+  props: {
+    active: Boolean,
+    data: Object
+  },
+  computed: {
+    valid() {
+      return !!this.format_selection;
+    },
+    audioAndVideoFormats() {
+      return this.data.options.filter(
+        i => i.acodec !== "none" && i.vcodec !== "none"
+      );
+    },
+    audioOnlyFormats() {
+      return this.data.options.filter(
+        i => i.acodec !== "none" && i.vcodec === "none"
+      );
+    },
+    videoOnlyFormats() {
+      return this.data.options.filter(
+        i => i.acodec === "none" && i.vcodec !== "none"
+      );
+    }
+  },
+  filters: {
+    capitalize: function(value) {
+      if (!value) return "";
+      value = value.toString();
+      return value.charAt(0).toUpperCase() + value.slice(1);
+    }
+  },
+  watch: {
+    valid(n) {
+      this.updateData(n);
+    }
+  },
+  methods: {
+    updateData(valid) {
+      if (valid) {
+        this.$emit("dataChange", {
+          step: 3,
+          data: { format_selection: this.format_selection },
+          label: ""
+        });
+      } else {
+        this.$emit("dataChange", {
+          step: 3,
+          data: {},
+          label: ""
+        });
+      }
+    }
+  }
+};
+</script>
