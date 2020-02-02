@@ -6,6 +6,13 @@ export const getById = state => id => state.items.find(item => item.id === id);
 
 export const getAll = state => state.items;
 
+export const getAllActive = state =>
+  state.items
+    .filter(i =>
+      ["pre_processing", "downloading", "post_processing"].includes(i.status)
+    )
+    .concat(state.items.filter(i => i.status === "pending"));
+
 export const getAllPending = state =>
   state.items.filter(i => i.status === "pending");
 

@@ -12,5 +12,5 @@ export const login = ({ commit }, payload) =>
 
 export const logout = ({ commit }) => {
   commit("LOGOUT");
-  router.push({ name: "auth.login" });
+  router.push({ name: "login" });
 };
