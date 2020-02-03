@@ -8,9 +8,9 @@
           </v-icon>
         </v-btn>
       </v-toolbar-title>
-      <v-divider class="mx-4" inset vertical></v-divider>
+      <v-divider class="mx-4" inset vertical />
       <span class="subheading">{{ title }}</span>
-      <v-spacer></v-spacer>
+      <v-spacer />
       <v-toolbar-items class="hidden-sm-and-down">
         <v-btn
           text
@@ -22,8 +22,9 @@
         </v-btn>
       </v-toolbar-items>
       <v-toolbar-items>
-        <v-btn icon>
-          <v-icon @click="$store.dispatch('application/logout')">
+        <v-divider class="mx-4 hidden-sm-and-down" inset vertical />
+        <v-btn icon @click="$store.dispatch('application/logout')">
+          <v-icon>
             mdi-exit-to-app
           </v-icon>
         </v-btn>
