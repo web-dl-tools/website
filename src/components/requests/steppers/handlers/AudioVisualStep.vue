@@ -39,10 +39,10 @@
                   @click="format_selection = format.format_id"
                 >
                   <v-card-title> .{{ format.ext }} file </v-card-title>
-                  <v-card-subtitle>
+                  <v-card-subtitle class="caption">
                     {{ format.format_note }}
                   </v-card-subtitle>
-                  <v-card-text>
+                  <v-card-text class="overline">
                     {{ format.width }}x{{ format.height }} &middot;
                     {{ format.vcodec }} & {{ format.acodec }} &middot;
                     {{ format.tbr }} KBit/s
@@ -67,8 +67,10 @@
                   @click="format_selection = format.format_id"
                 >
                   <v-card-title> .{{ format.ext }} file </v-card-title>
-                  <v-card-subtitle> {{ format.abr }} KBit/s </v-card-subtitle>
-                  <v-card-text>
+                  <v-card-subtitle class="caption">
+                    {{ format.abr }} KBit/s
+                  </v-card-subtitle>
+                  <v-card-text class="overline">
                     {{ format.format_note | capitalize }} &middot;
                     {{ format.acodec }} &middot; {{ format.asr }} Hertz
                   </v-card-text>
@@ -92,11 +94,11 @@
                   @click="format_selection = format.format_id"
                 >
                   <v-card-title> .{{ format.ext }} file </v-card-title>
-                  <v-card-subtitle>
+                  <v-card-subtitle class="caption">
                     {{ format.width }}x{{ format.height }} &middot;
                     {{ format.fps }} fps
                   </v-card-subtitle>
-                  <v-card-text>
+                  <v-card-text class="overline">
                     {{ format.format_note }} &middot;
                     {{ format.vcodec }} &middot; {{ format.tbr }} KBit/s
                   </v-card-text>

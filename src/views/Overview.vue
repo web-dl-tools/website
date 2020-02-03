@@ -48,8 +48,8 @@
 
 <script>
 import { mapGetters } from "vuex";
-import formatters from "../../mixins/formatters";
-import ActiveOverview from "../../components/requests/ActiveOverview";
+import formatters from "../mixins/formatters";
+import ActiveOverview from "../components/requests/ActiveOverview";
 
 export default {
   name: "views.requests.overview",

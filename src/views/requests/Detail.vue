@@ -4,16 +4,25 @@
       <v-row>
         <v-col cols="12">
           <v-skeleton-loader type="article" v-if="item_loading" />
-          <v-card outlined v-else>
+          <v-card outlined :loading="item.status === 'downloading'" v-else>
             <v-card-subtitle>
               <v-chip
-                class="white--text mr-2"
+                class="white--text"
                 label
                 small
                 :color="formatRequestStatusColor(item.status)"
               >
                 {{ item.status_display }}
               </v-chip>
+              <v-btn
+                icon
+                class="float-right mt-n2 mr-n2"
+                @click="openExternalTab"
+              >
+                <v-icon>
+                  mdi-open-in-new
+                </v-icon>
+              </v-btn>
             </v-card-subtitle>
             <v-card-title class="pt-0">
               {{ item.url }}
@@ -21,7 +30,7 @@
             <v-card-subtitle>
               Requested on {{ formatDate(item.created_at, "LLLL") }} ({{
                 formatDateFromNow(item.created_at)
-              }})
+              }}) using {{ formatRequest(item.request_type) }} handler.
             </v-card-subtitle>
             <v-card-text>
               <v-tabs centered grow v-model="tab">
@@ -35,7 +44,46 @@
                     type="paragraph"
                     v-if="files_loading"
                   />
-                  <v-treeview class="pt-4" :items="files" v-else />
+                  <v-treeview
+                    class="pt-4"
+                    v-model="files_tree"
+                    :items="files"
+                    :open="files_open"
+                    item-key="name"
+                    hoverable
+                    open-on-click
+                    open-all
+                    rounded
+                    dense
+                    v-else
+                  >
+                    <template v-slot:prepend="{ item, open }">
+                      <v-icon class="mr-2" v-if="'dir' in item">
+                        {{ open ? "mdi-folder-open" : "mdi-folder" }}
+                      </v-icon>
+                      <v-icon class="mr-2" v-else>
+                        {{
+                          item.extension.replace(".", "") in files_icons
+                            ? files_icons[item.extension.replace(".", "")]
+                            : files_icons["file"]
+                        }}
+                      </v-icon>
+                    </template>
+                    <template v-slot:label="{ item, leaf }">
+                      <span v-if="!leaf" class="font-weight-black">{{
+                        item.name
+                      }}</span>
+                      <div v-else>
+                        <p class="mb-0 body-2">
+                          {{ item.name }}
+                        </p>
+                        <p class="mb-0 overline">
+                          {{ item.extension }} &middot;
+                          {{ formatBytes(item.size, 2) }}
+                        </p>
+                      </div>
+                    </template>
+                  </v-treeview>
                 </v-tab-item>
                 <v-tab-item>
                   <div v-if="logs_loading">
@@ -88,7 +136,17 @@ export default {
     logs_loading: false,
     logs_loaded: false,
     files_loading: false,
-    files_loaded: false
+    files_loaded: false,
+    files_tree: [],
+    files_open: [],
+    files_icons: {
+      file: "mdi-file",
+      m4a: "mdi-music",
+      mp4: "mdi-video",
+      jpg: "mdi-file-image",
+      description: "mdi-file-document-outline",
+      xml: "mdi-xml"
+    }
   }),
   computed: {
     ...mapGetters({
@@ -120,6 +178,9 @@ export default {
         .dispatch("requests/getLogs", this.$route.params.requestId)
         .then(() => (this.logs_loaded = true))
         .finally(() => (this.logs_loading = false));
+    },
+    openExternalTab() {
+      window.open(this.item.url, "_blank");
     }
   },
   watch: {

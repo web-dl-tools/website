@@ -21,14 +21,6 @@ export default [
     component: () => import("../layouts/Default"),
     children: [
       {
-        path: "",
-        name: "requests.overview",
-        component: () => import("../views/requests/Overview"),
-        meta: {
-          title: "My requests"
-        }
-      },
-      {
         path: "create",
         name: "requests.create",
         component: () => import("../views/requests/Create"),
@@ -56,7 +48,7 @@ export default [
       {
         path: "",
         name: "overview",
-        component: () => import("../views/requests/Overview"),
+        component: () => import("../views/Overview"),
         meta: {
           title: "My requests"
         }
