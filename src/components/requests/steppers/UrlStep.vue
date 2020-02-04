@@ -27,8 +27,8 @@ export default {
     }
   },
   watch: {
-    valid(n) {
-      this.updateData(n);
+    url() {
+      this.updateData(this.valid);
     },
     label() {
       this.updateData(this.valid);
