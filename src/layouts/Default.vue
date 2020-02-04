@@ -64,6 +64,7 @@
       dark
       shift
       fixed
+      grow
     >
       <v-btn
         @click="$router.push({ name: menuItem.routerName }).catch(() => {})"
@@ -83,13 +84,39 @@ import { mapGetters } from "vuex";
 export default {
   name: "layouts.default",
   data: () => ({
-    active: 0
+    active: undefined
   }),
   computed: {
     ...mapGetters({
       title: "application/getTitle",
       menuItems: "application/getMenuItems"
     })
+  },
+  methods: {
+    setActive(routerName) {
+      switch (routerName) {
+        case "requests.active":
+          this.active = 0;
+          break;
+        case "requests.completed":
+          this.active = 1;
+          break;
+        case "requests.failed":
+          this.active = 2;
+          break;
+        default:
+          this.active = undefined;
+          break;
+      }
+    }
+  },
+  watch: {
+    $route(to) {
+      this.setActive(to.name);
+    }
+  },
+  created() {
+    this.setActive(this.$router.currentRoute.name);
   }
 };
 </script>

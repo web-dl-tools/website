@@ -29,6 +29,30 @@ export default [
         }
       },
       {
+        path: "active",
+        name: "requests.active",
+        component: () => import("../views/requests/Active"),
+        meta: {
+          title: "Active and pending requests"
+        }
+      },
+      {
+        path: "completed",
+        name: "requests.completed",
+        component: () => import("../views/requests/Completed"),
+        meta: {
+          title: "Completed requests"
+        }
+      },
+      {
+        path: "failed",
+        name: "requests.failed",
+        component: () => import("../views/requests/Failed"),
+        meta: {
+          title: "Failed requests"
+        }
+      },
+      {
         path: ":requestId",
         name: "requests.detail",
         component: () => import("../views/requests/Detail"),
