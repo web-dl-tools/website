@@ -13,7 +13,7 @@
           <table-basic
             :loading="loading"
             :items="completedItems"
-            items_per_page="5"
+            items_per_page="10"
             no_data_text="There are no failed requests."
           />
         </v-col>

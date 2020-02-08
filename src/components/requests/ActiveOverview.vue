@@ -22,13 +22,13 @@
       </v-col>
     </v-row>
     <v-row v-else>
-      <v-col cols="12">
+      <v-col cols="12" md="6">
         <v-card outlined>
           <v-card-title>
             There are no active or pending requests.
           </v-card-title>
           <v-card-subtitle>
-            Please click below to create a new request.
+            Click below to create a new request.
           </v-card-subtitle>
           <v-card-actions>
             <v-btn

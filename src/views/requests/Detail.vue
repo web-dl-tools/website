@@ -73,7 +73,7 @@
                       <span v-if="!leaf" class="font-weight-black">{{
                         item.name
                       }}</span>
-                      <div v-else>
+                      <div @click="openFile(item.path)" v-else>
                         <p class="mb-0 body-2">
                           {{ item.name }}
                         </p>
@@ -124,6 +124,7 @@
 </template>
 
 <script>
+import Vue from "vue";
 import { mapGetters } from "vuex";
 import formatters from "../../mixins/formatters";
 
@@ -181,6 +182,15 @@ export default {
     },
     openExternalTab() {
       window.open(this.item.url, "_blank");
+    },
+    openFile(path) {
+      const url = `${
+        Vue.$axios.defaults.baseURL
+      }download/file/?auth_token=${Vue.$axios.defaults.headers.common.Authorization.replace(
+        "Token ",
+        ""
+      )}&path=${path}`;
+      window.open(url, "_blank");
     }
   },
   watch: {

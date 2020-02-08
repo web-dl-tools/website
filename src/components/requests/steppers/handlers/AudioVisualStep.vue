@@ -2,6 +2,14 @@
   <div>
     <v-row>
       <v-col cols="12" class="py-0">
+        <v-subheader class="pl-0">Output</v-subheader>
+      </v-col>
+      <v-col cols="12">
+        <v-select v-model="output" :items="outputs" label="Output" />
+      </v-col>
+    </v-row>
+    <v-row>
+      <v-col cols="12" class="py-0">
         <v-subheader class="pl-0">File formats</v-subheader>
       </v-col>
       <v-col cols="12">
@@ -118,17 +126,38 @@ import formatters from "../../../../mixins/formatters";
 export default {
   name: "components.requests.steppers.handlers.audio-visual-step",
   mixin: [formatters],
-  data: () => ({
-    format_selection: "",
-    tab: 0
-  }),
+  data: () => {
+    return {
+      format_selection: "",
+      output: "%(title)s.%(ext)s",
+      outputs: [
+        {
+          text: "Video title",
+          value: "%(title)s.%(ext)s"
+        },
+        {
+          text: "Alternative video title",
+          value: "%(alt_title)s.%(ext)s"
+        },
+        {
+          text: "Video identifier",
+          value: "%(id)s.%(ext)s"
+        },
+        {
+          text: "The creator of the video with the video title",
+          value: "%(creator)s - %(title)s.%(ext)s"
+        }
+      ],
+      tab: 0
+    };
+  },
   props: {
     active: Boolean,
     data: Object
   },
   computed: {
     valid() {
-      return !!this.format_selection;
+      return !!this.format_selection && !!this.output;
     },
     audioAndVideoFormats() {
       return this.data.options.filter(
@@ -156,6 +185,12 @@ export default {
   watch: {
     valid(n) {
       this.updateData(n);
+    },
+    format_selection() {
+      this.updateData(this.valid);
+    },
+    output() {
+      this.updateData(this.valid);
     }
   },
   methods: {
@@ -163,7 +198,10 @@ export default {
       if (valid) {
         this.$emit("dataChange", {
           step: 3,
-          data: { format_selection: this.format_selection },
+          data: {
+            format_selection: this.format_selection,
+            output: this.output
+          },
           label: ""
         });
       } else {
