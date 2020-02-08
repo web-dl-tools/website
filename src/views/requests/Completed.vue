@@ -1,14 +1,9 @@
 <template>
-  <v-content>
+  <v-content class="background-wallpaper-subtle-image">
     <v-container>
       <v-row>
-        <v-col cols="12" class="mt-1">
-          <table-basic
-            :loading="loading"
-            :items="completedItems"
-            items_per_page="20"
-            no_data_text="There are no completed requests."
-          />
+        <v-col cols="12" class="mt-5">
+          <completed-table :extended="true" items_per_page="20" />
         </v-col>
       </v-row>
     </v-container>
@@ -16,29 +11,10 @@
 </template>
 
 <script>
-import { mapGetters } from "vuex";
-import formatters from "../../mixins/formatters";
-import TableBasic from "../../components/requests/TableBasic";
+import CompletedTable from "../../components/requests/completed/Table";
 
 export default {
   name: "views.requests.completed",
-  mixin: [formatters],
-  components: {
-    TableBasic
-  },
-  data: () => ({
-    loading: true
-  }),
-  computed: {
-    ...mapGetters({
-      completedItems: "requests/getAllCompleted"
-    })
-  },
-  created() {
-    this.$store
-      .dispatch("requests/getAll")
-      .catch(() => this.$router.push({ name: "overview" }).catch(() => {}))
-      .finally(() => (this.loading = false));
-  }
+  components: { CompletedTable }
 };
 </script>

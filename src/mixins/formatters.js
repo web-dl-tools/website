@@ -1,8 +1,14 @@
 import Vue from "vue";
 import moment from "moment";
+import psl from "psl";
 
 export default Vue.mixin({
   methods: {
+    capitalize(value) {
+      if (!value) return "";
+      value = value.toString();
+      return value.charAt(0).toUpperCase() + value.slice(1);
+    },
     formatRequest(request) {
       return request
         .replace(/([A-Z])/g, " $1")
@@ -62,6 +68,18 @@ export default Vue.mixin({
         default:
           return "primary";
       }
+    },
+    formatDomain(url) {
+      let hostname;
+      if (url.indexOf("//") > -1) {
+        hostname = url.split("/")[2];
+      } else {
+        hostname = url.split("/")[0];
+      }
+      hostname = hostname.split(":")[0];
+      hostname = hostname.split("?")[0];
+
+      return psl.parse(hostname).domain;
     }
   }
 });

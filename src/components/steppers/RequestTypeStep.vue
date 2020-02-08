@@ -7,30 +7,31 @@
         cols="12"
         md="6"
       >
-        <v-card
-          outlined
-          :color="request_type === _handler.request ? 'success--text' : ''"
+        <selectable-card
+          :selected="request_type === _handler.request"
           :disabled="!_handler.supported"
-          @click="request_type = _handler.request"
+          :title="formatRequest(_handler.request)"
+          @onClick="request_type = _handler.request"
         >
-          <v-card-title>
-            {{ formatRequest(_handler.request) }}
-          </v-card-title>
           <v-card-subtitle>
             {{ _handler.description }}
           </v-card-subtitle>
-        </v-card>
+        </selectable-card>
       </v-col>
     </v-row>
   </div>
 </template>
 
 <script>
-import formatters from "../../../mixins/formatters";
+import formatters from "../../mixins/formatters";
+import SelectableCard from "./SelectableCard";
 
 export default {
-  name: "components.requests.steppers.request-type-step",
+  name: "components.steppers.request-type-step",
   mixin: [formatters],
+  components: {
+    SelectableCard
+  },
   data: () => ({
     request_type: ""
   }),

@@ -9,7 +9,7 @@
         </v-btn>
       </v-toolbar-title>
       <v-divider class="mx-4" inset vertical />
-      <span class="subheading">{{ title }}</span>
+      <span class="subtitle-1">{{ title }}</span>
       <v-spacer />
       <v-toolbar-items class="hidden-sm-and-down">
         <v-btn

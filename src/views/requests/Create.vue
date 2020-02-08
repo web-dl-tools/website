@@ -1,6 +1,6 @@
 <template>
-  <v-content>
-    <v-container>
+  <v-content class="background-wallpaper-subtle-image">
+    <v-container class="pt-8">
       <v-row>
         <v-col cols="12">
           <v-stepper v-model="step" vertical class="elevation-0">
@@ -78,9 +78,9 @@
 <script>
 import helpers from "../../mixins/helpers";
 import formatters from "../../mixins/formatters";
-import UrlStep from "../../components/requests/steppers/UrlStep";
-import RequestTypeStep from "../../components/requests/steppers/RequestTypeStep";
-import AudioVisualStep from "../../components/requests/steppers/handlers/AudioVisualStep";
+import UrlStep from "../../components/steppers/UrlStep";
+import RequestTypeStep from "../../components/steppers/RequestTypeStep";
+import AudioVisualStep from "../../components/steppers/handlers/AudioVisualStep";
 
 export default {
   name: "views.requests.create",

@@ -2,10 +2,10 @@
   <div>
     <v-row>
       <v-col cols="12" class="py-0">
-        <v-subheader class="pl-0">Output</v-subheader>
+        <v-subheader class="pl-0">Output format</v-subheader>
       </v-col>
-      <v-col cols="12">
-        <v-select v-model="output" :items="outputs" label="Output" />
+      <v-col cols="12" md="6">
+        <v-select v-model="output" :items="outputs" label="Format" />
       </v-col>
     </v-row>
     <v-row>
@@ -37,16 +37,14 @@
                 v-for="format in audioAndVideoFormats"
                 :key="format.format_id"
                 cols="12"
-                md="6"
+                md="4"
               >
-                <v-card
-                  outlined
-                  :color="
-                    format_selection === format.format_id ? 'success--text' : ''
-                  "
-                  @click="format_selection = format.format_id"
+                <selectable-card
+                  :selected="format_selection === format.format_id"
+                  :disabled="false"
+                  :title="`${format.ext} file`"
+                  @onClick="format_selection = format.format_id"
                 >
-                  <v-card-title> .{{ format.ext }} file </v-card-title>
                   <v-card-subtitle class="caption">
                     {{ format.format_note }}
                   </v-card-subtitle>
@@ -55,7 +53,7 @@
                     {{ format.vcodec }} & {{ format.acodec }} &middot;
                     {{ format.tbr }} KBit/s
                   </v-card-text>
-                </v-card>
+                </selectable-card>
               </v-col>
             </v-row>
           </v-tab-item>
@@ -65,24 +63,22 @@
                 v-for="format in audioOnlyFormats"
                 :key="format.format_id"
                 cols="12"
-                md="6"
+                md="4"
               >
-                <v-card
-                  outlined
-                  :color="
-                    format_selection === format.format_id ? 'success--text' : ''
-                  "
-                  @click="format_selection = format.format_id"
+                <selectable-card
+                  :selected="format_selection === format.format_id"
+                  :disabled="false"
+                  :title="`${format.ext} file`"
+                  @onClick="format_selection = format.format_id"
                 >
-                  <v-card-title> .{{ format.ext }} file </v-card-title>
                   <v-card-subtitle class="caption">
                     {{ format.abr }} KBit/s
                   </v-card-subtitle>
                   <v-card-text class="overline">
-                    {{ format.format_note | capitalize }} &middot;
+                    {{ capitalize(format.format_note) }} &middot;
                     {{ format.acodec }} &middot; {{ format.asr }} Hertz
                   </v-card-text>
-                </v-card>
+                </selectable-card>
               </v-col>
             </v-row>
           </v-tab-item>
@@ -92,16 +88,14 @@
                 v-for="format in videoOnlyFormats"
                 :key="format.format_id"
                 cols="12"
-                md="6"
+                md="4"
               >
-                <v-card
-                  outlined
-                  :color="
-                    format_selection === format.format_id ? 'success--text' : ''
-                  "
-                  @click="format_selection = format.format_id"
+                <selectable-card
+                  :selected="format_selection === format.format_id"
+                  :disabled="false"
+                  :title="`${format.ext} file`"
+                  @onClick="format_selection = format.format_id"
                 >
-                  <v-card-title> .{{ format.ext }} file </v-card-title>
                   <v-card-subtitle class="caption">
                     {{ format.width }}x{{ format.height }} &middot;
                     {{ format.fps }} fps
@@ -110,7 +104,7 @@
                     {{ format.format_note }} &middot;
                     {{ format.vcodec }} &middot; {{ format.tbr }} KBit/s
                   </v-card-text>
-                </v-card>
+                </selectable-card>
               </v-col>
             </v-row>
           </v-tab-item>
@@ -121,11 +115,15 @@
 </template>
 
 <script>
-import formatters from "../../../../mixins/formatters";
+import formatters from "../../../mixins/formatters";
+import SelectableCard from "../SelectableCard";
 
 export default {
-  name: "components.requests.steppers.handlers.audio-visual-step",
+  name: "components.steppers.handlers.audio-visual-step",
   mixin: [formatters],
+  components: {
+    SelectableCard
+  },
   data: () => {
     return {
       format_selection: "",
@@ -173,13 +171,6 @@ export default {
       return this.data.options.filter(
         i => i.acodec === "none" && i.vcodec !== "none"
       );
-    }
-  },
-  filters: {
-    capitalize: function(value) {
-      if (!value) return "";
-      value = value.toString();
-      return value.charAt(0).toUpperCase() + value.slice(1);
     }
   },
   watch: {
