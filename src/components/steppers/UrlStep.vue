@@ -6,7 +6,7 @@
 
 <script>
 export default {
-  name: "components.requests.steppers.url-step",
+  name: "components.steppers.url-step",
   data: () => ({
     url: ""
   }),

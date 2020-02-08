@@ -1,22 +1,25 @@
 <template>
-  <v-data-table
-    :loading="loading"
+  <request-table
+    ref="table"
+    :extended="extended"
     :headers="headers"
     :items="_items"
-    :items-per-page="parseInt(items_per_page)"
-    :no-data-text="no_data_text"
-    sort-by="created_at"
-    :sort-desc="true"
-    @click:row="viewDetail"
-  ></v-data-table>
+    :items_per_page="items_per_page"
+    no_data_text="There are no failed requests."
+  />
 </template>
 
 <script>
-import formatters from "../../mixins/formatters";
+import { mapGetters } from "vuex";
+import formatters from "../../../mixins/formatters";
+import RequestTable from "../Table";
 
 export default {
-  name: "components.requests.table-basic",
+  name: "components.requests.failed.table",
   mixin: [formatters],
+  components: {
+    RequestTable
+  },
   data: () => ({
     headers: [
       {
@@ -29,7 +32,7 @@ export default {
         text: "Request type",
         align: "left",
         sortable: true,
-        value: "request_type"
+        value: "request_type_label"
       },
       {
         text: "Requested on",
@@ -40,12 +43,13 @@ export default {
     ]
   }),
   props: {
-    loading: Boolean,
-    items: Array,
-    items_per_page: String,
-    no_data_text: String
+    extended: Boolean,
+    items_per_page: String
   },
   computed: {
+    ...mapGetters({
+      items: "requests/getAllFailed"
+    }),
     _items() {
       const items = this.items;
       items.forEach(this.formatItem);
@@ -55,16 +59,8 @@ export default {
   methods: {
     formatItem(item) {
       item.created_at = this.formatDate(item.created_at, "LLL");
-      item.request_type = this.formatRequest(item.request_type);
+      item.request_type_label = this.formatRequest(item.request_type);
       return item;
-    },
-    viewDetail(item) {
-      this.$router
-        .push({
-          name: "requests.detail",
-          params: { requestId: item.id }
-        })
-        .catch(() => {});
     }
   }
 };

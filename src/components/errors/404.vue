@@ -18,3 +18,9 @@
     </v-card-actions>
   </v-card>
 </template>
+
+<script>
+export default {
+  name: "components.errors.404"
+};
+</script>

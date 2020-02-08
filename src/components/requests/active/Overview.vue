@@ -1,33 +1,30 @@
 <template>
   <div>
-    <v-row>
-      <v-col cols="12" class="pb-0">
-        <v-subheader class="pl-0">Active and pending requests</v-subheader>
-      </v-col>
-    </v-row>
     <v-row v-if="loading">
-      <v-col cols="12" md="4">
+      <v-col cols="12" md="6">
         <v-skeleton-loader type="article" />
       </v-col>
-      <v-col cols="12" md="4">
-        <v-skeleton-loader type="article" />
-      </v-col>
-      <v-col cols="12" md="4">
+      <v-col cols="12" md="6">
         <v-skeleton-loader type="article" />
       </v-col>
     </v-row>
     <v-row v-else-if="activeItems.length">
-      <v-col cols="12" md="6" v-for="item in activeItems" :key="item.id">
+      <v-col
+        cols="12"
+        md="6"
+        v-for="item in activeItems.slice(0, 4)"
+        :key="item.id"
+      >
         <card-mini :request="item" />
       </v-col>
     </v-row>
     <v-row v-else>
       <v-col cols="12" md="6">
         <v-card outlined>
-          <v-card-title>
+          <v-card-title class="subtitle-1">
             There are no active or pending requests.
           </v-card-title>
-          <v-card-subtitle>
+          <v-card-subtitle class="subtitle-2">
             Click below to create a new request.
           </v-card-subtitle>
           <v-card-actions>
@@ -51,7 +48,7 @@ import { mapGetters } from "vuex";
 import CardMini from "./CardMini";
 
 export default {
-  name: "components.requests.pending-overview",
+  name: "components.requests.active.overview",
   components: {
     CardMini
   },

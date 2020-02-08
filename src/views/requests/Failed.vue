@@ -1,14 +1,9 @@
 <template>
-  <v-content>
+  <v-content class="background-wallpaper-subtle-image">
     <v-container>
       <v-row>
-        <v-col cols="12" class="mt-1">
-          <table-basic
-            :loading="loading"
-            :items="failedItems"
-            items_per_page="20"
-            no_data_text="There are no failed requests."
-          />
+        <v-col cols="12" class="mt-5">
+          <failed-table :extended="true" items_per_page="20" />
         </v-col>
       </v-row>
     </v-container>
@@ -16,29 +11,12 @@
 </template>
 
 <script>
-import { mapGetters } from "vuex";
-import formatters from "../../mixins/formatters";
-import TableBasic from "../../components/requests/TableBasic";
+import FailedTable from "../../components/requests/failed/Table";
 
 export default {
   name: "views.requests.failed",
-  mixin: [formatters],
   components: {
-    TableBasic
-  },
-  data: () => ({
-    loading: true
-  }),
-  computed: {
-    ...mapGetters({
-      failedItems: "requests/getAllFailed"
-    })
-  },
-  created() {
-    this.$store
-      .dispatch("requests/getAll")
-      .catch(() => this.$router.push({ name: "overview" }).catch(() => {}))
-      .finally(() => (this.loading = false));
+    FailedTable
   }
 };
 </script>

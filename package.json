@@ -13,6 +13,7 @@
     "axios": "^0.19.2",
     "core-js": "^3.4.4",
     "moment": "^2.24.0",
+    "psl": "^1.7.0",
     "roboto-fontface": "*",
     "vue": "^2.6.10",
     "vue-router": "^3.1.3",

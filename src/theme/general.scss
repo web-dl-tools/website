@@ -11,3 +11,13 @@ pre {
   background-size: cover;
   height: calc(100vh - 56px);
 }
+
+.background-wallpaper-subtle-image {
+  background-image:
+          radial-gradient(circle, rgba(0,0,0,0.75) 0%, rgba(5,0,1,0) 100%),
+          url('~@/assets/wallpapers/wallhaven-13mk9v.jpg');
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  min-height: calc(100vh - 56px);
+}
