@@ -23,18 +23,24 @@
                   mdi-open-in-new
                 </v-icon>
               </v-btn>
+              <v-btn class="float-right mt-n2 mr-2" color="error" text>
+                Delete
+              </v-btn>
+              <v-btn class="float-right mt-n2 mr-0" color="warning" text>
+                Retry
+              </v-btn>
             </v-card-subtitle>
             <card-text :item="item" />
             <v-card-text>
               <v-tabs centered grow v-model="tab">
                 <v-tab>Information</v-tab>
-                <v-tab>Timeline</v-tab>
                 <v-tab>
                   <v-badge v-if="files_count" :content="files_count">
                     Files
                   </v-badge>
                   <span v-else>Files</span>
                 </v-tab>
+                <v-tab>Timeline</v-tab>
                 <v-tab>
                   <v-badge v-if="logs_count" :content="logs_count">
                     Logs
@@ -44,12 +50,12 @@
               </v-tabs>
               <v-tabs-items v-model="tab">
                 <info :active="tab === 0" :item="item" />
-                <timeline :active="tab === 1" :item="item" />
                 <files
-                  :active="tab === 2"
+                  :active="tab === 1"
                   :request_id="this.$route.params.requestId"
                   @countChange="n => (files_count = n)"
                 />
+                <timeline :active="tab === 2" :item="item" />
                 <logs
                   :active="tab === 3"
                   :request_id="this.$route.params.requestId"

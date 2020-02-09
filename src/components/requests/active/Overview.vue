@@ -24,7 +24,7 @@
           <v-card-title class="subtitle-1">
             There are no active or pending requests.
           </v-card-title>
-          <v-card-subtitle class="subtitle-2">
+          <v-card-subtitle class="subtitle-2 font-weight-light">
             Click below to create a new request.
           </v-card-subtitle>
           <v-card-actions>

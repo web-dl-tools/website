@@ -90,7 +90,10 @@ export default [
       {
         path: "*",
         name: "error.404",
-        component: () => import("../components/errors/404")
+        component: () => import("../components/errors/404"),
+        meta: {
+          title: "Error"
+        }
       }
     ],
     meta: {

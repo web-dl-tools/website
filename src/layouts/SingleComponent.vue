@@ -7,6 +7,7 @@
             <v-icon class="justify-end" x-large color="white">
               mdi-cloud-download-outline
             </v-icon>
+            <h1 class="mt-4 display-2 font-weight-light font-italic">Web DL</h1>
           </div>
           <router-view />
         </v-col>
