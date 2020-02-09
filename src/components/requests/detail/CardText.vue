@@ -22,7 +22,7 @@
                 mdi-briefcase-outline
               </v-icon>
               <span class="ml-1">
-                {{ formatRequest(item.request_type) }}
+                {{ formatRequest(item.request_type) }} Request
               </span>
             </p>
             <p class="mb-2">
@@ -30,8 +30,9 @@
                 mdi-plus
               </v-icon>
               <span class="ml-1">
-                {{ formatDate(item.created_at, "LLLL") }}
-                ({{ formatDateFromNow(item.created_at) }})
+                Requested on {{ formatDate(item.created_at, "LLLL") }} ({{
+                  formatDateFromNow(item.created_at)
+                }})
               </span>
             </p>
           </v-col>
@@ -44,7 +45,7 @@
                 mdi-download-outline
               </v-icon>
               <span class="ml-1">
-                {{ formatDate(item.start_processing_at, "LL") }}
+                Started at {{ formatDate(item.start_processing_at, "LL") }}
                 {{ formatDate(item.start_processing_at, "LTS") }}
               </span>
             </p>
@@ -53,12 +54,27 @@
                 mdi-checkbox-marked-circle-outline
               </v-icon>
               <span class="ml-1">
-                {{ formatDate(item.completed_at, "LL") }}
+                Completed at {{ formatDate(item.completed_at, "LL") }}
                 {{ formatDate(item.completed_at, "LTS") }}
               </span>
             </p>
           </v-col>
           <v-col cols="12" md="3" class="" v-if="item.status === 'completed'">
+            <p class="mb-2">
+              <v-icon>
+                mdi-hand-right
+              </v-icon>
+              <span class="ml-1">
+                In queue for
+                {{
+                  formatDateDuration(
+                    item.created_at,
+                    item.start_processing_at,
+                    "humanize"
+                  )
+                }}
+              </span>
+            </p>
             <p class="mb-2">
               <v-icon>
                 mdi-progress-download

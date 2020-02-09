@@ -89,7 +89,7 @@ export default {
       }download/file/?auth_token=${Vue.$axios.defaults.headers.common.Authorization.replace(
         "Token ",
         ""
-      )}&path=${path}`;
+      )}&path=${encodeURIComponent(path)}`;
       window.open(url, "_blank");
     }
   },
