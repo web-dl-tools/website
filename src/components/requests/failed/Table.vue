@@ -38,6 +38,7 @@ export default {
         text: "Requested on",
         align: "right",
         sortable: true,
+        filterable: false,
         value: "created_at"
       }
     ]

@@ -15,8 +15,9 @@
         <v-btn
           text
           @click="$router.push({ name: menuItem.routerName }).catch(() => {})"
-          v-for="menuItem in menuItems"
+          v-for="(menuItem, i) in menuItems"
           :key="menuItem.label"
+          :color="i === active ? 'warning' : ''"
         >
           {{ menuItem.label }}
         </v-btn>

@@ -21,6 +21,15 @@ export default Vue.mixin({
     formatDateFromNow(date) {
       return moment(date).fromNow();
     },
+    formatDateDuration(startDate, endDate, format) {
+      startDate = moment(startDate);
+      endDate = moment(endDate);
+      const duration = moment.duration(endDate.diff(startDate));
+      if (format === "humanize") {
+        return duration.humanize();
+      }
+      return duration.as(format);
+    },
     /**
      * @url https://stackoverflow.com/a/18650828
      * @param bytes
