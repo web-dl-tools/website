@@ -13,6 +13,33 @@
         <v-subheader class="pl-0">File formats</v-subheader>
       </v-col>
       <v-col cols="12">
+        <v-row>
+          <v-col
+            v-for="format in formats"
+            :key="format.format_id"
+            cols="12"
+            md="6"
+          >
+            <selectable-card
+              :selected="format_selection === format.format_id"
+              :disabled="false"
+              :title="`${format.title} file`"
+              @onClick="format_selection = format.format_id"
+            >
+              <v-card-subtitle class="caption">
+                {{ format.note }}
+              </v-card-subtitle>
+            </selectable-card>
+          </v-col>
+        </v-row>
+      </v-col>
+      <v-col cols="12">
+        <v-checkbox
+          label="Show all single file formats"
+          v-model="show_single_file_formats"
+        />
+      </v-col>
+      <v-col cols="12" v-if="show_single_file_formats">
         <v-tabs centered grow v-model="tab">
           <v-tab>
             <v-badge :content="audioAndVideoFormats.length">
@@ -142,10 +169,46 @@ export default {
           value: "%(id)s.%(ext)s"
         },
         {
-          text: "The creator of the video with the video title",
-          value: "%(creator)s - %(title)s.%(ext)s"
+          text: "The uploader of the video with the video title",
+          value: "%(uploader)s - %(title)s.%(ext)s"
         }
       ],
+      formats: [
+        {
+          format_id: "best",
+          title: "Best",
+          note:
+            "The best quality format represented by a single file with video and audio."
+        },
+        {
+          format_id: "worst",
+          title: "Worst",
+          note:
+            "The worst quality format represented by a single file with video and audio."
+        },
+        {
+          format_id: "bestvideo",
+          title: "Best video",
+          note:
+            "The best quality video-only format (e.g. DASH video). May not be available."
+        },
+        {
+          format_id: "worstvideo",
+          title: "Worst video",
+          note: "The worst quality video-only format. May not be available."
+        },
+        {
+          format_id: "bestaudio",
+          title: "Best audio",
+          note: "The best quality audio only-format. May not be available."
+        },
+        {
+          format_id: "worstaudio",
+          title: "Worst audio",
+          note: "The worst quality audio only-format. May not be available."
+        }
+      ],
+      show_single_file_formats: false,
       tab: 0
     };
   },

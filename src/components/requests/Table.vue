@@ -18,7 +18,7 @@
       :no-data-text="no_data_text"
       loading-text="Loading requests..."
       sort-by="created_at"
-      :sort-desc="true"
+      :sort-desc="false"
       @click:row="viewDetail"
     >
       <template

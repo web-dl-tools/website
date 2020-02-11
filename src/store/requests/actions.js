@@ -1,13 +1,9 @@
 import Vue from "vue";
-import router from "../../router";
 
 export const create = ({ commit }, payload) =>
   Vue.$axios
     .post(`requests/`, payload)
-    .then(response => {
-      commit("CREATE", response.data);
-      router.push({ name: "overview" }).catch(() => {});
-    })
+    .then(response => commit("CREATE", response.data))
     .catch(() => Promise.reject());
 
 export const get = ({ commit }, id) =>
@@ -29,3 +25,11 @@ export const getAll = ({ commit }) =>
   Vue.$axios
     .get("requests/")
     .then(response => commit("GET_ALL", response.data));
+
+export const retry = ({ commit }, id) =>
+  Vue.$axios
+    .put(`requests/${id}/retry/`)
+    .then(response => commit("RETRY", response.data));
+
+export const remove = ({ commit }, id) =>
+  Vue.$axios.delete(`requests/${id}/`).then(() => commit("REMOVE", id));

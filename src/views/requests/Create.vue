@@ -129,7 +129,7 @@ export default {
           ...this.step3Data
         })
         .catch(() => (this.error = true))
-        .finally(() => (this.loading = false));
+        .finally(() => this.$router.push({ name: "overview" }).catch(() => {}));
     }
   }
 };
