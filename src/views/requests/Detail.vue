@@ -23,10 +23,22 @@
                   mdi-open-in-new
                 </v-icon>
               </v-btn>
-              <v-btn class="float-right mt-n2 mr-2" color="error" text>
+              <v-btn
+                class="float-right mt-n2 mr-2"
+                v-if="item.status === 'completed' || item.status === 'failed'"
+                color="error"
+                text
+                @click="dialog = true"
+              >
                 Delete
               </v-btn>
-              <v-btn class="float-right mt-n2 mr-0" color="warning" text>
+              <v-btn
+                class="float-right mt-n2 mr-0"
+                v-if="item.status === 'failed'"
+                color="warning"
+                text
+                @click="retry"
+              >
                 Retry
               </v-btn>
             </v-card-subtitle>
@@ -67,6 +79,26 @@
         </v-col>
       </v-row>
     </v-container>
+    <v-dialog v-model="dialog" max-width="300">
+      <v-card>
+        <v-card-title class="headline">Delete</v-card-title>
+        <v-card-text>
+          Are you sure you want to delete this request?
+        </v-card-text>
+        <v-card-text class="caption error--text">
+          {{ item.status === "completed" ? item.title : item.url }}
+        </v-card-text>
+        <v-card-actions>
+          <v-spacer></v-spacer>
+          <v-btn color="warning darken-1" text @click="dialog = false">
+            Cancel
+          </v-btn>
+          <v-btn color="error darken-1" text @click="remove">
+            Delete
+          </v-btn>
+        </v-card-actions>
+      </v-card>
+    </v-dialog>
   </v-content>
 </template>
 
@@ -90,6 +122,7 @@ export default {
     Logs
   },
   data: () => ({
+    dialog: false,
     tab: 0,
     item_loading: true,
     files_count: null,
@@ -103,14 +136,20 @@ export default {
   created() {
     this.$store
       .dispatch("requests/get", this.$route.params.requestId)
-      .catch(() =>
-        this.$router.push({ name: "requests.index" }).catch(() => {})
-      )
+      .catch(() => this.$router.push({ name: "overview" }).catch(() => {}))
       .finally(() => (this.item_loading = false));
   },
   methods: {
     openExternalTab() {
       window.open(this.item.url, "_blank");
+    },
+    remove() {
+      this.$store
+        .dispatch("requests/remove", this.$route.params.requestId)
+        .then(() => this.$router.push({ name: "overview" }).catch(() => {}));
+    },
+    retry() {
+      this.$store.dispatch("requests/retry", this.$route.params.requestId);
     }
   }
 };

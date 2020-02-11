@@ -21,10 +21,18 @@ export const GET_ALL = (state, payload) => {
   state.items = payload;
 };
 
-export const UPDATE = (state, payload) => {
+export const RETRY = (state, payload) => {
   Vue.set(
     state.items,
-    state.items.findIndex(item => item.id === payload.id),
+    state.items.findIndex(i => i.id === payload.id),
     payload
   );
+  state.item = payload;
+};
+
+export const REMOVE = (state, id) => {
+  const index = state.items.findIndex(i => i.id === id);
+  if (index > -1) {
+    state.items.splice(index, 1);
+  }
 };

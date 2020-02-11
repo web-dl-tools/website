@@ -9,7 +9,8 @@
         </span>
         <span>on {{ item.data.extractor_key }}</span>
       </p>
-      <span>{{ item.data.view_count }} plays</span> &middot;
+      <span>{{ Number(item.data.view_count).toLocaleString() }} plays</span>
+      &middot;
       <span>{{ formatDate(item.data.upload_date, "LL") }}</span>
       <v-rating
         v-if="'average_rating' in item.data"
