@@ -4,7 +4,12 @@
       <v-row>
         <v-col cols="12">
           <v-skeleton-loader type="article" v-if="item_loading" />
-          <v-card outlined :loading="item.status === 'downloading'" v-else>
+          <v-card
+            outlined
+            raised
+            :loading="item.status === 'downloading'"
+            v-else
+          >
             <v-card-subtitle>
               <v-chip
                 class="white--text"

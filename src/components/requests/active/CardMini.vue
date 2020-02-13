@@ -1,5 +1,5 @@
 <template>
-  <v-card outlined :loading="request.status === 'downloading'">
+  <v-card raised outlined :loading="request.status === 'downloading'">
     <v-card-title class="subtitle-1">
       {{ request.url }}
       <v-spacer />

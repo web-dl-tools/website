@@ -29,7 +29,7 @@ export const getAll = ({ commit }) =>
 export const retry = ({ commit }, id) =>
   Vue.$axios
     .put(`requests/${id}/retry/`)
-    .then(response => commit("RETRY", response.data));
+    .then(response => commit("UPDATE", response.data));
 
 export const remove = ({ commit }, id) =>
   Vue.$axios.delete(`requests/${id}/`).then(() => commit("REMOVE", id));
