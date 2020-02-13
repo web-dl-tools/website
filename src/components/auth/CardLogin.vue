@@ -1,7 +1,7 @@
 <template>
-  <v-card outlined class="card-single-card mt-12">
+  <v-card raised outlined class="card-single-card mt-12">
     <v-card-title>
-      Web DL Login
+      Login
     </v-card-title>
     <v-card-subtitle>
       Authenticate with Web DL.

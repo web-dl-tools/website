@@ -20,7 +20,7 @@
     </v-row>
     <v-row v-else>
       <v-col cols="12" md="6">
-        <v-card outlined>
+        <v-card raised outlined>
           <v-card-title class="subtitle-1">
             There are no active or pending requests.
           </v-card-title>

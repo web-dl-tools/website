@@ -1,5 +1,5 @@
 <template>
-  <v-card>
+  <v-card raised>
     <v-card-title class="pt-0" v-if="extended">
       <v-text-field
         v-model="search"
@@ -18,7 +18,7 @@
       :no-data-text="no_data_text"
       loading-text="Loading requests..."
       sort-by="created_at"
-      :sort-desc="false"
+      :sort-desc="true"
       @click:row="viewDetail"
     >
       <template

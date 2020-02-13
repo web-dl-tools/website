@@ -52,7 +52,7 @@
       </v-row>
     </v-col>
     <v-col cols="12" md="5">
-      <v-parallax :src="item.data.thumbnail" height="300" />
+      <v-parallax id="thumbnail" :src="item.data.thumbnail" height="300" />
     </v-col>
   </v-row>
 </template>
@@ -73,5 +73,9 @@ export default {
 <style scoped>
 #pre-description {
   white-space: pre-line;
+}
+
+#thumbnail {
+  border-radius: 4px;
 }
 </style>

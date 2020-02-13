@@ -1,5 +1,5 @@
 <template>
-  <v-card outlined class="card-single-card mt-12">
+  <v-card raised outlined class="card-single-card mt-12">
     <v-card-title>
       Something went wrong.
     </v-card-title>

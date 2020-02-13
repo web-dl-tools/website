@@ -3,7 +3,7 @@
     <v-container class="pt-8">
       <v-row>
         <v-col cols="12">
-          <v-stepper v-model="step" vertical class="elevation-0">
+          <v-stepper v-model="step" vertical class="elevation-8">
             <v-stepper-step :complete="step > 1" step="1">
               Submit a URL
               <small>{{ step1Label }}</small>

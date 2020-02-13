@@ -74,7 +74,7 @@ export default [
         name: "overview",
         component: () => import("../views/Overview"),
         meta: {
-          title: "My requests"
+          title: "Overview"
         }
       }
     ],
