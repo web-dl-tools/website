@@ -7,7 +7,7 @@ pre {
 }
 
 .background-wallpaper-image {
-  background-image: url('~@/assets/wallpapers/single-component.png');
+  background-image: url('~@/assets/wallpapers/single-component.jpeg');
   background-size: cover;
   height: calc(100vh - 56px);
 }
@@ -15,7 +15,7 @@ pre {
 .background-wallpaper-subtle-image {
   background-image:
           radial-gradient(circle, rgba(255,255,255,0) 0%, rgba(4,0,1,0.25) 100%),
-          url('~@/assets/wallpapers/default.png');
+          url('~@/assets/wallpapers/default.jpeg');
   background-size: cover;
   background-repeat: no-repeat;
   background-attachment: fixed;

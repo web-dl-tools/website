@@ -3,21 +3,30 @@
     <v-container class="pt-8">
       <v-row>
         <v-col cols="12">
-          <v-skeleton-loader type="article" v-if="item_loading" />
-          <v-card
-            outlined
-            raised
-            :loading="item.status === 'downloading'"
-            v-else
-          >
+          <v-skeleton-loader type="article" v-if="request_loading" />
+          <v-card outlined raised :loading="processing" v-else>
+            <template v-slot:progress>
+              <v-progress-linear
+                v-if="request.status === 'downloading'"
+                :value="request.progress"
+                :buffer-value="request.progress - 100"
+                stream
+                :color="formatRequestStatusColor(request.status)"
+              />
+              <v-progress-linear
+                v-else
+                indeterminate
+                :color="formatRequestStatusColor(request.status)"
+              />
+            </template>
             <v-card-subtitle>
               <v-chip
                 class="white--text"
                 label
                 small
-                :color="formatRequestStatusColor(item.status)"
+                :color="formatRequestStatusColor(request.status)"
               >
-                {{ item.status_display }}
+                {{ request.status_display }}
               </v-chip>
               <v-btn
                 icon
@@ -30,7 +39,9 @@
               </v-btn>
               <v-btn
                 class="float-right mt-n2 mr-2"
-                v-if="item.status === 'completed' || item.status === 'failed'"
+                v-if="
+                  request.status === 'completed' || request.status === 'failed'
+                "
                 color="error"
                 text
                 @click="dialog = true"
@@ -39,7 +50,7 @@
               </v-btn>
               <v-btn
                 class="float-right mt-n2 mr-0"
-                v-if="item.status === 'failed'"
+                v-if="request.status === 'failed'"
                 color="warning"
                 text
                 @click="retry"
@@ -47,7 +58,7 @@
                 Retry
               </v-btn>
             </v-card-subtitle>
-            <card-text :item="item" />
+            <card-text :item="request" />
             <v-card-text>
               <v-tabs centered grow v-model="tab">
                 <v-tab>Information</v-tab>
@@ -66,13 +77,13 @@
                 </v-tab>
               </v-tabs>
               <v-tabs-items v-model="tab">
-                <info :active="tab === 0" :item="item" />
+                <info :active="tab === 0" :item="request" />
                 <files
                   :active="tab === 1"
                   :request_id="this.$route.params.requestId"
                   @countChange="n => (files_count = n)"
                 />
-                <timeline :active="tab === 2" :item="item" />
+                <timeline :active="tab === 2" :item="request" />
                 <logs
                   :active="tab === 3"
                   :request_id="this.$route.params.requestId"
@@ -91,7 +102,7 @@
           Are you sure you want to delete this request?
         </v-card-text>
         <v-card-text class="caption error--text">
-          {{ item.status === "completed" ? item.title : item.url }}
+          {{ request.status === "completed" ? request.title : request.url }}
         </v-card-text>
         <v-card-actions>
           <v-spacer></v-spacer>
@@ -129,24 +140,32 @@ export default {
   data: () => ({
     dialog: false,
     tab: 0,
-    item_loading: true,
+    request_loading: true,
     files_count: null,
     logs_count: null
   }),
   computed: {
     ...mapGetters({
-      item: "requests/get"
-    })
+      request: "requests/get"
+    }),
+    processing() {
+      return (
+        this.request.status &&
+        ["pre_processing", "downloading", "post_processing"].includes(
+          this.request.status
+        )
+      );
+    }
   },
   created() {
     this.$store
       .dispatch("requests/get", this.$route.params.requestId)
       .catch(() => this.$router.push({ name: "overview" }).catch(() => {}))
-      .finally(() => (this.item_loading = false));
+      .finally(() => (this.request_loading = false));
   },
   methods: {
     openExternalTab() {
-      window.open(this.item.url, "_blank");
+      window.open(this.request.url, "_blank");
     },
     remove() {
       this.$store

@@ -14,3 +14,48 @@ export const logout = ({ commit }) => {
   commit("LOGOUT");
   router.push({ name: "login" });
 };
+
+export const connectWebsocket = ({ commit, dispatch }) => {
+  let webSocketUrl = Vue.$axios.defaults.baseURL;
+  webSocketUrl = webSocketUrl.replace("https://", "wss://");
+  webSocketUrl = webSocketUrl.replace("http://", "ws://");
+  webSocketUrl = webSocketUrl.replace("/api/", "/ws/");
+
+  document.addEventListener("beforeunload", () =>
+    dispatch("disconnectWebsocket")
+  );
+  const websocket = new WebSocket(`${webSocketUrl}requests/`);
+  websocket.addEventListener("message", e =>
+    dispatch("handleWebsocketEvent", e)
+  );
+  websocket.onopen = () => {
+    console.log("Web DL API WebSocket connection established successfully.");
+    websocket.send(
+      JSON.stringify({
+        type: "requests.group.join",
+        content: Vue.$axios.defaults.headers.common.Authorization.replace(
+          "Token ",
+          ""
+        )
+      })
+    );
+  };
+  commit("CONNECT_WEBSOCKET", websocket);
+};
+
+export const handleWebsocketEvent = ({ commit }, event) => {
+  const data = JSON.parse(event.data);
+  switch (data.type) {
+    case "requests.group.joined":
+      console.log(`Joined authenticated channel group (${data.content}).`);
+      break;
+    case "requests.update":
+      commit("requests/UPDATE", data.content, { root: true });
+      break;
+  }
+};
+
+export const disconnectWebsocket = ({ state, commit }) => {
+  state.websocket.close();
+  commit("DISCONNECT_WEBSOCKET");
+};

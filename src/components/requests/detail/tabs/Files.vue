@@ -2,6 +2,7 @@
   <v-tab-item>
     <v-skeleton-loader class="pt-4" type="paragraph" v-if="files_loading" />
     <v-treeview
+      v-else-if="files.length"
       class="pt-4"
       v-model="files_tree"
       :items="files"
@@ -12,7 +13,6 @@
       open-all
       rounded
       dense
-      v-else
     >
       <template v-slot:prepend="{ item, open }">
         <v-icon class="mr-2" v-if="'dir' in item">
@@ -33,12 +33,17 @@
             {{ item.name }}
           </p>
           <p class="mb-0 overline">
-            {{ item.extension }} &middot;
+            {{ item.extension.replace(".", "") }} &middot;
             {{ formatBytes(item.size, 2) }}
           </p>
         </div>
       </template>
     </v-treeview>
+    <v-col v-else cols="12">
+      <p class="mb-0">
+        No files are available.
+      </p>
+    </v-col>
   </v-tab-item>
 </template>
 

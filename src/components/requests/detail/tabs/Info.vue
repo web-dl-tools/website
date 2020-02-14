@@ -2,7 +2,7 @@
   <v-tab-item>
     <v-row v-if="item.status !== 'completed'">
       <v-col cols="12">
-        <p>
+        <p class="mb-0">
           Request has not finished processing. Information will appear after the
           request has completed.
         </p>

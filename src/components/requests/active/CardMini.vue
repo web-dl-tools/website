@@ -1,5 +1,31 @@
 <template>
-  <v-card raised outlined :loading="request.status === 'downloading'">
+  <v-card
+    raised
+    outlined
+    :loading="processing"
+    @click="
+      $router
+        .push({
+          name: 'requests.detail',
+          params: { requestId: request.id }
+        })
+        .catch(() => {})
+    "
+  >
+    <template v-slot:progress>
+      <v-progress-linear
+        v-if="request.status === 'downloading'"
+        :value="request.progress"
+        :buffer-value="request.progress - 100"
+        stream
+        :color="formatRequestStatusColor(request.status)"
+      />
+      <v-progress-linear
+        v-else
+        indeterminate
+        :color="formatRequestStatusColor(request.status)"
+      />
+    </template>
     <v-card-title class="subtitle-1">
       {{ request.url }}
       <v-spacer />
@@ -26,6 +52,16 @@ export default {
   mixin: [formatters],
   props: {
     request: Object
+  },
+  computed: {
+    processing() {
+      return (
+        this.request.status &&
+        ["pre_processing", "downloading", "post_processing"].includes(
+          this.request.status
+        )
+      );
+    }
   }
 };
 </script>

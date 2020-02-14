@@ -25,3 +25,9 @@ export const LOGOUT = state => {
   Vue.$axios.defaults.headers.common.Authorization = "";
   state.authenticated = false;
 };
+
+export const CONNECT_WEBSOCKET = (state, websocket) => {
+  state.websocket = websocket;
+};
+
+export const DISCONNECT_WEBSOCKET = state => (state.websocket = null);
