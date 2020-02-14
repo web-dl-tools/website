@@ -56,8 +56,9 @@ export default Vue.mixin({
         case "downloading":
           return "accent";
         case "pre_processing":
+          return "primary";
         case "post_processing":
-          return "info";
+          return "secondary";
         case "pending":
         default:
           return "warning";
@@ -71,11 +72,11 @@ export default Vue.mixin({
         case 30:
           return "warning";
         case 20:
-          return "info";
+          return "secondary";
         case 10:
         case 0:
         default:
-          return "primary";
+          return "info";
       }
     },
     formatDomain(url) {

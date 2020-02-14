@@ -39,7 +39,7 @@
           </div>
         </div>
       </v-timeline-item>
-      <v-timeline-item small color="info">
+      <v-timeline-item small color="primary">
         <template v-slot:opposite>
           <span class="mb-0 font-weight-bold info--text">
             {{ formatDate(item.created_at, "LLLL") }}

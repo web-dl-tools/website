@@ -17,7 +17,7 @@
           @click="$router.push({ name: menuItem.routerName }).catch(() => {})"
           v-for="(menuItem, i) in menuItems"
           :key="menuItem.label"
-          :color="i === active ? 'warning' : ''"
+          :color="i === active ? 'primary' : ''"
         >
           {{ menuItem.label }}
         </v-btn>
@@ -80,14 +80,12 @@
 </template>
 
 <script>
-import Vue from "vue";
 import { mapGetters } from "vuex";
 
 export default {
   name: "layouts.default",
   data: () => ({
-    active: undefined,
-    socket: null
+    active: undefined
   }),
   computed: {
     ...mapGetters({
@@ -111,22 +109,6 @@ export default {
           this.active = undefined;
           break;
       }
-    },
-    handleWebSocketMessage(event) {
-      const data = JSON.parse(event.data);
-      switch (data.type) {
-        case "requests.group.joined":
-          console.log(
-            "Web DL API WebSocket connection established successfully."
-          );
-          break;
-        case "requests.update":
-          this.$store.commit("requests/UPDATE", data.content);
-          break;
-      }
-    },
-    closeWebSocketConnection() {
-      this.socket.close();
     }
   },
   watch: {
@@ -136,26 +118,10 @@ export default {
   },
   created() {
     this.setActive(this.$router.currentRoute.name);
-
-    document.addEventListener("beforeunload", this.closeWebSocketConnection);
-
-    let webSocketUrl = Vue.$axios.defaults.baseURL;
-    webSocketUrl = webSocketUrl.replace("https://", "wss://");
-    webSocketUrl = webSocketUrl.replace("http://", "ws://");
-    webSocketUrl = webSocketUrl.replace("/api/", "/ws/");
-
-    this.socket = new WebSocket(`${webSocketUrl}requests/`);
-    this.socket.addEventListener("message", this.handleWebSocketMessage);
-    this.socket.onopen = () =>
-      this.socket.send(
-        JSON.stringify({
-          type: "requests.group.join",
-          content: Vue.$axios.defaults.headers.common.Authorization.replace(
-            "Token ",
-            ""
-          )
-        })
-      );
+    this.$store.dispatch("application/connectWebsocket");
+  },
+  destroyed() {
+    this.$store.dispatch("application/disconnectWebsocket");
   }
 };
 </script>

@@ -14,7 +14,6 @@
           prepend-icon="mdi-account"
           type="text"
           v-model="username"
-          clearable
         />
 
         <v-text-field
@@ -24,7 +23,6 @@
           prepend-icon="mdi-lock"
           type="password"
           v-model="password"
-          clearable
         />
       </v-form>
     </v-card-text>

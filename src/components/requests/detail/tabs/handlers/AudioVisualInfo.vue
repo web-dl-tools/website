@@ -1,6 +1,6 @@
 <template>
   <v-row>
-    <v-col cols="12" md="7">
+    <v-col cols="12" md="8">
       <p class="mb-0 title">{{ item.data.title }}</p>
       <p class="font-weight-light">
         By
@@ -51,7 +51,7 @@
         </v-col>
       </v-row>
     </v-col>
-    <v-col cols="12" md="5">
+    <v-col cols="12" md="4">
       <v-parallax id="thumbnail" :src="item.data.thumbnail" height="300" />
     </v-col>
   </v-row>
