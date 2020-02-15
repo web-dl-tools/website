@@ -52,6 +52,9 @@ export const handleWebsocketEvent = ({ commit }, event) => {
     case "requests.update":
       commit("requests/UPDATE", data.content, { root: true });
       break;
+    default:
+      console.error("Unsupported websocket event received");
+      break;
   }
 };
 
