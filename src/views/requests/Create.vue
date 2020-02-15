@@ -45,7 +45,7 @@
             </v-stepper-content>
 
             <v-stepper-step step="3">
-              Configure the handler settings.
+              Configure the handler settings
               <small>
                 Configure the required custom settings for this handler.
               </small>
