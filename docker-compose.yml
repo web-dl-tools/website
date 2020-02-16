@@ -1,0 +1,12 @@
+version: '3'
+
+services:
+  nginx:
+    build:
+      context: .
+      dockerfile: ./compose/nginx/Dockerfile
+      args:
+        - VUE_APP_API_URL=${VUE_APP_API_URL}
+    ports:
+      - 80:80
+    restart: always
