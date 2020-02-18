@@ -97,11 +97,11 @@
     </v-container>
     <v-dialog v-model="dialog" max-width="500">
       <v-card>
-        <v-card-title class="headline">Delete</v-card-title>
+        <v-card-title>Delete</v-card-title>
         <v-card-text>
           Are you sure you want to delete this request?
         </v-card-text>
-        <v-card-text class="caption error--text">
+        <v-card-text class="error--text font-weight-light mt-n4">
           {{ request.status === "completed" ? request.title : request.url }}
         </v-card-text>
         <v-card-actions>
