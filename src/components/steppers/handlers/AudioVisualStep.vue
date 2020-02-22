@@ -9,7 +9,7 @@
       </v-col>
       <v-col class="pt-0" cols="12">
         <v-row>
-          <v-col v-if="hasVideoFormat" cols="12" md="6">
+          <v-col v-if="hasVideoFormats" cols="12" md="6">
             <selectable-card
               :selected="
                 video_format_selection === bestVideoFormat &&
@@ -30,7 +30,7 @@
               </v-card-subtitle>
             </selectable-card>
           </v-col>
-          <v-col cols="12" md="6">
+          <v-col v-if="hasAudioFormats" cols="12" md="6">
             <selectable-card
               :selected="
                 video_format_selection === '' &&
@@ -64,7 +64,7 @@
       </v-col>
     </v-row>
     <v-row class="mt-n8" v-if="show_single_file_formats">
-      <v-col cols="12" md="6">
+      <v-col v-if="hasVideoOrAudioFormats" cols="12" md="6">
         <p class="text-center caption">Video</p>
         <selectable-card
           class="mb-6"
@@ -100,7 +100,7 @@
           </v-col>
         </v-row>
       </v-col>
-      <v-col cols="12" md="6">
+      <v-col v-if="hasVideoOrAudioFormats" cols="12" md="6">
         <p class="text-center caption">Audio</p>
         <selectable-card
           class="mb-6"
@@ -131,6 +131,27 @@
               <v-card-text class="overline">
                 {{ format.ext }} &middot; {{ format.format_note }} &middot;
                 {{ format.acodec }}
+              </v-card-text>
+            </selectable-card>
+          </v-col>
+        </v-row>
+      </v-col>
+      <v-col v-if="!hasVideoOrAudioFormats" cols="12" md="6">
+        <p class="text-center caption">Single file</p>
+        <v-row>
+          <v-col
+            v-for="format in this.data.options"
+            :key="format.format_id"
+            cols="6"
+          >
+            <selectable-card
+              :selected="video_format_selection === format.format_id"
+              :disabled="false"
+              :title="format.format"
+              @onClick="video_format_selection = format.format_id"
+            >
+              <v-card-text class="overline">
+                {{ format.ext }}
               </v-card-text>
             </selectable-card>
           </v-col>
@@ -175,6 +196,9 @@ export default {
     bestAudioFormat() {
       return this.audioOnlyFormats[this.audioOnlyFormats.length - 1].format_id;
     },
+    hasAudioFormats() {
+      return this.audioOnlyFormats.length;
+    },
     videoOnlyFormats() {
       return this.data.options.filter(
         i => i.acodec === "none" && i.vcodec !== "none"
@@ -183,8 +207,11 @@ export default {
     bestVideoFormat() {
       return this.videoOnlyFormats[this.videoOnlyFormats.length - 1].format_id;
     },
-    hasVideoFormat() {
+    hasVideoFormats() {
       return this.videoOnlyFormats.length;
+    },
+    hasVideoOrAudioFormats() {
+      return this.audioOnlyFormats.length || this.videoOnlyFormats.length;
     },
     format_selection() {
       if (this.video_format_selection && this.audio_format_selection) {
