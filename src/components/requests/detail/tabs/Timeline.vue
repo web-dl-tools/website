@@ -39,7 +39,7 @@
           </div>
         </div>
       </v-timeline-item>
-      <v-timeline-item small color="primary">
+      <v-timeline-item small color="info">
         <template v-slot:opposite>
           <span class="mb-0 font-weight-bold info--text">
             {{ formatDate(item.created_at, "LLLL") }}
@@ -51,8 +51,8 @@
             Request has been created.
           </h2>
           <div>
-            A request to download <a :href="item.url">{{ item.url }}</a> using
-            the {{ formatRequest(item.request_type) }} handler has been
+            A request to download <a :href="item.url">{{ item.url }}</a> <br />
+            using the {{ formatRequest(item.request_type) }} handler has been
             submitted.
           </div>
         </div>

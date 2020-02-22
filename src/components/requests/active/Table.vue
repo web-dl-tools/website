@@ -1,11 +1,11 @@
 <template>
   <request-table
-    ref="table"
     :extended="extended"
     :headers="headers"
     :items="_items"
     :items_per_page="items_per_page"
     no_data_text="There are no active or pending requests."
+    :sort_desc="false"
   >
     <template v-slot:item.status_display="{ item }">
       <v-chip

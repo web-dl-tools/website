@@ -1,6 +1,6 @@
 <template>
   <v-content class="background-wallpaper-subtle-image">
-    <v-container class="pt-8">
+    <v-container class="pt-3">
       <v-row>
         <v-col cols="12">
           <v-skeleton-loader type="article" v-if="request_loading" />
@@ -157,12 +157,6 @@ export default {
       );
     }
   },
-  created() {
-    this.$store
-      .dispatch("requests/get", this.$route.params.requestId)
-      .catch(() => this.$router.push({ name: "overview" }).catch(() => {}))
-      .finally(() => (this.request_loading = false));
-  },
   methods: {
     openExternalTab() {
       window.open(this.request.url, "_blank");
@@ -175,6 +169,12 @@ export default {
     retry() {
       this.$store.dispatch("requests/retry", this.$route.params.requestId);
     }
+  },
+  created() {
+    this.$store
+      .dispatch("requests/get", this.$route.params.requestId)
+      .catch(() => this.$router.push({ name: "overview" }).catch(() => {}))
+      .finally(() => (this.request_loading = false));
   }
 };
 </script>

@@ -1,6 +1,5 @@
 <template>
   <request-table
-    ref="table"
     :extended="extended"
     :headers="headers"
     :items="_items"
