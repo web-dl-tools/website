@@ -1,5 +1,6 @@
 export default {
   authenticated: false,
+  loading: false,
   websocket: null,
   title: "",
   menu_items: [

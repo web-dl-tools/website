@@ -21,10 +21,13 @@ export const getFiles = ({ commit }, id) =>
     .get(`requests/${id}/files/`)
     .then(response => commit("GET_FILES", response.data));
 
-export const getAll = ({ commit }) =>
+export const getAll = ({ commit }) => {
+  commit("application/SET_LOADING", true, { root: true });
   Vue.$axios
     .get("requests/")
-    .then(response => commit("GET_ALL", response.data));
+    .then(response => commit("GET_ALL", response.data))
+    .finally(() => commit("application/SET_LOADING", false, { root: true }));
+};
 
 export const retry = ({ commit }, id) =>
   Vue.$axios

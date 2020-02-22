@@ -26,8 +26,9 @@ export const LOGOUT = state => {
   state.authenticated = false;
 };
 
-export const CONNECT_WEBSOCKET = (state, websocket) => {
-  state.websocket = websocket;
-};
+export const SET_LOADING = (state, loading) => (state.loading = loading);
+
+export const CONNECT_WEBSOCKET = (state, websocket) =>
+  (state.websocket = websocket);
 
 export const DISCONNECT_WEBSOCKET = state => (state.websocket = null);

@@ -23,6 +23,7 @@
           prepend-icon="mdi-lock"
           type="password"
           v-model="password"
+          v-on:keyup.enter.native="login"
         />
       </v-form>
     </v-card-text>

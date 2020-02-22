@@ -47,11 +47,9 @@ export default {
   components: {
     CardMini
   },
-  props: {
-    loading: Boolean
-  },
   computed: {
     ...mapGetters({
+      loading: "application/isLoading",
       activeItems: "requests/getAllActive"
     })
   }

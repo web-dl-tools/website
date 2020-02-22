@@ -18,7 +18,7 @@
       :no-data-text="no_data_text"
       loading-text="Loading requests..."
       sort-by="created_at"
-      :sort-desc="true"
+      :sort-desc="sort_desc"
       @click:row="viewDetail"
     >
       <template
@@ -32,10 +32,11 @@
 </template>
 
 <script>
+import { mapGetters } from "vuex";
+
 export default {
   name: "components.requests.table",
   data: () => ({
-    loading: true,
     search: ""
   }),
   props: {
@@ -43,7 +44,16 @@ export default {
     headers: Array,
     items: Array,
     items_per_page: String,
-    no_data_text: String
+    no_data_text: String,
+    sort_desc: {
+      type: Boolean,
+      default: true
+    }
+  },
+  computed: {
+    ...mapGetters({
+      loading: "application/isLoading"
+    })
   },
   methods: {
     viewDetail(item) {
@@ -53,13 +63,6 @@ export default {
           params: { requestId: item.id }
         })
         .catch(() => {});
-    }
-  },
-  created() {
-    if (this.extended) {
-      this.$store
-        .dispatch("requests/getAll")
-        .finally(() => (this.loading = false));
     }
   }
 };

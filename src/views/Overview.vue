@@ -1,7 +1,7 @@
 <template>
   <v-content class="background-wallpaper-subtle-image">
     <v-container>
-      <v-row>
+      <v-row class="mt-n5">
         <v-col cols="12" class="pb-0">
           <v-subheader
             class="subtitle-2 pl-0 pr-0 mr-n2 grey--text text--darken-4"
@@ -16,7 +16,7 @@
           </v-subheader>
         </v-col>
       </v-row>
-      <active-overview :loading="loading" />
+      <active-overview />
 
       <v-row>
         <v-col cols="12" class="pb-0">
@@ -37,11 +37,7 @@
       </v-row>
       <v-row>
         <v-col cols="12">
-          <completed-table
-            ref="completedTable"
-            :extended="false"
-            items_per_page="10"
-          />
+          <completed-table :extended="false" items_per_page="5" />
         </v-col>
       </v-row>
 
@@ -62,11 +58,7 @@
       </v-row>
       <v-row>
         <v-col cols="12">
-          <failed-table
-            ref="failedTable"
-            :extended="false"
-            items_per_page="5"
-          />
+          <failed-table :extended="false" items_per_page="5" />
         </v-col>
       </v-row>
     </v-container>
@@ -84,16 +76,6 @@ export default {
     ActiveOverview,
     CompletedTable,
     FailedTable
-  },
-  data: () => ({
-    loading: true
-  }),
-  created() {
-    this.$store.dispatch("requests/getAll").finally(() => {
-      this.loading = false;
-      this.$refs.completedTable.$refs.table.loading = false;
-      this.$refs.failedTable.$refs.table.loading = false;
-    });
   }
 };
 </script>

@@ -80,15 +80,15 @@
           class="mb-6"
           :selected="video_format_selection === format.format_id"
           :disabled="false"
-          :title="`${format.ext}`"
+          :title="`${format.format_note}`"
           @onClick="video_format_selection = format.format_id"
         >
           <v-card-subtitle class="caption">
             {{ format.width }}x{{ format.height }} &middot; {{ format.fps }} fps
+            &middot; {{ format.tbr }} KBit/s
           </v-card-subtitle>
           <v-card-text class="overline">
-            {{ format.format_note }} &middot; {{ format.vcodec }} &middot;
-            {{ format.tbr }} KBit/s
+            {{ format.ext }} &middot; {{ format.vcodec }}
           </v-card-text>
         </selectable-card>
       </v-col>
@@ -108,15 +108,15 @@
           class="mb-6"
           :selected="audio_format_selection === format.format_id"
           :disabled="false"
-          :title="`${format.ext}`"
+          :title="`${format.abr ? format.abr : '~'} KBit/s`"
           @onClick="audio_format_selection = format.format_id"
         >
           <v-card-subtitle class="caption">
-            {{ format.abr }} KBit/s
+            {{ format.asr }} Hertz
           </v-card-subtitle>
           <v-card-text class="overline">
-            {{ capitalize(format.format_note) }} &middot;
-            {{ format.acodec }} &middot; {{ format.asr }} Hertz
+            {{ format.ext }} &middot; {{ format.format_note }} &middot;
+            {{ format.acodec }}
           </v-card-text>
         </selectable-card>
       </v-col>
