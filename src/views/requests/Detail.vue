@@ -164,7 +164,7 @@ export default {
     remove() {
       this.$store
         .dispatch("requests/remove", this.$route.params.requestId)
-        .then(() => this.$router.push({ name: "overview" }).catch(() => {}));
+        .then(() => this.$router.back());
     },
     retry() {
       this.$store.dispatch("requests/retry", this.$route.params.requestId);

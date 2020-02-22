@@ -67,58 +67,74 @@
       <v-col cols="12" md="6">
         <p class="text-center caption">Video</p>
         <selectable-card
-          class="mb-8"
+          class="mb-6"
           :selected="video_format_selection === ''"
           :disabled="false"
-          :title="`No video`"
+          :title="`No video stream`"
           @onClick="video_format_selection = ''"
         >
-        </selectable-card>
-        <selectable-card
-          v-for="format in videoOnlyFormats"
-          :key="format.format_id"
-          class="mb-6"
-          :selected="video_format_selection === format.format_id"
-          :disabled="false"
-          :title="`${format.format_note}`"
-          @onClick="video_format_selection = format.format_id"
-        >
           <v-card-subtitle class="caption">
-            {{ format.width }}x{{ format.height }} &middot; {{ format.fps }} fps
-            &middot; {{ format.tbr }} KBit/s
+            Download the file without a video stream (audio only).
           </v-card-subtitle>
-          <v-card-text class="overline">
-            {{ format.ext }} &middot; {{ format.vcodec }}
-          </v-card-text>
         </selectable-card>
+        <v-row>
+          <v-col
+            v-for="format in videoOnlyFormats"
+            :key="format.format_id"
+            cols="6"
+          >
+            <selectable-card
+              :selected="video_format_selection === format.format_id"
+              :disabled="false"
+              :title="`${format.format_note}`"
+              @onClick="video_format_selection = format.format_id"
+            >
+              <v-card-subtitle class="caption">
+                {{ format.width }}x{{ format.height }} &middot;
+                {{ format.fps }} fps &middot; {{ format.tbr }} KBit/s
+              </v-card-subtitle>
+              <v-card-text class="overline">
+                {{ format.ext }} &middot; {{ format.vcodec }}
+              </v-card-text>
+            </selectable-card>
+          </v-col>
+        </v-row>
       </v-col>
       <v-col cols="12" md="6">
         <p class="text-center caption">Audio</p>
         <selectable-card
-          class="mb-8"
+          class="mb-6"
           :selected="audio_format_selection === ''"
           :disabled="false"
-          :title="`No audio`"
+          :title="`No audio stream`"
           @onClick="audio_format_selection = ''"
         >
-        </selectable-card>
-        <selectable-card
-          v-for="format in audioOnlyFormats"
-          :key="format.format_id"
-          class="mb-6"
-          :selected="audio_format_selection === format.format_id"
-          :disabled="false"
-          :title="`${format.abr ? format.abr : '~'} KBit/s`"
-          @onClick="audio_format_selection = format.format_id"
-        >
           <v-card-subtitle class="caption">
-            {{ format.asr }} Hertz
+            Download the file without a audio stream (video only).
           </v-card-subtitle>
-          <v-card-text class="overline">
-            {{ format.ext }} &middot; {{ format.format_note }} &middot;
-            {{ format.acodec }}
-          </v-card-text>
         </selectable-card>
+        <v-row>
+          <v-col
+            v-for="format in audioOnlyFormats"
+            :key="format.format_id"
+            cols="6"
+          >
+            <selectable-card
+              :selected="audio_format_selection === format.format_id"
+              :disabled="false"
+              :title="`${format.abr ? format.abr : '~'} KBit/s`"
+              @onClick="audio_format_selection = format.format_id"
+            >
+              <v-card-subtitle class="caption">
+                {{ format.asr }} Hertz
+              </v-card-subtitle>
+              <v-card-text class="overline">
+                {{ format.ext }} &middot; {{ format.format_note }} &middot;
+                {{ format.acodec }}
+              </v-card-text>
+            </selectable-card>
+          </v-col>
+        </v-row>
       </v-col>
     </v-row>
   </div>
