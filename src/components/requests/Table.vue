@@ -17,6 +17,7 @@
       :items-per-page="parseInt(items_per_page)"
       :no-data-text="no_data_text"
       loading-text="Loading requests..."
+      no-results-text="No matching requests found."
       sort-by="created_at"
       :sort-desc="sort_desc"
       @click:row="viewDetail"

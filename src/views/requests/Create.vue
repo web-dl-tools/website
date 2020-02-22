@@ -4,7 +4,11 @@
       <v-row>
         <v-col cols="12">
           <v-stepper v-model="step" vertical class="elevation-8">
-            <v-stepper-step editable :complete="step > 1" step="1">
+            <v-stepper-step
+              :editable="step === 2"
+              :complete="step > 1"
+              step="1"
+            >
               Submit a URL
               <small>{{ step1Label }}</small>
             </v-stepper-step>
@@ -128,8 +132,9 @@ export default {
           ...this.step2Data,
           ...this.step3Data
         })
+        .then(() => this.$router.push({ name: "overview" }).catch(() => {}))
         .catch(() => (this.error = true))
-        .finally(() => this.$router.push({ name: "overview" }).catch(() => {}));
+        .finally(() => (this.loading = false));
     }
   }
 };
