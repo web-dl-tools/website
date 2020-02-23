@@ -45,7 +45,12 @@
                 mdi-download-outline
               </v-icon>
               <span class="ml-1">
-                Started at {{ formatDate(item.start_processing_at, "LL") }}
+                Started at
+                {{
+                  sameDate(item.created_at, item.start_processing_at)
+                    ? ""
+                    : formatDate(item.start_processing_at, "LL")
+                }}
                 {{ formatDate(item.start_processing_at, "LTS") }}
               </span>
             </p>
@@ -54,7 +59,12 @@
                 mdi-checkbox-marked-circle-outline
               </v-icon>
               <span class="ml-1">
-                Completed at {{ formatDate(item.completed_at, "LL") }}
+                Completed at
+                {{
+                  sameDate(item.created_at, item.completed_at)
+                    ? ""
+                    : formatDate(item.completed_at, "LL")
+                }}
                 {{ formatDate(item.completed_at, "LTS") }}
               </span>
             </p>
@@ -99,10 +109,11 @@
 
 <script>
 import formatters from "../../../mixins/formatters";
+import helpers from "../../../mixins/helpers";
 
 export default {
   name: "components.requests.detail.card-text",
-  mixin: [formatters],
+  mixin: [formatters, helpers],
   props: {
     item: Object
   }
