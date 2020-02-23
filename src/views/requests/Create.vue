@@ -62,6 +62,11 @@
                 :data="handlers.find(i => i.request === 'AudioVisualRequest')"
                 @dataChange="dataChange"
               />
+              <request-type-config-step
+                v-else
+                :active="step === 3"
+                @dataChange="dataChange"
+              />
               <v-btn
                 outlined
                 :color="error ? 'error' : 'primary'"
@@ -84,6 +89,7 @@ import helpers from "../../mixins/helpers";
 import formatters from "../../mixins/formatters";
 import UrlStep from "../../components/steppers/UrlStep";
 import RequestTypeStep from "../../components/steppers/RequestTypeStep";
+import RequestTypeConfigStep from "../../components/steppers/RequestTypeConfigStep";
 import AudioVisualStep from "../../components/steppers/handlers/AudioVisualStep";
 
 export default {
@@ -92,6 +98,7 @@ export default {
   components: {
     UrlStep,
     RequestTypeStep,
+    RequestTypeConfigStep,
     AudioVisualStep
   },
   data: () => ({
@@ -130,7 +137,7 @@ export default {
         .dispatch("requests/create", {
           ...this.step1Data,
           ...this.step2Data,
-          ...this.step3Data
+          ...("skip" in this.step3Data ? {} : this.step3Data)
         })
         .then(() => this.$router.push({ name: "overview" }).catch(() => {}))
         .catch(() => (this.error = true))

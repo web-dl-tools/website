@@ -12,18 +12,24 @@
       v-else-if="item.request_type === 'AudioVisualRequest'"
       :item="item"
     />
+    <direct-info
+      v-else-if="item.request_type === 'DirectRequest'"
+      :item="item"
+    />
   </v-tab-item>
 </template>
 
 <script>
 import formatters from "../../../../mixins/formatters";
 import AudioVisualInfo from "./handlers/AudioVisualInfo";
+import DirectInfo from "./handlers/DirectInfo";
 
 export default {
   name: "components.requests.detail.tabs.info",
   mixin: [formatters],
   components: {
-    AudioVisualInfo
+    AudioVisualInfo,
+    DirectInfo
   },
   props: {
     active: Boolean,

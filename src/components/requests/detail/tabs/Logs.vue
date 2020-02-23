@@ -14,7 +14,7 @@
         </v-btn>
       </v-col>
     </v-row>
-    <v-timeline dense reverse v-else>
+    <v-timeline dense reverse v-else-if="logs.length">
       <v-timeline-item small v-for="log in logs" :key="log.id">
         <v-row justify="space-between">
           <v-col cols="7">
@@ -34,6 +34,11 @@
         </v-row>
       </v-timeline-item>
     </v-timeline>
+    <v-col v-else cols="12">
+      <p class="mb-0">
+        No logs are available.
+      </p>
+    </v-col>
   </v-tab-item>
 </template>
 
@@ -76,7 +81,7 @@ export default {
       }
     },
     logs(n) {
-      if (n.length > 100) {
+      if (n.length > 50) {
         this.protect = true;
       }
       this.$emit("countChange", n.length);
