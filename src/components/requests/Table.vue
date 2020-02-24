@@ -1,11 +1,12 @@
 <template>
   <v-card raised>
-    <v-card-title class="pt-0" v-if="extended">
+    <v-card-title v-if="extended">
       <v-text-field
         v-model="search"
         append-icon="mdi-magnify"
         label="Search"
-        single-line
+        type="text"
+        outlined
         hide-details
       ></v-text-field>
     </v-card-title>

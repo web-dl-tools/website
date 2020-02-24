@@ -46,7 +46,7 @@
         v-show="$router.currentRoute.name !== 'requests.create'"
         fab
         bottom
-        right
+        left
         fixed
         color="accent"
         :class="{
