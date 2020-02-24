@@ -1,6 +1,13 @@
 <template>
   <div>
-    <v-text-field label="URL" name="url" type="text" v-model="url" clearable />
+    <v-text-field
+      v-model="url"
+      label="URL"
+      name="url"
+      type="text"
+      autofocus
+      clearable
+    />
   </div>
 </template>
 

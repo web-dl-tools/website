@@ -2,7 +2,7 @@
   <v-content class="background-wallpaper-subtle-image">
     <v-container>
       <v-row class="mt-n5">
-        <v-col cols="12" class="pb-0">
+        <v-col cols="12" class="pb-0 mb-n2">
           <v-subheader
             class="subtitle-2 pl-0 pr-0 mr-n2 grey--text text--darken-4"
             >Active and pending requests
@@ -19,7 +19,7 @@
       <active-overview />
 
       <v-row>
-        <v-col cols="12" class="pb-0">
+        <v-col cols="12" class="pb-0 mb-n2">
           <v-subheader
             class="subtitle-2 pl-0 pr-0 mr-n2 grey--text text--darken-4"
             >Completed requests
@@ -42,7 +42,7 @@
       </v-row>
 
       <v-row>
-        <v-col cols="12" class="pb-0">
+        <v-col cols="12" class="pb-0 mb-n2">
           <v-subheader
             class="subtitle-2 pl-0 pr-0 mr-n2 grey--text text--darken-4"
             >Failed requests

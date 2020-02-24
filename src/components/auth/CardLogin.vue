@@ -9,11 +9,12 @@
     <v-card-text>
       <v-form>
         <v-text-field
+          v-model="username"
           label="Login"
           name="login"
           prepend-icon="mdi-account"
           type="text"
-          v-model="username"
+          autofocus
         />
 
         <v-text-field
