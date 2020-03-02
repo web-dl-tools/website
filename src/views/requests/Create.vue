@@ -3,7 +3,7 @@
     <v-container class="pt-3">
       <v-row>
         <v-col cols="12">
-          <v-stepper v-model="step" vertical class="elevation-8">
+          <v-stepper v-model="step" vertical class="elevation-8 pb-2">
             <v-stepper-step
               :editable="step === 2"
               :complete="step > 1"
@@ -38,6 +38,7 @@
                 @dataChange="dataChange"
               />
               <v-btn
+                class="mt-2"
                 outlined
                 :color="error ? 'error' : 'primary'"
                 :loading="loading"
@@ -69,6 +70,7 @@
               />
               <v-btn
                 outlined
+                class="mb-4"
                 :color="error ? 'error' : 'primary'"
                 :loading="loading"
                 :disabled="loading || !isEmptyObject(step3Data)"

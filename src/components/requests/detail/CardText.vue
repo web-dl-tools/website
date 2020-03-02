@@ -19,7 +19,7 @@
           <v-col cols="12" md="6" class="">
             <p class="mb-2">
               <v-icon>
-                mdi-briefcase-outline
+                mdi-shape-outline
               </v-icon>
               <span class="ml-1">
                 {{ formatRequest(item.request_type) }} Request
@@ -72,7 +72,7 @@
           <v-col cols="12" md="3" class="" v-if="item.status === 'completed'">
             <p class="mb-2">
               <v-icon>
-                mdi-hand-right
+                mdi-timer-sand
               </v-icon>
               <span class="ml-1">
                 In queue for

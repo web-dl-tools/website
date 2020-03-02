@@ -1,14 +1,14 @@
 <template>
   <v-card raised>
-    <v-card-title v-if="extended">
+    <v-card-title v-if="extended" :class="[search_focussed ? 'pt-4' : 'pt-0']">
       <v-text-field
+        ref="search_input"
         v-model="search"
         append-icon="mdi-magnify"
         label="Search"
         type="text"
-        outlined
         hide-details
-      ></v-text-field>
+      />
     </v-card-title>
     <v-data-table
       :loading="loading"
@@ -39,6 +39,7 @@ import { mapGetters } from "vuex";
 export default {
   name: "components.requests.table",
   data: () => ({
+    mounted: false,
     search: ""
   }),
   props: {
@@ -55,7 +56,10 @@ export default {
   computed: {
     ...mapGetters({
       loading: "application/isLoading"
-    })
+    }),
+    search_focussed() {
+      return this.mounted ? this.$refs.search_input.isFocused : false;
+    }
   },
   methods: {
     viewDetail(item) {
@@ -66,6 +70,9 @@ export default {
         })
         .catch(() => {});
     }
+  },
+  mounted() {
+    this.mounted = true;
   }
 };
 </script>

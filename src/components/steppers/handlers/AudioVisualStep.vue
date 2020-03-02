@@ -56,7 +56,7 @@
     </v-row>
 
     <v-row class="mt-n6">
-      <v-col cols="12">
+      <v-col cols="12" class="pb-0">
         <small class="font-weight-light grey--text text--lighten-1">
           Or compile your own.
         </small>
