@@ -2,7 +2,7 @@
   <div>
     <v-row>
       <v-col cols="12">
-        <p class="body-2">
+        <p class="body-2 mb-0">
           There is no config required for this handler.
         </p>
       </v-col>

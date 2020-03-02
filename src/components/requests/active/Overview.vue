@@ -25,7 +25,7 @@
           <v-card-actions>
             <v-btn
               outlined
-              class="ml-2 mb-2"
+              class="ml-2 mb-3"
               color="primary"
               @click="$router.push({ name: 'requests.create' }).catch(() => {})"
             >

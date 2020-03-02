@@ -12,8 +12,12 @@
 </template>
 
 <script>
+import formatters from "../../mixins/formatters";
+
+formatters;
 export default {
   name: "components.steppers.url-step",
+  mixins: [formatters],
   data: () => ({
     url: ""
   }),
@@ -22,14 +26,15 @@ export default {
   },
   computed: {
     valid() {
-      const regex = RegExp(
+      const url_regex = RegExp(
         "[-a-zA-Z0-9@:%._\\+~#=]{1,256}\\.[a-zA-Z0-9()]{1,6}\\b([-a-zA-Z0-9()@:%_\\+.~#?&//=]*)"
       );
-      return regex.test(this.url);
+      const magnet_regex = RegExp("magnet:\\?xt=urn:btih:[a-zA-Z0-9]*");
+      return url_regex.test(this.url) || magnet_regex.test(this.url);
     },
     label() {
       return this.valid && !this.active
-        ? this.url
+        ? this.truncate(this.url, 100)
         : "Submit the URL of the resource.";
     }
   },

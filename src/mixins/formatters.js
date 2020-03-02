@@ -9,6 +9,9 @@ export default Vue.mixin({
       value = value.toString();
       return value.charAt(0).toUpperCase() + value.slice(1);
     },
+    truncate(str, len) {
+      return str.length > len ? `${str.slice(0, len)}...` : str;
+    },
     formatRequest(request) {
       return request
         .replace(/([A-Z])/g, " $1")

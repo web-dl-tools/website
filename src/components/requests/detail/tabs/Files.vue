@@ -62,8 +62,10 @@ export default {
     files_open: [],
     files_icons: {
       file: "mdi-file",
+      mp3: "mdi-music",
       m4a: "mdi-music",
       mp4: "mdi-video",
+      mkv: "mdi-video",
       jpg: "mdi-file-image",
       description: "mdi-file-document-outline",
       xml: "mdi-xml"
@@ -94,7 +96,7 @@ export default {
       }download/file/?auth_token=${Vue.$axios.defaults.headers.common.Authorization.replace(
         "Token ",
         ""
-      )}&path=${encodeURIComponent(path)}`;
+      )}&path=${btoa(path)}`;
       window.open(url, "_blank");
     }
   },
