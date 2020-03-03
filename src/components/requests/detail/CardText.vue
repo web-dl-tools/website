@@ -14,9 +14,9 @@
           {{ item.url }}
         </v-card-subtitle>
       </div>
-      <v-card-text class="pb-0">
+      <v-card-text class="py-0">
         <v-row>
-          <v-col cols="12" md="6" class="">
+          <v-col cols="12" md="6">
             <p class="mb-2">
               <v-icon>
                 mdi-shape-outline

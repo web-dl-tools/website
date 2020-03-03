@@ -174,7 +174,10 @@ export default {
     this.$store
       .dispatch("requests/get", this.$route.params.requestId)
       .catch(() => this.$router.push({ name: "overview" }).catch(() => {}))
-      .finally(() => (this.request_loading = false));
+      .finally(() => {
+        this.request_loading = false;
+        document.title = `${document.title}: ${this.request.title}`;
+      });
   }
 };
 </script>
