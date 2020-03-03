@@ -98,6 +98,17 @@ export default {
         ""
       )}&path=${btoa(path)}`;
       window.open(url, "_blank");
+    },
+    countFiles(obj) {
+      let count = 0;
+      obj.forEach(i => {
+        if ("dir" in i) {
+          count += this.countFiles(i.children);
+        } else {
+          count++;
+        }
+      });
+      return count;
     }
   },
   watch: {
@@ -107,7 +118,7 @@ export default {
       }
     },
     files(n) {
-      this.$emit("countChange", n.length);
+      this.$emit("countChange", this.countFiles(n));
     }
   }
 };
