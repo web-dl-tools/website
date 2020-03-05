@@ -1,4 +1,4 @@
-version: '3'
+version: '2.2'
 
 services:
   nginx:
@@ -7,6 +7,8 @@ services:
       dockerfile: ./compose/nginx/Dockerfile
       args:
         - VUE_APP_API_URL=${VUE_APP_API_URL}
+    mem_limit: 20M
+    mem_reservation: 10M
     ports:
       - 80:80
     restart: always

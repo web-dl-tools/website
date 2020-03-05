@@ -34,7 +34,7 @@ export default {
     },
     label() {
       return this.valid && !this.active
-        ? this.truncate(this.url, 100)
+        ? this.truncate(this.url, 160)
         : "Submit the URL of the resource.";
     }
   },

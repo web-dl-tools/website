@@ -30,9 +30,9 @@
                 mdi-plus
               </v-icon>
               <span class="ml-1">
-                Requested on {{ formatDate(item.created_at, "LLLL") }} ({{
-                  formatDateFromNow(item.created_at)
-                }})
+                Requested on
+                {{ formatDate(item.created_at, "dddd, LL [at] HH:mm:ss") }}
+                ({{ formatDateFromNow(item.created_at) }})
               </span>
             </p>
           </v-col>
@@ -49,9 +49,9 @@
                 {{
                   sameDate(item.created_at, item.start_processing_at)
                     ? ""
-                    : formatDate(item.start_processing_at, "LL")
+                    : formatDate(item.start_processing_at, "LL HH:mm:ss")
                 }}
-                {{ formatDate(item.start_processing_at, "LTS") }}
+                {{ formatDate(item.start_processing_at, "HH:mm:ss") }}
               </span>
             </p>
             <p class="mb-2" v-if="item.status === 'completed'">
@@ -63,14 +63,17 @@
                 {{
                   sameDate(item.created_at, item.completed_at)
                     ? ""
-                    : formatDate(item.completed_at, "LL")
+                    : formatDate(item.completed_at, "LL HH:mm:ss")
                 }}
-                {{ formatDate(item.completed_at, "LTS") }}
+                {{ formatDate(item.completed_at, "HH:mm:ss") }}
               </span>
             </p>
           </v-col>
-          <v-col cols="12" md="3" class="" v-if="item.status === 'completed'">
-            <p class="mb-2">
+          <v-col cols="12" md="3">
+            <p
+              v-if="item.status !== 'pending' && item.status !== 'failed'"
+              class="mb-2"
+            >
               <v-icon>
                 mdi-timer-sand
               </v-icon>
@@ -85,7 +88,7 @@
                 }}
               </span>
             </p>
-            <p class="mb-2">
+            <p v-if="item.status === 'completed'" class="mb-2">
               <v-icon>
                 mdi-progress-download
               </v-icon>

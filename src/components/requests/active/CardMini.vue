@@ -27,7 +27,7 @@
       />
     </template>
     <v-card-title class="subtitle-1">
-      {{ this.truncate(request.url, 60) }}
+      {{ this.truncate(request.url, 45) }}
       <v-spacer />
       <v-chip
         class="white--text mr-2"

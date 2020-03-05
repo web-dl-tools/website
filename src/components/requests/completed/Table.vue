@@ -24,27 +24,27 @@ export default {
       {
         text: "Title",
         align: "left",
-        sortable: false,
-        value: "title"
+        value: "title",
+        sortable: false
       },
       {
         text: "Domain",
         align: "left",
-        sortable: true,
-        value: "domain"
+        value: "domain",
+        sortable: true
       },
       {
         text: "Request type",
         align: "left",
-        sortable: true,
-        value: "request_type_label"
+        value: "request_type_label",
+        sortable: true
       },
       {
         text: "Requested on",
         align: "right",
+        value: "created_at",
         sortable: true,
-        filterable: false,
-        value: "created_at"
+        filterable: false
       }
     ]
   }),
@@ -66,7 +66,7 @@ export default {
     formatItem(item) {
       item.title = this.capitalize(item.title);
       item.domain = this.formatDomain(item.url);
-      item.created_at = this.formatDate(item.created_at, "LLL");
+      item.created_at = this.formatDate(item.created_at, "LL HH:mm:ss");
       item.request_type_label = this.formatRequest(item.request_type);
       return item;
     }

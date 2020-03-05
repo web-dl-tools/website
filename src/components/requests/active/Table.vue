@@ -36,27 +36,27 @@ export default {
       {
         text: "URL",
         align: "left",
-        sortable: false,
-        value: "url"
+        value: "url",
+        sortable: false
       },
       {
         text: "Status",
         align: "left",
-        sortable: true,
-        value: "status_display"
+        value: "status_display",
+        sortable: true
       },
       {
         text: "Request type",
         align: "left",
-        sortable: true,
-        value: "request_type_label"
+        value: "request_type_label",
+        sortable: true
       },
       {
         text: "Requested on",
         align: "right",
+        value: "created_at",
         sortable: true,
-        filterable: false,
-        value: "created_at"
+        filterable: false
       }
     ]
   }),
@@ -76,7 +76,7 @@ export default {
   },
   methods: {
     formatItem(item) {
-      item.created_at = this.formatDate(item.created_at, "LLL");
+      item.created_at = this.formatDate(item.created_at, "LL HH:mm:ss");
       item.request_type_label = this.formatRequest(item.request_type);
       return item;
     }
