@@ -1,61 +1,51 @@
 <template>
   <v-tab-item>
     <v-timeline>
-      <v-timeline-item small color="success" v-if="item.status === 'completed'">
-        <template v-slot:opposite>
-          <span class="mb-0 font-weight-bold success--text">
-            {{ formatDate(item.start_processing_at, "LLLL") }}
-          </span>
-          <p>({{ formatDateFromNow(item.start_processing_at) }})</p>
-        </template>
-        <div>
-          <h2 class="headline font-weight-light success--text`">
+      <v-timeline-item v-if="item.status === 'completed'" color="success" small>
+        <v-card raised>
+          <v-card-title class="headline font-weight-light success--text">
             Request has completed.
-          </h2>
-          <div>
+          </v-card-title>
+          <v-card-subtitle class="font-weight-bold success--text">
+            {{ formatDate(item.completed_at) }}
+          </v-card-subtitle>
+          <v-card-text>
             The request has finished downloading and processing.
-          </div>
-        </div>
+          </v-card-text>
+        </v-card>
       </v-timeline-item>
       <v-timeline-item
-        small
-        color="accent"
-        class="text-end"
         v-if="item.status !== 'pending' && item.status !== 'failed'"
+        color="accent"
+        small
       >
-        <template v-slot:opposite>
-          <span class="mb-0 font-weight-bold accent--text">
-            {{ formatDate(item.start_processing_at, "LLLL") }}
-          </span>
-          <p>({{ formatDateFromNow(item.start_processing_at) }})</p>
-        </template>
-        <div>
-          <h2 class="headline font-weight-light accent--text`">
+        <v-card raised>
+          <v-card-title class="headline font-weight-light accent--text">
             Request has started processing.
-          </h2>
-          <div>
+          </v-card-title>
+          <v-card-subtitle class="font-weight-bold accent--text">
+            {{ formatDate(item.start_processing_at) }}
+          </v-card-subtitle>
+          <v-card-text>
             The request has started processing with the
             {{ formatRequest(item.request_type) }} handler.
-          </div>
-        </div>
+          </v-card-text>
+        </v-card>
       </v-timeline-item>
       <v-timeline-item small color="info">
-        <template v-slot:opposite>
-          <span class="mb-0 font-weight-bold info--text">
-            {{ formatDate(item.created_at, "LLLL") }}
-          </span>
-          <p>({{ formatDateFromNow(item.created_at) }})</p>
-        </template>
-        <div>
-          <h2 class="headline font-weight-light info--text`">
+        <v-card raised>
+          <v-card-title class="headline font-weight-light info--text">
             Request has been created.
-          </h2>
-          <div>
+          </v-card-title>
+          <v-card-subtitle class="font-weight-bold info--text">
+            {{ formatDate(item.created_at) }}
+          </v-card-subtitle>
+          <v-card-text>
             A request to download <a :href="item.url">{{ item.url }}</a> <br />
             using the {{ formatRequest(item.request_type) }} handler has been
             submitted.
-          </div>
-        </div>
+          </v-card-text>
+        </v-card>
       </v-timeline-item>
     </v-timeline>
   </v-tab-item>

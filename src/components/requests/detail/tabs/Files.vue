@@ -66,8 +66,11 @@ export default {
       m4a: "mdi-music",
       mp4: "mdi-video",
       mkv: "mdi-video",
+      webm: "mdi-video",
       jpg: "mdi-file-image",
+      png: "mdi-file-image",
       description: "mdi-file-document-outline",
+      txt: "mdi-file-document-outline",
       xml: "mdi-xml"
     }
   }),

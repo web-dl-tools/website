@@ -14,7 +14,7 @@
         </v-btn>
       </v-col>
     </v-row>
-    <v-timeline dense reverse v-else-if="logs.length">
+    <v-timeline v-else-if="logs.length" dense reverse align-top>
       <v-timeline-item small v-for="log in logs" :key="log.id">
         <v-row justify="space-between">
           <v-col cols="7">
@@ -89,3 +89,9 @@ export default {
   }
 };
 </script>
+
+<style>
+.v-timeline-item__dot {
+  margin-top: 10px;
+}
+</style>
