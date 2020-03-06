@@ -176,7 +176,12 @@ export default {
       .catch(() => this.$router.push({ name: "overview" }).catch(() => {}))
       .finally(() => {
         this.request_loading = false;
-        document.title = `${document.title}: ${this.request.title}`;
+        if (this.request.title) {
+          this.$store.dispatch(
+            "application/setTitle",
+            `${this.$store.getters["application/getTitle"]}: ${this.request.title}`
+          );
+        }
       });
   }
 };
