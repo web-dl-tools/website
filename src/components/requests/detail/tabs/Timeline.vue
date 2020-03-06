@@ -2,8 +2,8 @@
   <v-tab-item>
     <v-timeline>
       <v-timeline-item v-if="item.status === 'completed'" color="success" small>
-        <v-card raised>
-          <v-card-title class="headline font-weight-light success--text">
+        <v-card outlined>
+          <v-card-title class="headline font-weight-light">
             Request has completed.
           </v-card-title>
           <v-card-subtitle class="font-weight-bold success--text">
@@ -19,8 +19,8 @@
         color="accent"
         small
       >
-        <v-card raised>
-          <v-card-title class="headline font-weight-light accent--text">
+        <v-card outlined>
+          <v-card-title class="headline font-weight-light">
             Request has started processing.
           </v-card-title>
           <v-card-subtitle class="font-weight-bold accent--text">
@@ -33,8 +33,8 @@
         </v-card>
       </v-timeline-item>
       <v-timeline-item small color="info">
-        <v-card raised>
-          <v-card-title class="headline font-weight-light info--text">
+        <v-card outlined>
+          <v-card-title class="headline font-weight-light">
             Request has been created.
           </v-card-title>
           <v-card-subtitle class="font-weight-bold info--text">

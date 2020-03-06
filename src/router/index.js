@@ -23,7 +23,7 @@ router.beforeEach((to, from, next) => {
   const authenticated = store.getters["application/isAuthenticated"];
 
   if ("title" in to.meta) {
-    store.commit("application/SET_TITLE", to.meta.title);
+    store.dispatch("application/setTitle", to.meta.title);
   }
 
   if (to.matched.some(m => m.path === "/login") && authenticated) {

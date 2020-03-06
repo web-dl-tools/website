@@ -65,3 +65,7 @@ export const disconnectWebsocket = ({ state, commit }) => {
   state.websocket.close();
   commit("DISCONNECT_WEBSOCKET");
 };
+
+export const setTitle = ({ commit }, title) => {
+  commit("SET_TITLE", title);
+};

@@ -2,31 +2,50 @@
   <div>
     <v-toolbar color="grey darken-4" dark short flat class="fixed-top">
       <v-toolbar-title>
-        <v-btn icon @click="$router.push({ name: 'overview' }).catch(() => {})">
-          <v-icon>
+        <v-btn
+          class="transparent"
+          @click="$router.push({ name: 'overview' }).catch(() => {})"
+        >
+          <v-icon class="pr-4">
             mdi-cloud-download-outline
           </v-icon>
+          <span class="title font-weight-light font-italic">Web DL</span>
         </v-btn>
       </v-toolbar-title>
-      <v-divider class="mx-4" inset vertical />
+      <v-divider class="mr-4" inset vertical />
       <span class="subtitle-1">{{ title }}</span>
       <v-spacer />
       <v-toolbar-items class="hidden-sm-and-down">
         <v-btn
           text
+          class="transparent"
+          v-show="$router.currentRoute.name !== 'requests.create'"
+          @click="$router.push({ name: 'requests.create' }).catch(() => {})"
+        >
+          <span class="subtitle-2">Create</span>
+        </v-btn>
+        <v-divider
+          v-show="$router.currentRoute.name !== 'requests.create'"
+          class="mx-2"
+          inset
+          vertical
+        />
+        <v-btn
+          text
           @click="$router.push({ name: menuItem.routerName }).catch(() => {})"
           v-for="(menuItem, i) in menuItems"
           :key="menuItem.label"
-          :color="i === active ? 'primary' : ''"
+          :color="i === active ? menuItem.color : ''"
         >
-          {{ menuItem.label }}
+          <v-icon>{{ menuItem.icon }}</v-icon>
+          <span v-if="i === active" class="ml-2">{{ menuItem.label }}</span>
         </v-btn>
       </v-toolbar-items>
       <v-toolbar-items>
-        <v-divider class="mx-4 hidden-sm-and-down" inset vertical />
+        <v-divider class="mx-2 hidden-sm-and-down" inset vertical />
         <v-btn icon @click="$store.dispatch('application/logout')">
           <v-icon>
-            mdi-exit-to-app
+            mdi-account
           </v-icon>
         </v-btn>
       </v-toolbar-items>
@@ -43,16 +62,16 @@
 
     <v-fab-transition>
       <v-btn
-        v-show="$router.currentRoute.name !== 'requests.create'"
+        v-show="
+          $router.currentRoute.name !== 'requests.create' &&
+            $vuetify.breakpoint.smAndDown
+        "
         fab
         bottom
-        left
+        right
         fixed
         color="accent"
-        :class="{
-          'mobile-bottom-navigation-margin-offset':
-            $vuetify.breakpoint.smAndDown
-        }"
+        class="mobile-bottom-navigation-margin-offset"
         @click="$router.push({ name: 'requests.create' }).catch(() => {})"
       >
         <v-icon>mdi-plus</v-icon>
