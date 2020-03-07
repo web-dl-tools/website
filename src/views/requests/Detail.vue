@@ -2,6 +2,11 @@
   <v-content class="background-wallpaper-subtle-image">
     <v-container class="pt-3">
       <v-row>
+        <p class="mx-3 my-12 black--text font-weight-thin display-3">
+          {{ title }}
+        </p>
+      </v-row>
+      <v-row>
         <v-col cols="12">
           <v-skeleton-loader type="article" v-if="request_loading" />
           <v-card outlined raised :loading="processing" v-else>
@@ -60,7 +65,7 @@
             </v-card-subtitle>
             <card-text :item="request" />
             <v-card-text>
-              <v-tabs centered grow v-model="tab">
+              <v-tabs grow v-model="tab">
                 <v-tab>Information</v-tab>
                 <v-tab>
                   <v-badge v-if="files_count" :content="files_count">
@@ -69,6 +74,7 @@
                   <span v-else>Files</span>
                 </v-tab>
                 <v-tab>Timeline</v-tab>
+                <v-tab>Raw</v-tab>
                 <v-tab>
                   <v-badge v-if="logs_count" :content="logs_count">
                     Logs
@@ -84,8 +90,9 @@
                   @countChange="n => (files_count = n)"
                 />
                 <timeline :active="tab === 2" :item="request" />
+                <raw :active="tab === 3" :item="request" />
                 <logs
-                  :active="tab === 3"
+                  :active="tab === 4"
                   :request_id="this.$route.params.requestId"
                   @countChange="n => (logs_count = n)"
                 />
@@ -124,6 +131,7 @@ import formatters from "../../mixins/formatters";
 import CardText from "../../components/requests/detail/CardText";
 import Info from "../../components/requests/detail/tabs/Info";
 import Timeline from "../../components/requests/detail/tabs/Timeline";
+import Raw from "../../components/requests/detail/tabs/Raw";
 import Files from "../../components/requests/detail/tabs/Files";
 import Logs from "../../components/requests/detail/tabs/Logs";
 
@@ -134,6 +142,7 @@ export default {
     CardText,
     Info,
     Timeline,
+    Raw,
     Files,
     Logs
   },
@@ -146,7 +155,8 @@ export default {
   }),
   computed: {
     ...mapGetters({
-      request: "requests/get"
+      request: "requests/get",
+      title: "application/getTitle"
     }),
     processing() {
       return (
@@ -176,12 +186,12 @@ export default {
       .catch(() => this.$router.push({ name: "overview" }).catch(() => {}))
       .finally(() => {
         this.request_loading = false;
-        if (this.request.title) {
-          this.$store.dispatch(
-            "application/setTitle",
-            `${this.$store.getters["application/getTitle"]}: ${this.request.title}`
-          );
-        }
+        // if (this.request.title) {
+        //   this.$store.dispatch(
+        //     "application/setTitle",
+        //     `${this.$store.getters["application/getTitle"]}: ${this.request.title}`
+        //   );
+        // }
       });
   }
 };
