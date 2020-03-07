@@ -1,6 +1,11 @@
 <template>
   <v-content class="background-wallpaper-subtle-image">
     <v-container>
+      <v-row>
+        <p class="mx-3 my-12 black--text font-weight-thin display-3">
+          {{ title }}
+        </p>
+      </v-row>
       <v-row class="mt-n5">
         <v-col cols="12" class="pb-0 mb-n2">
           <v-subheader
@@ -66,6 +71,7 @@
 </template>
 
 <script>
+import { mapGetters } from "vuex";
 import ActiveOverview from "../components/requests/active/Overview";
 import CompletedTable from "../components/requests/completed/Table";
 import FailedTable from "../components/requests/failed/Table";
@@ -76,6 +82,11 @@ export default {
     ActiveOverview,
     CompletedTable,
     FailedTable
+  },
+  computed: {
+    ...mapGetters({
+      title: "application/getTitle"
+    })
   }
 };
 </script>

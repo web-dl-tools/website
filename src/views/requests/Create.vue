@@ -2,6 +2,11 @@
   <v-content class="background-wallpaper-subtle-image">
     <v-container class="pt-3">
       <v-row>
+        <p class="mx-3 my-12 black--text font-weight-thin display-3">
+          {{ title }}
+        </p>
+      </v-row>
+      <v-row>
         <v-col cols="12">
           <v-stepper v-model="step" vertical class="elevation-8 pb-2">
             <v-stepper-step
@@ -87,6 +92,7 @@
 </template>
 
 <script>
+import { mapGetters } from "vuex";
 import helpers from "../../mixins/helpers";
 import formatters from "../../mixins/formatters";
 import UrlStep from "../../components/steppers/UrlStep";
@@ -115,6 +121,11 @@ export default {
     loading: false,
     error: false
   }),
+  computed: {
+    ...mapGetters({
+      title: "application/getTitle"
+    })
+  },
   methods: {
     dataChange(data) {
       this[`step${data.step}Data`] = data.data;

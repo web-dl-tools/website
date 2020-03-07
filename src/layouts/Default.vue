@@ -9,11 +9,9 @@
           <v-icon class="pr-4">
             mdi-cloud-download-outline
           </v-icon>
-          <span class="title font-weight-light font-italic">Web DL</span>
+          <span class="headline font-weight-light font-italic">Web DL</span>
         </v-btn>
       </v-toolbar-title>
-      <v-divider class="mr-4" inset vertical />
-      <span class="subtitle-1">{{ title }}</span>
       <v-spacer />
       <v-toolbar-items class="hidden-sm-and-down">
         <v-btn
@@ -38,7 +36,6 @@
           :color="i === active ? menuItem.color : ''"
         >
           <v-icon>{{ menuItem.icon }}</v-icon>
-          <span v-if="i === active" class="ml-2">{{ menuItem.label }}</span>
         </v-btn>
       </v-toolbar-items>
       <v-toolbar-items>
