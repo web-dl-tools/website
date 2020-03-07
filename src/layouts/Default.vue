@@ -9,7 +9,9 @@
           <v-icon class="pr-4">
             mdi-cloud-download-outline
           </v-icon>
-          <span class="headline font-weight-light font-italic">Web DL</span>
+          <span class="ml-md-2 headline font-weight-light font-italic">
+            Web DL
+          </span>
         </v-btn>
       </v-toolbar-title>
       <v-spacer />
