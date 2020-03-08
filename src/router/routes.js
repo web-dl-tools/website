@@ -92,7 +92,7 @@ export default [
         name: "error.404",
         component: () => import("../components/errors/404"),
         meta: {
-          title: "Error"
+          title: "Something went wrong"
         }
       }
     ],

@@ -9,7 +9,7 @@
           <v-icon class="pr-4">
             mdi-cloud-download-outline
           </v-icon>
-          <span class="ml-md-2 headline font-weight-light font-italic">
+          <span class="ml-md-2 title font-weight-light font-italic">
             Web DL
           </span>
         </v-btn>
@@ -44,7 +44,7 @@
         <v-divider class="mx-2 hidden-sm-and-down" inset vertical />
         <v-btn icon @click="$store.dispatch('application/logout')">
           <v-icon>
-            mdi-account
+            mdi-exit-run
           </v-icon>
         </v-btn>
       </v-toolbar-items>
@@ -114,10 +114,10 @@ export default {
   methods: {
     setActive(routerName) {
       switch (routerName) {
-        case "requests.active":
+        case "requests.completed":
           this.active = 0;
           break;
-        case "requests.completed":
+        case "requests.active":
           this.active = 1;
           break;
         case "requests.failed":
