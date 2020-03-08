@@ -1,7 +1,13 @@
 import Vue from "vue";
 
 export const CREATE = (state, payload) => {
-  state.items.push(payload);
+  const index = state.items.findIndex(i => i.id === payload.id);
+
+  if (index > -1) {
+    Vue.set(state.items, index, payload);
+  } else {
+    state.items.push(payload);
+  }
 };
 
 export const GET = (state, payload) => {
