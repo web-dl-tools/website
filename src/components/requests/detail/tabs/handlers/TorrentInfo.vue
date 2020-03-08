@@ -1,7 +1,7 @@
 <template>
   <v-row>
     <v-col cols="12">
-      <p class="mb-0 title">{{ item.data.name }}</p>
+      <p class="mb-0 body-1">{{ item.data.name }}</p>
       <p class="font-weight-light mb-0">Hash: {{ item.data.hash }}</p>
       <p class="font-weight-light">
         Size: {{ formatBytes(item.data.total_size, 2) }}

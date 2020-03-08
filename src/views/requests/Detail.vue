@@ -8,8 +8,12 @@
       </v-row>
       <v-row>
         <v-col cols="12">
-          <v-skeleton-loader type="article" v-if="request_loading" />
-          <v-card outlined raised :loading="processing" v-else>
+          <v-skeleton-loader
+            type="article"
+            elevation="8"
+            v-if="request_loading"
+          />
+          <v-card raised :loading="processing" v-else>
             <template v-slot:progress>
               <v-progress-linear
                 v-if="request.status === 'downloading'"
@@ -103,7 +107,7 @@
       </v-row>
     </v-container>
     <v-dialog v-model="dialog" max-width="500">
-      <v-card>
+      <v-card outlined raised>
         <v-card-title>Delete</v-card-title>
         <v-card-text>
           Are you sure you want to delete this request?

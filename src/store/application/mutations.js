@@ -11,7 +11,7 @@ export const CHECK = state => {
 
 export const SET_TITLE = (state, title) => {
   state.title = title;
-  document.title = `Web DL - ${title}`;
+  document.title = `${title} - Web DL`;
 };
 
 export const LOGIN = (state, token) => {

@@ -5,16 +5,16 @@ export default {
   title: "",
   menu_items: [
     {
-      label: "Active",
-      routerName: "requests.active",
-      icon: "mdi-progress-download",
-      color: "warning"
-    },
-    {
       label: "Completed",
       routerName: "requests.completed",
       icon: "mdi-checkbox-marked-circle-outline",
       color: "success"
+    },
+    {
+      label: "Active",
+      routerName: "requests.active",
+      icon: "mdi-progress-download",
+      color: "warning"
     },
     {
       label: "Failed",

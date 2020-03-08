@@ -1,8 +1,8 @@
 <template>
   <v-row>
-    <v-col cols="12" md="8">
-      <p class="mb-0 title">{{ item.data.title }}</p>
-      <p class="font-weight-light">
+    <v-col cols="12" md="8" class="mt-3">
+      <p class="mb-0 body-1">{{ item.data.title }}</p>
+      <p class="body-2 font-weight-light">
         By
         <span class="font-weight-bold">
           {{ item.data.uploader }}
@@ -51,7 +51,7 @@
         </v-col>
       </v-row>
     </v-col>
-    <v-col cols="12" md="4">
+    <v-col cols="12" md="4" class="mt-3">
       <v-parallax id="thumbnail" :src="item.data.thumbnail" height="300" />
     </v-col>
   </v-row>
