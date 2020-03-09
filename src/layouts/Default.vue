@@ -1,15 +1,15 @@
 <template>
   <div>
     <v-toolbar color="grey darken-4" dark short flat class="fixed-top">
-      <v-toolbar-title>
+      <v-toolbar-title class="ml-n4 ml-md-2">
         <v-btn
           class="transparent"
           @click="$router.push({ name: 'overview' }).catch(() => {})"
         >
-          <v-icon class="pr-4">
+          <v-icon class="pr-2">
             mdi-cloud-download-outline
           </v-icon>
-          <span class="ml-md-2 title font-weight-light font-italic">
+          <span class="title font-weight-light font-italic">
             Web DL
           </span>
         </v-btn>
@@ -40,7 +40,7 @@
           <v-icon>{{ menuItem.icon }}</v-icon>
         </v-btn>
       </v-toolbar-items>
-      <v-toolbar-items>
+      <v-toolbar-items class="mr-n4 mr-md-2">
         <v-divider class="mx-2 hidden-sm-and-down" inset vertical />
         <v-btn icon @click="$store.dispatch('application/logout')">
           <v-icon>
