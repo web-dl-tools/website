@@ -9,7 +9,7 @@
           <v-icon class="pr-2">
             mdi-cloud-download-outline
           </v-icon>
-          <span class="title font-weight-light font-italic">
+          <span class="title font-weight-light font-italic text-no-transform">
             Web DL
           </span>
         </v-btn>
@@ -77,6 +77,11 @@
       </v-btn>
     </v-fab-transition>
 
+    <v-snackbar v-model="apiError" class="mt-12 pt-2" color="error" top>
+      An error occurred when connection with the API. <br />
+      Please try again later.
+    </v-snackbar>
+
     <v-bottom-navigation
       v-model="active"
       class="hidden-md-and-up"
@@ -108,7 +113,8 @@ export default {
   computed: {
     ...mapGetters({
       title: "application/getTitle",
-      menuItems: "application/getMenuItems"
+      menuItems: "application/getMenuItems",
+      apiError: "application/apiHasError"
     })
   },
   methods: {

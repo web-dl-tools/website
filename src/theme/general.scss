@@ -21,3 +21,7 @@ pre {
   background-attachment: fixed;
   min-height: calc(100vh - 56px);
 }
+
+.text-no-transform {
+  text-transform: none;
+}
