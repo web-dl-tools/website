@@ -36,10 +36,10 @@
               </span>
             </p>
           </v-col>
-          <v-col cols="12" md="3" class="">
+          <v-col cols="12" md="3">
             <p
-              class="mb-2"
               v-if="item.status !== 'pending' && item.status !== 'failed'"
+              class="mb-2"
             >
               <v-icon>
                 mdi-download-outline
@@ -54,7 +54,7 @@
                 {{ formatDate(item.start_processing_at, "HH:mm:ss") }}
               </span>
             </p>
-            <p class="mb-2" v-if="item.status === 'completed'">
+            <p v-if="item.status === 'completed'" class="mb-2">
               <v-icon>
                 mdi-checkbox-marked-circle-outline
               </v-icon>

@@ -1,7 +1,7 @@
 <template>
   <v-card
-    raised
     outlined
+    raised
     :loading="processing"
     @click="
       $router
@@ -15,25 +15,25 @@
     <template v-slot:progress>
       <v-progress-linear
         v-if="request.status === 'downloading'"
-        :value="request.progress"
         :buffer-value="request.progress - 100"
-        stream
         :color="formatRequestStatusColor(request.status)"
+        :value="request.progress"
+        stream
       />
       <v-progress-linear
         v-else
-        indeterminate
         :color="formatRequestStatusColor(request.status)"
+        indeterminate
       />
     </template>
     <v-card-title class="subtitle-1">
       {{ this.truncate(request.url, 45) }}
       <v-spacer />
       <v-chip
+        :color="formatRequestStatusColor(request.status)"
         class="white--text mr-2"
         label
         small
-        :color="formatRequestStatusColor(request.status)"
       >
         {{ request.status_display }}
       </v-chip>
@@ -54,6 +54,11 @@ export default {
     request: Object
   },
   computed: {
+    /**
+     * Check if the request is currently processing.
+     *
+     * @returns {number|""|boolean}
+     */
     processing() {
       return (
         this.request.status &&

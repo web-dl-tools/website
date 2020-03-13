@@ -1,6 +1,6 @@
 <template>
   <v-row>
-    <v-col cols="12" md="8" class="mt-3">
+    <v-col class="mt-3" cols="12" md="8">
       <p class="mb-0 body-1">{{ item.data.title }}</p>
       <p class="body-2 font-weight-light">
         By
@@ -14,13 +14,13 @@
       <span>{{ formatDate(item.data.upload_date, "LL") }}</span>
       <v-rating
         v-if="'average_rating' in item.data"
-        class="mt-n2 float-right"
+        v-model="item.data.average_rating"
         background-color="orange lighten-3"
+        class="mt-n2 float-right"
         color="orange"
         half-increments
-        small
         readonly
-        v-model="item.data.average_rating"
+        small
       />
       <v-divider class="mt-4" />
       <pre class="mt-4 mb-8 body-2 font-weight-light" id="pre-description">
@@ -52,7 +52,7 @@
       </v-row>
     </v-col>
     <v-col cols="12" md="4" class="mt-3">
-      <v-parallax id="thumbnail" :src="item.data.thumbnail" height="300" />
+      <v-parallax :src="item.data.thumbnail" height="300" id="thumbnail" />
     </v-col>
   </v-row>
 </template>

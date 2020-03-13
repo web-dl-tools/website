@@ -56,6 +56,12 @@ export default {
     ...mapGetters({
       items: "requests/getAllCompleted"
     }),
+    /**
+     * Pre-format each request data for the data table.
+     *
+     * @returns {string}
+     * @private
+     */
     _items() {
       const items = this.items;
       items.forEach(this.formatItem);
@@ -63,6 +69,11 @@ export default {
     }
   },
   methods: {
+    /**
+     * Format a request payload for the data table.
+     * @param item
+     * @returns {*}
+     */
     formatItem(item) {
       item.title = this.capitalize(item.title);
       item.domain = this.formatDomain(item.url);

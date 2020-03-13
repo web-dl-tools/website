@@ -1,5 +1,5 @@
 <template>
-  <v-card raised outlined class="card-single-card mt-12">
+  <v-card class="card-single-card mt-12" outlined raised>
     <v-card-title>
       Login
     </v-card-title>
@@ -16,14 +16,13 @@
           type="text"
           autofocus
         />
-
         <v-text-field
+          v-model="password"
           id="password"
           label="Password"
           name="password"
           prepend-icon="mdi-lock"
           type="password"
-          v-model="password"
           v-on:keyup.enter.native="login"
         />
       </v-form>
@@ -31,11 +30,11 @@
     <v-card-actions class="mb-2">
       <v-spacer />
       <v-btn
-        outlined
         class="mr-2"
         :color="error ? 'error' : 'primary'"
-        :loading="loading"
         :disabled="loading || !valid"
+        :loading="loading"
+        outlined
         @click="login"
       >
         Login
@@ -54,11 +53,19 @@ export default {
     error: false
   }),
   computed: {
+    /**
+     * Check if required fields have been filled in.
+     *
+     * @returns {boolean}
+     */
     valid() {
       return !!(this.username && this.password);
     }
   },
   methods: {
+    /**
+     * (Attempt) to authenticate the login credentials with the API.
+     */
     login() {
       if (this.valid) {
         this.error = false;
@@ -74,9 +81,15 @@ export default {
     }
   },
   watch: {
+    /**
+     * Removes the error message if the username is changed.
+     */
     username() {
       this.error = false;
     },
+    /**
+     * Removed the error message if the password is changed.
+     */
     password() {
       this.error = false;
     }

@@ -1,7 +1,7 @@
 <template>
   <v-tab-item>
     <div v-if="logs_loading">
-      <v-skeleton-loader type="list-item" v-for="n in 10" :key="n" />
+      <v-skeleton-loader v-for="n in 10" :key="n" type="list-item" />
     </div>
     <v-row v-else-if="protect">
       <v-col class="text-center">
@@ -15,18 +15,18 @@
       </v-col>
     </v-row>
     <v-timeline
-      class="timeline"
       v-else-if="logs.length"
+      class="timeline"
+      align-top
       dense
       reverse
-      align-top
     >
-      <v-timeline-item small v-for="log in logs" :key="log.id">
+      <v-timeline-item v-for="log in logs" :key="log.id" small>
         <v-row justify="space-between">
           <v-col cols="7">
             <v-chip
-              class="white--text mr-2"
               :color="formatLogLevelColor(log.level)"
+              class="white--text mr-2"
               label
               small
             >
@@ -70,6 +70,9 @@ export default {
     })
   },
   methods: {
+    /**
+     * Request all log entries for this request from the API.
+     */
     retrieveLogs() {
       if (!this.logs_loaded) {
         this.logs_loading = true;
@@ -81,11 +84,21 @@ export default {
     }
   },
   watch: {
+    /**
+     * Check if the current tab has been opened and retrieve the logs if this is true.
+     *
+     * @param n
+     */
     active(n) {
       if (n) {
         this.retrieveLogs();
       }
     },
+    /**
+     * Emit a countChange() event upstream to notify the tabs component.
+     *
+     * @param n
+     */
     logs(n) {
       if (n.length > 50) {
         this.protect = true;
