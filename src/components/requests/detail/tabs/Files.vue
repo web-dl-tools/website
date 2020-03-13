@@ -1,24 +1,24 @@
 <template>
   <v-tab-item>
-    <v-skeleton-loader class="pt-4" type="paragraph" v-if="files_loading" />
+    <v-skeleton-loader v-if="files_loading" class="pt-4" type="paragraph" />
     <v-treeview
       v-else-if="files.length"
-      class="pt-4"
       v-model="files_tree"
       :items="files"
       :open="files_open"
+      class="pt-4"
       item-key="name"
-      hoverable
-      open-on-click
-      open-all
-      rounded
       dense
+      hoverable
+      open-all
+      open-on-click
+      rounded
     >
       <template v-slot:prepend="{ item, open }">
-        <v-icon class="mr-2" v-if="'dir' in item">
+        <v-icon v-if="'dir' in item" class="mr-2">
           {{ open ? "mdi-folder-open" : "mdi-folder" }}
         </v-icon>
-        <v-icon class="mr-2" v-else>
+        <v-icon v-else class="mr-2">
           {{
             item.extension.replace(".", "") in files_icons
               ? files_icons[item.extension.replace(".", "")]
@@ -28,7 +28,7 @@
       </template>
       <template v-slot:label="{ item, leaf }">
         <span v-if="!leaf" class="font-weight-black">{{ item.name }}</span>
-        <div @click="openFile(item.path)" v-else>
+        <div v-else @click="openFile(item.path)">
           <p class="mb-0 body-2">
             {{ item.name }}
           </p>
@@ -84,6 +84,9 @@ export default {
     })
   },
   methods: {
+    /**
+     * Request all directories and files for this request from the API.
+     */
     retrieveFiles() {
       if (!this.files_loaded) {
         this.files_loading = true;
@@ -93,6 +96,11 @@ export default {
           .finally(() => (this.files_loading = false));
       }
     },
+    /**
+     * Open the file download/access link in a new tab.
+     *
+     * @param path
+     */
     openFile(path) {
       const url = `${
         Vue.$axios.defaults.baseURL
@@ -102,6 +110,12 @@ export default {
       )}&path=${path}`;
       window.open(url, "_blank");
     },
+    /**
+     * Recursively count all files in the request directory.
+     *
+     * @param obj
+     * @returns {number}
+     */
     countFiles(obj) {
       let count = 0;
       obj.forEach(i => {
@@ -115,11 +129,21 @@ export default {
     }
   },
   watch: {
+    /**
+     * Check if the current tab has been opened and retrieve the files if this is true.
+     *
+     * @param n
+     */
     active(n) {
       if (n) {
         this.retrieveFiles();
       }
     },
+    /**
+     * Emit a countChange() event upstream to notify the tabs component.
+     *
+     * @param n
+     */
     files(n) {
       this.$emit("countChange", this.countFiles(n));
     }

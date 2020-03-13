@@ -10,24 +10,25 @@
       />
     </v-card-title>
     <v-data-table
-      :loading="loading"
-      :search="search"
       :headers="headers"
-      :items="items"
       :items-per-page="parseInt(items_per_page)"
+      :items="items"
+      :loading="loading"
       :no-data-text="no_data_text"
+      :search="search"
+      :sort-desc="sort_desc"
       loading-text="Loading requests..."
       no-results-text="No matching requests found."
       sort-by="created_at"
-      :sort-desc="sort_desc"
       @click:row="viewDetail"
     >
       <template
         v-for="(_, name) in $scopedSlots"
         :slot="name"
         slot-scope="slotData"
-        ><slot :name="name" v-bind="slotData"
-      /></template>
+      >
+        <slot v-bind="slotData" :name="name" />
+      </template>
     </v-data-table>
   </v-card>
 </template>
@@ -57,6 +58,11 @@ export default {
     })
   },
   methods: {
+    /**
+     * Route to the detail page for a specific request.
+     *
+     * @param item
+     */
     viewDetail(item) {
       this.$router
         .push({

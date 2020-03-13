@@ -4,15 +4,15 @@
     :headers="headers"
     :items="_items"
     :items_per_page="items_per_page"
-    no_data_text="There are no active or pending requests."
     :sort_desc="false"
+    no_data_text="There are no active or pending requests."
   >
     <template v-slot:item.status_display="{ item }">
       <v-chip
+        :color="formatRequestStatusColor(item.status)"
         class="white--text mr-2"
         label
         small
-        :color="formatRequestStatusColor(item.status)"
       >
         {{ item.status_display }}
       </v-chip>
@@ -68,6 +68,12 @@ export default {
     ...mapGetters({
       items: "requests/getAllActive"
     }),
+    /**
+     * Pre-format each request data for the data table.
+     *
+     * @returns {string}
+     * @private
+     */
     _items() {
       const items = this.items;
       items.forEach(this.formatItem);
@@ -75,6 +81,11 @@ export default {
     }
   },
   methods: {
+    /**
+     * Format a request payload for the data table.
+     * @param item
+     * @returns {*}
+     */
     formatItem(item) {
       item.created_at = this.formatDate(item.created_at, "LL HH:mm:ss");
       item.request_type_label = this.formatRequest(item.request_type);

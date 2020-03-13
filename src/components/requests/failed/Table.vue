@@ -50,6 +50,12 @@ export default {
     ...mapGetters({
       items: "requests/getAllFailed"
     }),
+    /**
+     * Pre-format each request data for the data table.
+     *
+     * @returns {string}
+     * @private
+     */
     _items() {
       const items = this.items;
       items.forEach(this.formatItem);
@@ -57,6 +63,11 @@ export default {
     }
   },
   methods: {
+    /**
+     * Format a request payload for the data table.
+     * @param item
+     * @returns {*}
+     */
     formatItem(item) {
       item.created_at = this.formatDate(item.created_at, "LL HH:mm:ss");
       item.request_type_label = this.formatRequest(item.request_type);

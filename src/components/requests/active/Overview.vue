@@ -9,13 +9,13 @@
       </v-col>
     </v-row>
     <v-row v-else-if="activeItems.length">
-      <v-col cols="12" md="6" v-for="item in activeItems" :key="item.id">
+      <v-col v-for="item in activeItems" :key="item.id" cols="12" md="6">
         <card-mini :request="item" />
       </v-col>
     </v-row>
     <v-row v-else>
       <v-col cols="12" md="6">
-        <v-card raised outlined>
+        <v-card outlined raised>
           <v-card-title class="subtitle-1">
             There are no active or pending requests.
           </v-card-title>
@@ -24,9 +24,9 @@
           </v-card-subtitle>
           <v-card-actions>
             <v-btn
-              outlined
               class="ml-2 mb-3"
               color="primary"
+              outlined
               @click="$router.push({ name: 'requests.create' }).catch(() => {})"
             >
               Create

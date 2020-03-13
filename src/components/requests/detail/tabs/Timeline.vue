@@ -32,7 +32,7 @@
           </v-card-text>
         </v-card>
       </v-timeline-item>
-      <v-timeline-item small color="info">
+      <v-timeline-item color="info" small>
         <v-card outlined>
           <v-card-title class="headline font-weight-light">
             Request has been created.
