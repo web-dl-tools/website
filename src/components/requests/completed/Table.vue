@@ -11,43 +11,47 @@
 <script>
 import { mapGetters } from "vuex";
 import formatters from "../../../mixins/formatters";
+import helpers from "../../../mixins/helpers";
 import RequestTable from "../Table";
 
 export default {
   name: "components.requests.completed.table",
-  mixin: [formatters],
+  mixin: [formatters, helpers],
   components: {
     RequestTable
   },
-  data: () => ({
-    headers: [
-      {
-        text: "Title",
-        align: "left",
-        value: "title",
-        sortable: false
-      },
-      {
-        text: "Domain",
-        align: "left",
-        value: "domain",
-        sortable: true
-      },
-      {
-        text: "Request type",
-        align: "left",
-        value: "request_type_label",
-        sortable: true
-      },
-      {
-        text: "Requested on",
-        align: "right",
-        value: "created_at",
-        sortable: true,
-        filterable: false
-      }
-    ]
-  }),
+  data() {
+    return {
+      headers: [
+        {
+          align: "left",
+          sortable: false,
+          text: "Title",
+          value: "title"
+        },
+        {
+          align: "left",
+          sortable: true,
+          text: "Domain",
+          value: "domain"
+        },
+        {
+          align: "left",
+          sortable: true,
+          text: "Request type",
+          value: "request_type_label"
+        },
+        {
+          align: "right",
+          filterable: false,
+          sort: this.sortDates,
+          sortable: true,
+          text: "Requested on",
+          value: "created_at"
+        }
+      ]
+    };
+  },
   props: {
     extended: Boolean,
     items_per_page: String
