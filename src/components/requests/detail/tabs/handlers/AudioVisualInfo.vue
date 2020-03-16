@@ -28,7 +28,7 @@
       </pre>
       <v-row v-if="'categories' in item.data">
         <v-col class="py-0 body-2 font-weight-light" cols="3">
-          Categories:
+          Categories
         </v-col>
         <v-col class="py-0 body-2 font-weight-thin" cols="9">
           {{ item.data.categories.join(", ") }}
