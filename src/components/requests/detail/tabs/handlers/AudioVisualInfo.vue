@@ -36,7 +36,7 @@
       </v-row>
       <v-row v-if="'tags' in item.data && item.data.tags.length">
         <v-col class="py-0 font-weight-light" cols="3">
-          Tags:
+          Tags
         </v-col>
         <v-col class="py-0 body-2 font-weight-thin" cols="9">
           {{ item.data.tags.join(", ") }}
@@ -44,7 +44,7 @@
       </v-row>
       <v-row v-if="'license' in item.data && item.data.license">
         <v-col class="py-0 font-weight-light" cols="3">
-          Copyright:
+          Copyright
         </v-col>
         <v-col class="py-0 body-2 font-weight-thin" cols="9">
           {{ item.data.license }}
