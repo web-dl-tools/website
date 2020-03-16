@@ -35,7 +35,7 @@
             {{ log.message }}
           </v-col>
           <v-col class="text-right" cols="5">{{
-            formatDate(log.created_at, "YYYY-MM-DD H:mm:ss:SSS")
+            formatDate(log.created_at, "YYYY-MM-DD H:mm:ss.SSS")
           }}</v-col>
         </v-row>
       </v-timeline-item>
