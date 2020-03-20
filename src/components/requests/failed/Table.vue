@@ -52,7 +52,7 @@ export default {
   },
   computed: {
     ...mapGetters({
-      items: "requests/getAll"
+      items: "requests/getAllFailed"
     }),
     /**
      * Pre-format each request data for the data table.
