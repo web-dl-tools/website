@@ -26,8 +26,8 @@ export default {
         {
           align: "left",
           sortable: false,
-          text: "URL",
-          value: "url"
+          text: "ID",
+          value: "id"
         },
         {
           align: "left",
@@ -52,7 +52,7 @@ export default {
   },
   computed: {
     ...mapGetters({
-      items: "requests/getAllFailed"
+      items: "requests/getAll"
     }),
     /**
      * Pre-format each request data for the data table.
