@@ -68,6 +68,12 @@
                 :data="handlers.find(i => i.request === 'AudioVisualRequest')"
                 @dataChange="dataChange"
               />
+              <resource-step
+                v-else-if="step2Data.request_type === 'ResourceRequest'"
+                :active="step === 3"
+                :data="handlers.find(i => i.request === 'ResourceRequest')"
+                @dataChange="dataChange"
+              />
               <request-type-config-step
                 v-else
                 :active="step === 3"
@@ -99,6 +105,7 @@ import UrlStep from "../../components/steppers/UrlStep";
 import RequestTypeStep from "../../components/steppers/RequestTypeStep";
 import RequestTypeConfigStep from "../../components/steppers/RequestTypeConfigStep";
 import AudioVisualStep from "../../components/steppers/handlers/AudioVisualStep";
+import ResourceStep from "../../components/steppers/handlers/ResourceStep";
 
 export default {
   name: "views.requests.create",
@@ -107,7 +114,8 @@ export default {
     UrlStep,
     RequestTypeStep,
     RequestTypeConfigStep,
-    AudioVisualStep
+    AudioVisualStep,
+    ResourceStep
   },
   data: () => ({
     step1Data: {},
