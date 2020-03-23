@@ -20,6 +20,10 @@
       v-else-if="item.request_type === 'TorrentRequest'"
       :item="item"
     />
+    <resource-info
+      v-else-if="item.request_type === 'ResourceRequest'"
+      :item="item"
+    />
   </v-tab-item>
 </template>
 
@@ -28,6 +32,7 @@ import formatters from "../../../../mixins/formatters";
 import AudioVisualInfo from "./handlers/AudioVisualInfo";
 import DirectInfo from "./handlers/DirectInfo";
 import TorrentInfo from "./handlers/TorrentInfo";
+import ResourceInfo from "./handlers/ResourceInfo";
 
 export default {
   name: "components.requests.detail.tabs.info",
@@ -35,7 +40,8 @@ export default {
   components: {
     AudioVisualInfo,
     DirectInfo,
-    TorrentInfo
+    TorrentInfo,
+    ResourceInfo
   },
   props: {
     active: Boolean,
