@@ -50,6 +50,14 @@
           {{ item.data.license }}
         </v-col>
       </v-row>
+      <v-row class="pt-2">
+        <v-col class="py-0 body-2 font-weight-light" cols="3">
+          Format selection
+        </v-col>
+        <v-col class="py-0 body-2 font-weight-thin" cols="9">
+          {{ item.format_selection }}
+        </v-col>
+      </v-row>
     </v-col>
     <v-col cols="12" md="4" class="mt-3">
       <v-parallax :src="item.data.thumbnail" height="300" id="thumbnail" />
