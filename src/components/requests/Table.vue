@@ -20,7 +20,7 @@
       >
         <slot v-bind="slotData" :name="name" />
       </template>
-      <template v-if="extended" v-slot:body.prepend>
+      <template v-if="extended" v-slot:body.append>
         <tr>
           <td class="py-4 pt-0" :colspan="headers.length">
             <v-text-field
