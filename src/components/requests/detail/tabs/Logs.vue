@@ -51,10 +51,11 @@
 <script>
 import { mapGetters } from "vuex";
 import formatters from "../../../../mixins/formatters";
+import helpers from "../../../../mixins/helpers";
 
 export default {
   name: "components.requests.detail.tabs.logs",
-  mixin: [formatters],
+  mixin: [formatters, helpers],
   data: () => ({
     protect: false,
     logs_loading: true,
@@ -66,8 +67,12 @@ export default {
   },
   computed: {
     ...mapGetters({
-      logs: "requests/getLogs"
-    })
+      _logs: "requests/getLogs"
+    }),
+    logs() {
+      const logs = this._logs;
+      return logs.sort((a, b) => this.sortDates(a.created_at, b.created_at));
+    }
   },
   methods: {
     /**

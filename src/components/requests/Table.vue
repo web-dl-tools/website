@@ -1,14 +1,5 @@
 <template>
   <v-card raised>
-    <v-card-title v-if="extended" class="pt-0">
-      <v-text-field
-        v-model="search"
-        append-icon="mdi-magnify"
-        label="Search"
-        type="text"
-        hide-details
-      />
-    </v-card-title>
     <v-data-table
       :headers="headers"
       :items-per-page="parseInt(items_per_page)"
@@ -28,6 +19,19 @@
         slot-scope="slotData"
       >
         <slot v-bind="slotData" :name="name" />
+      </template>
+      <template v-if="extended" v-slot:body.prepend>
+        <tr>
+          <td class="py-4 pt-0" :colspan="headers.length">
+            <v-text-field
+              v-model="search"
+              append-icon="mdi-magnify"
+              label="Search"
+              type="text"
+              hide-details
+            />
+          </td>
+        </tr>
       </template>
     </v-data-table>
   </v-card>
