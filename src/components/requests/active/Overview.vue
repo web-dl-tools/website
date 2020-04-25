@@ -20,18 +20,8 @@
             There are no active or pending requests.
           </v-card-title>
           <v-card-subtitle class="subtitle-2 font-weight-light">
-            Click below to create a new request.
+            Click on create/+ to create a new request.
           </v-card-subtitle>
-          <v-card-actions>
-            <v-btn
-              class="ml-2 mb-3"
-              color="primary"
-              outlined
-              @click="$router.push({ name: 'requests.create' }).catch(() => {})"
-            >
-              Create
-            </v-btn>
-          </v-card-actions>
         </v-card>
       </v-col>
     </v-row>
