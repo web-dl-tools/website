@@ -1,40 +1,49 @@
 <template>
-  <v-card raised>
-    <v-data-table
-      :headers="headers"
-      :items-per-page="parseInt(items_per_page)"
-      :items="items"
-      :loading="loading"
-      :no-data-text="no_data_text"
-      :search="search"
-      :sort-desc="sort_desc"
-      loading-text="Loading requests..."
-      no-results-text="No matching requests found."
-      sort-by="created_at"
-      @click:row="viewDetail"
+  <div>
+    <v-col
+      v-if="extended"
+      v-bind:class="[
+        $vuetify.breakpoint.mdAndUp ? 'search-field mb-12' : 'mt-n4'
+      ]"
+      class="px-0"
+      cols="12"
+      md="6"
+      offset-md="6"
     >
-      <template
-        v-for="(_, name) in $scopedSlots"
-        :slot="name"
-        slot-scope="slotData"
+      <v-text-field
+        v-model="search"
+        color="warning"
+        prepend-inner-icon="mdi-magnify"
+        label="Search"
+        clearable
+        hide-details
+      />
+    </v-col>
+
+    <v-card raised>
+      <v-data-table
+        :headers="headers"
+        :items-per-page="parseInt(items_per_page)"
+        :items="items"
+        :loading="loading"
+        :no-data-text="no_data_text"
+        :search="search"
+        :sort-desc="sort_desc"
+        loading-text="Loading requests..."
+        no-results-text="No matching requests found."
+        sort-by="created_at"
+        @click:row="viewDetail"
       >
-        <slot v-bind="slotData" :name="name" />
-      </template>
-      <template v-if="extended" v-slot:body.append>
-        <tr>
-          <td class="py-4 pt-0" :colspan="headers.length">
-            <v-text-field
-              v-model="search"
-              append-icon="mdi-magnify"
-              label="Search"
-              type="text"
-              hide-details
-            />
-          </td>
-        </tr>
-      </template>
-    </v-data-table>
-  </v-card>
+        <template
+          v-for="(_, name) in $scopedSlots"
+          :slot="name"
+          slot-scope="slotData"
+        >
+          <slot v-bind="slotData" :name="name" />
+        </template>
+      </v-data-table>
+    </v-card>
+  </div>
 </template>
 
 <script>
@@ -78,3 +87,9 @@ export default {
   }
 };
 </script>
+
+<style scoped>
+.search-field {
+  margin-top: -130px;
+}
+</style>
