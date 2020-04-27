@@ -7,8 +7,8 @@
       ]"
       class="px-0"
       cols="12"
-      md="6"
-      offset-md="6"
+      md="4"
+      offset-md="8"
     >
       <v-text-field
         v-model="search"
