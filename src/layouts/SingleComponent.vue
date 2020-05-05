@@ -17,6 +17,17 @@
         </v-col>
       </v-row>
     </v-container>
+    <v-footer absolute color="transparent">
+      <v-col class="text-black-outline text-center">
+        ⚒️ with ❤️ by
+        <a
+          class="text-black-outline text-color-inherit"
+          href="https://github.com/RineshRamadhin"
+        >
+          Rinesh Ramadhin
+        </a>
+      </v-col>
+    </v-footer>
   </v-content>
 </template>
 

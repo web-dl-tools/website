@@ -56,7 +56,18 @@
         'mobile-bottom-navigation-padding-offset': $vuetify.breakpoint.smAndDown
       }"
     >
-      <router-view />
+      <router-view class="pb-12" />
+      <v-footer absolute light color="transparent">
+        <v-col class="text-center" cols="12">
+          ⚒️ with ❤️ by
+          <a
+            class="text-color-inherit"
+            href="https://github.com/RineshRamadhin"
+          >
+            Rinesh Ramadhin
+          </a>
+        </v-col>
+      </v-footer>
     </v-content>
 
     <v-fab-transition>
