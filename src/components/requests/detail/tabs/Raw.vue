@@ -11,12 +11,12 @@ import "vue-json-viewer/style.css";
 export default {
   name: "components.requests.detail.tabs.timeline",
   components: {
-    JsonViewer
+    JsonViewer,
   },
   props: {
     active: Boolean,
-    item: Object
-  }
+    item: Object,
+  },
 };
 </script>
 

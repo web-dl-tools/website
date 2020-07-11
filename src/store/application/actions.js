@@ -3,8 +3,8 @@ import router from "../../router";
 
 export const login = ({ commit }, payload) =>
   Vue.$axios
-    .post("user/authenticate/", payload)
-    .then(response => {
+    .post("users/authenticate/", payload)
+    .then((response) => {
       commit("LOGIN", response.data.token);
       router.push({ name: "overview" }).catch(() => {});
     })
@@ -25,7 +25,7 @@ export const connectWebsocket = ({ commit, dispatch }) => {
     dispatch("disconnectWebsocket")
   );
   const websocket = new WebSocket(`${webSocketUrl}requests/`);
-  websocket.addEventListener("message", e =>
+  websocket.addEventListener("message", (e) =>
     dispatch("handleWebsocketEvent", e)
   );
   websocket.onopen = () => {
@@ -37,7 +37,7 @@ export const connectWebsocket = ({ commit, dispatch }) => {
         content: Vue.$axios.defaults.headers.common.Authorization.replace(
           "Token ",
           ""
-        )
+        ),
       })
     );
   };

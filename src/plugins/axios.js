@@ -6,28 +6,28 @@ import store from "../store";
 
 let config = {
   baseURL: process.env.VUE_APP_API_URL || "http://localhost",
-  withCredentials: false
+  withCredentials: false,
 };
 
 const _axios = axios.create(config);
 
 _axios.interceptors.request.use(
-  function(config) {
+  function (config) {
     // Do something before request is sent
     return config;
   },
-  function(error) {
+  function (error) {
     // Do something with request error
     return Promise.reject(error);
   }
 );
 
 _axios.interceptors.response.use(
-  response => {
+  (response) => {
     // Do something with response data
     return response;
   },
-  error => {
+  (error) => {
     if (error.response && error.response.status === 401) {
       store.dispatch("application/logout");
     }
@@ -35,20 +35,20 @@ _axios.interceptors.response.use(
   }
 );
 
-Plugin.install = function(_Vue) {
+Plugin.install = function (_Vue) {
   _Vue.$axios = _axios;
   window.axios = _axios;
   Object.defineProperties(_Vue.prototype, {
     axios: {
       get() {
         return _axios;
-      }
+      },
     },
     $axios: {
       get() {
         return _axios;
-      }
-    }
+      },
+    },
   });
 };
 

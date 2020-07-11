@@ -73,8 +73,8 @@ export default {
   mixin: [formatters],
   data: () => ({}),
   props: {
-    item: Object
-  }
+    item: Object,
+  },
 };
 </script>
 

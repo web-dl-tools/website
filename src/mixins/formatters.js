@@ -15,7 +15,7 @@ export default Vue.mixin({
     formatRequest(request) {
       return request
         .replace(/([A-Z])/g, " $1")
-        .replace(/^./, str => str.toUpperCase())
+        .replace(/^./, (str) => str.toUpperCase())
         .replace("Request", "");
     },
     formatDate(date, format) {
@@ -93,6 +93,6 @@ export default Vue.mixin({
       hostname = hostname.split("?")[0];
 
       return psl.parse(hostname).domain;
-    }
-  }
+    },
+  },
 });

@@ -41,11 +41,11 @@ export default {
     AudioVisualInfo,
     DirectInfo,
     TorrentInfo,
-    ResourceInfo
+    ResourceInfo,
   },
   props: {
     active: Boolean,
-    item: Object
-  }
+    item: Object,
+  },
 };
 </script>

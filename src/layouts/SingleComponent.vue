@@ -1,5 +1,5 @@
 <template>
-  <v-content class="background-wallpaper-image">
+  <v-main class="background-wallpaper-image">
     <v-container>
       <v-row>
         <v-col cols="12" xs="12" sm="12" md="8" lg="6" xl="4">
@@ -28,11 +28,11 @@
         </a>
       </v-col>
     </v-footer>
-  </v-content>
+  </v-main>
 </template>
 
 <script>
 export default {
-  name: "layouts.single-component"
+  name: "layouts.single-component",
 };
 </script>

@@ -30,7 +30,7 @@ export default {
   name: "components.requests.active.table",
   mixin: [formatters, helpers],
   components: {
-    RequestTable
+    RequestTable,
   },
   data() {
     return {
@@ -39,19 +39,19 @@ export default {
           align: "left",
           sortable: false,
           text: "URL",
-          value: "url"
+          value: "url",
         },
         {
           align: "left",
           sortable: true,
           text: "Status",
-          value: "status_display"
+          value: "status_display",
         },
         {
           align: "left",
           sortable: true,
           text: "Request type",
-          value: "request_type_label"
+          value: "request_type_label",
         },
         {
           align: "right",
@@ -59,18 +59,18 @@ export default {
           sort: this.sortDates,
           sortable: true,
           text: "Requested on",
-          value: "created_at"
-        }
-      ]
+          value: "created_at",
+        },
+      ],
     };
   },
   props: {
     extended: Boolean,
-    items_per_page: String
+    items_per_page: String,
   },
   computed: {
     ...mapGetters({
-      items: "requests/getAllActive"
+      items: "requests/getAllActive",
     }),
     /**
      * Pre-format each request data for the data table.
@@ -82,7 +82,7 @@ export default {
       const items = this.items;
       items.forEach(this.formatItem);
       return items;
-    }
+    },
   },
   methods: {
     /**
@@ -94,7 +94,7 @@ export default {
       item.created_at = this.formatDate(item.created_at, "LL HH:mm:ss");
       item.request_type_label = this.formatRequest(item.request_type);
       return item;
-    }
-  }
+    },
+  },
 };
 </script>

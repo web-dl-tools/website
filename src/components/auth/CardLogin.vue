@@ -50,7 +50,7 @@ export default {
     username: "",
     password: "",
     loading: false,
-    error: false
+    error: false,
   }),
   computed: {
     /**
@@ -60,7 +60,7 @@ export default {
      */
     valid() {
       return !!(this.username && this.password);
-    }
+    },
   },
   methods: {
     /**
@@ -73,12 +73,12 @@ export default {
         this.$store
           .dispatch("application/login", {
             username: this.username,
-            password: this.password
+            password: this.password,
           })
           .catch(() => (this.error = true))
           .finally(() => (this.loading = false));
       }
-    }
+    },
   },
   watch: {
     /**
@@ -92,7 +92,7 @@ export default {
      */
     password() {
       this.error = false;
-    }
-  }
+    },
+  },
 };
 </script>

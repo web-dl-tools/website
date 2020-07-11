@@ -1,5 +1,5 @@
 <template>
-  <v-content class="background-wallpaper-subtle-image">
+  <v-main class="background-wallpaper-subtle-image">
     <v-container>
       <v-row>
         <p class="mx-3 my-12 black--text font-weight-thin display-3">
@@ -67,7 +67,7 @@
         </v-col>
       </v-row>
     </v-container>
-  </v-content>
+  </v-main>
 </template>
 
 <script>
@@ -81,12 +81,12 @@ export default {
   components: {
     ActiveOverview,
     CompletedTable,
-    FailedTable
+    FailedTable,
   },
   computed: {
     ...mapGetters({
-      title: "application/getTitle"
-    })
-  }
+      title: "application/getTitle",
+    }),
+  },
 };
 </script>

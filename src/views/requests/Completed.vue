@@ -1,5 +1,5 @@
 <template>
-  <v-content class="background-wallpaper-subtle-image">
+  <v-main class="background-wallpaper-subtle-image">
     <v-container>
       <v-row>
         <v-col class="px-0 py-0" cols="12" md="8">
@@ -14,7 +14,7 @@
         </v-col>
       </v-row>
     </v-container>
-  </v-content>
+  </v-main>
 </template>
 
 <script>
@@ -26,8 +26,8 @@ export default {
   components: { CompletedTable },
   computed: {
     ...mapGetters({
-      title: "application/getTitle"
-    })
-  }
+      title: "application/getTitle",
+    }),
+  },
 };
 </script>

@@ -19,10 +19,10 @@ export default {
   name: "components.steppers.url-step",
   mixins: [formatters],
   data: () => ({
-    url: ""
+    url: "",
   }),
   props: {
-    active: Boolean
+    active: Boolean,
   },
   computed: {
     valid() {
@@ -36,7 +36,7 @@ export default {
       return this.valid && !this.active
         ? this.truncate(this.url, 160)
         : "Submit the URL of the resource.";
-    }
+    },
   },
   watch: {
     url() {
@@ -44,7 +44,7 @@ export default {
     },
     label() {
       this.updateData(this.valid);
-    }
+    },
   },
   methods: {
     updateData(valid) {
@@ -52,16 +52,16 @@ export default {
         this.$emit("dataChange", {
           step: 1,
           data: { url: this.url },
-          label: this.label
+          label: this.label,
         });
       } else {
         this.$emit("dataChange", {
           step: 1,
           data: {},
-          label: this.label
+          label: this.label,
         });
       }
-    }
-  }
+    },
+  },
 };
 </script>

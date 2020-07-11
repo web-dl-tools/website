@@ -7,7 +7,7 @@
       $router
         .push({
           name: 'requests.detail',
-          params: { requestId: request.id }
+          params: { requestId: request.id },
         })
         .catch(() => {})
     "
@@ -51,7 +51,7 @@ export default {
   name: "components.requests.active.card-mini",
   mixin: [formatters],
   props: {
-    request: Object
+    request: Object,
   },
   computed: {
     /**
@@ -66,7 +66,7 @@ export default {
           this.request.status
         )
       );
-    }
-  }
+    },
+  },
 };
 </script>

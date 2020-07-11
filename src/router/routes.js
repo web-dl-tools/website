@@ -8,13 +8,13 @@ export default [
         name: "login",
         component: () => import("../components/auth/CardLogin"),
         meta: {
-          title: "Login"
-        }
-      }
+          title: "Login",
+        },
+      },
     ],
     meta: {
-      authenticated: false
-    }
+      authenticated: false,
+    },
   },
   {
     path: "/requests",
@@ -25,45 +25,62 @@ export default [
         name: "requests.create",
         component: () => import("../views/requests/Create"),
         meta: {
-          title: "Create a new request"
-        }
+          title: "Create a new request",
+        },
       },
       {
         path: "active",
         name: "requests.active",
         component: () => import("../views/requests/Active"),
         meta: {
-          title: "Active and pending requests"
-        }
+          title: "Active and pending requests",
+        },
       },
       {
         path: "completed",
         name: "requests.completed",
         component: () => import("../views/requests/Completed"),
         meta: {
-          title: "Completed requests"
-        }
+          title: "Completed requests",
+        },
       },
       {
         path: "failed",
         name: "requests.failed",
         component: () => import("../views/requests/Failed"),
         meta: {
-          title: "Failed requests"
-        }
+          title: "Failed requests",
+        },
       },
       {
         path: "detail/:requestId",
         name: "requests.detail",
         component: () => import("../views/requests/Detail"),
         meta: {
-          title: "Request details"
-        }
-      }
+          title: "Request details",
+        },
+      },
     ],
     meta: {
-      authenticated: true
-    }
+      authenticated: true,
+    },
+  },
+  {
+    path: "/profile",
+    component: () => import("../layouts/Default"),
+    children: [
+      {
+        path: "",
+        name: "profile.overview",
+        component: () => import("../views/profile/Overview"),
+        meta: {
+          title: "Your profile",
+        },
+      },
+    ],
+    meta: {
+      authenticated: true,
+    },
   },
   {
     path: "/",
@@ -74,13 +91,13 @@ export default [
         name: "overview",
         component: () => import("../views/Overview"),
         meta: {
-          title: "Overview"
-        }
-      }
+          title: "Overview",
+        },
+      },
     ],
     meta: {
-      authenticated: true
-    }
+      authenticated: true,
+    },
   },
   {
     // Always leave this as last one
@@ -92,12 +109,12 @@ export default [
         name: "error.404",
         component: () => import("../components/errors/404"),
         meta: {
-          title: "Something went wrong"
-        }
-      }
+          title: "Something went wrong",
+        },
+      },
     ],
     meta: {
-      authenticated: false
-    }
-  }
+      authenticated: false,
+    },
+  },
 ];

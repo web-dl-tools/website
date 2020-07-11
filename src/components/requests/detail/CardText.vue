@@ -118,7 +118,7 @@ export default {
   name: "components.requests.detail.card-text",
   mixin: [formatters, helpers],
   props: {
-    item: Object
-  }
+    item: Object,
+  },
 };
 </script>

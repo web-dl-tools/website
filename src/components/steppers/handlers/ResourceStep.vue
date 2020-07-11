@@ -175,17 +175,17 @@ export default {
       archive_extensions: archive_extensions,
       web_extensions: web_extensions,
       extensions: [],
-      min_bytes: 0
+      min_bytes: 0,
     };
   },
   props: {
     active: Boolean,
-    data: Object
+    data: Object,
   },
   computed: {
     valid() {
       return !!this.extensions.length;
-    }
+    },
   },
   watch: {
     /**
@@ -207,7 +207,7 @@ export default {
      */
     min_bytes() {
       this.updateData(this.valid);
-    }
+    },
   },
   methods: {
     /**
@@ -221,15 +221,15 @@ export default {
           step: 3,
           data: {
             extensions: this.extensions,
-            min_bytes: this.min_bytes
+            min_bytes: this.min_bytes,
           },
-          label: ""
+          label: "",
         });
       } else {
         this.$emit("dataChange", {
           step: 3,
           data: {},
-          label: ""
+          label: "",
         });
       }
     },
@@ -266,7 +266,7 @@ export default {
           this[`${preset}_extensions`]
         );
       }
-    }
-  }
+    },
+  },
 };
 </script>

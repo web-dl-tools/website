@@ -21,6 +21,6 @@
 
 <script>
 export default {
-  name: "components.errors.404"
+  name: "components.errors.404",
 };
 </script>
