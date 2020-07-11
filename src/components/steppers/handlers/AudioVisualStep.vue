@@ -13,7 +13,7 @@
             <selectable-card
               :selected="
                 video_format_selection === bestVideoFormat &&
-                  audio_format_selection === bestAudioFormat
+                audio_format_selection === bestAudioFormat
               "
               :disabled="false"
               :title="`Best video file`"
@@ -34,7 +34,7 @@
             <selectable-card
               :selected="
                 video_format_selection === '' &&
-                  audio_format_selection === bestAudioFormat
+                audio_format_selection === bestAudioFormat
               "
               :disabled="false"
               :title="`Best audio file`"
@@ -169,7 +169,7 @@ export default {
   name: "components.steppers.handlers.audio-visual-step",
   mixin: [formatters],
   components: {
-    SelectableCard
+    SelectableCard,
   },
   data: () => {
     return {
@@ -177,12 +177,12 @@ export default {
       audio_format_selection: "",
       output: "%(title)s.%(ext)s",
       show_single_file_formats: false,
-      tab: 0
+      tab: 0,
     };
   },
   props: {
     active: Boolean,
-    data: Object
+    data: Object,
   },
   computed: {
     valid() {
@@ -190,7 +190,7 @@ export default {
     },
     audioOnlyFormats() {
       return this.data.options.filter(
-        i => i.acodec !== "none" && i.vcodec === "none"
+        (i) => i.acodec !== "none" && i.vcodec === "none"
       );
     },
     bestAudioFormat() {
@@ -201,7 +201,7 @@ export default {
     },
     videoOnlyFormats() {
       return this.data.options.filter(
-        i => i.acodec === "none" && i.vcodec !== "none"
+        (i) => i.acodec === "none" && i.vcodec !== "none"
       );
     },
     bestVideoFormat() {
@@ -220,7 +220,7 @@ export default {
         return this.video_format_selection;
       }
       return this.audio_format_selection;
-    }
+    },
   },
   watch: {
     valid(n) {
@@ -231,7 +231,7 @@ export default {
     },
     output() {
       this.updateData(this.valid);
-    }
+    },
   },
   methods: {
     updateData(valid) {
@@ -240,18 +240,18 @@ export default {
           step: 3,
           data: {
             format_selection: this.format_selection,
-            output: this.output
+            output: this.output,
           },
-          label: ""
+          label: "",
         });
       } else {
         this.$emit("dataChange", {
           step: 3,
           data: {},
-          label: ""
+          label: "",
         });
       }
-    }
-  }
+    },
+  },
 };
 </script>

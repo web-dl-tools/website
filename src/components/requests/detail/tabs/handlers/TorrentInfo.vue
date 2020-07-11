@@ -18,7 +18,7 @@ export default {
   name: "components.requests.detail.tabs.handlers.torrent-info",
   mixin: [formatters],
   props: {
-    item: Object
-  }
+    item: Object,
+  },
 };
 </script>

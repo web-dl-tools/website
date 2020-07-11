@@ -14,23 +14,23 @@
 export default {
   name: "components.steppers.request-type-config-step",
   props: {
-    active: Boolean
+    active: Boolean,
   },
   watch: {
     active(n) {
       if (n) {
         this.updateData(n);
       }
-    }
+    },
   },
   methods: {
     updateData() {
       this.$emit("dataChange", {
         step: 3,
         data: { skip: true },
-        label: ""
+        label: "",
       });
-    }
-  }
+    },
+  },
 };
 </script>

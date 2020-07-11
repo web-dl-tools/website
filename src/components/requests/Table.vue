@@ -3,7 +3,7 @@
     <v-col
       v-if="extended"
       v-bind:class="[
-        $vuetify.breakpoint.mdAndUp ? 'search-field mb-12' : 'mt-n4'
+        $vuetify.breakpoint.mdAndUp ? 'search-field mb-15' : 'mt-n4',
       ]"
       class="px-0"
       cols="12"
@@ -20,7 +20,7 @@
       />
     </v-col>
 
-    <v-card raised>
+    <v-card elevation-8>
       <v-data-table
         :headers="headers"
         :items-per-page="parseInt(items_per_page)"
@@ -52,7 +52,7 @@ import { mapGetters } from "vuex";
 export default {
   name: "components.requests.table",
   data: () => ({
-    search: ""
+    search: "",
   }),
   props: {
     extended: Boolean,
@@ -62,13 +62,13 @@ export default {
     no_data_text: String,
     sort_desc: {
       type: Boolean,
-      default: true
-    }
+      default: true,
+    },
   },
   computed: {
     ...mapGetters({
-      loading: "application/isLoading"
-    })
+      loading: "application/isLoading",
+    }),
   },
   methods: {
     /**
@@ -80,11 +80,11 @@ export default {
       this.$router
         .push({
           name: "requests.detail",
-          params: { requestId: item.id }
+          params: { requestId: item.id },
         })
         .catch(() => {});
-    }
-  }
+    },
+  },
 };
 </script>
 

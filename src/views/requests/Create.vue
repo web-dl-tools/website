@@ -1,5 +1,5 @@
 <template>
-  <v-content class="background-wallpaper-subtle-image">
+  <v-main class="background-wallpaper-subtle-image">
     <v-container class="pt-3">
       <v-row>
         <p class="mx-3 my-12 black--text font-weight-thin display-3">
@@ -65,13 +65,13 @@
               <audio-visual-step
                 v-if="step2Data.request_type === 'AudioVisualRequest'"
                 :active="step === 3"
-                :data="handlers.find(i => i.request === 'AudioVisualRequest')"
+                :data="handlers.find((i) => i.request === 'AudioVisualRequest')"
                 @dataChange="dataChange"
               />
               <resource-step
                 v-else-if="step2Data.request_type === 'ResourceRequest'"
                 :active="step === 3"
-                :data="handlers.find(i => i.request === 'ResourceRequest')"
+                :data="handlers.find((i) => i.request === 'ResourceRequest')"
                 @dataChange="dataChange"
               />
               <request-type-config-step
@@ -94,7 +94,7 @@
         </v-col>
       </v-row>
     </v-container>
-  </v-content>
+  </v-main>
 </template>
 
 <script>
@@ -115,7 +115,7 @@ export default {
     RequestTypeStep,
     RequestTypeConfigStep,
     AudioVisualStep,
-    ResourceStep
+    ResourceStep,
   },
   data: () => ({
     step1Data: {},
@@ -127,12 +127,12 @@ export default {
     handlers: [],
     step: 1,
     loading: false,
-    error: false
+    error: false,
   }),
   computed: {
     ...mapGetters({
-      title: "application/getTitle"
-    })
+      title: "application/getTitle",
+    }),
   },
   methods: {
     dataChange(data) {
@@ -144,7 +144,7 @@ export default {
       this.loading = true;
       this.$store
         .dispatch("handlers/getHandlerStatuses", this.step1Data.url)
-        .then(res => {
+        .then((res) => {
           this.handlers = res;
           this.step = 2;
         })
@@ -158,12 +158,12 @@ export default {
         .dispatch("requests/create", {
           ...this.step1Data,
           ...this.step2Data,
-          ...("skip" in this.step3Data ? {} : this.step3Data)
+          ...("skip" in this.step3Data ? {} : this.step3Data),
         })
         .then(() => this.$router.push({ name: "overview" }).catch(() => {}))
         .catch(() => (this.error = true))
         .finally(() => (this.loading = false));
-    }
-  }
+    },
+  },
 };
 </script>

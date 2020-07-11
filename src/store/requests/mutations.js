@@ -1,7 +1,7 @@
 import Vue from "vue";
 
 export const CREATE = (state, payload) => {
-  const index = state.items.findIndex(i => i.id === payload.id);
+  const index = state.items.findIndex((i) => i.id === payload.id);
 
   if (index > -1) {
     Vue.set(state.items, index, payload);
@@ -12,7 +12,7 @@ export const CREATE = (state, payload) => {
 
 export const GET = (state, payload) => {
   state.item = payload;
-  const index = state.items.findIndex(i => i.id === payload.id);
+  const index = state.items.findIndex((i) => i.id === payload.id);
   if (index > -1) {
     Vue.set(state.items, index, payload);
   } else {
@@ -33,7 +33,7 @@ export const GET_ALL = (state, payload) => {
 };
 
 export const UPDATE = (state, payload) => {
-  const index = state.items.findIndex(i => i.id === payload.id);
+  const index = state.items.findIndex((i) => i.id === payload.id);
 
   if (index > -1) {
     Vue.set(state.items, index, payload);
@@ -47,7 +47,7 @@ export const UPDATE = (state, payload) => {
 };
 
 export const REMOVE = (state, id) => {
-  const index = state.items.findIndex(i => i.id === id);
+  const index = state.items.findIndex((i) => i.id === id);
   if (index > -1) {
     state.items.splice(index, 1);
   }

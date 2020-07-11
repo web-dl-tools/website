@@ -30,14 +30,14 @@ export default {
   name: "components.steppers.request-type-step",
   mixin: [formatters],
   components: {
-    SelectableCard
+    SelectableCard,
   },
   data: () => ({
-    request_type: ""
+    request_type: "",
   }),
   props: {
     active: Boolean,
-    handlers: Array
+    handlers: Array,
   },
   computed: {
     valid() {
@@ -47,7 +47,7 @@ export default {
       return this.valid && !this.active
         ? this.formatRequest(this.request_type)
         : "Select a handler to process the resource.";
-    }
+    },
   },
   watch: {
     valid(n) {
@@ -55,7 +55,7 @@ export default {
     },
     label() {
       this.updateData(this.valid);
-    }
+    },
   },
   methods: {
     updateData(valid) {
@@ -63,16 +63,16 @@ export default {
         this.$emit("dataChange", {
           step: 2,
           data: { request_type: this.request_type },
-          label: this.label
+          label: this.label,
         });
       } else {
         this.$emit("dataChange", {
           step: 2,
           data: {},
-          label: this.label
+          label: this.label,
         });
       }
-    }
-  }
+    },
+  },
 };
 </script>

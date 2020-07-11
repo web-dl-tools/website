@@ -8,19 +8,19 @@ export default {
       label: "Completed",
       routerName: "requests.completed",
       icon: "mdi-checkbox-marked-circle-outline",
-      color: "success"
+      color: "success",
     },
     {
       label: "Active",
       routerName: "requests.active",
       icon: "mdi-progress-download",
-      color: "warning"
+      color: "warning",
     },
     {
       label: "Failed",
       routerName: "requests.failed",
       icon: "mdi-alert-circle-outline",
-      color: "error"
-    }
-  ]
+      color: "error",
+    },
+  ],
 };

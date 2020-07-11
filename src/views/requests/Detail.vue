@@ -1,5 +1,5 @@
 <template>
-  <v-content class="background-wallpaper-subtle-image">
+  <v-main class="background-wallpaper-subtle-image">
     <v-container class="pt-3">
       <v-row>
         <p class="mx-3 my-12 black--text font-weight-thin display-3">
@@ -91,14 +91,14 @@
                 <files
                   :active="tab === 1"
                   :request_id="this.$route.params.requestId"
-                  @countChange="n => (files_count = n)"
+                  @countChange="(n) => (files_count = n)"
                 />
                 <timeline :active="tab === 2" :item="request" />
                 <raw :active="tab === 3" :item="request" />
                 <logs
                   :active="tab === 4"
                   :request_id="this.$route.params.requestId"
-                  @countChange="n => (logs_count = n)"
+                  @countChange="(n) => (logs_count = n)"
                 />
               </v-tabs-items>
             </v-card-text>
@@ -126,7 +126,7 @@
         </v-card-actions>
       </v-card>
     </v-dialog>
-  </v-content>
+  </v-main>
 </template>
 
 <script>
@@ -148,19 +148,19 @@ export default {
     Timeline,
     Raw,
     Files,
-    Logs
+    Logs,
   },
   data: () => ({
     dialog: false,
     tab: 0,
     request_loading: true,
     files_count: null,
-    logs_count: null
+    logs_count: null,
   }),
   computed: {
     ...mapGetters({
       request: "requests/get",
-      title: "application/getTitle"
+      title: "application/getTitle",
     }),
     processing() {
       return (
@@ -169,7 +169,7 @@ export default {
           this.request.status
         )
       );
-    }
+    },
   },
   methods: {
     openExternalTab() {
@@ -182,7 +182,7 @@ export default {
     },
     retry() {
       this.$store.dispatch("requests/retry", this.$route.params.requestId);
-    }
+    },
   },
   created() {
     this.$store
@@ -197,6 +197,6 @@ export default {
         //   );
         // }
       });
-  }
+  },
 };
 </script>

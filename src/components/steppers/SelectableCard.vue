@@ -23,17 +23,17 @@ export default {
   name: "components.steppers.selectable-card",
   mixin: [formatters],
   data: () => ({
-    request_type: ""
+    request_type: "",
   }),
   props: {
     selected: Boolean,
     disabled: Boolean,
-    title: String
+    title: String,
   },
   methods: {
     click() {
       this.$emit("onClick");
-    }
-  }
+    },
+  },
 };
 </script>

@@ -1,6 +1,6 @@
 import Vue from "vue";
 
-export const CHECK = state => {
+export const CHECK = (state) => {
   state.authenticated = !!localStorage.getItem("auth_token");
   if (state.authenticated) {
     Vue.$axios.defaults.headers.common.Authorization = `Token ${localStorage.getItem(
@@ -20,7 +20,7 @@ export const LOGIN = (state, token) => {
   state.authenticated = true;
 };
 
-export const LOGOUT = state => {
+export const LOGOUT = (state) => {
   localStorage.removeItem("auth_token");
   Vue.$axios.defaults.headers.common.Authorization = "";
   state.authenticated = false;
@@ -31,4 +31,4 @@ export const SET_LOADING = (state, loading) => (state.loading = loading);
 export const CONNECT_WEBSOCKET = (state, websocket) =>
   (state.websocket = websocket);
 
-export const DISCONNECT_WEBSOCKET = state => (state.websocket = null);
+export const DISCONNECT_WEBSOCKET = (state) => (state.websocket = null);

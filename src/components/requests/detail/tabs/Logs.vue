@@ -59,20 +59,20 @@ export default {
   data: () => ({
     protect: false,
     logs_loading: true,
-    logs_loaded: false
+    logs_loaded: false,
   }),
   props: {
     active: Boolean,
-    request_id: String
+    request_id: String,
   },
   computed: {
     ...mapGetters({
-      _logs: "requests/getLogs"
+      _logs: "requests/getLogs",
     }),
     logs() {
       const logs = this._logs;
       return logs.sort((a, b) => this.sortDates(a.created_at, b.created_at));
-    }
+    },
   },
   methods: {
     /**
@@ -86,7 +86,7 @@ export default {
           .then(() => (this.logs_loaded = true))
           .finally(() => (this.logs_loading = false));
       }
-    }
+    },
   },
   watch: {
     /**
@@ -109,8 +109,8 @@ export default {
         this.protect = true;
       }
       this.$emit("countChange", n.length);
-    }
-  }
+    },
+  },
 };
 </script>
 

@@ -42,18 +42,46 @@
       </v-toolbar-items>
       <v-toolbar-items class="mr-n4 mr-md-2">
         <v-divider class="mx-2 hidden-sm-and-down" inset vertical />
-        <v-btn icon @click="$store.dispatch('application/logout')">
-          <v-icon>
-            mdi-exit-run
-          </v-icon>
-        </v-btn>
+        <v-menu :rounded="'0 b'" offset-y>
+          <template v-slot:activator="{ on, attrs }">
+            <v-btn v-on="on" v-bind="attrs" icon>
+              <v-icon>
+                mdi-account-circle-outline
+              </v-icon>
+            </v-btn>
+          </template>
+          <v-list>
+            <v-list-item
+              @click="
+                $router.push({ name: 'profile.overview' }).catch(() => {})
+              "
+            >
+              <v-list-item-icon>
+                <v-icon>mdi-account-circle-outline</v-icon>
+              </v-list-item-icon>
+              <v-list-item-content>
+                <v-list-item-title>My profile</v-list-item-title>
+              </v-list-item-content>
+            </v-list-item>
+            <v-divider />
+            <v-list-item @click="$store.dispatch('application/logout')">
+              <v-list-item-icon>
+                <v-icon>mdi-exit-run</v-icon>
+              </v-list-item-icon>
+              <v-list-item-content>
+                <v-list-item-title>logout</v-list-item-title>
+              </v-list-item-content>
+            </v-list-item>
+          </v-list>
+        </v-menu>
       </v-toolbar-items>
     </v-toolbar>
 
-    <v-content
+    <v-main
       class="toolbar-padding-offset"
       :class="{
-        'mobile-bottom-navigation-padding-offset': $vuetify.breakpoint.smAndDown
+        'mobile-bottom-navigation-padding-offset':
+          $vuetify.breakpoint.smAndDown,
       }"
     >
       <router-view class="pb-12" />
@@ -68,13 +96,13 @@
           </a>
         </v-col>
       </v-footer>
-    </v-content>
+    </v-main>
 
     <v-fab-transition>
       <v-btn
         v-show="
           $router.currentRoute.name !== 'requests.create' &&
-            $vuetify.breakpoint.smAndDown
+          $vuetify.breakpoint.smAndDown
         "
         fab
         bottom
@@ -119,14 +147,14 @@ import { mapGetters } from "vuex";
 export default {
   name: "layouts.default",
   data: () => ({
-    active: undefined
+    active: undefined,
   }),
   computed: {
     ...mapGetters({
       title: "application/getTitle",
       menuItems: "application/getMenuItems",
-      apiError: "application/apiHasError"
-    })
+      apiError: "application/apiHasError",
+    }),
   },
   methods: {
     setActive(routerName) {
@@ -144,21 +172,22 @@ export default {
           this.active = undefined;
           break;
       }
-    }
+    },
   },
   watch: {
     $route(to) {
       this.setActive(to.name);
-    }
+    },
   },
   created() {
     this.setActive(this.$router.currentRoute.name);
+    this.$store.dispatch("users/getMe");
     this.$store.dispatch("requests/getAll");
     this.$store.dispatch("application/connectWebsocket");
   },
   destroyed() {
     this.$store.dispatch("application/disconnectWebsocket");
-  }
+  },
 };
 </script>
 

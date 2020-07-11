@@ -15,7 +15,7 @@ const router = new VueRouter({
     } else {
       return { x: 0, y: 0 };
     }
-  }
+  },
 });
 
 router.beforeEach((to, from, next) => {
@@ -26,9 +26,9 @@ router.beforeEach((to, from, next) => {
     store.dispatch("application/setTitle", to.meta.title);
   }
 
-  if (to.matched.some(m => m.path === "/login") && authenticated) {
+  if (to.matched.some((m) => m.path === "/login") && authenticated) {
     next({ name: "overview" });
-  } else if (to.matched.some(m => m.meta.authenticated) && !authenticated) {
+  } else if (to.matched.some((m) => m.meta.authenticated) && !authenticated) {
     next({ name: "login" });
   } else {
     next();

@@ -71,17 +71,17 @@ export default {
       png: "mdi-file-image",
       description: "mdi-file-document-outline",
       txt: "mdi-file-document-outline",
-      xml: "mdi-xml"
-    }
+      xml: "mdi-xml",
+    },
   }),
   props: {
     active: Boolean,
-    request_id: String
+    request_id: String,
   },
   computed: {
     ...mapGetters({
-      files: "requests/getFiles"
-    })
+      files: "requests/getFiles",
+    }),
   },
   methods: {
     /**
@@ -118,7 +118,7 @@ export default {
      */
     countFiles(obj) {
       let count = 0;
-      obj.forEach(i => {
+      obj.forEach((i) => {
         if ("dir" in i) {
           count += this.countFiles(i.children);
         } else {
@@ -126,7 +126,7 @@ export default {
         }
       });
       return count;
-    }
+    },
   },
   watch: {
     /**
@@ -146,7 +146,7 @@ export default {
      */
     files(n) {
       this.$emit("countChange", this.countFiles(n));
-    }
-  }
+    },
+  },
 };
 </script>

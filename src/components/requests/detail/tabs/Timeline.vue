@@ -60,7 +60,7 @@ export default {
   data: () => ({}),
   props: {
     active: Boolean,
-    item: Object
-  }
+    item: Object,
+  },
 };
 </script>

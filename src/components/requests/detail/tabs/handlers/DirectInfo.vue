@@ -26,7 +26,7 @@ export default {
   name: "components.requests.detail.tabs.handlers.direct-info",
   data: () => ({}),
   props: {
-    item: Object
-  }
+    item: Object,
+  },
 };
 </script>

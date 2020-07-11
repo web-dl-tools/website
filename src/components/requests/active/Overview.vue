@@ -35,13 +35,13 @@ import CardMini from "./CardMini";
 export default {
   name: "components.requests.active.overview",
   components: {
-    CardMini
+    CardMini,
   },
   computed: {
     ...mapGetters({
       loading: "application/isLoading",
-      activeItems: "requests/getAllActive"
-    })
-  }
+      activeItems: "requests/getAllActive",
+    }),
+  },
 };
 </script>
