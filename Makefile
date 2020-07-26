@@ -12,7 +12,7 @@ build: ## Build the container stack
 
 start: ## Start the container stack
 	@echo "Starting up containers..."
-	make build && docker-compose up
+	docker-compose up
 
 clean: ## Clean out unused docker(-compose) files
 	@echo "Removing unused docker files..."

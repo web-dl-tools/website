@@ -31,6 +31,9 @@ export default {
     title: String,
   },
   methods: {
+    /**
+     * Emit a onClick() event upstream to notify the card has been clicked on.
+     */
     click() {
       this.$emit("onClick");
     },

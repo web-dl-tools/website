@@ -17,6 +17,11 @@ export default {
     active: Boolean,
   },
   watch: {
+    /**
+     * Check if the current tab has been opened and show possible config options.
+     *
+     * @param n
+     */
     active(n) {
       if (n) {
         this.updateData(n);
@@ -24,6 +29,9 @@ export default {
     },
   },
   methods: {
+    /**
+     * Emit a dataChange() event upstream to notify the stepper component.
+     */
     updateData() {
       this.$emit("dataChange", {
         step: 3,

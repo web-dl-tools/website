@@ -157,6 +157,11 @@ export default {
     }),
   },
   methods: {
+    /**
+     * Set the active route for the mobile bottom navigation component.
+     *
+     * @param routerName
+     */
     setActive(routerName) {
       switch (routerName) {
         case "requests.completed":
@@ -174,17 +179,26 @@ export default {
       }
     },
   },
+  /**
+   * Update the current active route on route changes.
+   */
   watch: {
     $route(to) {
       this.setActive(to.name);
     },
   },
+  /**
+   * Prepare the web application for creation.
+   */
   created() {
     this.setActive(this.$router.currentRoute.name);
     this.$store.dispatch("users/getMe");
     this.$store.dispatch("requests/getAll");
     this.$store.dispatch("application/connectWebsocket");
   },
+  /**
+   * Prepare the web application for destruction.
+   */
   destroyed() {
     this.$store.dispatch("application/disconnectWebsocket");
   },

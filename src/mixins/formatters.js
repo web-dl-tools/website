@@ -4,26 +4,66 @@ import psl from "psl";
 
 export default Vue.mixin({
   methods: {
+    /**
+     * Capitalize the first character of a string.
+     *
+     * @param value
+     * @returns {string} The capitalized string.
+     */
     capitalize(value) {
       if (!value) return "";
       value = value.toString();
       return value.charAt(0).toUpperCase() + value.slice(1);
     },
+    /**
+     * Truncate a string to a given length.
+     *
+     * @param str
+     * @param len
+     * @returns {*} The truncated string.
+     */
     truncate(str, len) {
       return str.length > len ? `${str.slice(0, len)}...` : str;
     },
+    /**
+     * Format a request type to a request string for use in labels.
+     *
+     * @param request
+     * @returns {*}
+     */
     formatRequest(request) {
       return request
         .replace(/([A-Z])/g, " $1")
         .replace(/^./, (str) => str.toUpperCase())
         .replace("Request", "");
     },
+    /**
+     * Format a datetime object/string to a given string format.
+     *
+     * @param date
+     * @param format
+     * @returns {string}
+     */
     formatDate(date, format) {
       return moment(date).format(format);
     },
+    /**
+     * Calculate a datetime object/string difference from the current datetime.
+     *
+     * @param date
+     * @returns {string}
+     */
     formatDateFromNow(date) {
       return moment(date).fromNow();
     },
+    /**
+     * Calculate the difference between two datetime objects/strings and format the result.
+     *
+     * @param startDate
+     * @param endDate
+     * @param format
+     * @returns {string|number}
+     */
     formatDateDuration(startDate, endDate, format) {
       startDate = moment(startDate);
       endDate = moment(endDate);
@@ -34,6 +74,8 @@ export default Vue.mixin({
       return duration.as(format);
     },
     /**
+     * Format a bytes value to a human readable format.
+     *
      * @url https://stackoverflow.com/a/18650828
      * @param bytes
      * @param decimals
@@ -50,6 +92,12 @@ export default Vue.mixin({
 
       return parseFloat((bytes / Math.pow(k, i)).toFixed(dm)) + " " + sizes[i];
     },
+    /**
+     * Calculate a color value for a given request status.
+     *
+     * @param status
+     * @returns {string}
+     */
     formatRequestStatusColor(status) {
       switch (status) {
         case "failed":
@@ -67,6 +115,12 @@ export default Vue.mixin({
           return "warning";
       }
     },
+    /**
+     * Calculate a log color for a given log level value.
+     *
+     * @param level
+     * @returns {string}
+     */
     formatLogLevelColor(level) {
       switch (level) {
         case 50:
@@ -82,6 +136,12 @@ export default Vue.mixin({
           return "info";
       }
     },
+    /**
+     * Calculate the domain from a given url.
+     *
+     * @param url
+     * @returns {null}
+     */
     formatDomain(url) {
       let hostname;
       if (url.indexOf("//") > -1) {
