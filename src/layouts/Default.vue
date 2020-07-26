@@ -50,7 +50,7 @@
               </v-icon>
             </v-btn>
           </template>
-          <v-list>
+          <v-list class="py-0">
             <v-list-item
               @click="
                 $router.push({ name: 'profile.overview' }).catch(() => {})
@@ -66,10 +66,10 @@
             <v-divider />
             <v-list-item @click="$store.dispatch('application/logout')">
               <v-list-item-icon>
-                <v-icon>mdi-exit-run</v-icon>
+                <v-icon>mdi-exit-to-app</v-icon>
               </v-list-item-icon>
               <v-list-item-content>
-                <v-list-item-title>logout</v-list-item-title>
+                <v-list-item-title>Sign out</v-list-item-title>
               </v-list-item-content>
             </v-list-item>
           </v-list>
