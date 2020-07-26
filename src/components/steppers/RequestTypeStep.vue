@@ -40,9 +40,19 @@ export default {
     handlers: Array,
   },
   computed: {
+    /**
+     * Validate if all required fields have been filled in sufficiently.
+     *
+     * @returns {boolean}
+     */
     valid() {
       return !!this.request_type;
     },
+    /**
+     * Calculate the label to show for this step.
+     *
+     * @returns {*}
+     */
     label() {
       return this.valid && !this.active
         ? this.formatRequest(this.request_type)
@@ -50,14 +60,27 @@ export default {
     },
   },
   watch: {
+    /**
+     * Trigger an update data check when the validity of the step has changed.
+     *
+     * @param n
+     */
     valid(n) {
       this.updateData(n);
     },
+    /**
+     * Trigger an update data check when the label value has changed.
+     */
     label() {
       this.updateData(this.valid);
     },
   },
   methods: {
+    /**
+     * Emit a dataChange() event upstream to notify the stepper component.
+     *
+     * @param valid
+     */
     updateData(valid) {
       if (valid) {
         this.$emit("dataChange", {

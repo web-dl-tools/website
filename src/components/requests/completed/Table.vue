@@ -75,6 +75,7 @@ export default {
   methods: {
     /**
      * Format a request payload for the data table.
+     *
      * @param item
      * @returns {*}
      */

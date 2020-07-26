@@ -185,34 +185,79 @@ export default {
     data: Object,
   },
   computed: {
+    /**
+     * Validate if all required fields have been filled in sufficiently.
+     *
+     * @returns {boolean|boolean}
+     */
     valid() {
       return !!this.format_selection && !!this.output;
     },
+    /**
+     * Retrieve all possible audio format options.
+     *
+     * @returns {*}
+     */
     audioOnlyFormats() {
       return this.data.options.filter(
         (i) => i.acodec !== "none" && i.vcodec === "none"
       );
     },
+    /**
+     * Return the best possible audio format available.
+     *
+     * @returns {*}
+     */
     bestAudioFormat() {
       return this.audioOnlyFormats[this.audioOnlyFormats.length - 1].format_id;
     },
+    /**
+     * Check whether there are any audio formats available.
+     *
+     * @returns {*}
+     */
     hasAudioFormats() {
       return this.audioOnlyFormats.length;
     },
+    /**
+     * Retrieve all possible video format options.
+     *
+     * @returns {*}
+     */
     videoOnlyFormats() {
       return this.data.options.filter(
         (i) => i.acodec === "none" && i.vcodec !== "none"
       );
     },
+    /**
+     * Return the best possible audio format available.
+     *
+     * @returns {*}
+     */
     bestVideoFormat() {
       return this.videoOnlyFormats[this.videoOnlyFormats.length - 1].format_id;
     },
+    /**
+     * Check whether there are any audio formats available.
+     *
+     * @returns {*}
+     */
     hasVideoFormats() {
       return this.videoOnlyFormats.length;
     },
+    /**
+     * Check whether there are any audio or video formats available.
+     *
+     * @returns {*}
+     */
     hasVideoOrAudioFormats() {
       return this.audioOnlyFormats.length || this.videoOnlyFormats.length;
     },
+    /**
+     * Combine the chosen video and audio option into a single format selection.
+     *
+     * @returns {string}
+     */
     format_selection() {
       if (this.video_format_selection && this.audio_format_selection) {
         return `${this.video_format_selection}+${this.audio_format_selection}`;
@@ -223,17 +268,33 @@ export default {
     },
   },
   watch: {
+    /**
+     * Trigger an update data check the when validity of the step has changed.
+     *
+     * @param n
+     */
     valid(n) {
       this.updateData(n);
     },
+    /**
+     * Trigger an update data check when the format selection has changed.
+     */
     format_selection() {
       this.updateData(this.valid);
     },
+    /**
+     * Trigger an update data check when the output has changed.
+     */
     output() {
       this.updateData(this.valid);
     },
   },
   methods: {
+    /**
+     * Emit a dataChange() event upstream to notify the stepper component.
+     *
+     * @param valid
+     */
     updateData(valid) {
       if (valid) {
         this.$emit("dataChange", {

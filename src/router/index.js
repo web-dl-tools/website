@@ -5,6 +5,11 @@ import routes from "./routes";
 
 Vue.use(VueRouter);
 
+/**
+ * Create a VueRouter object instance and include the routes file.
+ *
+ * @type {VueRouter}
+ */
 const router = new VueRouter({
   mode: "history",
   base: process.env.BASE_URL,
@@ -18,6 +23,9 @@ const router = new VueRouter({
   },
 });
 
+/**
+ * Intercept the router beforeEach hook to perform authentication checks and title changes.
+ */
 router.beforeEach((to, from, next) => {
   store.commit("application/CHECK");
   const authenticated = store.getters["application/isAuthenticated"];

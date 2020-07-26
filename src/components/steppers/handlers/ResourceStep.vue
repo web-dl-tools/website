@@ -183,13 +183,18 @@ export default {
     data: Object,
   },
   computed: {
+    /**
+     * Validate if all required fields have been filled in sufficiently.
+     *
+     * @returns {boolean|boolean}
+     */
     valid() {
       return !!this.extensions.length;
     },
   },
   watch: {
     /**
-     * Validate if all required fields have been filled in sufficiently.
+     * Trigger an update data check the when validity of the step has changed.
      *
      * @param n
      */
@@ -197,7 +202,7 @@ export default {
       this.updateData(n);
     },
     /**
-     * Trigger an update data check when and extension is added/removed.
+     * Trigger an update data check when an extension is added/removed.
      */
     extensions() {
       this.updateData(this.valid);
@@ -211,7 +216,7 @@ export default {
   },
   methods: {
     /**
-     * Emit a countChange() event upstream to notify the stepper component.
+     * Emit a dataChange() event upstream to notify the stepper component.
      *
      * @param valid
      */
