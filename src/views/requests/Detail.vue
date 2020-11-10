@@ -68,7 +68,7 @@
               </v-btn>
             </v-card-subtitle>
             <card-text :item="request" />
-            <v-card-text>
+            <v-card-text class="pb-1">
               <v-tabs grow v-model="tab">
                 <v-tab>Information</v-tab>
                 <v-tab>

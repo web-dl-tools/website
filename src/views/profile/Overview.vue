@@ -34,20 +34,6 @@
               </v-row>
 
               <v-row>
-                <v-col cols="4" class="py-0 font-weight-black">
-                  Last login
-                </v-col>
-                <v-col cols="8" class="py-0">
-                  {{ formatDate(user.last_login, "LLLL") }}
-                </v-col>
-              </v-row>
-              <v-row>
-                <v-col cols="4" class="py-0"></v-col>
-                <v-col cols="8" class="py-0">
-                  {{ formatDateFromNow(user.last_login) }}
-                </v-col>
-              </v-row>
-              <v-row>
                 <v-col cols="4" class="py-0 font-weight-black">Joined on</v-col>
                 <v-col cols="8" class="py-0">
                   {{ formatDate(user.date_joined, "LLLL") }}
