@@ -13,3 +13,7 @@
 .display-3 {
   text-shadow: 0 0 5px #aabacd, 0 0 5px #aabacd, 0 0 5px #aabacd;
 }
+
+.v-data-table > .v-data-table__wrapper > table > thead > tr > th > span {
+  color: white;
+}
