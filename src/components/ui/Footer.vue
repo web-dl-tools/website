@@ -1,20 +1,22 @@
 <template>
   <v-footer absolute light color="transparent">
     <v-col
-      class="text-center text-caption"
-      :class="{ 'cursor-pointer': link, 'font-weight-bold': bold }"
+      v-if="full"
+      class="text-center text-caption cursor-pointer"
       cols="12"
-      @click="redirect(link)"
+      @click="$router.push({ name: 'application.build' }).catch(() => {})"
     >
       v{{ commitInfo.tag }} &middot; Build
       {{ commitInfo.abbreviated_commit }} &middot;
-      {{ formatDate(commitInfo.commiter.date) }}
+      {{ formatDate(commitInfo.commiter.date, "LL") }}
+    </v-col>
+    <v-col v-else class="text-caption font-weight-bold" cols="12">
+      v{{ commitInfo.tag }} &middot; Build {{ commitInfo.abbreviated_commit }}
     </v-col>
   </v-footer>
 </template>
 
 <script>
-import router from "../../router";
 import { mapGetters } from "vuex";
 import formatters from "../../mixins/formatters";
 
@@ -27,14 +29,7 @@ export default {
     }),
   },
   props: {
-    link: Boolean,
-    bold: Boolean,
-  },
-  methods: {
-    redirect: (link) => {
-      if (!link) return;
-      router.push({ name: "application.build" }).catch(() => {});
-    },
+    full: Boolean,
   },
 };
 </script>

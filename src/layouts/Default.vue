@@ -85,7 +85,7 @@
       }"
     >
       <router-view class="pb-12" />
-      <ui-footer :link="true" :bold="false" />
+      <ui-footer :full="true" />
     </v-main>
 
     <v-fab-transition>
