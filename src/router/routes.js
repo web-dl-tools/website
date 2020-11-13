@@ -83,6 +83,23 @@ export default [
     },
   },
   {
+    path: "/application",
+    component: () => import("../layouts/Default"),
+    children: [
+      {
+        path: "build",
+        name: "application.build",
+        component: () => import("../views/application/Build"),
+        meta: {
+          title: "Build information",
+        },
+      },
+    ],
+    meta: {
+      authenticated: true,
+    },
+  },
+  {
     path: "/",
     component: () => import("../layouts/Default"),
     children: [

@@ -85,17 +85,7 @@
       }"
     >
       <router-view class="pb-12" />
-      <v-footer absolute light color="transparent">
-        <v-col class="text-center" cols="12">
-          ⚒️ with ❤️ by
-          <a
-            class="text-color-inherit"
-            href="https://github.com/RineshRamadhin"
-          >
-            Rinesh Ramadhin
-          </a>
-        </v-col>
-      </v-footer>
+      <ui-footer :link="true" :bold="false" />
     </v-main>
 
     <v-fab-transition>
@@ -143,9 +133,13 @@
 
 <script>
 import { mapGetters } from "vuex";
+import UiFooter from "./../components/ui/Footer";
 
 export default {
   name: "layouts.default",
+  components: {
+    UiFooter,
+  },
   data: () => ({
     active: undefined,
   }),

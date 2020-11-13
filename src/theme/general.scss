@@ -22,6 +22,10 @@ pre {
   min-height: calc(100vh - 56px);
 }
 
+.cursor-pointer {
+  cursor: pointer;
+}
+
 .text-no-transform {
   text-transform: none;
 }

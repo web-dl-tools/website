@@ -24,20 +24,14 @@
                 <v-col cols="8" class="py-0">{{ user.username }}</v-col>
               </v-row>
               <v-row>
-                <v-col cols="4" class="py-0 font-weight-black">Full name</v-col>
-                <v-col cols="8" class="py-0">{{ user.full_name }}</v-col>
+                <v-col cols="4" class="pt-0 font-weight-black">Full name</v-col>
+                <v-col cols="8" class="pt-0">{{ user.full_name }}</v-col>
               </v-row>
 
               <v-row>
                 <v-col cols="4" class="py-0 font-weight-black">Joined on</v-col>
                 <v-col cols="8" class="py-0">
                   {{ formatDate(user.date_joined, "LLLL") }}
-                </v-col>
-              </v-row>
-              <v-row>
-                <v-col cols="4" class="py-0"></v-col>
-                <v-col cols="8" class="py-0">
-                  {{ formatDateFromNow(user.date_joined) }}
                 </v-col>
               </v-row>
             </v-card-text>
@@ -64,7 +58,7 @@ import { mapGetters } from "vuex";
 import formatters from "../../mixins/formatters";
 
 export default {
-  name: "views.provile.overview",
+  name: "views.profile.overview",
   mixin: [formatters],
   computed: {
     ...mapGetters({
