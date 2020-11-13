@@ -24,13 +24,8 @@
                 <v-col cols="8" class="py-0">{{ user.username }}</v-col>
               </v-row>
               <v-row>
-                <v-col cols="4" class="py-0 font-weight-black">Email</v-col>
-                <v-col cols="8" class="py-0">{{ user.email }}</v-col>
-              </v-row>
-
-              <v-row>
-                <v-col cols="4" class="font-weight-black">Full name</v-col>
-                <v-col cols="8">{{ user.full_name }}</v-col>
+                <v-col cols="4" class="py-0 font-weight-black">Full name</v-col>
+                <v-col cols="8" class="py-0">{{ user.full_name }}</v-col>
               </v-row>
 
               <v-row>
