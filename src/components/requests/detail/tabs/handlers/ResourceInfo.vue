@@ -28,14 +28,17 @@
         <v-col class="py-0 font-weight-light" cols="3">
           Extensions
         </v-col>
-        <v-chip
-          v-for="extension in item.extensions"
-          :key="extension"
-          class="ma-1"
-          x-small
-        >
-          {{ extension }}
-        </v-chip>
+        <v-col class="pa-0" cols="9">
+          <v-chip
+            v-for="extension in item.extensions"
+            :key="extension"
+            class="ma-1"
+            label
+            x-small
+          >
+            {{ extension }}
+          </v-chip>
+        </v-col>
       </v-row>
     </v-col>
   </v-row>

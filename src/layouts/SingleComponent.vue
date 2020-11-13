@@ -17,7 +17,7 @@
         </v-col>
       </v-row>
     </v-container>
-    <ui-footer :link="false" :bold="true" />
+    <ui-footer :full="false" />
   </v-main>
 </template>
 
