@@ -22,7 +22,6 @@
         clearable
         dense
         flat
-        rounded
         hide-details
         solo-inverted
         @input="setSearch"
