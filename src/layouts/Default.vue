@@ -2,6 +2,7 @@
   <div>
     <v-app-bar color="grey darken-4" app dark short flat class="fixed-top">
       <v-toolbar-title class="ml-n4 ml-md-2 mr-2">
+        <!--        <v-app-bar-nav-icon @click="drawer = !drawer"></v-app-bar-nav-icon>-->
         <v-btn
           class="transparent"
           elevation="0"
@@ -87,6 +88,27 @@
       </v-toolbar-items>
     </v-app-bar>
 
+    <!--    <v-navigation-drawer v-model="drawer" class="mt-14" app>-->
+    <!--      <v-list dense nav flat>-->
+    <!--        <v-subheader class="text-uppercase">Requests</v-subheader>-->
+    <!--        <v-list-item-group v-model="active">-->
+    <!--          <v-list-item-->
+    <!--            v-for="(menuItem, i) in menuItems"-->
+    <!--            :key="menuItem.label"-->
+    <!--            :color="i === active ? menuItem.color : ''"-->
+    <!--            @click="$router.push({ name: menuItem.routerName }).catch(() => {})"-->
+    <!--          >-->
+    <!--            <v-list-item-icon>-->
+    <!--              <v-icon>{{ menuItem.icon }}</v-icon>-->
+    <!--            </v-list-item-icon>-->
+    <!--            <v-list-item-content>-->
+    <!--              <v-list-item-title v-text="menuItem.label"></v-list-item-title>-->
+    <!--            </v-list-item-content>-->
+    <!--          </v-list-item>-->
+    <!--        </v-list-item-group>-->
+    <!--      </v-list>-->
+    <!--    </v-navigation-drawer>-->
+
     <v-main
       class="toolbar-padding-offset pt-0"
       :class="{
@@ -152,6 +174,7 @@ export default {
   },
   data: () => ({
     active: undefined,
+    drawer: true,
   }),
   computed: {
     ...mapGetters({

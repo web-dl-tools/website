@@ -104,6 +104,7 @@
         </v-col>
       </v-row>
     </v-container>
+
     <v-dialog v-model="dialog" max-width="500">
       <v-card outlined raised>
         <v-card-title>Delete</v-card-title>
@@ -186,12 +187,6 @@ export default {
       .catch(() => this.$router.push({ name: "overview" }).catch(() => {}))
       .finally(() => {
         this.request_loading = false;
-        // if (this.request.title) {
-        //   this.$store.dispatch(
-        //     "application/setTitle",
-        //     `${this.$store.getters["application/getTitle"]}: ${this.request.title}`
-        //   );
-        // }
       });
   },
 };
