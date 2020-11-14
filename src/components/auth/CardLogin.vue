@@ -19,6 +19,7 @@
           name="password"
           prepend-icon="mdi-lock"
           type="password"
+          hide-details
           v-on:keyup.enter.native="login"
         />
       </v-form>
