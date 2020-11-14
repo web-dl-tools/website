@@ -20,9 +20,7 @@
             </v-card-subtitle>
             <v-card-text>
               <v-row>
-                <v-col cols="4" class="py-t font-weight-black">
-                  Version
-                </v-col>
+                <v-col cols="4" class="py-t font-weight-black"> Version </v-col>
                 <v-col cols="8" class="py-t">
                   {{ commitInfo.tag }}
                 </v-col>
@@ -86,9 +84,7 @@
               </v-row>
 
               <v-row>
-                <v-col cols="4" class="py-0 font-weight-black">
-                  Source
-                </v-col>
+                <v-col cols="4" class="py-0 font-weight-black"> Source </v-col>
                 <v-col cols="8" class="py-0">
                   <a href="https://gitlab.com/web-dl/website" target="_blank">
                     https://gitlab.com/web-dl/website
@@ -110,9 +106,7 @@
             </v-card-subtitle>
             <v-card-text>
               <v-row>
-                <v-col cols="4" class="py-0 font-weight-black">
-                  Source
-                </v-col>
+                <v-col cols="4" class="py-0 font-weight-black"> Source </v-col>
                 <v-col cols="8" class="py-0">
                   <a href="https://gitlab.com/web-dl/api" target="_blank">
                     https://gitlab.com/web-dl/api

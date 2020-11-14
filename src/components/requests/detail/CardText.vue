@@ -18,17 +18,13 @@
         <v-row>
           <v-col cols="12" md="6">
             <p class="mb-2">
-              <v-icon>
-                mdi-shape-outline
-              </v-icon>
+              <v-icon> mdi-shape-outline </v-icon>
               <span class="ml-1">
                 {{ formatRequest(item.request_type) }} Request
               </span>
             </p>
             <p class="mb-2">
-              <v-icon>
-                mdi-plus
-              </v-icon>
+              <v-icon> mdi-plus </v-icon>
               <span class="ml-1">
                 Requested on
                 {{ formatDate(item.created_at, "dddd, LL [at] HH:mm:ss") }}
@@ -41,9 +37,7 @@
               v-if="item.status !== 'pending' && item.status !== 'failed'"
               class="mb-2"
             >
-              <v-icon>
-                mdi-download-outline
-              </v-icon>
+              <v-icon> mdi-download-outline </v-icon>
               <span class="ml-1">
                 Started at
                 {{
@@ -55,9 +49,7 @@
               </span>
             </p>
             <p v-if="item.status === 'completed'" class="mb-2">
-              <v-icon>
-                mdi-checkbox-marked-circle-outline
-              </v-icon>
+              <v-icon> mdi-checkbox-marked-circle-outline </v-icon>
               <span class="ml-1">
                 Completed at
                 {{
@@ -74,9 +66,7 @@
               v-if="item.status !== 'pending' && item.status !== 'failed'"
               class="mb-2"
             >
-              <v-icon>
-                mdi-timer-sand
-              </v-icon>
+              <v-icon> mdi-timer-sand </v-icon>
               <span class="ml-1">
                 In queue for
                 {{
@@ -89,9 +79,7 @@
               </span>
             </p>
             <p v-if="item.status === 'completed'" class="mb-2">
-              <v-icon>
-                mdi-progress-download
-              </v-icon>
+              <v-icon> mdi-progress-download </v-icon>
               <span class="ml-1">
                 Processed in
                 {{

@@ -1,6 +1,6 @@
 <template>
   <v-tab-item>
-    <json-viewer v-model="item" theme="custom-json-theme" />
+    <json-viewer :value="item" theme="custom-json-theme" />
   </v-tab-item>
 </template>
 
