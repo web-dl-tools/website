@@ -216,13 +216,13 @@ export default {
   },
   methods: {
     /**
-     * Emit a dataChange() event upstream to notify the stepper component.
+     * Emit a data-change() event upstream to notify the stepper component.
      *
      * @param valid
      */
     updateData(valid) {
       if (valid) {
-        this.$emit("dataChange", {
+        this.$emit("data-change", {
           step: 3,
           data: {
             extensions: this.extensions,
@@ -231,7 +231,7 @@ export default {
           label: "",
         });
       } else {
-        this.$emit("dataChange", {
+        this.$emit("data-change", {
           step: 3,
           data: {},
           label: "",

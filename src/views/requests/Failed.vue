@@ -2,7 +2,7 @@
   <v-main class="background-wallpaper-subtle-image">
     <v-container>
       <v-row>
-        <v-col class="px-0 py-0" cols="12" md="8">
+        <v-col class="px-0 py-0" cols="12">
           <p class="mx-3 my-12 black--text font-weight-thin display-3">
             {{ title }}
           </p>

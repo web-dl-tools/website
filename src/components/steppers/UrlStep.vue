@@ -14,7 +14,6 @@
 <script>
 import formatters from "../../mixins/formatters";
 
-formatters;
 export default {
   name: "components.steppers.url-step",
   mixins: [formatters],
@@ -64,19 +63,19 @@ export default {
   },
   methods: {
     /**
-     * Emit a dataChange() event upstream to notify the stepper component.
+     * Emit a data-change() event upstream to notify the stepper component.
      *
      * @param valid
      */
     updateData(valid) {
       if (valid) {
-        this.$emit("dataChange", {
+        this.$emit("data-change", {
           step: 1,
           data: { url: this.url },
           label: this.label,
         });
       } else {
-        this.$emit("dataChange", {
+        this.$emit("data-change", {
           step: 1,
           data: {},
           label: this.label,

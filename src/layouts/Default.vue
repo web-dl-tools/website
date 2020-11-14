@@ -1,19 +1,32 @@
 <template>
   <div>
-    <v-toolbar color="grey darken-4" dark short flat class="fixed-top">
-      <v-toolbar-title class="ml-n4 ml-md-2">
+    <v-app-bar color="grey darken-4" app dark short flat class="fixed-top">
+      <v-toolbar-title class="ml-n4 ml-md-2 mr-2">
         <v-btn
           class="transparent"
+          elevation="0"
           @click="$router.push({ name: 'overview' }).catch(() => {})"
         >
-          <v-icon class="pr-2">
-            mdi-cloud-download-outline
-          </v-icon>
+          <v-icon class="pr-2"> mdi-cloud-download-outline </v-icon>
           <span class="title font-weight-light font-italic text-no-transform">
             Web DL
           </span>
         </v-btn>
       </v-toolbar-title>
+      <v-spacer />
+      <v-text-field
+        v-show="this.active !== undefined"
+        :value="search"
+        prepend-inner-icon="mdi-magnify"
+        label="Search"
+        clearable
+        dense
+        flat
+        rounded
+        hide-details
+        solo-inverted
+        @input="setSearch"
+      />
       <v-spacer />
       <v-toolbar-items class="hidden-sm-and-down">
         <v-btn
@@ -31,11 +44,11 @@
           vertical
         />
         <v-btn
-          text
-          @click="$router.push({ name: menuItem.routerName }).catch(() => {})"
           v-for="(menuItem, i) in menuItems"
           :key="menuItem.label"
           :color="i === active ? menuItem.color : ''"
+          text
+          @click="$router.push({ name: menuItem.routerName }).catch(() => {})"
         >
           <v-icon>{{ menuItem.icon }}</v-icon>
         </v-btn>
@@ -45,9 +58,7 @@
         <v-menu :rounded="'0 b'" offset-y>
           <template v-slot:activator="{ on, attrs }">
             <v-btn v-on="on" v-bind="attrs" icon>
-              <v-icon>
-                mdi-account-circle-outline
-              </v-icon>
+              <v-icon> mdi-account-circle-outline </v-icon>
             </v-btn>
           </template>
           <v-list class="py-0">
@@ -75,10 +86,10 @@
           </v-list>
         </v-menu>
       </v-toolbar-items>
-    </v-toolbar>
+    </v-app-bar>
 
     <v-main
-      class="toolbar-padding-offset"
+      class="toolbar-padding-offset pt-0"
       :class="{
         'mobile-bottom-navigation-padding-offset':
           $vuetify.breakpoint.smAndDown,
@@ -148,6 +159,7 @@ export default {
       title: "application/getTitle",
       menuItems: "application/getMenuItems",
       apiError: "application/apiHasError",
+      search: "application/getSearch",
     }),
   },
   methods: {
@@ -168,9 +180,13 @@ export default {
           this.active = 2;
           break;
         default:
+          this.setSearch("");
           this.active = undefined;
           break;
       }
+    },
+    setSearch(search) {
+      this.$store.dispatch("application/setSearch", search);
     },
   },
   /**

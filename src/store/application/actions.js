@@ -69,3 +69,7 @@ export const disconnectWebsocket = ({ state, commit }) => {
 export const setTitle = ({ commit }, title) => {
   commit("SET_TITLE", title);
 };
+
+export const setSearch = ({ commit }, search) => {
+  commit("SET_SEARCH", search);
+};

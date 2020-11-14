@@ -19,7 +19,7 @@
             </v-stepper-step>
 
             <v-stepper-content step="1">
-              <url-step :active="step === 1" @dataChange="dataChange" />
+              <url-step :active="step === 1" @data-change="dataChange" />
               <v-btn
                 outlined
                 :color="error ? 'error' : 'primary'"
@@ -40,7 +40,7 @@
               <request-type-step
                 :active="step === 2"
                 :handlers="handlers"
-                @dataChange="dataChange"
+                @data-change="dataChange"
               />
               <v-btn
                 class="mt-2"
@@ -66,18 +66,18 @@
                 v-if="step2Data.request_type === 'AudioVisualRequest'"
                 :active="step === 3"
                 :data="handlers.find((i) => i.request === 'AudioVisualRequest')"
-                @dataChange="dataChange"
+                @data-change="dataChange"
               />
               <resource-step
                 v-else-if="step2Data.request_type === 'ResourceRequest'"
                 :active="step === 3"
                 :data="handlers.find((i) => i.request === 'ResourceRequest')"
-                @dataChange="dataChange"
+                @data-change="dataChange"
               />
               <request-type-config-step
                 v-else
                 :active="step === 3"
-                @dataChange="dataChange"
+                @data-change="dataChange"
               />
               <v-btn
                 outlined
