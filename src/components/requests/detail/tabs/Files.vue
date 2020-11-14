@@ -40,9 +40,7 @@
       </template>
     </v-treeview>
     <v-col v-else cols="12">
-      <p class="mb-0">
-        No files are available.
-      </p>
+      <p class="mb-0">No files are available.</p>
     </v-col>
   </v-tab-item>
 </template>
@@ -140,12 +138,12 @@ export default {
       }
     },
     /**
-     * Emit a countChange() event upstream to notify the tabs component.
+     * Emit a count-change() event upstream to notify the tabs component.
      *
      * @param n
      */
     files(n) {
-      this.$emit("countChange", this.countFiles(n));
+      this.$emit("count-change", this.countFiles(n));
     },
   },
 };

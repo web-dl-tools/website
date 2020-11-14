@@ -14,7 +14,7 @@
       <span>{{ formatDate(item.data.upload_date, "LL") }}</span>
       <v-rating
         v-if="'average_rating' in item.data"
-        v-model="item.data.average_rating"
+        :value="item.data.average_rating"
         background-color="orange lighten-3"
         class="mt-n2 float-right"
         color="orange"
@@ -35,17 +35,13 @@
         </v-col>
       </v-row>
       <v-row v-if="'tags' in item.data && item.data.tags.length">
-        <v-col class="py-0 font-weight-light" cols="3">
-          Tags
-        </v-col>
+        <v-col class="py-0 font-weight-light" cols="3"> Tags </v-col>
         <v-col class="py-0 body-2 font-weight-thin" cols="9">
           {{ item.data.tags.join(", ") }}
         </v-col>
       </v-row>
       <v-row v-if="'license' in item.data && item.data.license">
-        <v-col class="py-0 font-weight-light" cols="3">
-          Copyright
-        </v-col>
+        <v-col class="py-0 font-weight-light" cols="3"> Copyright </v-col>
         <v-col class="py-0 body-2 font-weight-thin" cols="9">
           {{ item.data.license }}
         </v-col>

@@ -8,9 +8,7 @@
     <v-card-title>
       {{ title }}
       <v-spacer />
-      <v-icon v-if="selected">
-        mdi-check-circle-outline
-      </v-icon>
+      <v-icon v-if="selected"> mdi-check-circle-outline </v-icon>
     </v-card-title>
     <slot></slot>
   </v-card>
@@ -35,6 +33,7 @@ export default {
      * Emit a onClick() event upstream to notify the card has been clicked on.
      */
     click() {
+      // eslint-disable-next-line vue/custom-event-name-casing
       this.$emit("onClick");
     },
   },

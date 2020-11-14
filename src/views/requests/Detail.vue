@@ -42,9 +42,7 @@
                 class="float-right mt-n2 mr-n2"
                 @click="openExternalTab"
               >
-                <v-icon>
-                  mdi-open-in-new
-                </v-icon>
+                <v-icon> mdi-open-in-new </v-icon>
               </v-btn>
               <v-btn
                 class="float-right mt-n2 mr-2"
@@ -91,14 +89,14 @@
                 <files
                   :active="tab === 1"
                   :request_id="this.$route.params.requestId"
-                  @countChange="(n) => (files_count = n)"
+                  @count-change="(n) => (files_count = n)"
                 />
                 <timeline :active="tab === 2" :item="request" />
                 <raw :active="tab === 3" :item="request" />
                 <logs
                   :active="tab === 4"
                   :request_id="this.$route.params.requestId"
-                  @countChange="(n) => (logs_count = n)"
+                  @count-change="(n) => (logs_count = n)"
                 />
               </v-tabs-items>
             </v-card-text>
@@ -120,9 +118,7 @@
           <v-btn color="warning darken-1" text @click="dialog = false">
             Cancel
           </v-btn>
-          <v-btn color="error darken-1" text @click="remove">
-            Delete
-          </v-btn>
+          <v-btn color="error darken-1" text @click="remove"> Delete </v-btn>
         </v-card-actions>
       </v-card>
     </v-dialog>

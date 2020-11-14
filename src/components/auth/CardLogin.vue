@@ -1,11 +1,7 @@
 <template>
   <v-card class="card-single-card mt-12" outlined raised>
-    <v-card-title>
-      Login
-    </v-card-title>
-    <v-card-subtitle>
-      Authenticate with Web DL.
-    </v-card-subtitle>
+    <v-card-title> Login </v-card-title>
+    <v-card-subtitle> Authenticate with Web DL. </v-card-subtitle>
     <v-card-text>
       <v-form>
         <v-text-field

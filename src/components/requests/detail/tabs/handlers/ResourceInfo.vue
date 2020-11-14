@@ -25,9 +25,7 @@
         </v-col>
       </v-row>
       <v-row>
-        <v-col class="py-0 font-weight-light" cols="3">
-          Extensions
-        </v-col>
+        <v-col class="py-0 font-weight-light" cols="3"> Extensions </v-col>
         <v-col class="pa-0" cols="9">
           <v-chip
             v-for="extension in item.extensions"
