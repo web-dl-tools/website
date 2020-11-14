@@ -77,19 +77,19 @@ export default {
   },
   methods: {
     /**
-     * Emit a dataChange() event upstream to notify the stepper component.
+     * Emit a data-change() event upstream to notify the stepper component.
      *
      * @param valid
      */
     updateData(valid) {
       if (valid) {
-        this.$emit("dataChange", {
+        this.$emit("data-change", {
           step: 2,
           data: { request_type: this.request_type },
           label: this.label,
         });
       } else {
-        this.$emit("dataChange", {
+        this.$emit("data-change", {
           step: 2,
           data: {},
           label: this.label,

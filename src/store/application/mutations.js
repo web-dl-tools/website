@@ -32,3 +32,5 @@ export const CONNECT_WEBSOCKET = (state, websocket) =>
   (state.websocket = websocket);
 
 export const DISCONNECT_WEBSOCKET = (state) => (state.websocket = null);
+
+export const SET_SEARCH = (state, search) => (state.search = search);

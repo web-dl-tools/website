@@ -4,7 +4,7 @@
     :headers="headers"
     :items="_items"
     :items_per_page="items_per_page"
-    no_data_text="There are no failed requests."
+    no_data_text="Yay! There are no failed requests."
   />
 </template>
 

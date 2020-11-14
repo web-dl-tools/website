@@ -2,9 +2,7 @@
   <div>
     <v-row>
       <v-col cols="12">
-        <p class="body-2 mb-0">
-          There is no config required for this handler.
-        </p>
+        <p class="body-2 mb-0">There is no config required for this handler.</p>
       </v-col>
     </v-row>
   </div>
@@ -30,10 +28,10 @@ export default {
   },
   methods: {
     /**
-     * Emit a dataChange() event upstream to notify the stepper component.
+     * Emit a data-change() event upstream to notify the stepper component.
      */
     updateData() {
-      this.$emit("dataChange", {
+      this.$emit("data-change", {
         step: 3,
         data: { skip: true },
         label: "",

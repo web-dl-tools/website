@@ -1,26 +1,6 @@
 <template>
   <div>
-    <v-col
-      v-if="extended"
-      v-bind:class="[
-        $vuetify.breakpoint.mdAndUp ? 'search-field mb-15' : 'mt-n4',
-      ]"
-      class="px-0"
-      cols="12"
-      md="4"
-      offset-md="8"
-    >
-      <v-text-field
-        v-model="search"
-        color="warning"
-        prepend-inner-icon="mdi-magnify"
-        label="Search"
-        clearable
-        hide-details
-      />
-    </v-col>
-
-    <v-card elevation-8>
+    <v-card raised>
       <v-data-table
         :headers="headers"
         :items-per-page="parseInt(items_per_page)"
@@ -51,9 +31,6 @@ import { mapGetters } from "vuex";
 
 export default {
   name: "components.requests.table",
-  data: () => ({
-    search: "",
-  }),
   props: {
     extended: Boolean,
     headers: Array,
@@ -68,6 +45,7 @@ export default {
   computed: {
     ...mapGetters({
       loading: "application/isLoading",
+      search: "application/getSearch",
     }),
   },
   methods: {
