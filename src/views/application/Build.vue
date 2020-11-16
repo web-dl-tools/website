@@ -15,8 +15,7 @@
               Website
             </v-card-title>
             <v-card-subtitle class="subtitle-2">
-              Below you can find information about the current website build
-              information of Web DL.
+              Below you can find information about the current website build of Web DL.
             </v-card-subtitle>
             <v-card-text>
               <v-row>
@@ -101,8 +100,7 @@
               API
             </v-card-title>
             <v-card-subtitle class="subtitle-2">
-              Below you can find information about the current API build
-              information of Web DL.
+              Below you can find information about the current API build of Web DL.
             </v-card-subtitle>
             <v-card-text>
               <v-row>
