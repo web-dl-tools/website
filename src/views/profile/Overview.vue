@@ -31,7 +31,7 @@
               <v-row>
                 <v-col cols="4" class="py-0 font-weight-black">Joined on</v-col>
                 <v-col cols="8" class="py-0">
-                  {{ formatDate(user.date_joined) }}
+                  {{ formatDate(user.date_joined, "LLLL") }}
                 </v-col>
               </v-row>
               <v-row>

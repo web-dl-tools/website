@@ -26,6 +26,10 @@ pre {
   cursor: pointer;
 }
 
+.display-inline-flex {
+  display: inline-flex;
+}
+
 .text-no-transform {
   text-transform: none;
 }
@@ -40,4 +44,10 @@ pre {
 
 .text-color-inherit {
   color: inherit !important;
+}
+
+.log {
+  font-size: 13px;
+  font-family: Consolas, Menlo, Courier, monospace;
+  overflow-x: auto;
 }

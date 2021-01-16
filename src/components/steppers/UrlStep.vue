@@ -83,5 +83,16 @@ export default {
       }
     },
   },
+  /**
+   * Retrieve url query param from URL and automatically proceed to next step
+   * if url is available and valid.
+   */
+  created() {
+    if ("url" in this.$route.query) {
+      this.url = this.$route.query["url"];
+      this.updateData(this.valid);
+      this.$emit("automatic-action");
+    }
+  },
 };
 </script>

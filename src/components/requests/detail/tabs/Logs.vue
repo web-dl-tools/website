@@ -24,19 +24,23 @@
       <v-timeline-item v-for="log in logs" :key="log.id" small>
         <v-row justify="space-between">
           <v-col cols="7">
-            <v-chip
-              :color="formatLogLevelColor(log.level)"
-              class="white--text mr-2"
-              label
-              small
-            >
-              {{ log.level_display }}
-            </v-chip>
-            {{ log.message }}
+            <v-col cols="12" md="4" lg="2" class="pa-0 d-inline-flex">
+              <v-chip
+                :color="formatLogLevelColor(log.level)"
+                class="white--text mr-2"
+                label
+                small
+              >
+                {{ log.level_display }}
+              </v-chip>
+            </v-col>
+            <v-col cols="9" class="pa-0 d-inline-flex log">
+              {{ log.message }}
+            </v-col>
           </v-col>
-          <v-col class="text-right" cols="5">{{
-            formatDate(log.created_at, "YYYY-MM-DD H:mm:ss.SSS")
-          }}</v-col>
+          <v-col class="text-right" cols="5">
+            {{ formatDate(log.created_at, "YYYY-MM-DD H:mm:ss.SSS") }}
+          </v-col>
         </v-row>
       </v-timeline-item>
     </v-timeline>

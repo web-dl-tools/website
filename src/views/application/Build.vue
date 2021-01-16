@@ -15,7 +15,8 @@
               Website
             </v-card-title>
             <v-card-subtitle class="subtitle-2">
-              Below you can find information about the current website build of Web DL.
+              Below you can find information about the current website build of
+              Web DL.
             </v-card-subtitle>
             <v-card-text>
               <v-row>
@@ -35,7 +36,7 @@
                   Build date
                 </v-col>
                 <v-col cols="8" class="py-0">
-                  {{ formatDate(commitInfo.commiter.date) }}
+                  {{ formatDate(commitInfo.commiter.date, "LLLL") }}
                 </v-col>
               </v-row>
               <v-row>
@@ -100,7 +101,8 @@
               API
             </v-card-title>
             <v-card-subtitle class="subtitle-2">
-              Below you can find information about the current API build of Web DL.
+              Below you can find information about the current API build of Web
+              DL.
             </v-card-subtitle>
             <v-card-text>
               <v-row>

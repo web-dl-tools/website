@@ -56,14 +56,19 @@
     </v-row>
 
     <v-row class="mt-n6">
-      <v-col cols="12" class="pb-0">
-        <small class="font-weight-light grey--text text--lighten-1">
+      <v-col cols="12" class="pb-0 text-center">
+        <v-btn
+          v-show="!show_single_file_formats"
+          @click="show_single_file_formats = true"
+          color="primary"
+          text
+          x-small
+        >
           Or compile your own.
-        </small>
-        <v-checkbox class="mt-0" v-model="show_single_file_formats" dense />
+        </v-btn>
       </v-col>
     </v-row>
-    <v-row class="mt-n8" v-if="show_single_file_formats">
+    <v-row v-if="show_single_file_formats">
       <v-col v-if="hasVideoOrAudioFormats" cols="12" md="6">
         <p class="text-center caption">Video</p>
         <selectable-card

@@ -92,6 +92,24 @@ export default Vue.mixin({
 
       return parseFloat((bytes / Math.pow(k, i)).toFixed(dm)) + " " + sizes[i];
     },
+    formatRequestStatus(status) {
+      switch (status) {
+        case "failed":
+          return "Failed";
+        case "completed":
+          return "Completed";
+        case "downloading":
+          return "Downloading";
+        case "pre_processing":
+          return "Pre-processing";
+        case "post_processing":
+          return "Post-processing";
+        case "pending":
+          return "Pending";
+        default:
+          return "Unknown";
+      }
+    },
     /**
      * Calculate a color value for a given request status.
      *

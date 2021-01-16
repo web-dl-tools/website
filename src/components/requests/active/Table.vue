@@ -14,7 +14,7 @@
         label
         small
       >
-        {{ item.status_display }}
+        {{ formatRequestStatus(item.status) }}
       </v-chip>
     </template>
   </request-table>
