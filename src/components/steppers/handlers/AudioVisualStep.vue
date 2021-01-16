@@ -64,7 +64,7 @@
           text
           x-small
         >
-          Or compile your own.
+          Or compile your own
         </v-btn>
       </v-col>
     </v-row>
