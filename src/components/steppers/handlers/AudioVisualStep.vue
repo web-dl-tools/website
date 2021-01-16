@@ -60,7 +60,6 @@
         <v-btn
           v-show="!show_single_file_formats"
           @click="show_single_file_formats = true"
-          color="primary"
           text
           x-small
         >
