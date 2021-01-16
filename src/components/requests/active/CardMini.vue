@@ -35,7 +35,7 @@
         label
         small
       >
-        {{ request.status_display }}
+        {{ formatRequestStatus(request.status) }}
       </v-chip>
     </v-card-title>
     <v-card-subtitle class="subtitle-2">

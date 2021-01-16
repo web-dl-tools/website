@@ -35,7 +35,7 @@
                 small
                 :color="formatRequestStatusColor(request.status)"
               >
-                {{ request.status_display }}
+                {{ formatRequestStatus(request.status) }}
               </v-chip>
               <v-btn
                 icon

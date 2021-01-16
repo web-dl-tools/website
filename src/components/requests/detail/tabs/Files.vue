@@ -102,7 +102,7 @@ export default {
     openFile(path) {
       const url = `${
         Vue.$axios.defaults.baseURL
-      }download/file/?auth_token=${Vue.$axios.defaults.headers.common.Authorization.replace(
+      }download/file?auth_token=${Vue.$axios.defaults.headers.common.Authorization.replace(
         "Token ",
         ""
       )}&path=${encodeURIComponent(path)}`;

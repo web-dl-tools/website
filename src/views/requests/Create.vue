@@ -19,7 +19,11 @@
             </v-stepper-step>
 
             <v-stepper-content step="1">
-              <url-step :active="step === 1" @data-change="dataChange" />
+              <url-step
+                :active="step === 1"
+                @data-change="dataChange"
+                @automatic-action="getHandlers"
+              />
               <v-btn
                 outlined
                 :color="error ? 'error' : 'primary'"
