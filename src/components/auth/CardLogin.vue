@@ -6,8 +6,8 @@
       <v-form>
         <v-text-field
           v-model="username"
-          label="Login"
-          name="login"
+          label="Username"
+          name="username"
           prepend-icon="mdi-account"
           type="text"
           autofocus
