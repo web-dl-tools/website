@@ -65,7 +65,7 @@
               </small>
             </v-stepper-step>
 
-            <v-stepper-content class="mb-n4" step="3">
+            <v-stepper-content step="3">
               <audio-visual-step
                 v-if="step2Data.request_type === 'AudioVisualRequest'"
                 :active="step === 3"
