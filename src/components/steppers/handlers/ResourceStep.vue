@@ -125,7 +125,7 @@
           "
         />
       </v-col>
-      <v-col class="pt-4" cols="12">
+      <v-col class="pt-4 pb-0" cols="12">
         <v-row>
           <v-col cols="12">
             <v-combobox

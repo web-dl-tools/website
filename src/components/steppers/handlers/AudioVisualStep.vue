@@ -55,7 +55,7 @@
       </v-col>
     </v-row>
 
-    <v-row class="mt-n6">
+    <v-row class="mt-n6 pb-2">
       <v-col cols="12" class="pb-0 text-center">
         <v-btn
           v-show="!show_single_file_formats"

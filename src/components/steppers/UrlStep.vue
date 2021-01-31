@@ -7,6 +7,7 @@
       type="text"
       autofocus
       clearable
+      v-on:keyup.enter.native="$emit('automatic-action')"
     />
   </div>
 </template>
@@ -43,8 +44,8 @@ export default {
      */
     label() {
       return this.valid && !this.active
-        ? this.truncate(this.url, 160)
-        : "Submit the URL of the resource.";
+        ? `Download from ${this.truncate(this.url, 160)}`
+        : "Where can we find the resource?";
     },
   },
   watch: {
@@ -82,6 +83,11 @@ export default {
         });
       }
     },
+    automaticAction() {
+      this.url = this.$route.query["url"];
+      this.updateData(this.valid);
+      this.$emit("automatic-action");
+    },
   },
   /**
    * Retrieve url query param from URL and automatically proceed to next step
@@ -89,9 +95,7 @@ export default {
    */
   created() {
     if ("url" in this.$route.query) {
-      this.url = this.$route.query["url"];
-      this.updateData(this.valid);
-      this.$emit("automatic-action");
+      this.automaticAction();
     }
   },
 };

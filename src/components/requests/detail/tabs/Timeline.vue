@@ -1,6 +1,6 @@
 <template>
   <v-tab-item>
-    <v-timeline>
+    <v-timeline :dense="$vuetify.breakpoint.smAndDown">
       <v-timeline-item v-if="item.status === 'completed'" color="success" small>
         <v-card outlined>
           <v-card-title class="headline font-weight-light">
