@@ -49,6 +49,11 @@ $ make stop && make clean
 - Node.js 15.7.0+
 - npm 7.4.2+
 
+## Project setup
+``` bash
+$ yarn install
+```
+
 ### Compiles and hot-reloads for development
 
 ``` bash
@@ -66,3 +71,6 @@ $ yarn lint
 ``` bash
 $ yarn build
 ```
+
+### Customize configuration
+See [Configuration Reference](https://cli.vuejs.org/config/).
