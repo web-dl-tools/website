@@ -49,7 +49,7 @@ $ make stop && make clean
 - Node.js 15.7.0+
 - npm 7.4.2+
 
-## Project setup
+### Project setup
 ``` bash
 $ yarn install
 ```
