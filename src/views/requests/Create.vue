@@ -83,7 +83,7 @@
               />
               <v-btn
                 outlined
-                class="mb-4"
+                class="mb-6"
                 :color="error ? 'error' : 'primary'"
                 :loading="loading"
                 :disabled="loading || !isEmptyObject(step3Data)"
