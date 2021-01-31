@@ -8,7 +8,7 @@
       </v-row>
       <v-row>
         <v-col cols="12">
-          <v-stepper v-model="step" vertical class="elevation-8 pb-2">
+          <v-stepper v-model="step" vertical class="elevation-8 pb-0">
             <v-stepper-step
               :editable="step === 2"
               :complete="step > 1"
@@ -59,10 +59,8 @@
             </v-stepper-content>
 
             <v-stepper-step step="3">
-              Configure the handler settings
-              <small>
-                Configure the required custom settings for this handler.
-              </small>
+              Configure the handler
+              <small>What are the specifics to download?</small>
             </v-stepper-step>
 
             <v-stepper-content step="3">
@@ -123,11 +121,11 @@ export default {
   },
   data: () => ({
     step1Data: {},
-    step1Label: "Submit the URL of the resource.",
+    step1Label: "Where can we find the resource?",
     step2Data: {},
-    step2Label: "Select a handler to process the resource.",
+    step2Label: "How do you want to download the resource?",
     step3Data: {},
-    step3Label: "",
+    step3Label: "ignored value.",
     handlers: [],
     step: 1,
     loading: false,

@@ -55,8 +55,8 @@ export default {
      */
     label() {
       return this.valid && !this.active
-        ? this.formatRequest(this.request_type)
-        : "Select a handler to process the resource.";
+        ? `Using the ${this.formatRequest(this.request_type)} handler`
+        : "How do you want to download the resource?";
     },
   },
   watch: {

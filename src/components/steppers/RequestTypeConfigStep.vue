@@ -1,8 +1,11 @@
 <template>
   <div>
     <v-row>
-      <v-col cols="12">
-        <p class="body-2 mb-0">There is no config required for this handler.</p>
+      <v-col cols="12" class="pt-0">
+        <p class="body-2 mb-n1">No config needed.</p>
+        <small class="font-weight-light grey--text text--lighten-1">
+          There is no additional configuration required for this handler.
+        </small>
       </v-col>
     </v-row>
   </div>
@@ -34,7 +37,7 @@ export default {
       this.$emit("data-change", {
         step: 3,
         data: { skip: true },
-        label: "",
+        label: "What are the specifics to download?",
       });
     },
   },
