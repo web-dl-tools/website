@@ -46,8 +46,8 @@ $ make stop && make clean
 ## Development
 
 ### Runtime environment
-- Node.js 15.7.0+
-- npm 7.4.2+
+- Node.js 15.5.1+
+- yarn 1.22.5+
 
 ### Project setup
 ``` bash
