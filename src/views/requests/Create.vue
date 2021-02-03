@@ -121,7 +121,7 @@ export default {
   },
   data: () => ({
     step1Data: {},
-    step1Label: "Where can we find the resource?",
+    step1Label: "Where is the resource located?",
     step2Data: {},
     step2Label: "How do you want to download the resource?",
     step3Data: {},
