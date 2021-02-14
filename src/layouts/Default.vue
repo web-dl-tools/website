@@ -9,7 +9,7 @@
           @click="$router.push({ name: 'overview' }).catch(() => {})"
         >
           <v-icon class="pr-2"> mdi-cloud-download-outline </v-icon>
-          <span class="title font-weight-light font-italic text-no-transform">
+          <span class="title font-weight-light font-italic text-no-transform hidden-sm-and-down">
             Web DL
           </span>
         </v-btn>
