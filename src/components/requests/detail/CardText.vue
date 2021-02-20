@@ -43,7 +43,7 @@
                 {{
                   sameDate(item.created_at, item.start_processing_at)
                     ? ""
-                    : formatDate(item.start_processing_at, "LL HH:mm:ss")
+                    : formatDate(item.start_processing_at, "LL")
                 }}
                 {{ formatDate(item.start_processing_at, "HH:mm:ss") }}
               </span>
