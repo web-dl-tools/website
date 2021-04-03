@@ -17,7 +17,7 @@ build image(s):
   artifacts:
     name: "web-dl_website"
     paths:
-      - "/usr/share/nginx/html/*"
+      - "dist/*"
 
 compose services:
   stage: build
