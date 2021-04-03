@@ -15,8 +15,9 @@ build image(s):
   script:
     - docker-compose build
   artifacts:
+    name: "web-dl_website"
     paths:
-      - /usr/share/nginx/html
+      - "/usr/share/nginx/html/*"
 
 compose services:
   stage: build
