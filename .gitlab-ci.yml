@@ -3,12 +3,22 @@ image: docker:18.09.2
 services:
   - docker:dind
 
+stages:
+  - lint
+  - build
+  - compose
+
 before_script:
-  - apk add --no-cache py2-pip
+  - apk add --no-cache py2-pip nodejs npm git openssh
+  - npm install -g yarn
   - pip install --no-cache-dir docker-compose==1.23.2
   - pip install docker-compose
-  - docker info
-  - docker-compose version
+
+lint:
+  stage: lint
+  script:
+    - yarn install
+    - yarn lint
 
 build image(s):
   stage: build
@@ -20,7 +30,7 @@ build image(s):
       - "code/dist/*"
 
 compose services:
-  stage: build
+  stage: compose
   script:
     - docker-compose up -d
     - docker ps
