@@ -31,13 +31,30 @@
           Categories
         </v-col>
         <v-col class="py-0 body-2 font-weight-thin" cols="9">
-          {{ item.data.categories.join(", ") }}
+          <v-chip
+            v-for="category in item.data.categories"
+            :key="category"
+            class="ma-1 ml-0"
+            label
+            x-small
+          >
+            {{ category }}
+          </v-chip>
         </v-col>
       </v-row>
       <v-row v-if="'tags' in item.data && item.data.tags.length">
         <v-col class="py-0 font-weight-light" cols="3"> Tags </v-col>
         <v-col class="py-0 body-2 font-weight-thin" cols="9">
-          {{ item.data.tags.join(", ") }}
+          <v-chip
+            v-for="tag in item.data.tags"
+            :key="tag"
+            class="ma-1 ml-0"
+            label
+            outlined
+            x-small
+          >
+            {{ tag }}
+          </v-chip>
         </v-col>
       </v-row>
       <v-row v-if="'license' in item.data && item.data.license">
