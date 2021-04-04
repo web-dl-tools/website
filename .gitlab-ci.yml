@@ -9,7 +9,8 @@ stages:
   # - compose
 
 before_script:
-  - apk add --no-cache py2-pip
+  - apk add --no-cache py2-pip nodejs npm
+  - npm install -g yarn
   - pip install --no-cache-dir docker-compose==1.23.2
   - pip install docker-compose
 
