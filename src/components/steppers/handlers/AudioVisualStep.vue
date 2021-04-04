@@ -51,6 +51,26 @@
               </v-card-subtitle>
             </selectable-card>
           </v-col>
+          <v-col v-if="!hasVideoOrAudioFormats" cols="12" md="6">
+            <selectable-card
+              :selected="
+                video_format_selection === bestSingleFileFormat &&
+                audio_format_selection === ''
+              "
+              :disabled="false"
+              :title="`Best single file`"
+              @onClick="
+                () => {
+                  video_format_selection = bestSingleFileFormat;
+                  audio_format_selection = '';
+                }
+              "
+            >
+              <v-card-subtitle class="caption">
+                Best quality format represented by a single file.
+              </v-card-subtitle>
+            </selectable-card>
+          </v-col>
         </v-row>
       </v-col>
     </v-row>
@@ -248,6 +268,14 @@ export default {
      */
     hasVideoFormats() {
       return this.videoOnlyFormats.length;
+    },
+    /**
+     * Return the best possible single file format available.
+     *
+     * @returns {*}
+     */
+    bestSingleFileFormat() {
+      return this.data.options[this.data.options.length - 1].format_id;
     },
     /**
      * Check whether there are any audio or video formats available.
