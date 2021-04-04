@@ -4,24 +4,15 @@ services:
   - docker:dind
 
 stages:
-  # - build
   - lint
-  # - compose
+  - build
+  - compose
 
 before_script:
-  - apk add --no-cache py2-pip nodejs npm
+  - apk add --no-cache py2-pip nodejs npm git openssh
   - npm install -g yarn
   - pip install --no-cache-dir docker-compose==1.23.2
   - pip install docker-compose
-
-# build image(s):
-#   stage: build
-#   script:
-#     - docker-compose build
-#   artifacts:
-#     name: "web-dl_website"
-#     paths:
-#       - "code/dist/*"
 
 lint:
   stage: lint
@@ -29,10 +20,19 @@ lint:
     - yarn install
     - yarn lint
 
-# compose services:
-#   stage: compose
-#   script:
-#     - docker-compose up -d
-#     - docker ps
-#   after_script:
-#     - docker-compose down --remove-orphans || true
+build image(s):
+  stage: build
+  script:
+    - docker-compose build
+  artifacts:
+    name: "web-dl_website"
+    paths:
+      - "code/dist/*"
+
+compose services:
+  stage: compose
+  script:
+    - docker-compose up -d
+    - docker ps
+  after_script:
+    - docker-compose down --remove-orphans || true
