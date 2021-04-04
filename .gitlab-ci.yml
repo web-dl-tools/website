@@ -17,7 +17,7 @@ build image(s):
   artifacts:
     name: "web-dl_website"
     paths:
-      - "dist/*"
+      - "code/dist/*"
 
 compose services:
   stage: build
