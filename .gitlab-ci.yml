@@ -24,10 +24,6 @@ build image(s):
   stage: build
   script:
     - docker-compose build
-  artifacts:
-    name: "web-dl_website"
-    paths:
-      - "code/dist/*"
 
 compose services:
   stage: compose

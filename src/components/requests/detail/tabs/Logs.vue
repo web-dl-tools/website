@@ -60,7 +60,7 @@ export default {
   mixin: [formatters, helpers],
   data: () => ({
     protect: false,
-    logs_loading: true,
+    logs_loading: false,
     logs_loaded: false,
   }),
   props: {
@@ -112,6 +112,14 @@ export default {
       }
       this.$emit("count-change", n.length);
     },
+  },
+  /**
+   * Delay loading logs in the background.
+   */
+  created() {
+    setTimeout(() => {
+      if (!this.logs_loading && !this.logs_loaded) this.retrieveLogs();
+    }, 1500);
   },
 };
 </script>

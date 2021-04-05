@@ -1,6 +1,9 @@
 <template>
   <v-footer absolute light color="transparent">
-    <v-col v-if="full" class="text-caption" cols="12">
+    <v-col v-if="!apiBuildInfo" cols="12" md="6">
+      <v-skeleton-loader type="sentences" />
+    </v-col>
+    <v-col v-else-if="full" class="text-caption" cols="12">
       <v-row
         class="cursor-pointer"
         @click="$router.push({ name: 'application.build' }).catch(() => {})"
@@ -52,7 +55,7 @@ export default {
    * Retrieve external API build info for footer.
    */
   created() {
-    this.$store.dispatch("application/getApiBuildInfo");
+    setTimeout(() => this.$store.dispatch("application/getApiBuildInfo"), 1000);
   },
 };
 </script>
