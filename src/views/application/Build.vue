@@ -22,13 +22,13 @@
               <v-row>
                 <v-col cols="4" class="py-t font-weight-black"> Version </v-col>
                 <v-col cols="8" class="py-t">
-                  {{ commitInfo.tag }}
+                  {{ buildInfo.tag }}
                 </v-col>
               </v-row>
               <v-row>
                 <v-col cols="4" class="py-0 font-weight-black">Build</v-col>
                 <v-col cols="8" class="py-0">
-                  {{ commitInfo.commit }}
+                  {{ buildInfo.commit }}
                 </v-col>
               </v-row>
               <v-row>
@@ -36,13 +36,13 @@
                   Build date
                 </v-col>
                 <v-col cols="8" class="py-0">
-                  {{ formatDate(commitInfo.commiter.date, "LLLL") }}
+                  {{ formatDate(buildInfo.commiter.date, "LLLL") }}
                 </v-col>
               </v-row>
               <v-row>
                 <v-col cols="4" class="py-0"></v-col>
                 <v-col cols="8" class="py-0">
-                  Build {{ formatDateFromNow(commitInfo.commiter.date) }}
+                  Build {{ formatDateFromNow(buildInfo.commiter.date) }}
                 </v-col>
               </v-row>
               <v-row>
@@ -51,7 +51,7 @@
                 </v-col>
                 <v-col cols="8" class="pt-0">
                   <v-chip
-                    v-for="ref in commitInfo.refs.split(',')"
+                    v-for="ref in buildInfo.refs.split(',')"
                     :key="ref"
                     class="ma-1 ml-0"
                     label
@@ -67,19 +67,19 @@
                   Latest change
                 </v-col>
                 <v-col cols="8" class="py-0 font-coder">
-                  {{ commitInfo.subject }}
+                  {{ buildInfo.subject }}
                 </v-col>
               </v-row>
               <v-row>
                 <v-col cols="4" class="py-0 font-weight-black">Author</v-col>
                 <v-col cols="8" class="py-0">
-                  {{ commitInfo.author.name }}
+                  {{ buildInfo.author.name }}
                 </v-col>
               </v-row>
               <v-row>
                 <v-col cols="4" class="pt-0"></v-col>
                 <v-col cols="8" class="pt-0">
-                  {{ commitInfo.author.email }}
+                  {{ buildInfo.author.email }}
                 </v-col>
               </v-row>
 
@@ -104,11 +104,82 @@
               Below you can find information about the current API build of Web
               DL.
             </v-card-subtitle>
-            <v-card-text>
+            <v-card-text v-if="!apiBuildInfo">
+              <v-row>
+                <v-col cols="12">
+                  <v-skeleton-loader type="text" />
+                </v-col>
+              </v-row>
+            </v-card-text>
+            <v-card-text v-else>
+              <v-row>
+                <v-col cols="4" class="py-t font-weight-black"> Version </v-col>
+                <v-col cols="8" class="py-t">
+                  {{ apiBuildInfo.tag }}
+                </v-col>
+              </v-row>
+              <v-row>
+                <v-col cols="4" class="py-0 font-weight-black">Build</v-col>
+                <v-col cols="8" class="py-0">
+                  {{ apiBuildInfo.commit }}
+                </v-col>
+              </v-row>
+              <v-row>
+                <v-col cols="4" class="py-0 font-weight-black">
+                  Build date
+                </v-col>
+                <v-col cols="8" class="py-0">
+                  {{ formatDate(apiBuildInfo.commiter.date, "LLLL") }}
+                </v-col>
+              </v-row>
+              <v-row>
+                <v-col cols="4" class="py-0"></v-col>
+                <v-col cols="8" class="py-0">
+                  Build {{ formatDateFromNow(apiBuildInfo.commiter.date) }}
+                </v-col>
+              </v-row>
+              <v-row>
+                <v-col cols="4" class="pt-0 font-weight-black">
+                  Git references
+                </v-col>
+                <v-col cols="8" class="pt-0">
+                  <v-chip
+                    v-for="ref in apiBuildInfo.refs.split(',')"
+                    :key="ref"
+                    class="ma-1 ml-0"
+                    label
+                    x-small
+                  >
+                    {{ ref }}
+                  </v-chip>
+                </v-col>
+              </v-row>
+
+              <v-row>
+                <v-col cols="4" class="py-0 font-weight-black">
+                  Latest change
+                </v-col>
+                <v-col cols="8" class="py-0 font-coder">
+                  {{ apiBuildInfo.subject }}
+                </v-col>
+              </v-row>
+              <v-row>
+                <v-col cols="4" class="py-0 font-weight-black">Author</v-col>
+                <v-col cols="8" class="py-0">
+                  {{ apiBuildInfo.author.name }}
+                </v-col>
+              </v-row>
+              <v-row>
+                <v-col cols="4" class="pt-0"></v-col>
+                <v-col cols="8" class="pt-0">
+                  {{ apiBuildInfo.author.email }}
+                </v-col>
+              </v-row>
+
               <v-row>
                 <v-col cols="4" class="py-0 font-weight-black"> Source </v-col>
                 <v-col cols="8" class="py-0">
-                  <a href="https://gitlab.com/web-dl/api" target="_blank">
+                  <a href="https://gitlab.com/web-dl/website" target="_blank">
                     https://gitlab.com/web-dl/api
                   </a>
                 </v-col>
@@ -131,7 +202,8 @@ export default {
   computed: {
     ...mapGetters({
       title: "application/getTitle",
-      commitInfo: "application/getCommitInfo",
+      buildInfo: "application/getBuildInfo",
+      apiBuildInfo: "application/getApiBuildInfo",
     }),
   },
 };
