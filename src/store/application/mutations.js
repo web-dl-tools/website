@@ -34,3 +34,6 @@ export const CONNECT_WEBSOCKET = (state, websocket) =>
 export const DISCONNECT_WEBSOCKET = (state) => (state.websocket = null);
 
 export const SET_SEARCH = (state, search) => (state.search = search);
+
+export const GET_API_BUILD_INFO = (state, apiBuildInfo) =>
+  (state.api_build_info = apiBuildInfo);

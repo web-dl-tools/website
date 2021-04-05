@@ -73,3 +73,11 @@ export const setTitle = ({ commit }, title) => {
 export const setSearch = ({ commit }, search) => {
   commit("SET_SEARCH", search);
 };
+
+export const getApiBuildInfo = ({ commit }) =>
+  Vue.$axios
+    .get("application/build")
+    .then((response) => {
+      commit("GET_API_BUILD_INFO", response.data);
+    })
+    .catch(() => Promise.reject());
