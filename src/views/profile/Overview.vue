@@ -72,5 +72,11 @@ export default {
       user: "users/getMe",
     }),
   },
+  /**
+   * Load in the user data.
+   */
+  created() {
+    this.$store.dispatch("users/getMe");
+  },
 };
 </script>

@@ -54,7 +54,7 @@ export default {
   name: "components.requests.detail.tabs.files",
   mixin: [formatters],
   data: () => ({
-    files_loading: true,
+    files_loading: false,
     files_loaded: false,
     files_tree: [],
     files_open: [],
@@ -65,6 +65,7 @@ export default {
       mp4: "mdi-video",
       mkv: "mdi-video",
       webm: "mdi-video",
+      webp: "mdi-video",
       jpg: "mdi-file-image",
       png: "mdi-file-image",
       description: "mdi-file-document-outline",
@@ -145,6 +146,14 @@ export default {
     files(n) {
       this.$emit("count-change", this.countFiles(n));
     },
+  },
+  /**
+   * Delay loading files in the background.
+   */
+  created() {
+    setTimeout(() => {
+      if (!this.files_loading && !this.files_loaded) this.retrieveFiles();
+    }, 1500);
   },
 };
 </script>
