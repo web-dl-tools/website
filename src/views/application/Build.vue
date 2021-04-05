@@ -179,7 +179,7 @@
               <v-row>
                 <v-col cols="4" class="py-0 font-weight-black"> Source </v-col>
                 <v-col cols="8" class="py-0">
-                  <a href="https://gitlab.com/web-dl/website" target="_blank">
+                  <a href="https://gitlab.com/web-dl/api" target="_blank">
                     https://gitlab.com/web-dl/api
                   </a>
                 </v-col>
