@@ -39,7 +39,7 @@
 
 .theme--dark.v-treeview--hoverable .v-treeview-node__root:hover:before,
 .theme--dark.v-treeview .v-treeview-node--click>.v-treeview-node__root:hover:before {
-  -moz-border-radius: 4px;  /* for Firefox */
-  -webkit-border-radius: 4px; /* for Webkit-Browsers */
-  border-radius: 4px; /* regular */
+  -moz-border-radius: 4px;
+  -webkit-border-radius: 4px;
+  border-radius: 4px;
 }

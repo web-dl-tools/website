@@ -89,8 +89,8 @@ export default {
      */
     hasDirs() {
       const files = this.$store.getters["requests/getFiles"];
-      if (!files || this.isEmptyArray(files)) return false;
 
+      if (!files || this.isEmptyArray(files)) return false;
       return !!files.find((f) => "dir" in f);
     },
   },
