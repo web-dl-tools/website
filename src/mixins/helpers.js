@@ -13,6 +13,15 @@ export default Vue.mixin({
       return !(Object.entries(obj).length === 0 && obj.constructor === Object);
     },
     /**
+     * Check if a given array is empty.
+     *
+     * @param array
+     * @returns {boolean}
+     */
+    isEmptyArray(arr) {
+      return arr.length === 0;
+    },
+    /**
      * Check if two datetime objects/strings are on the same day.
      *
      * @param d1

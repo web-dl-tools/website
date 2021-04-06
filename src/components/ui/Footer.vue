@@ -8,7 +8,7 @@
         class="cursor-pointer"
         @click="$router.push({ name: 'application.build' }).catch(() => {})"
       >
-        <v-col class="py-0" cols="12">
+        <v-col class="pb-0" cols="12">
           <span class="font-weight-bold">Web DL Client</span>
           v{{ buildInfo.tag }} (Build {{ buildInfo.abbreviated_commit }},
           {{ formatDate(buildInfo.commiter.date, "LL") }})
