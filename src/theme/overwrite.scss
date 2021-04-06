@@ -23,3 +23,23 @@
   border-top-left-radius: 0 !important;
   border-top-right-radius: 0 !important;
 }
+
+.single-dir-view .v-treeview-node__root {
+  padding-left: 0 !important;
+}
+
+.single-dir-view .v-treeview-node__content {
+  margin-left: -5px !important;
+}
+
+.single-dir-view .v-treeview-node__toggle {
+  margin-left: 12px !important;
+  margin-right: 15px !important;
+}
+
+.theme--dark.v-treeview--hoverable .v-treeview-node__root:hover:before,
+.theme--dark.v-treeview .v-treeview-node--click>.v-treeview-node__root:hover:before {
+  -moz-border-radius: 4px;  /* for Firefox */
+  -webkit-border-radius: 4px; /* for Webkit-Browsers */
+  border-radius: 4px; /* regular */
+}

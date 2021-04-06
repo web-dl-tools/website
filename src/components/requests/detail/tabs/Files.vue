@@ -6,13 +6,15 @@
       v-model="files_tree"
       :items="files"
       :open="files_open"
-      class="pt-4"
+      class="pt-4 pb-2"
+      :class="{
+        'single-dir-view': !hasDirs,
+      }"
       item-key="name"
       dense
       hoverable
       open-all
       open-on-click
-      rounded
     >
       <template v-slot:prepend="{ item, open }">
         <v-icon v-if="'dir' in item" class="mr-2">
@@ -29,10 +31,10 @@
       <template v-slot:label="{ item, leaf }">
         <span v-if="!leaf" class="font-weight-black">{{ item.name }}</span>
         <div v-else @click="openFile(item.path)">
-          <p class="mb-0 body-2">
+          <p class="pt-2 mb-0 body-2">
             {{ item.name }}
           </p>
-          <p class="mb-0 overline">
+          <p class="mt-n2 mb-0 overline font-weight-light">
             {{ item.extension.replace(".", "") }} &middot;
             {{ formatBytes(item.size, 2) }}
           </p>
@@ -48,11 +50,12 @@
 <script>
 import Vue from "vue";
 import { mapGetters } from "vuex";
+import helpers from "../../../../mixins/helpers";
 import formatters from "../../../../mixins/formatters";
 
 export default {
   name: "components.requests.detail.tabs.files",
-  mixin: [formatters],
+  mixin: [formatters, helpers],
   data: () => ({
     files_loading: false,
     files_loaded: false,
@@ -81,6 +84,15 @@ export default {
     ...mapGetters({
       files: "requests/getFiles",
     }),
+    /**
+     * Calculate if the files contain directories (on root level).
+     */
+    hasDirs() {
+      const files = this.$store.getters["requests/getFiles"];
+      if (!files || this.isEmptyArray(files)) return false;
+
+      return !!files.find((f) => "dir" in f);
+    },
   },
   methods: {
     /**
@@ -117,9 +129,9 @@ export default {
      */
     countFiles(obj) {
       let count = 0;
-      obj.forEach((i) => {
-        if ("dir" in i) {
-          count += this.countFiles(i.children);
+      obj.forEach((f) => {
+        if ("dir" in f) {
+          count += this.countFiles(f.children);
         } else {
           count++;
         }
