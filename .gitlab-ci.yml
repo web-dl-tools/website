@@ -6,7 +6,7 @@ services:
 stages:
   - lint
   - build
-  - compose
+  - docker
 
 before_script:
   - apk add --no-cache py2-pip nodejs npm git openssh
@@ -20,13 +20,18 @@ lint:
     - yarn install
     - yarn lint
 
-build image(s):
+build image:
   stage: build
   script:
-    - docker-compose build
+    - yarn install
+    - yarn build
+  artifacts:
+    name: "web-dl_website"
+    paths:
+      - "dist/*"
 
 compose services:
-  stage: compose
+  stage: docker
   script:
     - docker-compose up -d
     - docker ps
