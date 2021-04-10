@@ -4,6 +4,27 @@ import moment from "moment";
 export default Vue.mixin({
   methods: {
     /**
+     * Capitalize the first character of a string.
+     *
+     * @param value
+     * @returns {string} The capitalized string.
+     */
+    capitalize(value) {
+      if (!value) return "";
+      value = value.toString();
+      return value.charAt(0).toUpperCase() + value.slice(1);
+    },
+    /**
+     * Truncate a string to a given length.
+     *
+     * @param str
+     * @param len
+     * @returns {*} The truncated string.
+     */
+    truncate(str, len) {
+      return str.length > len ? `${str.slice(0, len)}...` : str;
+    },
+    /**
      * Check if a given object is empty.
      *
      * @param obj
