@@ -13,7 +13,7 @@ USER node
 
 WORKDIR code
 
-RUN yarn install
+RUN npm install --legacy-peer-deps
 RUN yarn build
 
 FROM nginx:1.19.6
