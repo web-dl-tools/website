@@ -45,11 +45,12 @@
 </template>
 
 <script>
+import helpers from "../../../mixins/formatters";
 import formatters from "../../../mixins/formatters";
 
 export default {
   name: "components.requests.active.card-mini",
-  mixin: [formatters],
+  mixin: [helpers, formatters],
   props: {
     request: Object,
   },

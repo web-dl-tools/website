@@ -14,7 +14,7 @@
           @onClick="request_type = _handler.request"
         >
           <v-card-subtitle>
-            {{ _handler.description }}
+            {{ formatRequestDescription(_handler.request) }}
           </v-card-subtitle>
         </selectable-card>
       </v-col>

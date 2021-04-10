@@ -5,27 +5,6 @@ import psl from "psl";
 export default Vue.mixin({
   methods: {
     /**
-     * Capitalize the first character of a string.
-     *
-     * @param value
-     * @returns {string} The capitalized string.
-     */
-    capitalize(value) {
-      if (!value) return "";
-      value = value.toString();
-      return value.charAt(0).toUpperCase() + value.slice(1);
-    },
-    /**
-     * Truncate a string to a given length.
-     *
-     * @param str
-     * @param len
-     * @returns {*} The truncated string.
-     */
-    truncate(str, len) {
-      return str.length > len ? `${str.slice(0, len)}...` : str;
-    },
-    /**
      * Format a request type to a request string for use in labels.
      *
      * @param request
@@ -91,6 +70,20 @@ export default Vue.mixin({
       const i = Math.floor(Math.log(bytes) / Math.log(k));
 
       return parseFloat((bytes / Math.pow(k, i)).toFixed(dm)) + " " + sizes[i];
+    },
+    formatRequestDescription(status) {
+      switch (status) {
+        case "AudioVisualRequest":
+          return "A handler for downloading the audio and/or visual resource.";
+        case "DirectRequest":
+          return "A handler for directly downloading the url resource.";
+        case "TorrentRequest":
+          return "A handler for downloading the torrent resource.";
+        case "ResourceRequest":
+          return "A handler for downloading resources from the url resource.";
+        default:
+          return "Unknown";
+      }
     },
     formatRequestStatus(status) {
       switch (status) {

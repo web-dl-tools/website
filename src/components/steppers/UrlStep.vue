@@ -13,11 +13,11 @@
 </template>
 
 <script>
-import formatters from "../../mixins/formatters";
+import helpers from "../../mixins/helpers";
 
 export default {
   name: "components.steppers.url-step",
-  mixins: [formatters],
+  mixins: [helpers],
   data: () => ({
     url: "",
   }),
