@@ -1,4 +1,13 @@
-.DS_Store
-node_modules
+Dockerfile
+docker-compose.yml
 
+.idea
+.DS_Store
+
+.env
 .env.dist
+.gitlab-ci.yml
+README.md
+
+node_modules
+compose
