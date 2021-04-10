@@ -1,3 +1,4 @@
+// Theme colors
 .theme--dark.v-tabs>.v-tabs-bar {
    background-color: rgba(0, 0, 0, 0);
 }
@@ -10,10 +11,12 @@
   background: #1e1e1e;
 }
 
+// Headers
 .display-3 {
   text-shadow: 0 0 5px #aabacd, 0 0 5px #aabacd, 0 0 5px #aabacd;
 }
 
+// Table
 .v-data-table > .v-data-table__wrapper > table > thead > tr > th > span {
   color: white;
 }
@@ -24,6 +27,7 @@
   border-top-right-radius: 0 !important;
 }
 
+// Tree view
 .single-dir-view .v-treeview-node__root {
   padding-left: 0 !important;
 }

@@ -1,6 +1,6 @@
 <template>
-  <v-row>
-    <v-col class="mt-3" cols="12">
+  <v-row class="mb-2">
+    <v-col class="mt-2" cols="12">
       <p class="mb-0 body-1">
         Found {{ item.data.filtered_paths.length }} unique paths matching the
         given extensions.

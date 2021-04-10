@@ -1,6 +1,6 @@
 <template>
   <div>
-    <v-row>
+    <v-row class="mt-0">
       <v-col cols="12" class="py-0">
         <p class="body-2 mb-n1">File format</p>
         <small class="font-weight-light grey--text text--lighten-1">
@@ -75,7 +75,7 @@
       </v-col>
     </v-row>
 
-    <v-row class="mt-n6 pb-2">
+    <v-row class="mt-n4 mb-0">
       <v-col cols="12" class="pb-0 text-center">
         <v-btn
           v-show="!show_single_file_formats"

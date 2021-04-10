@@ -1,5 +1,5 @@
 <template>
-  <v-row>
+  <v-row class="mb-2">
     <v-col class="mt-3" cols="12" md="8">
       <p class="mb-0 body-1">{{ item.data.title }}</p>
       <p class="body-2 font-weight-light">

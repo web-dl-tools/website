@@ -10,7 +10,11 @@
       </v-row>
       <v-row>
         <v-col cols="12" md="6">
-          <v-card raised>
+          <v-card raised v-if="!user">
+            <v-skeleton-loader type="article" />
+            <v-skeleton-loader type="actions" />
+          </v-card>
+          <v-card raised v-else>
             <v-card-title class="subtitle-1 text-capitalize">
               Hello {{ user.first_name || user.username }},
             </v-card-title>
@@ -34,7 +38,7 @@
                   {{ formatDate(user.date_joined, "LLLL") }}
                 </v-col>
               </v-row>
-              <v-row>
+              <v-row class="mb-0">
                 <v-col cols="4" class="py-0"></v-col>
                 <v-col cols="8" class="py-0">
                   {{ formatDateFromNow(user.date_joined) }}
