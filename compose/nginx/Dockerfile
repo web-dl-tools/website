@@ -1,4 +1,4 @@
-FROM node:15.5.1-buster as builder
+FROM node:15.14.0-buster as builder
 
 RUN npm config set unsafe-perm true
 
@@ -18,7 +18,7 @@ RUN yarn build
 
 FROM nginx:1.19.6
 
-LABEL version = "0.1"
+LABEL version = "1.0"
 LABEL description = "Nginx docker container"
 LABEL maintainer = "rinesh.ramadhin@gmail.com"
 
