@@ -7,7 +7,7 @@
     :sort_desc="false"
     no_data_text="There are no active or pending requests."
   >
-    <template v-slot:[`item.status_display`]="{ item }">
+    <template v-slot:[`item.status`]="{ item }">
       <v-chip
         :color="formatRequestStatusColor(item.status)"
         class="white--text mr-2"
@@ -45,7 +45,7 @@ export default {
           align: "left",
           sortable: true,
           text: "Status",
-          value: "status_display",
+          value: "status",
         },
         {
           align: "left",
