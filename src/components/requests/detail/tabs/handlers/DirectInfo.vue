@@ -1,5 +1,5 @@
 <template>
-  <v-row>
+  <v-row class="mb-0">
     <v-col cols="12">
       <v-simple-table>
         <template v-slot:default>

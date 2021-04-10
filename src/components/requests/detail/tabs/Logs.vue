@@ -123,9 +123,3 @@ export default {
   },
 };
 </script>
-
-<style>
-.timeline .v-timeline-item__dot {
-  margin-top: 10px;
-}
-</style>

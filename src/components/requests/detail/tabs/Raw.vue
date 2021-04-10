@@ -1,5 +1,5 @@
 <template>
-  <v-tab-item>
+  <v-tab-item class="mb-n4">
     <json-viewer :value="item" theme="custom-json-theme" />
   </v-tab-item>
 </template>

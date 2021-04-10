@@ -1,3 +1,3 @@
 export default {
-  item: {},
+  item: null,
 };

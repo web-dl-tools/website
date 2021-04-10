@@ -1,5 +1,5 @@
 <template>
-  <v-row>
+  <v-row class="my-0">
     <v-col cols="12">
       <p class="mb-0 body-1">{{ item.data.name }}</p>
       <p class="font-weight-light mb-0">Hash: {{ item.data.hash }}</p>

@@ -36,7 +36,8 @@
           </p>
           <p class="mt-n2 mb-0 overline font-weight-light">
             {{ item.extension.replace(".", "") }} &middot;
-            {{ formatBytes(item.size, 2) }}
+            {{ formatBytes(item.size, 2) }} &middot;
+            {{ formatDate(item.created_at, "L") }}
           </p>
         </div>
       </template>
