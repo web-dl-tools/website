@@ -1,6 +1,6 @@
 <template>
   <div>
-    <v-row>
+    <v-row class="mb-0">
       <v-col
         v-for="_handler in handlers"
         :key="_handler.request"

@@ -1,6 +1,6 @@
 <template>
   <div>
-    <v-row>
+    <v-row class="mt-0">
       <v-col cols="12" class="py-0">
         <p class="body-2 mb-n1">Minimum size</p>
         <small class="font-weight-light grey--text text--lighten-1">
@@ -27,7 +27,7 @@
         </v-row>
       </v-col>
     </v-row>
-    <v-row>
+    <v-row class="mb-0">
       <v-col cols="12" class="py-0">
         <p class="body-2 mb-n1">Resource extensions</p>
         <small class="font-weight-light grey--text text--lighten-1">
