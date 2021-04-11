@@ -159,6 +159,11 @@ export default {
       request: "requests/get",
       title: "application/getTitle",
     }),
+    /**
+     * Check if the request is currently processing.
+     *
+     * @returns {*|boolean}
+     */
     processing() {
       return (
         this.request.status &&
@@ -169,18 +174,30 @@ export default {
     },
   },
   methods: {
+    /**
+     * Open the request url in an external tab.
+     */
     openExternalTab() {
       window.open(this.request.url, "_blank");
     },
+    /**
+     * Remove the request.
+     */
     remove() {
       this.$store
         .dispatch("requests/remove", this.$route.params.requestId)
         .then(() => this.$router.back());
     },
+    /**
+     * Retry the request.
+     */
     retry() {
       this.$store.dispatch("requests/retry", this.$route.params.requestId);
     },
   },
+  /**
+   * Retrieve the request information.
+   */
   created() {
     this.$store
       .dispatch("requests/get", this.$route.params.requestId)

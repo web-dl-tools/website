@@ -1,15 +1,47 @@
-import mixin from "../../mixins/helpers";
-
+/**
+ * Set the authenticated state.
+ *
+ * @param state
+ * @returns {boolean}
+ */
 export const isAuthenticated = (state) => state.authenticated;
 
+/**
+ * Set the page title.
+ *
+ * @param state
+ * @returns {string}
+ */
 export const getTitle = (state) => state.title;
 
+/**
+ * Set the menu items.
+ *
+ * @param state
+ * @returns {[{color: string, routerName: string, icon: string, label: string}, {color: string, routerName: string, icon: string, label: string}, {color: string, routerName: string, icon: string, label: string}]}
+ */
 export const getMenuItems = (state) => state.menu_items;
 
+/**
+ * Set the API error boolean.
+ *
+ * @returns {boolean}
+ */
 export const apiHasError = () => false;
 
+/**
+ * Set the loading state.
+ *
+ * @param state
+ * @returns {boolean}
+ */
 export const isLoading = (state) => state.loading;
 
+/**
+ * Calculate the build tag and return the website build information.
+ *
+ * @returns {any}
+ */
 export const getBuildInfo = () => {
   const regex = /tag: [\w\.\-]+,/g;
   let buildInfo = JSON.parse(process.env.VUE_APP_BUILD_INFO);
@@ -22,8 +54,20 @@ export const getBuildInfo = () => {
   return buildInfo;
 };
 
+/**
+ * Get the search query.
+ *
+ * @param state
+ * @returns {string}
+ */
 export const getSearch = (state) => state.search;
 
+/**
+ * Calculate the build tag and return the API build information.
+ *
+ * @param state
+ * @returns {null}
+ */
 export const getApiBuildInfo = (state) => {
   let apiBuildInfo = state.api_build_info;
 
