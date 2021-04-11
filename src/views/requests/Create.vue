@@ -137,10 +137,18 @@ export default {
     }),
   },
   methods: {
+    /**
+     * Update the component data on step data changes.
+     *
+     * @param data
+     */
     dataChange(data) {
       this[`step${data.step}Data`] = data.data;
       this[`step${data.step}Label`] = data.label;
     },
+    /**
+     * Get all the handler statuses.
+     */
     getHandlers() {
       this.error = false;
       this.loading = true;
@@ -153,6 +161,9 @@ export default {
         .catch(() => (this.error = true))
         .finally(() => (this.loading = false));
     },
+    /**
+     * Create a new request.
+     */
     createRequest() {
       this.error = false;
       this.loading = true;

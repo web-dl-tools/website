@@ -71,20 +71,12 @@ export default Vue.mixin({
 
       return parseFloat((bytes / Math.pow(k, i)).toFixed(dm)) + " " + sizes[i];
     },
-    formatRequestDescription(status) {
-      switch (status) {
-        case "AudioVisualRequest":
-          return "A handler for downloading the audio and/or visual resource.";
-        case "DirectRequest":
-          return "A handler for directly downloading the url resource.";
-        case "TorrentRequest":
-          return "A handler for downloading the torrent resource.";
-        case "ResourceRequest":
-          return "A handler for downloading resources from the url resource.";
-        default:
-          return "Unknown";
-      }
-    },
+    /**
+     * Format the request status.
+     *
+     * @param status
+     * @returns {string}
+     */
     formatRequestStatus(status) {
       switch (status) {
         case "failed":
@@ -124,6 +116,26 @@ export default Vue.mixin({
         case "pending":
         default:
           return "warning";
+      }
+    },
+    /**
+     * Get the request handler description.
+     *
+     * @param status
+     * @returns {string}
+     */
+    getRequestHandlerDescription(status) {
+      switch (status) {
+        case "AudioVisualRequest":
+          return "A handler for downloading the audio and/or visual resource.";
+        case "DirectRequest":
+          return "A handler for directly downloading the url resource.";
+        case "TorrentRequest":
+          return "A handler for downloading the torrent resource.";
+        case "ResourceRequest":
+          return "A handler for downloading resources from the url resource.";
+        default:
+          return "Unknown";
       }
     },
     /**
