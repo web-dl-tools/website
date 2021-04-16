@@ -1,6 +1,6 @@
 <template>
   <v-tab-item>
-    <v-row v-if="item.status !== 'completed'">
+    <v-row class="my-0" v-if="item.status !== 'completed'">
       <v-col cols="12">
         <p class="mb-0">
           Request has not finished processing. Information will appear after the

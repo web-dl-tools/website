@@ -87,7 +87,7 @@
         </v-btn>
       </v-col>
     </v-row>
-    <v-row v-if="show_single_file_formats">
+    <v-row class="mb-2" v-if="show_single_file_formats">
       <v-col v-if="hasVideoOrAudioFormats" cols="12" md="6">
         <p class="text-center caption">Video</p>
         <selectable-card
