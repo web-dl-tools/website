@@ -1,6 +1,6 @@
 <template>
-  <v-row class="mb-2">
-    <v-col class="mt-3" cols="12" md="8">
+  <v-row>
+    <v-col cols="12" md="8">
       <p class="mb-0 body-1">{{ item.data.title }}</p>
       <p class="body-2 font-weight-light">
         By
@@ -72,7 +72,7 @@
         </v-col>
       </v-row>
     </v-col>
-    <v-col cols="12" md="4" class="mt-3">
+    <v-col cols="12" md="4">
       <v-parallax :src="item.data.thumbnail" height="300" id="thumbnail" />
     </v-col>
   </v-row>

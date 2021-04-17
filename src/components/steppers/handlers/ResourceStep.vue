@@ -1,14 +1,14 @@
 <template>
   <div>
-    <v-row class="mt-0">
-      <v-col cols="12" class="py-0">
+    <v-row>
+      <v-col cols="12">
         <p class="body-2 mb-n1">Minimum size</p>
         <small class="font-weight-light grey--text text--lighten-1">
           Select the minimum size for each resource. 0 bytes will download all
           resources.
         </small>
       </v-col>
-      <v-col class="" cols="12">
+      <v-col class="py-0" cols="12">
         <v-row>
           <v-col cols="12">
             <v-slider v-model="min_bytes" min="0" max="5242880" hide-details>
@@ -27,15 +27,15 @@
         </v-row>
       </v-col>
     </v-row>
-    <v-row class="mb-0">
-      <v-col cols="12" class="py-0">
+    <v-row>
+      <v-col cols="12" class="pb-0">
         <p class="body-2 mb-n1">Resource extensions</p>
         <small class="font-weight-light grey--text text--lighten-1">
           Select one or multiple extensions below. You can also add new
           extensions if necessary.
         </small>
       </v-col>
-      <v-col class="pb-0" cols="12" md="2">
+      <v-col class="py-0" cols="12" md="2">
         <v-checkbox
           :value="hasExtensionPreset('image', true)"
           :indeterminate="hasExtensionPreset('image', false)"
@@ -49,7 +49,7 @@
           "
         />
       </v-col>
-      <v-col class="pb-0" cols="12" md="2">
+      <v-col class="py-0" cols="12" md="2">
         <v-checkbox
           :value="hasExtensionPreset('video', true)"
           :indeterminate="hasExtensionPreset('video', false)"
@@ -63,7 +63,7 @@
           "
         />
       </v-col>
-      <v-col class="pb-0" cols="12" md="2">
+      <v-col class="py-0" cols="12" md="2">
         <v-checkbox
           :value="hasExtensionPreset('audio', true)"
           :indeterminate="hasExtensionPreset('audio', false)"
@@ -77,7 +77,7 @@
           "
         />
       </v-col>
-      <v-col class="pb-0" cols="12" md="2">
+      <v-col class="py-0" cols="12" md="2">
         <v-checkbox
           :value="hasExtensionPreset('archive', true)"
           :indeterminate="hasExtensionPreset('archive', false)"
@@ -94,7 +94,7 @@
           "
         />
       </v-col>
-      <v-col class="pb-0" cols="12" md="2">
+      <v-col class="py-0" cols="12" md="2">
         <v-checkbox
           :value="hasExtensionPreset('document', true)"
           :indeterminate="hasExtensionPreset('document', false)"
@@ -111,7 +111,7 @@
           "
         />
       </v-col>
-      <v-col class="pb-0" cols="12" md="2">
+      <v-col class="py-0" cols="12" md="2">
         <v-checkbox
           :value="hasExtensionPreset('web', true)"
           :indeterminate="hasExtensionPreset('web', false)"
@@ -125,7 +125,7 @@
           "
         />
       </v-col>
-      <v-col class="pt-4 pb-0" cols="12">
+      <v-col class="pb-0" cols="12">
         <v-row>
           <v-col cols="12">
             <v-combobox

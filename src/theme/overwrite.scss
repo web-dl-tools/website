@@ -1,12 +1,4 @@
 // Theme colors
-.theme--dark.v-tabs>.v-tabs-bar {
-   background-color: rgba(0, 0, 0, 0);
-}
-
-.theme--dark.v-tabs-items {
-  background-color: rgba(0, 0, 0, 0);
-}
-
 .theme--dark.v-stepper {
   background: #1e1e1e;
 }
@@ -46,4 +38,15 @@
   -moz-border-radius: 4px;
   -webkit-border-radius: 4px;
   border-radius: 4px;
+}
+
+// Layout
+.row {
+  margin-top: 0 !important;
+  margin-bottom: 0 !important;
+}
+
+// Stepper
+.v-stepper__step {
+  padding-bottom: 0 !important;
 }

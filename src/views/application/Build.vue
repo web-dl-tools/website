@@ -83,7 +83,7 @@
                 </v-col>
               </v-row>
 
-              <v-row class="mb-0">
+              <v-row>
                 <v-col cols="4" class="py-0 font-weight-black"> Source </v-col>
                 <v-col cols="8" class="py-0">
                   <a href="https://gitlab.com/web-dl/website" target="_blank">
@@ -104,7 +104,7 @@
               Below you can find information about the current API build of Web
               DL.
             </v-card-subtitle>
-            <v-card-text v-if="!apiBuildInfo">
+            <v-card-text class="pb-0" v-if="!apiBuildInfo">
               <v-row>
                 <v-col cols="12">
                   <v-skeleton-loader type="text" />
@@ -176,7 +176,7 @@
                 </v-col>
               </v-row>
 
-              <v-row class="mb-0">
+              <v-row>
                 <v-col cols="4" class="py-0 font-weight-black"> Source </v-col>
                 <v-col cols="8" class="py-0">
                   <a href="https://gitlab.com/web-dl/api" target="_blank">

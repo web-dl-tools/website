@@ -1,5 +1,5 @@
 <template>
-  <v-tab-item class="mb-n4">
+  <v-tab-item>
     <json-viewer :value="item" theme="custom-json-theme" />
   </v-tab-item>
 </template>
@@ -71,6 +71,8 @@ export default {
     }
   }
   .jv-code {
+    padding: 10px 0 10px 0 !important;
+
     .jv-toggle {
       &:before {
         padding: 0 2px;

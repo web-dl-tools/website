@@ -8,7 +8,7 @@
       </v-row>
       <v-row>
         <v-col cols="12">
-          <v-stepper v-model="step" vertical class="elevation-8 pb-0">
+          <v-stepper v-model="step" vertical class="elevation-8 pb-4">
             <v-stepper-step
               :editable="step === 2"
               :complete="step > 1"
@@ -83,7 +83,7 @@
               />
               <v-btn
                 outlined
-                class="mb-6"
+                class="mb-2"
                 :color="error ? 'error' : 'primary'"
                 :loading="loading"
                 :disabled="loading || !isEmptyObject(step3Data)"

@@ -1,6 +1,6 @@
 <template>
-  <v-row class="mb-0">
-    <v-col cols="12">
+  <v-row>
+    <v-col class="mt-n2" cols="12">
       <v-simple-table>
         <template v-slot:default>
           <thead>

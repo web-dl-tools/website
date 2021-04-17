@@ -23,13 +23,6 @@ export const getTitle = (state) => state.title;
 export const getMenuItems = (state) => state.menu_items;
 
 /**
- * Set the API error boolean.
- *
- * @returns {boolean}
- */
-export const apiHasError = () => false;
-
-/**
  * Set the loading state.
  *
  * @param state

@@ -38,7 +38,7 @@
                   {{ formatDate(user.date_joined, "LLLL") }}
                 </v-col>
               </v-row>
-              <v-row class="mb-0">
+              <v-row>
                 <v-col cols="4" class="py-0"></v-col>
                 <v-col cols="8" class="py-0">
                   {{ formatDateFromNow(user.date_joined) }}

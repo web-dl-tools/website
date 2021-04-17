@@ -13,7 +13,7 @@
               Web DL
             </h1>
           </div>
-          <router-view />
+          <router-view class="mt-12" />
         </v-col>
       </v-row>
     </v-container>

@@ -1,14 +1,14 @@
 <template>
   <div>
-    <v-row class="mt-0">
-      <v-col cols="12" class="py-0">
+    <v-row>
+      <v-col cols="12">
         <p class="body-2 mb-n1">File format</p>
         <small class="font-weight-light grey--text text--lighten-1">
           Select a file format preset.
         </small>
       </v-col>
-      <v-col class="pt-0" cols="12">
-        <v-row class="mt-0">
+      <v-col class="py-0" cols="12">
+        <v-row>
           <v-col v-if="hasVideoFormats" cols="12" md="6">
             <selectable-card
               :selected="
@@ -75,8 +75,8 @@
       </v-col>
     </v-row>
 
-    <v-row class="mt-n4 mb-2">
-      <v-col cols="12" class="pb-0 text-center">
+    <v-row>
+      <v-col cols="12" class="pt-0 text-center">
         <v-btn
           v-show="!show_single_file_formats"
           @click="show_single_file_formats = true"

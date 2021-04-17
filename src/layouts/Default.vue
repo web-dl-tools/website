@@ -96,7 +96,7 @@
           $vuetify.breakpoint.smAndDown,
       }"
     >
-      <router-view class="pb-14" />
+      <router-view class="pb-16" />
       <ui-footer :full="true" />
     </v-main>
 
@@ -117,11 +117,6 @@
         <v-icon>mdi-plus</v-icon>
       </v-btn>
     </v-fab-transition>
-
-    <v-snackbar v-model="apiError" class="mt-12 pt-2" color="error" top>
-      An error occurred when connection with the API. <br />
-      Please try again later.
-    </v-snackbar>
 
     <v-bottom-navigation
       v-model="active"
@@ -160,7 +155,6 @@ export default {
     ...mapGetters({
       title: "application/getTitle",
       menuItems: "application/getMenuItems",
-      apiError: "application/apiHasError",
       search: "application/getSearch",
     }),
   },
