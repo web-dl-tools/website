@@ -13,29 +13,46 @@
             elevation="8"
             v-if="request_loading"
           />
-          <v-card raised :loading="processing" v-else>
-            <template v-slot:progress>
-              <v-progress-linear
-                v-if="request.status === 'downloading'"
-                :value="request.progress"
-                :buffer-value="request.progress - 100"
-                stream
-                :color="formatRequestStatusColor(request.status)"
-              />
-              <v-progress-linear
-                v-else
-                indeterminate
-                :color="formatRequestStatusColor(request.status)"
-              />
-            </template>
+          <v-card raised v-else>
             <v-card-subtitle>
               <v-chip
                 class="white--text"
+                :class="{
+                  'no-radius-right': processing,
+                }"
                 label
                 small
                 :color="formatRequestStatusColor(request.status)"
               >
                 {{ formatRequestStatus(request.status) }}
+              </v-chip>
+              <v-chip
+                v-if="processing"
+                class="white--text px-2 no-border-left no-radius-left"
+                label
+                outlined
+                small
+              >
+                <span v-if="request.status === 'downloading'" class="mr-2">
+                  {{ request.progress }}%
+                </span>
+                <div class="inner-spinner">
+                  <v-progress-circular
+                    v-if="request.status === 'downloading'"
+                    :color="formatRequestStatusColor(request.status)"
+                    :rotate="270"
+                    :size="15"
+                    :value="request.progress"
+                    :width="2"
+                  />
+                  <v-progress-circular
+                    v-else
+                    indeterminate
+                    :color="formatRequestStatusColor(request.status)"
+                    :size="15"
+                    :width="2"
+                  />
+                </div>
               </v-chip>
               <v-btn
                 icon
@@ -208,3 +225,9 @@ export default {
   },
 };
 </script>
+
+<style>
+.inner-spinner {
+  padding-bottom: 2.3px;
+}
+</style>
