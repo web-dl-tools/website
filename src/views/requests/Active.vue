@@ -1,5 +1,5 @@
 <template>
-  <v-main class="background-wallpaper-subtle-image">
+  <v-main class="background-wallpaper">
     <v-container>
       <v-row>
         <v-col class="px-0 py-0" cols="12">

@@ -1,6 +1,6 @@
 <template>
-  <v-main class="background-wallpaper-image">
-    <v-container>
+  <v-main class="background-wallpaper blur">
+    <v-container class="un-blur">
       <v-row>
         <v-col cols="12" xs="12" sm="12" md="8" lg="6" xl="4">
           <div class="text-center mt-10">
