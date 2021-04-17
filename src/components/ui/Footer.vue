@@ -1,6 +1,6 @@
 <template>
   <v-footer absolute light class="py-0" color="transparent">
-    <v-col v-if="!apiBuildInfo" cols="12" md="6">
+    <v-col class="py-6" v-if="!apiBuildInfo" cols="12" md="6">
       <v-skeleton-loader type="sentences" />
     </v-col>
     <v-col v-else-if="full" class="text-caption" cols="12">

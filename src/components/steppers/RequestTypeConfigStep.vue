@@ -1,7 +1,7 @@
 <template>
   <div>
     <v-row>
-      <v-col cols="12" class="mb-2">
+      <v-col cols="12">
         <p class="body-2 mb-n1">No config needed.</p>
         <small class="font-weight-light grey--text text--lighten-1">
           There is no additional configuration required for this handler.
