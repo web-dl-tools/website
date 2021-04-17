@@ -8,7 +8,7 @@
       </v-row>
       <v-row>
         <v-col cols="12">
-          <v-stepper v-model="step" vertical class="elevation-8 pb-4">
+          <v-stepper v-model="step" vertical class="elevation-8">
             <v-stepper-step
               :editable="step === 2"
               :complete="step > 1"
