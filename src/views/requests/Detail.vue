@@ -1,5 +1,5 @@
 <template>
-  <v-main class="background-wallpaper-subtle-image">
+  <v-main class="background-wallpaper">
     <v-container class="pt-3">
       <v-row>
         <p class="mx-3 my-12 black--text font-weight-thin display-3">

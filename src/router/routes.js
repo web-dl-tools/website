@@ -70,7 +70,7 @@ export default [
     component: () => import("../layouts/Default"),
     children: [
       {
-        path: "",
+        path: "/profile",
         name: "profile.overview",
         component: () => import("../views/profile/Overview"),
         meta: {
