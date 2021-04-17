@@ -3,7 +3,6 @@ export default {
   loading: false,
   websocket: null,
   title: "",
-  title_suffix: "",
   menu_items: [
     {
       label: "Completed",
