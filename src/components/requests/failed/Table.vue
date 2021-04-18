@@ -5,7 +5,11 @@
     :items="_items"
     :items_per_page="items_per_page"
     no_data_text="Yay! There are no failed requests."
-  />
+  >
+    <template v-slot:[`item.url`]="{ item }">
+      {{ truncate(item.url, 45) }}
+    </template>
+  </request-table>
 </template>
 
 <script>
@@ -26,8 +30,8 @@ export default {
         {
           align: "left",
           sortable: false,
-          text: "ID",
-          value: "id",
+          text: "URL",
+          value: "url",
         },
         {
           align: "left",

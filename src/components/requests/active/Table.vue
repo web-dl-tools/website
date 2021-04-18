@@ -8,14 +8,10 @@
     no_data_text="There are no active or pending requests."
   >
     <template v-slot:[`item.status`]="{ item }">
-      <v-chip
-        :color="formatRequestStatusColor(item.status)"
-        class="white--text mr-2"
-        label
-        small
-      >
-        {{ formatRequestStatus(item.status) }}
-      </v-chip>
+      <status :request="item" :with_progress="true" />
+    </template>
+    <template v-slot:[`item.url`]="{ item }">
+      {{ truncate(item.url, 45) }}
     </template>
   </request-table>
 </template>
@@ -25,12 +21,14 @@ import { mapGetters } from "vuex";
 import formatters from "../../../mixins/formatters";
 import helpers from "../../../mixins/helpers";
 import RequestTable from "../Table";
+import Status from "../Status";
 
 export default {
   name: "components.requests.active.table",
   mixin: [formatters, helpers],
   components: {
     RequestTable,
+    Status,
   },
   data() {
     return {

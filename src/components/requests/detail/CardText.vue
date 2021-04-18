@@ -11,7 +11,7 @@
           {{ item.title }}
         </v-card-title>
         <v-card-subtitle class="pt-0 subtitle-2">
-          {{ item.url }}
+          {{ truncate(item.url, 160) }}
         </v-card-subtitle>
       </div>
       <v-card-text class="py-0">
