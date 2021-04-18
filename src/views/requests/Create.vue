@@ -26,12 +26,12 @@
               />
               <v-btn
                 outlined
-                :color="error ? 'error' : 'primary'"
+                :color="error ? 'error' : 'secondairy'"
                 :loading="loading"
                 :disabled="loading || !isEmptyObject(step1Data)"
                 @click="getHandlers"
               >
-                Continue
+                Get handlers
               </v-btn>
             </v-stepper-content>
 
@@ -49,12 +49,12 @@
               <v-btn
                 class="mt-2"
                 outlined
-                :color="error ? 'error' : 'primary'"
+                :color="error ? 'error' : 'secondairy'"
                 :loading="loading"
                 :disabled="loading || !isEmptyObject(step2Data)"
                 @click="step = 3"
               >
-                Continue
+                Configure
               </v-btn>
             </v-stepper-content>
 
@@ -84,12 +84,12 @@
               <v-btn
                 outlined
                 class="mb-2"
-                :color="error ? 'error' : 'primary'"
+                :color="error ? 'error' : 'secondairy'"
                 :loading="loading"
                 :disabled="loading || !isEmptyObject(step3Data)"
                 @click="createRequest"
               >
-                Create
+                Download
               </v-btn>
             </v-stepper-content>
           </v-stepper>

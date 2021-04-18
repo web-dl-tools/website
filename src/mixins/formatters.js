@@ -108,7 +108,7 @@ export default Vue.mixin({
         case "completed":
           return "success";
         case "downloading":
-          return "accent";
+          return "info";
         case "pre_processing":
           return "primary";
         case "post_processing":
@@ -116,6 +116,26 @@ export default Vue.mixin({
         case "pending":
         default:
           return "warning";
+      }
+    },
+    /**
+     * Calculate the text color for a given background color.
+     *
+     * @param background
+     * @returns {string}
+     */
+    formatTextColor(background) {
+      switch (background) {
+        case "info":
+        case "success":
+          return "black--text";
+        case "primairy":
+        case "secondairy":
+        case "accent":
+        case "error":
+        case "warning":
+        default:
+          return "white--text";
       }
     },
     /**

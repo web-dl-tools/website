@@ -15,6 +15,7 @@
     <template v-slot:progress>
       <v-progress-linear
         v-if="request.status === 'downloading'"
+        height="5"
         :buffer-value="request.progress - 100"
         :color="formatRequestStatusColor(request.status)"
         :value="request.progress"
@@ -22,6 +23,7 @@
       />
       <v-progress-linear
         v-else
+        height="5"
         :color="formatRequestStatusColor(request.status)"
         indeterminate
       />
@@ -31,7 +33,8 @@
       <v-spacer />
       <v-chip
         :color="formatRequestStatusColor(request.status)"
-        class="white--text mr-2"
+        :class="formatTextColor(formatRequestStatusColor(request.status))"
+        class="mr-2"
         label
         small
       >
