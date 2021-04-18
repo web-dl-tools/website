@@ -13,33 +13,12 @@
     "
   >
     <template v-slot:progress>
-      <v-progress-linear
-        v-if="request.status === 'downloading'"
-        height="5"
-        :buffer-value="request.progress - 100"
-        :color="formatRequestStatusColor(request.status)"
-        :value="request.progress"
-        stream
-      />
-      <v-progress-linear
-        v-else
-        height="5"
-        :color="formatRequestStatusColor(request.status)"
-        indeterminate
-      />
+      <status :request="request" :linear="true" />
     </template>
     <v-card-title class="subtitle-1">
       {{ this.truncate(request.url, 45) }}
       <v-spacer />
-      <v-chip
-        :color="formatRequestStatusColor(request.status)"
-        :class="formatTextColor(formatRequestStatusColor(request.status))"
-        class="mr-2"
-        label
-        small
-      >
-        {{ formatRequestStatus(request.status) }}
-      </v-chip>
+      <status :request="request" />
     </v-card-title>
     <v-card-subtitle class="subtitle-2">
       {{ this.formatRequest(request.request_type) }} Request
@@ -50,10 +29,14 @@
 <script>
 import helpers from "../../../mixins/formatters";
 import formatters from "../../../mixins/formatters";
+import status from "../../../components/requests/Status";
 
 export default {
   name: "components.requests.active.card-mini",
   mixin: [helpers, formatters],
+  components: {
+    status,
+  },
   props: {
     request: Object,
   },

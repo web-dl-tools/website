@@ -17,47 +17,7 @@
           />
           <v-card raised v-else>
             <v-card-subtitle>
-              <v-chip
-                :class="[
-                  formatTextColor(formatRequestStatusColor(request.status)),
-                  {
-                    'no-radius-right': processing,
-                  },
-                ]"
-                label
-                small
-                :color="formatRequestStatusColor(request.status)"
-              >
-                {{ formatRequestStatus(request.status) }}
-              </v-chip>
-              <v-chip
-                v-if="processing"
-                class="white--text px-2 no-border-left no-radius-left"
-                label
-                outlined
-                small
-              >
-                <span v-if="request.status === 'downloading'" class="mr-2">
-                  {{ request.progress }}%
-                </span>
-                <div class="inner-spinner">
-                  <v-progress-circular
-                    v-if="request.status === 'downloading'"
-                    :color="formatRequestStatusColor(request.status)"
-                    :rotate="270"
-                    :size="15"
-                    :value="request.progress"
-                    :width="2"
-                  />
-                  <v-progress-circular
-                    v-else
-                    indeterminate
-                    :color="formatRequestStatusColor(request.status)"
-                    :size="15"
-                    :width="2"
-                  />
-                </div>
-              </v-chip>
+              <status :request="request" :with_progress="true" />
               <v-btn
                 icon
                 class="float-right mt-n2 mr-n2"
@@ -88,7 +48,7 @@
             </v-card-subtitle>
             <card-text :item="request" />
             <v-card-text class="pb-1">
-              <v-tabs color="secondairy" grow v-model="tab">
+              <v-tabs color="secondary" grow v-model="tab">
                 <v-tab>Information</v-tab>
                 <v-tab>
                   <v-badge v-if="files_count" :content="files_count">
@@ -149,7 +109,7 @@
 
 <script>
 import { mapGetters } from "vuex";
-import formatters from "../../mixins/formatters";
+import Status from "../../components/requests/Status";
 import CardText from "../../components/requests/detail/CardText";
 import Info from "../../components/requests/detail/tabs/Info";
 import Timeline from "../../components/requests/detail/tabs/Timeline";
@@ -159,8 +119,8 @@ import Logs from "../../components/requests/detail/tabs/Logs";
 
 export default {
   name: "views.requests.detail",
-  mixin: [formatters],
   components: {
+    Status,
     CardText,
     Info,
     Timeline,
@@ -180,19 +140,6 @@ export default {
       request: "requests/get",
       title: "application/getTitle",
     }),
-    /**
-     * Check if the request is currently processing.
-     *
-     * @returns {*|boolean}
-     */
-    processing() {
-      return (
-        this.request.status &&
-        ["pre_processing", "downloading", "post_processing"].includes(
-          this.request.status
-        )
-      );
-    },
   },
   methods: {
     /**
