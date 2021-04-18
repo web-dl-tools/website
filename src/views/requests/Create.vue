@@ -2,18 +2,16 @@
   <v-main class="background-wallpaper">
     <v-container class="pt-3">
       <v-row>
-        <p class="mx-3 my-12 black--text font-weight-thin display-3">
+        <p
+          class="mx-3 my-12 black--text font-weight-thin display-3 text-shadow"
+        >
           {{ title }}
         </p>
       </v-row>
       <v-row>
         <v-col cols="12">
-          <v-stepper v-model="step" vertical class="elevation-8">
-            <v-stepper-step
-              :editable="step === 2"
-              :complete="step > 1"
-              step="1"
-            >
+          <v-stepper v-model="step" class="elevation-8 pb-0" vertical>
+            <v-stepper-step :complete="step > 1" step="1">
               Submit a URL
               <small>{{ step1Label }}</small>
             </v-stepper-step>
@@ -83,7 +81,7 @@
               />
               <v-btn
                 outlined
-                class="mb-2"
+                class="mb-6"
                 :color="error ? 'error' : 'secondairy'"
                 :loading="loading"
                 :disabled="loading || !isEmptyObject(step3Data)"

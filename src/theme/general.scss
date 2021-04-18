@@ -40,6 +40,14 @@ pre {
   text-transform: none;
 }
 
+.text-shadow {
+  text-shadow: 0 0 5px #aabacd, 0 0 5px #aabacd, 0 0 5px #aabacd;
+}
+
+.text-light-shadow {
+  text-shadow: 0 0 5px #aabacd;
+}
+
 .log {
   font-size: 13px;
   font-family: Consolas, Menlo, Courier, monospace;

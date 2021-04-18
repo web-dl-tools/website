@@ -83,7 +83,7 @@
           text
           x-small
         >
-          Or compile your own
+          {{ format_selection_pretty }} Or compile your own
         </v-btn>
       </v-col>
     </v-row>
@@ -298,6 +298,27 @@ export default {
       }
       return this.audio_format_selection;
     },
+    /**
+     * Combine the chosen video and audio option into a single format string.
+     *
+     * @returns {string}
+     */
+    format_selection_pretty() {
+      if (!this.valid) return "";
+
+      let format = "Using ";
+
+      if (this.video_format_selection && this.audio_format_selection) {
+        format += `${this.getSelection(this.video_format_selection)} with
+         ${this.getSelection(this.audio_format_selection)} audio`;
+      } else if (this.video_format_selection) {
+        format += this.getSelection(this.video_format_selection);
+      } else if (this.audio_format_selection) {
+        format += `${this.getSelection(this.audio_format_selection)} audio`;
+      }
+
+      return format;
+    },
   },
   watch: {
     /**
@@ -344,6 +365,15 @@ export default {
           label: "",
         });
       }
+    },
+    /**
+     * Get the format object by format ID.
+     *
+     * @param id
+     * @returns {*}
+     */
+    getSelection(id) {
+      return this.data.options.find((f) => f.format_id === id).format_note;
     },
   },
 };

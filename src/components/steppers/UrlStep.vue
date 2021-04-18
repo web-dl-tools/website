@@ -2,6 +2,7 @@
   <div>
     <v-text-field
       v-model="url"
+      color="accent"
       label="URL"
       name="url"
       type="text"
