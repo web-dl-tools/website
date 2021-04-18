@@ -3,7 +3,7 @@
     <div>
       <div v-if="item.status !== 'completed'">
         <v-card-title class="pt-0 title">
-          {{ item.url }}
+          {{ truncate(item.url, 160) }}
         </v-card-title>
       </div>
       <div v-else>
