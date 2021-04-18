@@ -8,11 +8,6 @@
   color: inherit !important;
 }
 
-// Headers
-.display-3 {
-  text-shadow: 0 0 5px #aabacd, 0 0 5px #aabacd, 0 0 5px #aabacd;
-}
-
 // Table
 .v-data-table > .v-data-table__wrapper > table > thead > tr > th > span {
   color: white;
@@ -51,7 +46,3 @@
   margin-bottom: 0 !important;
 }
 
-// Stepper
-.v-stepper--vertical {
-  padding-bottom: 14px;
-}

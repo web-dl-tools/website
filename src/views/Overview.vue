@@ -3,7 +3,9 @@
     <v-container>
       <v-row>
         <v-col class="px-0 py-0" cols="12" md="8">
-          <p class="mx-3 my-12 black--text font-weight-thin display-3">
+          <p
+            class="mx-3 my-12 black--text font-weight-thin display-3 text-shadow"
+          >
             {{ title }}
           </p>
         </v-col>
@@ -11,7 +13,7 @@
       <v-row class="mt-n5">
         <v-col cols="12" class="pb-0 mb-n2">
           <v-subheader
-            class="subtitle-2 pl-0 pr-0 mr-n2 grey--text text--darken-4"
+            class="subtitle-2 pl-0 pr-0 mr-n2 grey--text text--darken-4 text-light-shadow"
             >Active and pending requests
             <v-spacer />
             <v-btn
@@ -28,7 +30,7 @@
       <v-row>
         <v-col cols="12" class="pb-0 mb-n2">
           <v-subheader
-            class="subtitle-2 pl-0 pr-0 mr-n2 grey--text text--darken-4"
+            class="subtitle-2 pl-0 pr-0 mr-n2 grey--text text--darken-4 text-light-shadow"
             >Completed requests
             <v-spacer />
             <v-btn
@@ -51,7 +53,7 @@
       <v-row>
         <v-col cols="12" class="pb-0 mb-n2">
           <v-subheader
-            class="subtitle-2 pl-0 pr-0 mr-n2 grey--text text--darken-4"
+            class="subtitle-2 pl-0 pr-0 mr-n2 grey--text text--darken-4 text-light-shadow"
           >
             Failed requests
             <v-spacer />
