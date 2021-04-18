@@ -28,7 +28,7 @@
       <v-spacer />
       <v-btn
         class="mr-2"
-        :color="error ? 'error' : 'primary'"
+        :color="error ? 'error' : 'info'"
         :disabled="loading || !valid"
         :loading="loading"
         outlined

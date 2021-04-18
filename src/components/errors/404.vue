@@ -6,7 +6,7 @@
       <v-spacer />
       <v-btn
         class="mr-2"
-        color="primary"
+        color="info"
         outlined
         @click="$router.push({ name: 'overview' }).catch(() => {})"
       >
