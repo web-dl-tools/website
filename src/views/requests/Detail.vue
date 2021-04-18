@@ -16,10 +16,12 @@
           <v-card raised v-else>
             <v-card-subtitle>
               <v-chip
-                class="white--text"
-                :class="{
-                  'no-radius-right': processing,
-                }"
+                :class="[
+                  formatTextColor(formatRequestStatusColor(request.status)),
+                  {
+                    'no-radius-right': processing,
+                  },
+                ]"
                 label
                 small
                 :color="formatRequestStatusColor(request.status)"
@@ -84,7 +86,7 @@
             </v-card-subtitle>
             <card-text :item="request" />
             <v-card-text class="pb-1">
-              <v-tabs grow v-model="tab">
+              <v-tabs color="secondairy" grow v-model="tab">
                 <v-tab>Information</v-tab>
                 <v-tab>
                   <v-badge v-if="files_count" :content="files_count">

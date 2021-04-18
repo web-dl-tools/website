@@ -26,8 +26,9 @@
           <v-col cols="7">
             <v-col cols="12" md="4" lg="2" class="pa-0 d-inline-flex">
               <v-chip
+                class="mr-2"
                 :color="formatLogLevelColor(log.level)"
-                class="white--text mr-2"
+                :class="formatTextColor(formatLogLevelColor(log.level))"
                 label
                 small
               >
