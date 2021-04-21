@@ -130,7 +130,7 @@ export default Vue.mixin({
         case "success":
         case "secondary":
           return "black--text";
-        case "primairy":
+        case "primary":
         case "accent":
         case "error":
         case "warning":

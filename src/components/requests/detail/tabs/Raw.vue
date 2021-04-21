@@ -47,16 +47,16 @@ export default {
   }
   .jv-item {
     &.jv-array {
-      color: #111111;
+      color: #efe4d1;
     }
     &.jv-boolean {
-      color: #ff5252;
+      color: #9eadab;
     }
     &.jv-function {
-      color: #1d5471;
+      color: #203452;
     }
     &.jv-number {
-      color: #ff5252;
+      color: #f23e16;
     }
     &.jv-object {
       color: #fff;
@@ -65,7 +65,7 @@ export default {
       color: #fb8c00;
     }
     &.jv-string {
-      color: #4a6b30;
+      color: #bdf2c9;
       word-break: break-word;
       white-space: normal;
     }
@@ -85,5 +85,9 @@ export default {
       }
     }
   }
+}
+
+.v-application a {
+  color: #efe4d1;
 }
 </style>
