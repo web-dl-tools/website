@@ -6,6 +6,7 @@
       <v-form>
         <v-text-field
           v-model="username"
+          color="accent"
           label="Username"
           name="username"
           prepend-icon="mdi-account"
@@ -14,6 +15,7 @@
         />
         <v-text-field
           v-model="password"
+          color="accent"
           id="password"
           label="Password"
           name="password"
@@ -28,7 +30,7 @@
       <v-spacer />
       <v-btn
         class="mr-2"
-        :color="error ? 'error' : 'info'"
+        :color="error ? 'error' : 'white'"
         :disabled="loading || !valid"
         :loading="loading"
         outlined

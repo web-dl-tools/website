@@ -40,8 +40,10 @@
           <v-card-subtitle class="font-weight-bold info--text">
             {{ formatDate(item.created_at) }}
           </v-card-subtitle>
-          <v-card-text>
-            A request to download <a :href="item.url">{{ item.url }}</a> <br />
+          <v-card-text class="white--text">
+            A request to download
+            <a :href="item.url" class="info--text">{{ item.url }}</a>
+            <br />
             using the {{ formatRequest(item.request_type) }} handler has been
             submitted.
           </v-card-text>

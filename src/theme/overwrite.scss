@@ -20,29 +20,24 @@
 }
 
 // Tree view
-.single-dir-view .v-treeview-node__root {
-  padding-left: 0 !important;
-}
-
 .single-dir-view .v-treeview-node__content {
   margin-left: -10px !important;
 }
 
-.single-dir-view .v-treeview-node__toggle {
+.v-treeview-node__toggle {
   margin-left: 12px !important;
-  margin-right: 15px !important;
 }
 
-.theme--dark.v-treeview--hoverable .v-treeview-node__root:hover:before,
-.theme--dark.v-treeview .v-treeview-node--click>.v-treeview-node__root:hover:before {
-  -moz-border-radius: 4px;
-  -webkit-border-radius: 4px;
-  border-radius: 4px;
-}
+//.v-treeview-node.v-treeview-node--rounded .v-treeview-node__root, .v-treeview-node.v-treeview-node--rounded .v-treeview-node__root:before {
+//  border-radius: 4px!important;
+//  border-top-left-radius: 24px !important;
+//  border-top-right-radius: 24px !important;
+//  border-bottom-right-radius: 4px !important;
+//  border-bottom-left-radius: 4px !important;
+//}
 
 // Layout
 .row {
   margin-top: 0 !important;
   margin-bottom: 0 !important;
 }
-
