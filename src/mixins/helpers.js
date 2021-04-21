@@ -63,5 +63,14 @@ export default Vue.mixin({
     sortDates(d1, d2) {
       return moment(d1).unix() - moment(d2).unix();
     },
+    /**
+     * Filter an array down to only unique values.
+     *
+     * @param arr
+     * @returns {any[]}
+     */
+    unique(arr) {
+      return [...new Set(arr)];
+    },
   },
 });

@@ -1,14 +1,14 @@
 <template>
   <v-tab-item>
     <v-row>
-      <v-col class="pa-0" cols="12" md="8">
+      <v-col class="py-0 pl-0" cols="12" md="8">
         <v-skeleton-loader v-if="files_loading" class="pt-4" type="paragraph" />
         <v-treeview
           v-else-if="files.length"
           v-model="files_tree"
           :items="files"
           :open="files_open"
-          class="pt-4 pb-2"
+          class="pt-3 pb-2"
           :class="{
             'single-dir-view': !hasDirs,
           }"
@@ -50,8 +50,7 @@
       </v-col>
       <v-col cols="12" md="4">
         <v-skeleton-loader v-if="files_loading" class="pt-4" type="paragraph" />
-        <v-row class="px-4">
-          <span class="text-overline">Total contents</span>
+        <v-row class="px-4 mx-0 highlighted">
           <v-col class="pb-0 pl-0" cols="12" md="12">
             <v-icon class="mr-1"> mdi-database </v-icon>
             {{ formatBytes(size, 0) }} storage
@@ -61,8 +60,22 @@
             {{ folders_count }} folders
           </v-col>
           <v-col class="pb-0 pl-0" cols="12" md="12">
-            <v-icon class="mr-1"> mdi-content-copy </v-icon>
+            <v-icon class="mr-1"> mdi-file-document-multiple-outline </v-icon>
             {{ files_count }} files
+          </v-col>
+          <v-col class="pl-0" cols="12" md="12">
+            <v-icon class="mr-1"> mdi-shape-plus </v-icon>
+            <v-chip
+              v-for="file_extension in file_extensions"
+              :key="file_extension"
+              class="ma-1"
+              color="white"
+              label
+              outlined
+              x-small
+            >
+              {{ file_extension }}
+            </v-chip>
           </v-col>
         </v-row>
       </v-col>
@@ -101,6 +114,7 @@ export default {
     folders_count: 0,
     files_count: 0,
     size: 0,
+    file_extensions: [],
   }),
   props: {
     active: Boolean,
@@ -157,6 +171,7 @@ export default {
       let folders_count = 0;
       let files_count = 0;
       let size = 0;
+      let file_extensions = [];
 
       obj.forEach((f) => {
         if ("dir" in f) {
@@ -165,17 +180,20 @@ export default {
           folders_count += props[0];
           files_count += props[1];
           size += props[2];
+          file_extensions = file_extensions.concat(props[3]);
         } else {
           files_count++;
           size += f.size;
+          file_extensions.push(f.extension.replace(".", ""));
         }
       });
 
       this.folders_count = folders_count;
       this.files_count = files_count;
       this.size = size;
+      this.file_extensions = this.unique(file_extensions);
 
-      return [folders_count, files_count, size];
+      return [folders_count, files_count, size, file_extensions];
     },
   },
   watch: {
