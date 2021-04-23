@@ -98,3 +98,13 @@ export const SET_SEARCH = (state, search) => (state.search = search);
  */
 export const GET_API_BUILD_INFO = (state, apiBuildInfo) =>
   (state.api_build_info = apiBuildInfo);
+
+/**
+ * Set the api error.
+ *
+ * @param state
+ * @param api_error
+ * @constructor
+ */
+export const SET_API_ERROR = (state, api_error) =>
+  (state.api_error = api_error);

@@ -25,4 +25,5 @@ export default {
   ],
   search: "",
   api_build_info: null,
+  api_error: false,
 };

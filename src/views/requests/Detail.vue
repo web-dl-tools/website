@@ -10,13 +10,9 @@
       </v-row>
       <v-row>
         <v-col cols="12">
-          <v-skeleton-loader
-            type="article"
-            elevation="8"
-            v-if="request_loading"
-          />
-          <v-card raised v-else>
-            <v-card-subtitle>
+          <v-card raised>
+            <v-skeleton-loader v-if="request_loading" type="table-heading" />
+            <v-card-subtitle v-else>
               <status :request="request" :with_progress="true" />
               <v-btn
                 icon
@@ -46,8 +42,18 @@
                 Retry
               </v-btn>
             </v-card-subtitle>
-            <card-text :item="request" />
-            <v-card-text class="pb-1">
+            <v-skeleton-loader
+              v-if="request_loading"
+              type="sentences"
+              class="pa-4"
+            />
+            <card-text v-else :item="request" />
+            <v-skeleton-loader
+              v-if="request_loading"
+              type="table-thead"
+              class="px-8"
+            />
+            <v-card-text v-else class="pb-1">
               <v-tabs color="secondary" grow v-model="tab">
                 <v-tab>Information</v-tab>
                 <v-tab>
