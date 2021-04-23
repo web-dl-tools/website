@@ -1,14 +1,13 @@
 <template>
   <v-tab-item>
     <v-row>
-      <v-col class="py-0 pl-0" cols="12" md="8">
+      <v-col class="pr-md-0" cols="12" md="8">
         <v-skeleton-loader v-if="files_loading" class="pt-4" type="paragraph" />
         <v-treeview
           v-else-if="files.length"
           v-model="files_tree"
           :items="files"
           :open="files_open"
-          class="pt-3 pb-2"
           :class="{
             'single-dir-view': !hasDirs,
           }"
@@ -49,35 +48,37 @@
         </v-col>
       </v-col>
       <v-col cols="12" md="4">
-        <v-skeleton-loader v-if="files_loading" class="pt-4" type="paragraph" />
-        <v-row class="px-4 mx-0 highlighted">
-          <v-col class="pb-0 pl-0" cols="12" md="12">
-            <v-icon class="mr-1"> mdi-database </v-icon>
-            {{ formatBytes(size, 0) }} total size
-          </v-col>
-          <v-col class="pb-0 pl-0" cols="12" md="12">
-            <v-icon class="mr-1"> mdi-folder-outline </v-icon>
-            {{ folders_count }} folders
-          </v-col>
-          <v-col class="pb-0 pl-0" cols="12" md="12">
-            <v-icon class="mr-1"> mdi-file-document-multiple-outline </v-icon>
-            {{ files_count }} files
-          </v-col>
-          <v-col class="pl-0" cols="12" md="12">
-            <v-icon class="mr-1"> mdi-shape-plus </v-icon>
-            <v-chip
-              v-for="file_extension in file_extensions"
-              :key="file_extension"
-              class="ma-1"
-              color="white"
-              label
-              outlined
-              x-small
-            >
-              {{ file_extension }}
-            </v-chip>
-          </v-col>
-        </v-row>
+        <v-card outlined>
+          <v-skeleton-loader type="image" v-if="files_loading" />
+          <v-row class="px-4 mx-0" v-else>
+            <v-col class="pb-0 pl-0" cols="12" md="12">
+              <v-icon class="mr-1"> mdi-database </v-icon>
+              {{ formatBytes(size, 2) }} total size
+            </v-col>
+            <v-col class="pb-0 pl-0" cols="12" md="12">
+              <v-icon class="mr-1"> mdi-folder-outline </v-icon>
+              {{ folders_count }} folders
+            </v-col>
+            <v-col class="pb-0 pl-0" cols="12" md="12">
+              <v-icon class="mr-1"> mdi-file-document-multiple-outline </v-icon>
+              {{ files_count }} files
+            </v-col>
+            <v-col class="pl-0" cols="12" md="12">
+              <v-icon class="mr-1"> mdi-shape-plus </v-icon>
+              <v-chip
+                v-for="file_extension in file_extensions"
+                :key="file_extension"
+                class="ma-1"
+                color="darkgrey"
+                label
+                outlined
+                x-small
+              >
+                {{ file_extension }}
+              </v-chip>
+            </v-col>
+          </v-row>
+        </v-card>
       </v-col>
     </v-row>
   </v-tab-item>

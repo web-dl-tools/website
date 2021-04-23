@@ -77,3 +77,11 @@ export const getApiBuildInfo = (state) => {
 
   return apiBuildInfo;
 };
+
+/**
+ * Did the Web DL API fail?
+ *
+ * @param state
+ * @returns {string}
+ */
+export const hasApiError = (state) => state.api_error;

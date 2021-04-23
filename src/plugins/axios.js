@@ -47,6 +47,8 @@ _axios.interceptors.response.use(
   (error) => {
     if (error.response && error.response.status === 401) {
       store.dispatch("application/logout");
+    } else {
+      store.commit("application/SET_API_ERROR", true);
     }
     return Promise.reject(error);
   }
