@@ -33,6 +33,7 @@
     <v-bottom-navigation
       v-model="active"
       class="hidden-md-and-up"
+      background-color="grey darken-4"
       dark
       shift
       fixed

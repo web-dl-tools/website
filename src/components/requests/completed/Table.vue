@@ -5,7 +5,11 @@
     :items="_items"
     :items_per_page="items_per_page"
     no_data_text="There are no completed requests."
-  />
+  >
+    <template v-slot:[`item.title`]="{ item }">
+      {{ truncate(item.title, 120) }}
+    </template>
+  </request-table>
 </template>
 
 <script>

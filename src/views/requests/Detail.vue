@@ -77,6 +77,7 @@
                   :active="tab === 1"
                   :request_id="this.$route.params.requestId"
                   @count-change="(n) => (files_count = n)"
+                  ref="files"
                 />
                 <timeline :active="tab === 2" :item="request" />
                 <raw :active="tab === 3" :item="request" />
@@ -84,6 +85,7 @@
                   :active="tab === 4"
                   :request_id="this.$route.params.requestId"
                   @count-change="(n) => (logs_count = n)"
+                  ref="logs"
                 />
               </v-tabs-items>
             </v-card-text>
@@ -144,12 +146,24 @@ export default {
     request_loading: true,
     files_count: null,
     logs_count: null,
+    request_still_loading: false,
   }),
   computed: {
     ...mapGetters({
       request: "requests/get",
       title: "application/getTitle",
     }),
+  },
+  watch: {
+    request(r) {
+      if (r.status !== "completed") this.request_still_loading = true;
+
+      if (this.request_still_loading && r.status === "completed") {
+        this.request_still_loading = false;
+        this.$refs.files.onFullyLoaded();
+        this.$refs.logs.onFullyLoaded();
+      }
+    },
   },
   methods: {
     /**
