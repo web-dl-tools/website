@@ -11,7 +11,14 @@
       <v-col class="py-0" cols="12">
         <v-row>
           <v-col cols="12">
-            <v-slider v-model="min_bytes" min="0" max="5242880" hide-details>
+            <v-slider
+              v-model="min_bytes"
+              min="0"
+              max="5242880"
+              step="262144"
+              ticks="always"
+              hide-details
+            >
               <template v-slot:label>
                 <small class="font-weight-light grey--text text--lighten-2">
                   Size

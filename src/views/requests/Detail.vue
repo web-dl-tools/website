@@ -87,6 +87,10 @@
                 />
               </v-tabs-items>
             </v-card-text>
+            <v-skeleton-loader
+              v-if="request_loading"
+              type="list-item-three-line"
+            />
           </v-card>
         </v-col>
       </v-row>
