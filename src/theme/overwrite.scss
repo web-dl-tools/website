@@ -8,6 +8,12 @@
   color: inherit !important;
 }
 
+// Nav
+.v-bottom-navigation--fixed,
+.v-app-bar--fixed.grey.darken-4 {
+  opacity: .95;
+}
+
 // Table
 .v-data-table > .v-data-table__wrapper > table > thead > tr > th > span {
   color: white;
@@ -29,8 +35,8 @@ button.v-icon.notranslate.v-treeview-node__toggle.v-icon--link.mdi.mdi-menu-down
   margin-left: 0;
 }
 
-.v-treeview-node__root .v-treeview-node__level:first-of-type {
-  width: 6px;
+.single-dir-view .v-treeview-node__root .v-treeview-node__level:first-of-type {
+  width: 4px;
 }
 
 // Layout

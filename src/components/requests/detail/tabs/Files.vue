@@ -138,9 +138,11 @@ export default {
   methods: {
     /**
      * Request all directories and files for this request from the API.
+     *
+     * @param force
      */
-    retrieveFiles() {
-      if (!this.files_loaded) {
+    retrieveFiles(force = false) {
+      if (!this.files_loaded || force) {
         this.files_loading = true;
         this.$store
           .dispatch("requests/getFiles", this.request_id)
@@ -195,6 +197,12 @@ export default {
       this.file_extensions = this.unique(file_extensions);
 
       return [folders_count, files_count, size, file_extensions];
+    },
+    /**
+     * Reload all the files when the request finished downloading.
+     */
+    onFullyLoaded(r) {
+      this.retrieveFiles(true);
     },
   },
   watch: {

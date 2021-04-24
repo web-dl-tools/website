@@ -80,15 +80,23 @@ export default {
   methods: {
     /**
      * Request all log entries for this request from the API.
+     *
+     * @param force
      */
-    retrieveLogs() {
-      if (!this.logs_loaded) {
+    retrieveLogs(force = false) {
+      if (!this.logs_loaded || force) {
         this.logs_loading = true;
         this.$store
           .dispatch("requests/getLogs", this.request_id)
           .then(() => (this.logs_loaded = true))
           .finally(() => (this.logs_loading = false));
       }
+    },
+    /**
+     * Reload all the logs when the request finished downloading.
+     */
+    onFullyLoaded(r) {
+      this.retrieveLogs(true);
     },
   },
   watch: {
