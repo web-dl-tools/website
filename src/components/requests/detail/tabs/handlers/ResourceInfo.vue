@@ -1,6 +1,6 @@
 <template>
   <v-row>
-    <v-col class="mb-n1" cols="12">
+    <v-col class="mb-n1" cols="12" md="7">
       <p class="mb-0 body-1">
         Found {{ item.data.filtered_paths.length }} unique paths matching the
         given extensions.
@@ -39,11 +39,20 @@
         </v-col>
       </v-row>
     </v-col>
+    <v-col class="mb-n1" cols="12" md="5">
+      <v-parallax
+        @click="openFile(path)"
+        :src="path"
+        height="300"
+        class="border-radius cursor-pointer"
+      />
+    </v-col>
   </v-row>
 </template>
 
 <script>
 import formatters from "../../../../../mixins/formatters";
+import Vue from "vue";
 
 export default {
   name: "components.requests.detail.tabs.handlers.resource-info",
@@ -51,6 +60,31 @@ export default {
   data: () => ({}),
   props: {
     item: Object,
+  },
+  computed: {
+    /**
+     * Generate and calculate the screenshot path.
+     */
+    path() {
+      return `${
+        Vue.$axios.defaults.baseURL
+      }download/file?auth_token=${Vue.$axios.defaults.headers.common.Authorization.replace(
+        "Token ",
+        ""
+      )}&path=${encodeURIComponent(
+        this.item.path + "/" + this.item.id + ".png"
+      )}`;
+    },
+  },
+  methods: {
+    /**
+     * Open the file download/access link in a new tab.
+     *
+     * @param path
+     */
+    openFile(path) {
+      window.open(path, "_blank");
+    },
   },
 };
 </script>

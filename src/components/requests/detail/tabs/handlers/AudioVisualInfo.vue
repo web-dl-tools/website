@@ -73,7 +73,11 @@
       </v-row>
     </v-col>
     <v-col cols="12" md="4">
-      <v-parallax :src="item.data.thumbnail" height="300" id="thumbnail" />
+      <v-parallax
+        :src="item.data.thumbnail"
+        height="300"
+        class="border-radius"
+      />
     </v-col>
   </v-row>
 </template>
@@ -94,9 +98,5 @@ export default {
 <style scoped>
 #pre-description {
   white-space: pre-line;
-}
-
-#thumbnail {
-  border-radius: 4px;
 }
 </style>
