@@ -53,7 +53,7 @@
           <v-row class="px-4 mx-0" v-else>
             <v-col class="pb-0 pl-0" cols="12" md="12">
               <v-icon class="mr-1"> mdi-database </v-icon>
-              {{ formatBytes(size, 2) }} total size
+              {{ formatBytes(size, 2) }} size
             </v-col>
             <v-col class="pb-0 pl-0" cols="12" md="12">
               <v-icon class="mr-1"> mdi-folder-outline </v-icon>
