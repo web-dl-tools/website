@@ -151,7 +151,7 @@ export default {
       }
     },
     /**
-     * Open the file download/access link in a new tab.
+     * Generate and open the file download/access link in a new tab.
      *
      * @param path
      */

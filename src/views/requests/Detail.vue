@@ -156,9 +156,13 @@ export default {
   },
   watch: {
     request(r) {
-      if (r.status !== "completed") this.request_still_loading = true;
+      if (r.status !== "completed" && r.status !== "failed")
+        this.request_still_loading = true;
 
-      if (this.request_still_loading && r.status === "completed") {
+      if (
+        this.request_still_loading &&
+        (r.status === "completed" || r.status === "failed")
+      ) {
         this.request_still_loading = false;
         this.$refs.files.onFullyLoaded();
         this.$refs.logs.onFullyLoaded();
