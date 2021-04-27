@@ -3,7 +3,7 @@ FROM node:15.14.0-buster as builder
 RUN npm config set unsafe-perm true
 
 ARG VUE_APP_API_URL
-ARG SENTRY_DSN
+ARG VUE_APP_SENTRY_DSN
 
 ADD . code
 
