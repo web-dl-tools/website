@@ -7,6 +7,7 @@ services:
       dockerfile: ./compose/nginx/Dockerfile
       args:
         - VUE_APP_API_URL=${VUE_APP_API_URL}
+        - SENTRY_DSN=${SENTRY_DSN}
     deploy:
       resources:
         limits:
