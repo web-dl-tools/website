@@ -23,8 +23,6 @@ if (process.env.SENTRY_DSN !== "") {
     integrations: [new Integrations.BrowserTracing()],
     tracesSampleRate: 1.0,
   });
-  console.log("enabled sentry");
-  console.log(process.env.SENTRY_DSN);
 }
 
 Vue.config.productionTip = false;
