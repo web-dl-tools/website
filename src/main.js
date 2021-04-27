@@ -22,6 +22,9 @@ if (process.env.SENTRY_DSN !== "") {
     dsn: process.env.SENTRY_DSN,
     integrations: [new Integrations.BrowserTracing()],
     tracesSampleRate: 1.0,
+    tracingOptions: {
+      trackComponents: true,
+    },
   });
 }
 
