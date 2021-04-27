@@ -25,6 +25,7 @@ if (process.env.SENTRY_DSN !== "") {
     tracingOptions: {
       trackComponents: true,
     },
+    logErrors: true,
   });
 }
 
