@@ -16,10 +16,9 @@ import "./theme/general.scss";
 import * as Sentry from "@sentry/vue";
 import { Integrations } from "@sentry/tracing";
 
-if (process.env.SENTRY_DSN !== "") {
+if (process.env.VUE_APP_SENTRY_DSN !== "") {
   Sentry.init({
-    Vue,
-    dsn: process.env.SENTRY_DSN,
+    dsn: process.env.VUE_APP_SENTRY_DSN,
     integrations: [new Integrations.BrowserTracing()],
     tracesSampleRate: 1.0,
     tracingOptions: {
