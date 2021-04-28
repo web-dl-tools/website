@@ -25,6 +25,8 @@ if (process.env.VUE_APP_SENTRY_DSN !== "") {
       trackComponents: true,
     },
     logErrors: true,
+    attachStacktrace: true,
+    sendDefaultPii: true,
   });
 }
 
