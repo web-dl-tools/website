@@ -20,7 +20,7 @@
         <v-col class="py-0 font-weight-light" cols="3">
           Minimum size limit
         </v-col>
-        <v-col class="py-0 body-2 font-weight-thin" cols="9">
+        <v-col class="py-0 pl-1 body-2 font-weight-thin" cols="9">
           {{ formatBytes(item.min_bytes, 1) }}
         </v-col>
       </v-row>
