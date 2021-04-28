@@ -207,6 +207,6 @@ export default {
 
 <style>
 .inner-spinner {
-  padding-bottom: 2.3px;
+  padding-bottom: 4.5px;
 }
 </style>
