@@ -24,8 +24,8 @@ pre {
 
 .background-wallpaper {
   background-image:
-          radial-gradient(circle, rgba(255,255,255,0) 0%, rgba(4,0,1,0.25) 100%),
-          url('~@/assets/wallpapers/background.jpeg');
+    radial-gradient(circle, rgba(255,255,255,0) 0%, rgba(4,0,1,0.25) 100%),
+    url('~@/assets/wallpapers/background.jpeg');
   background-size: cover;
   background-repeat: no-repeat;
   background-attachment: fixed;
@@ -38,6 +38,11 @@ pre {
 
 .cursor-pointer {
   cursor: pointer;
+}
+
+.v-tab--active,
+.font-weight-500 {
+  font-weight: 500 !important;
 }
 
 .log {
@@ -72,5 +77,5 @@ pre {
 }
 
 .text-light-shadow {
-  text-shadow: 0 0 5px #aabacd;
+  text-shadow: 0 0 5px #aabacd, 0 0 5px #aabacd, 0 0 5px #aabacd;
 }

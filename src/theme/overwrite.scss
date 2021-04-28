@@ -1,3 +1,38 @@
+// Fonts
+@font-face {
+  font-family: "Barlow";
+  src: url("../assets/fonts/Barlow/Barlow-Light.ttf");
+  font-weight: 100;
+}
+
+@font-face {
+  font-family: "Barlow";
+  src: url("../assets/fonts/Barlow/Barlow-Medium.ttf");
+  font-weight: 500;
+}
+
+.v-application,
+.v-application .display-1,
+.v-application .display-2,
+.v-application .headline,
+.v-application .title,
+.v-application .body-2,
+.v-application .subtitle-1,
+.v-application .subtitle-2,
+.v-application .text-caption,
+.v-application .text-overline {
+  font-family: Barlow, Roboto, sans-serif !important;
+}
+
+.v-application,
+.v-application .body-2,
+.v-application .subtitle-2,
+.v-card__text,
+.v-application .text-caption,
+.v-tab {
+  font-weight: 100 !important;
+}
+
 // Theme colors
 .theme--dark.v-stepper {
   background: #1e1e1e;
@@ -7,6 +42,13 @@
 .v-card__subtitle {
   color: inherit !important;
 }
+
+// Layout
+.row {
+  margin-top: 0 !important;
+  margin-bottom: 0 !important;
+}
+
 
 // Nav
 .v-bottom-navigation--fixed,
@@ -37,10 +79,4 @@ button.v-icon.notranslate.v-treeview-node__toggle.v-icon--link.mdi.mdi-menu-down
 
 .single-dir-view .v-treeview-node__root .v-treeview-node__level:first-of-type {
   width: 4px;
-}
-
-// Layout
-.row {
-  margin-top: 0 !important;
-  margin-bottom: 0 !important;
 }

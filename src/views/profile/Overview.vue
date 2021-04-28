@@ -24,10 +24,9 @@
               Below you can find your information currently stored in Web DL.
             </v-card-subtitle>
             <v-card-text>
-              <v-skeleton-loader type="paragraph" v-if="!user" />
               <v-row>
-                <v-col cols="4" class="py-0 font-weight-black">Username</v-col>
-                <v-col cols="8" class="py-0">{{ user.username }}</v-col>
+                <v-col cols="4" class="pb-0 font-weight-black">Username</v-col>
+                <v-col cols="8" class="pb-0">{{ user.username }}</v-col>
               </v-row>
               <v-row>
                 <v-col cols="4" class="pt-0 font-weight-black">Full name</v-col>
