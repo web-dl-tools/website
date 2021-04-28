@@ -11,7 +11,7 @@
       <status :request="item" :with_progress="true" />
     </template>
     <template v-slot:[`item.url`]="{ item }">
-      {{ truncate(item.url, 45) }}
+      {{ truncate(item.url, $vuetify.breakpoint.smAndDown ? 40 : 45) }}
     </template>
   </request-table>
 </template>

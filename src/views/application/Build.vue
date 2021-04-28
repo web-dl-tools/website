@@ -22,8 +22,8 @@
             </v-card-subtitle>
             <v-card-text>
               <v-row>
-                <v-col cols="4" class="py-t font-weight-black"> Version </v-col>
-                <v-col cols="8" class="py-t">
+                <v-col cols="4" class="font-weight-black"> Version </v-col>
+                <v-col cols="8">
                   {{ buildInfo.tag }}
                 </v-col>
               </v-row>
@@ -119,8 +119,8 @@
             </v-card-text>
             <v-card-text v-else>
               <v-row>
-                <v-col cols="4" class="py-t font-weight-black"> Version </v-col>
-                <v-col cols="8" class="py-t">
+                <v-col cols="4" class="font-weight-black"> Version </v-col>
+                <v-col cols="8">
                   {{ apiBuildInfo.tag }}
                 </v-col>
               </v-row>

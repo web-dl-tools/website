@@ -32,7 +32,7 @@
           <template v-slot:label="{ item, leaf }">
             <span v-if="!leaf" class="font-weight-black">{{ item.name }}</span>
             <div v-else @click="openFile(item.path)">
-              <p class="pt-2 mb-0 body-2">
+              <p class="pt-2 mb-0 font-weight-500">
                 {{ item.name }}
               </p>
               <p class="mt-n2 mb-0 overline font-weight-light">

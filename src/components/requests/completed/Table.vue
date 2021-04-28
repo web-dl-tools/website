@@ -7,7 +7,7 @@
     no_data_text="There are no completed requests."
   >
     <template v-slot:[`item.title`]="{ item }">
-      {{ truncate(item.title, 120) }}
+      {{ truncate(item.title, $vuetify.breakpoint.smAndDown ? 40 : 120) }}
     </template>
   </request-table>
 </template>
