@@ -24,7 +24,7 @@ export default {
 .custom-json-theme {
   white-space: nowrap;
   color: #fff;
-  font-size: 12px;
+  font-size: 12.5px;
   font-family: Consolas, Menlo, Courier, monospace;
 
   .jv-ellipsis {
