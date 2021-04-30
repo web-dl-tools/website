@@ -19,6 +19,7 @@
     <span>
       <v-chip
         :class="[
+          'px-2',
           formatTextColor(formatRequestStatusColor(request.status)),
           {
             'no-radius-right': processing,

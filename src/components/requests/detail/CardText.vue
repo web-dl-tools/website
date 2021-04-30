@@ -26,8 +26,12 @@
             <p class="mb-2">
               <v-icon> mdi-plus </v-icon>
               <span class="ml-1">
-                Requested on
-                {{ formatDate(item.created_at, "dddd, LL [at] HH:mm:ss") }}
+                {{
+                  formatDate(
+                    item.created_at,
+                    "[Requested on] dddd, LL [at] HH:mm:ss"
+                  )
+                }}
                 ({{ formatDateFromNow(item.created_at) }})
               </span>
             </p>

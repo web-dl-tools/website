@@ -86,7 +86,7 @@ export default {
     formatItem(item) {
       item.title = this.capitalize(item.title);
       item.domain = this.formatDomain(item.url);
-      item.created_at = this.formatDate(item.created_at, "LL HH:mm");
+      item.created_at = this.formatDate(item.created_at, "LL [@] HH:mm");
       item.request_type_label = this.formatRequest(item.request_type);
       return item;
     },

@@ -1,6 +1,6 @@
 <template>
   <v-app>
-    <router-view />
+    <router-view :key="$route.fullPath" />
     <v-snackbar v-model="snackbar" color="error" timeout="-1">
       Something went wrong with the Web DL API. Please refresh or try again
       later.

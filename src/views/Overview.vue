@@ -17,6 +17,7 @@
             >Active and pending requests
             <v-spacer />
             <v-btn
+              class="text-no-transform"
               x-small
               text
               @click="$router.push({ name: 'requests.active' }).catch(() => {})"
@@ -34,6 +35,7 @@
             >Completed requests
             <v-spacer />
             <v-btn
+              class="text-no-transform"
               x-small
               text
               @click="
@@ -58,6 +60,7 @@
             Failed requests
             <v-spacer />
             <v-btn
+              class="text-no-transform"
               x-small
               text
               @click="$router.push({ name: 'requests.failed' }).catch(() => {})"
