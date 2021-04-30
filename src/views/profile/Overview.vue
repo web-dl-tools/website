@@ -25,16 +25,22 @@
             </v-card-subtitle>
             <v-card-text>
               <v-row>
-                <v-col cols="4" class="pb-0 font-weight-black">Username</v-col>
+                <v-col cols="4" class="pb-0 font-weight-regular">
+                  Username
+                </v-col>
                 <v-col cols="8" class="pb-0">{{ user.username }}</v-col>
               </v-row>
               <v-row>
-                <v-col cols="4" class="pt-0 font-weight-black">Full name</v-col>
+                <v-col cols="4" class="pt-0 font-weight-regular">
+                  Full name
+                </v-col>
                 <v-col cols="8" class="pt-0">{{ user.full_name }}</v-col>
               </v-row>
 
               <v-row>
-                <v-col cols="4" class="py-0 font-weight-black">Joined on</v-col>
+                <v-col cols="4" class="py-0 font-weight-regular">
+                  Joined on
+                </v-col>
                 <v-col cols="8" class="py-0">
                   {{ formatDate(user.date_joined, "LLLL") }}
                 </v-col>
