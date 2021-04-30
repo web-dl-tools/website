@@ -20,7 +20,8 @@
             There are no active or pending requests.
           </v-card-title>
           <v-card-subtitle class="subtitle-2 font-weight-light">
-            Click on create/+ to create a new request.
+            Click on <v-icon small> mdi-plus-circle-outline </v-icon>
+            or enter a url on top to create a new request.
           </v-card-subtitle>
         </v-card>
       </v-col>

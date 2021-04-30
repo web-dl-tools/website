@@ -13,32 +13,32 @@
       <v-row>
         <v-col cols="12" md="7">
           <v-card raised>
-            <v-card-title class="subtitle-1 text-capitalize">
-              Website
-            </v-card-title>
+            <v-card-title class="subtitle-1"> Website </v-card-title>
             <v-card-subtitle class="subtitle-2">
               Below you can find information about the current website build of
               Web DL.
             </v-card-subtitle>
             <v-card-text>
               <v-row>
-                <v-col cols="4" class="font-weight-black"> Version </v-col>
+                <v-col cols="4" class="font-weight-regular"> Version </v-col>
                 <v-col cols="8">
                   {{ buildInfo.tag }}
                 </v-col>
               </v-row>
               <v-row>
-                <v-col cols="4" class="py-0 font-weight-black">Build</v-col>
+                <v-col cols="4" class="py-0 font-weight-regular">Build</v-col>
                 <v-col cols="8" class="py-0">
                   {{ buildInfo.commit }}
                 </v-col>
               </v-row>
               <v-row>
-                <v-col cols="4" class="py-0 font-weight-black">
+                <v-col cols="4" class="py-0 font-weight-regular">
                   Build date
                 </v-col>
                 <v-col cols="8" class="py-0">
-                  {{ formatDate(buildInfo.commiter.date, "LLLL") }}
+                  {{
+                    formatDate(buildInfo.commiter.date, "dddd LL [at] HH:mm:ss")
+                  }}
                 </v-col>
               </v-row>
               <v-row>
@@ -48,7 +48,7 @@
                 </v-col>
               </v-row>
               <v-row>
-                <v-col cols="4" class="pt-0 font-weight-black">
+                <v-col cols="4" class="pt-0 font-weight-regular">
                   Git references
                 </v-col>
                 <v-col cols="8" class="pt-0">
@@ -65,15 +65,15 @@
               </v-row>
 
               <v-row>
-                <v-col cols="4" class="py-0 font-weight-black">
+                <v-col cols="4" class="py-0 font-weight-regular">
                   Latest change
                 </v-col>
-                <v-col cols="8" class="py-0 font-coder">
+                <v-col cols="8" class="py-0">
                   {{ buildInfo.subject }}
                 </v-col>
               </v-row>
               <v-row>
-                <v-col cols="4" class="py-0 font-weight-black">Author</v-col>
+                <v-col cols="4" class="py-0 font-weight-regular">Author</v-col>
                 <v-col cols="8" class="py-0">
                   {{ buildInfo.author.name }}
                 </v-col>
@@ -86,7 +86,9 @@
               </v-row>
 
               <v-row>
-                <v-col cols="4" class="py-0 font-weight-black"> Source </v-col>
+                <v-col cols="4" class="py-0 font-weight-regular">
+                  Source
+                </v-col>
                 <v-col cols="8" class="py-0">
                   <a
                     href="https://gitlab.com/web-dl/website"
@@ -103,9 +105,7 @@
 
         <v-col cols="12" md="5">
           <v-card raised>
-            <v-card-title class="subtitle-1 text-capitalize">
-              API
-            </v-card-title>
+            <v-card-title class="subtitle-1"> API </v-card-title>
             <v-card-subtitle class="subtitle-2">
               Below you can find information about the current API build of Web
               DL.
@@ -119,23 +119,28 @@
             </v-card-text>
             <v-card-text v-else>
               <v-row>
-                <v-col cols="4" class="font-weight-black"> Version </v-col>
+                <v-col cols="4" class="font-weight-regular"> Version </v-col>
                 <v-col cols="8">
                   {{ apiBuildInfo.tag }}
                 </v-col>
               </v-row>
               <v-row>
-                <v-col cols="4" class="py-0 font-weight-black">Build</v-col>
+                <v-col cols="4" class="py-0 font-weight-regular">Build</v-col>
                 <v-col cols="8" class="py-0">
                   {{ apiBuildInfo.commit }}
                 </v-col>
               </v-row>
               <v-row>
-                <v-col cols="4" class="py-0 font-weight-black">
+                <v-col cols="4" class="py-0 font-weight-regular">
                   Build date
                 </v-col>
                 <v-col cols="8" class="py-0">
-                  {{ formatDate(apiBuildInfo.commiter.date, "LLLL") }}
+                  {{
+                    formatDate(
+                      apiBuildInfo.commiter.date,
+                      "dddd LL [at] HH:mm:ss"
+                    )
+                  }}
                 </v-col>
               </v-row>
               <v-row>
@@ -145,7 +150,7 @@
                 </v-col>
               </v-row>
               <v-row>
-                <v-col cols="4" class="pt-0 font-weight-black">
+                <v-col cols="4" class="pt-0 font-weight-regular">
                   Git references
                 </v-col>
                 <v-col cols="8" class="pt-0">
@@ -162,15 +167,15 @@
               </v-row>
 
               <v-row>
-                <v-col cols="4" class="py-0 font-weight-black">
+                <v-col cols="4" class="py-0 font-weight-regular">
                   Latest change
                 </v-col>
-                <v-col cols="8" class="py-0 font-coder">
+                <v-col cols="8" class="py-0">
                   {{ apiBuildInfo.subject }}
                 </v-col>
               </v-row>
               <v-row>
-                <v-col cols="4" class="py-0 font-weight-black">Author</v-col>
+                <v-col cols="4" class="py-0 font-weight-regular">Author</v-col>
                 <v-col cols="8" class="py-0">
                   {{ apiBuildInfo.author.name }}
                 </v-col>
@@ -183,7 +188,9 @@
               </v-row>
 
               <v-row>
-                <v-col cols="4" class="py-0 font-weight-black"> Source </v-col>
+                <v-col cols="4" class="py-0 font-weight-regular">
+                  Source
+                </v-col>
                 <v-col cols="8" class="py-0">
                   <a
                     href="https://gitlab.com/web-dl/api"

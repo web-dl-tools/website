@@ -27,19 +27,19 @@
                   request.status === 'completed' || request.status === 'failed'
                 "
                 color="error"
-                text
+                icon
                 @click="dialog = true"
               >
-                Delete
+                <v-icon> mdi-delete-outline </v-icon>
               </v-btn>
               <v-btn
                 class="float-right mt-n2 mr-0"
                 v-if="request.status === 'failed'"
                 color="warning"
-                text
+                icon
                 @click="retry"
               >
-                Retry
+                <v-icon> mdi-sync </v-icon>
               </v-btn>
             </v-card-subtitle>
             <v-skeleton-loader
@@ -99,7 +99,7 @@
     </v-container>
 
     <v-dialog v-model="dialog" max-width="500">
-      <v-card outlined raised>
+      <v-card outlined raised class="pb-1">
         <v-card-title>Delete</v-card-title>
         <v-card-text>
           Are you sure you want to delete this request?

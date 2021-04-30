@@ -1,5 +1,5 @@
 <template>
-  <v-card class="card-single-card" outlined raised>
+  <v-card outlined raised class="pb-1">
     <v-card-title> Login </v-card-title>
     <v-card-subtitle> Authenticate with Web DL. </v-card-subtitle>
     <v-card-text>
@@ -26,14 +26,14 @@
         />
       </v-form>
     </v-card-text>
-    <v-card-actions class="mb-2">
+    <v-card-actions>
       <v-spacer />
       <v-btn
         class="mr-2"
         :color="error ? 'error' : 'white'"
         :disabled="loading || !valid"
         :loading="loading"
-        outlined
+        text
         @click="login"
       >
         Login

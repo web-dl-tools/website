@@ -49,11 +49,22 @@
   margin-bottom: 0 !important;
 }
 
+// Chip
+.v-chip {
+  padding-left: 4px;
+  padding-right: 4px;
+}
 
 // Nav
 .v-bottom-navigation--fixed,
 .v-app-bar--fixed.grey.darken-4 {
   opacity: .95;
+}
+
+// Tab
+.v-tab--active,
+.font-weight-500 {
+  font-weight: 500 !important;
 }
 
 // Table

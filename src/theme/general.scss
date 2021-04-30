@@ -40,14 +40,17 @@ pre {
   cursor: pointer;
 }
 
-.v-tab--active,
-.font-weight-500 {
-  font-weight: 500 !important;
+.font-size-18 {
+  font-size: 18px;
 }
 
 .log {
   font-size: 13px;
   font-family: Consolas, Menlo, Courier, monospace;
+}
+
+.min-width-40 {
+  min-width: 40px !important;
 }
 
 .no-radius-left {

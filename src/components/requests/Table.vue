@@ -3,6 +3,7 @@
     <v-card raised>
       <v-data-table
         :headers="headers"
+        :hide-default-footer="!extended"
         :items-per-page="parseInt(items_per_page)"
         :items="items"
         :loading="loading"

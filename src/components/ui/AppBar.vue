@@ -1,12 +1,13 @@
 <template>
   <v-app-bar color="grey darken-4" app dark short flat class="fixed-top">
-    <v-toolbar-title class="ml-n4 ml-md-2 mr-2">
+    <v-toolbar-title class="ml-n4 mr-1 ml-md-n1">
       <v-btn
-        class="transparent"
-        elevation="0"
+        class=""
+        :icon="$vuetify.breakpoint.smAndDown"
+        :text="!$vuetify.breakpoint.smAndDown"
         @click="$router.push({ name: 'overview' }).catch(() => {})"
       >
-        <v-icon class="pr-2"> mdi-cloud-download-outline </v-icon>
+        <v-icon class="px-2"> mdi-cloud-download-outline </v-icon>
         <span
           class="title font-weight-light font-italic text-no-transform hidden-sm-and-down"
         >
@@ -16,10 +17,26 @@
     </v-toolbar-title>
     <v-spacer />
     <v-text-field
-      v-show="this.active !== undefined"
+      v-show="$router.currentRoute.name !== 'requests.create'"
+      v-if="this.active === undefined"
+      v-model="url"
+      :placeholder="url_label"
+      prepend-inner-icon="mdi-plus"
+      :label="url_label"
+      clearable
+      dense
+      flat
+      hide-details
+      solo-inverted
+      v-on:keyup.enter.native="createRequest"
+    />
+    <v-text-field
+      v-show="$router.currentRoute.name !== 'requests.create'"
+      v-else
       :value="search"
+      :placeholder="search_label"
       prepend-inner-icon="mdi-magnify"
-      label="Search"
+      :label="search_label"
       clearable
       dense
       flat
@@ -35,7 +52,7 @@
         v-show="$router.currentRoute.name !== 'requests.create'"
         @click="$router.push({ name: 'requests.create' }).catch(() => {})"
       >
-        <span class="subtitle-2">Create</span>
+        <v-icon> mdi-plus-circle-outline </v-icon>
       </v-btn>
       <v-divider
         v-show="$router.currentRoute.name !== 'requests.create'"
@@ -97,6 +114,11 @@ export default {
   props: {
     active: Number,
   },
+  data: () => ({
+    url: "",
+    url_label: "Create a new request",
+    search_label: "Search",
+  }),
   computed: {
     ...mapGetters({
       menuItems: "application/getMenuItems",
@@ -104,6 +126,14 @@ export default {
     }),
   },
   methods: {
+    /**
+     * Start creating a new request.
+     */
+    createRequest() {
+      this.$router
+        .push({ name: "requests.create", query: { url: this.url } })
+        .catch(() => {});
+    },
     /**
      * Set the search query.
      *

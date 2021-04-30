@@ -90,7 +90,7 @@ export default {
      * @returns {*}
      */
     formatItem(item) {
-      item.created_at = this.formatDate(item.created_at, "LL HH:mm");
+      item.created_at = this.formatDate(item.created_at, "LL [@] HH:mm");
       item.request_type_label = this.formatRequest(item.request_type);
       return item;
     },

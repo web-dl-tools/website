@@ -3,7 +3,7 @@
     <v-timeline :dense="$vuetify.breakpoint.smAndDown">
       <v-timeline-item v-if="item.status === 'completed'" color="success" small>
         <v-card outlined>
-          <v-card-title class="headline font-weight-light">
+          <v-card-title class="font-weight-light font-size-18">
             Request has completed.
           </v-card-title>
           <v-card-subtitle class="font-weight-bold success--text">
@@ -20,7 +20,7 @@
         small
       >
         <v-card outlined>
-          <v-card-title class="headline font-weight-light">
+          <v-card-title class="font-weight-light font-size-18">
             Request has started processing.
           </v-card-title>
           <v-card-subtitle class="font-weight-bold accent--text">
@@ -34,7 +34,7 @@
       </v-timeline-item>
       <v-timeline-item color="info" small>
         <v-card outlined>
-          <v-card-title class="headline font-weight-light">
+          <v-card-title class="font-weight-light font-size-18">
             Request has been created.
           </v-card-title>
           <v-card-subtitle class="font-weight-bold info--text">
