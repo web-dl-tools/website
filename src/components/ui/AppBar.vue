@@ -16,8 +16,9 @@
       </v-btn>
     </v-toolbar-title>
     <v-spacer />
+    {{ this.$router.path }}
     <v-text-field
-      v-show="$router.currentRoute.name !== 'requests.create'"
+      v-show="this.$route.name !== 'requests.create'"
       v-if="this.active === undefined"
       v-model="url"
       :placeholder="url_label"
@@ -31,7 +32,7 @@
       v-on:keyup.enter.native="createRequest"
     />
     <v-text-field
-      v-show="$router.currentRoute.name !== 'requests.create'"
+      v-show="this.$route.name !== 'requests.create'"
       v-else
       :value="search"
       :placeholder="search_label"
@@ -49,13 +50,13 @@
       <v-btn
         text
         class="transparent"
-        v-show="$router.currentRoute.name !== 'requests.create'"
+        v-show="this.$route.name !== 'requests.create'"
         @click="$router.push({ name: 'requests.create' }).catch(() => {})"
       >
         <v-icon> mdi-plus-circle-outline </v-icon>
       </v-btn>
       <v-divider
-        v-show="$router.currentRoute.name !== 'requests.create'"
+        v-show="this.$route.name !== 'requests.create'"
         class="mx-2"
         inset
         vertical
