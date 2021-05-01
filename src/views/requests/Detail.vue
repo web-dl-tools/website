@@ -202,11 +202,13 @@ export default {
         this.request_loading = false;
       });
   },
+  /**
+   * Clean out retrieved data.
+   */
+  beforeDestroy() {
+    this.$store.commit("requests/GET", {});
+    this.$refs.files.onBeforeDestroy();
+    this.$refs.logs.onBeforeDestroy();
+  },
 };
 </script>
-
-<style>
-.inner-spinner {
-  padding-bottom: 4.5px;
-}
-</style>

@@ -21,22 +21,24 @@
       v-show="this.$route.name !== 'requests.create'"
       v-if="this.active === undefined"
       v-model="url"
-      :placeholder="url_label"
       prepend-inner-icon="mdi-plus"
+      color="info"
+      :placeholder="url_label"
       :label="url_label"
       clearable
       dense
       flat
       hide-details
-      solo-inverted
+      solo
       v-on:keyup.enter.native="createRequest"
     />
     <v-text-field
       v-show="this.$route.name !== 'requests.create'"
       v-else
+      prepend-inner-icon="mdi-magnify"
+      color="accent"
       :value="search"
       :placeholder="search_label"
-      prepend-inner-icon="mdi-magnify"
       :label="search_label"
       clearable
       dense
@@ -87,7 +89,7 @@
               <v-icon>mdi-account-circle-outline</v-icon>
             </v-list-item-icon>
             <v-list-item-content>
-              <v-list-item-title>My profile</v-list-item-title>
+              <v-list-item-title>Your profile</v-list-item-title>
             </v-list-item-content>
           </v-list-item>
           <v-divider />
@@ -133,7 +135,8 @@ export default {
     createRequest() {
       this.$router
         .push({ name: "requests.create", query: { url: this.url } })
-        .catch(() => {});
+        .catch(() => {})
+        .finally(() => (this.url = ""));
     },
     /**
      * Set the search query.

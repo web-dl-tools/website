@@ -8,7 +8,7 @@
       type="text"
       autofocus
       clearable
-      v-on:keyup.enter.native="$emit('automatic-action')"
+      v-on:keyup.enter.native="automaticAction"
     />
   </div>
 </template>
@@ -84,10 +84,12 @@ export default {
         });
       }
     },
+    /**
+     * Update data upstream and if available trigger automatic action.
+     */
     automaticAction() {
-      this.url = this.$route.query["url"];
       this.updateData(this.valid);
-      this.$emit("automatic-action");
+      if (this.valid) this.$emit("automatic-action");
     },
   },
   /**
@@ -96,6 +98,7 @@ export default {
    */
   created() {
     if ("url" in this.$route.query) {
+      this.url = this.$route.query["url"];
       this.automaticAction();
     }
   },

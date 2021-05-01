@@ -204,6 +204,12 @@ export default {
     onFullyLoaded(r) {
       this.retrieveFiles(true);
     },
+    /**
+     * Clean out retrieved files.
+     */
+    onBeforeDestroy(r) {
+      this.$store.commit("requests/GET_FILES", {});
+    },
   },
   watch: {
     /**

@@ -275,6 +275,17 @@ export default {
      * @returns {*}
      */
     bestSingleFileFormat() {
+      if (!("format_id" in this.data.options[this.data.options.length - 1])) {
+        // eslint-disable-next-line vue/no-mutating-props, vue/no-side-effects-in-computed-properties
+        this.data.options = [
+          {
+            ext: "Various",
+            format: "Automatic",
+            format_id: "bestvideo+bestaudio",
+            format_note: "Automatic best file option",
+          },
+        ];
+      }
       return this.data.options[this.data.options.length - 1].format_id;
     },
     /**

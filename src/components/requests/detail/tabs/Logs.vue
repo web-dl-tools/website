@@ -98,6 +98,12 @@ export default {
     onFullyLoaded(r) {
       this.retrieveLogs(true);
     },
+    /**
+     * Clean out retrieved logs.
+     */
+    onBeforeDestroy(r) {
+      this.$store.commit("requests/GET_LOGS", []);
+    },
   },
   watch: {
     /**
