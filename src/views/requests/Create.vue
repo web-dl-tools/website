@@ -23,7 +23,8 @@
                 @automatic-action="getHandlers"
               />
               <v-btn
-                outlined
+                block
+                text
                 :color="error ? 'error' : 'white'"
                 :loading="loading"
                 :disabled="loading || !isEmptyObject(step1Data)"
@@ -46,7 +47,8 @@
               />
               <v-btn
                 class="mt-2"
-                outlined
+                block
+                text
                 :color="error ? 'error' : 'white'"
                 :loading="loading"
                 :disabled="loading || !isEmptyObject(step2Data)"
@@ -80,9 +82,10 @@
                 @data-change="dataChange"
               />
               <v-btn
-                outlined
+                block
+                text
                 class="mb-6"
-                :color="error ? 'error' : 'white'"
+                :color="error ? 'error' : 'success'"
                 :loading="loading"
                 :disabled="loading || !isEmptyObject(step3Data)"
                 @click="createRequest"

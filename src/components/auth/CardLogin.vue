@@ -5,6 +5,7 @@
     <v-card-text>
       <v-form>
         <v-text-field
+          class="pr-3"
           v-model="username"
           color="accent"
           label="Username"
@@ -14,6 +15,7 @@
           autofocus
         />
         <v-text-field
+          class="pr-3"
           v-model="password"
           color="accent"
           id="password"

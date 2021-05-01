@@ -42,7 +42,7 @@
                   Joined on
                 </v-col>
                 <v-col cols="8" class="py-0">
-                  {{ formatDate(user.date_joined, "LLLL") }}
+                  {{ formatDate(user.date_joined, "dddd LL [at] HH:mm:ss") }}
                 </v-col>
               </v-row>
               <v-row>
