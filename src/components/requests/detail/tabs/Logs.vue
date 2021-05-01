@@ -101,7 +101,7 @@ export default {
     /**
      * Clean out retrieved logs.
      */
-    onBeforeDestroy(r) {
+    onBeforeDestroy() {
       this.$store.commit("requests/GET_LOGS", []);
     },
   },

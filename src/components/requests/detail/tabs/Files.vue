@@ -207,7 +207,7 @@ export default {
     /**
      * Clean out retrieved files.
      */
-    onBeforeDestroy(r) {
+    onBeforeDestroy() {
       this.$store.commit("requests/GET_FILES", {});
     },
   },
