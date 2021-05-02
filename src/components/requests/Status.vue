@@ -98,3 +98,9 @@ export default {
   },
 };
 </script>
+
+<style scoped>
+.inner-spinner {
+  padding-bottom: 4.5px;
+}
+</style>
