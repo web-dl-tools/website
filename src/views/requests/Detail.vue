@@ -144,9 +144,10 @@ export default {
     dialog: false,
     tab: 0,
     request_loading: true,
+    request_loaded: false,
+    request_still_processing: false,
     files_count: null,
     logs_count: null,
-    request_still_loading: false,
   }),
   computed: {
     ...mapGetters({
@@ -156,16 +157,23 @@ export default {
   },
   watch: {
     request(r) {
+      if (!this.request_loaded) {
+        this.request_loaded = true;
+        if (r.status === "completed")
+          this.$store.dispatch("application/setTitlePrefix", r.title);
+      }
+
       if (r.status !== "completed" && r.status !== "failed")
-        this.request_still_loading = true;
+        this.request_still_processing = true;
 
       if (
-        this.request_still_loading &&
+        this.request_still_processing &&
         (r.status === "completed" || r.status === "failed")
       ) {
-        this.request_still_loading = false;
+        this.request_still_processing = false;
         this.$refs.files.onFullyLoaded();
         this.$refs.logs.onFullyLoaded();
+        this.$store.dispatch("application/setTitlePrefix", r.title);
       }
     },
   },
@@ -206,6 +214,7 @@ export default {
    * Clean out retrieved data.
    */
   beforeDestroy() {
+    this.$store.dispatch("application/setTitlePrefix", "");
     this.$store.commit("requests/GET", {});
     this.$refs.files.onBeforeDestroy();
     this.$refs.logs.onBeforeDestroy();

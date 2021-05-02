@@ -97,13 +97,42 @@ export const disconnectWebsocket = ({ state, commit }) => {
 };
 
 /**
+ * Set the page title prefix.
+ *
+ * @param commit
+ * @param dispatch
+ * @param prefix
+ * @param title
+ */
+export const setTitlePrefix = ({ commit, dispatch }, prefix) => {
+  commit("SET_TITLE_PREFIX", prefix);
+  dispatch("setDocumentTitle");
+};
+
+/**
  * Set the page title.
  *
  * @param commit
+ * @param dispatch
  * @param title
  */
-export const setTitle = ({ commit }, title) => {
+export const setTitle = ({ commit, dispatch }, title) => {
   commit("SET_TITLE", title);
+  dispatch("setDocumentTitle");
+};
+
+/**
+ * Set the page title including suffix.
+ *
+ * @param state
+ * @constructor
+ */
+export const setDocumentTitle = ({ state }) => {
+  let title =
+    state.title_prefix !== ""
+      ? `${state.title_prefix} - ${state.title}`
+      : `${state.title}`;
+  document.title = `${title} - Web DL`;
 };
 
 /**

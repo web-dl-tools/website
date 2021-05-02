@@ -16,6 +16,17 @@ export const CHECK = (state) => {
 };
 
 /**
+ * Set the page title prefix.
+ *
+ * @param state
+ * @param prefix
+ * @constructor
+ */
+export const SET_TITLE_PREFIX = (state, prefix) => {
+  state.title_prefix = prefix;
+};
+
+/**
  * Set the page title including suffix.
  *
  * @param state
@@ -24,7 +35,6 @@ export const CHECK = (state) => {
  */
 export const SET_TITLE = (state, title) => {
   state.title = title;
-  document.title = `${title} - Web DL`;
 };
 
 /**
