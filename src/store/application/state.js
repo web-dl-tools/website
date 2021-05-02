@@ -2,6 +2,7 @@ export default {
   authenticated: false,
   loading: false,
   websocket: null,
+  title_prefix: "",
   title: "",
   menu_items: [
     {

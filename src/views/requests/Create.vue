@@ -24,6 +24,7 @@
               />
               <v-btn
                 block
+                outlined
                 text
                 :color="error ? 'error' : 'white'"
                 :loading="loading"
@@ -48,6 +49,7 @@
               <v-btn
                 class="mt-2"
                 block
+                outlined
                 text
                 :color="error ? 'error' : 'white'"
                 :loading="loading"
@@ -83,6 +85,7 @@
               />
               <v-btn
                 block
+                outlined
                 text
                 class="mb-6"
                 :color="error ? 'error' : 'success'"

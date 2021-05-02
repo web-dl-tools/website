@@ -132,7 +132,7 @@
           "
         />
       </v-col>
-      <v-col class="pb-0" cols="12">
+      <v-col cols="12">
         <v-row>
           <v-col cols="12">
             <v-combobox
@@ -140,6 +140,7 @@
               :items="default_extensions"
               label="Extensions"
               dense
+              hide-details
               hide-selected
               multiple
               small-chips

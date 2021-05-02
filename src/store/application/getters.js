@@ -7,6 +7,14 @@
 export const isAuthenticated = (state) => state.authenticated;
 
 /**
+ * Set the page title prefix.
+ *
+ * @param state
+ * @returns {string}
+ */
+export const getTitlePrefix = (state) => state.title_prefix;
+
+/**
  * Set the page title.
  *
  * @param state

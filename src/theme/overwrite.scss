@@ -68,6 +68,10 @@
 }
 
 // Table
+.v-data-table > .v-data-table__wrapper > table > tbody > tr {
+  cursor: pointer;
+}
+
 .v-data-table > .v-data-table__wrapper > table > thead > tr > th > span {
   color: white;
 }
