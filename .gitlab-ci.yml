@@ -1,4 +1,4 @@
-image: docker:19.03.15
+image: docker:20.10.6
 
 services:
   - docker:dind
@@ -9,6 +9,7 @@ stages:
   - docker
 
 before_script:
+  - apk update
   - apk add --no-cache py2-pip nodejs npm git openssh
   - npm install -g yarn
   - pip install --no-cache-dir docker-compose==1.29.1
