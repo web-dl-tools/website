@@ -12,8 +12,8 @@ before_script:
   - apk update
   - apk add --no-cache py3-pip nodejs npm git openssh
   - npm install -g yarn
-  - pip install --no-cache-dir docker-compose==1.29.1
-  - pip install docker-compose
+  # - pip install --no-cache-dir docker-compose==1.29.1
+  # - pip install docker-compose
 
 cache:
   paths:
@@ -37,10 +37,10 @@ build image:
     paths:
       - "dist/*"
 
-compose services:
-  stage: docker
-  script:
-    - docker-compose up -d
-    - docker ps
-  after_script:
-    - docker-compose down --remove-orphans || true
+# compose services:
+#   stage: docker
+#   script:
+#     - docker-compose up -d
+#     - docker ps
+#   after_script:
+#     - docker-compose down --remove-orphans || true
