@@ -43,25 +43,26 @@
             >
               <v-icon> mdi-download-outline </v-icon>
               <span class="ml-1">
-                Started at
+                Started
                 {{
                   sameDate(item.created_at, item.start_processing_at)
-                    ? ""
-                    : formatDate(item.start_processing_at, "LL")
+                    ? formatDate(item.start_processing_at, "[at] HH:mm:ss")
+                    : formatDate(
+                        item.start_processing_at,
+                        "[on] LL [at] HH:mm:ss"
+                      )
                 }}
-                {{ formatDate(item.start_processing_at, "HH:mm:ss") }}
               </span>
             </p>
             <p v-if="item.status === 'completed'" class="mb-2">
               <v-icon> mdi-checkbox-marked-circle-outline </v-icon>
               <span class="ml-1">
-                Completed at
+                Completed
                 {{
                   sameDate(item.created_at, item.completed_at)
-                    ? ""
-                    : formatDate(item.completed_at, "LL HH:mm:ss")
+                    ? formatDate(item.completed_at, "[at] HH:mm:ss")
+                    : formatDate(item.completed_at, "[on] LL [at] HH:mm:ss")
                 }}
-                {{ formatDate(item.completed_at, "HH:mm:ss") }}
               </span>
             </p>
           </v-col>
