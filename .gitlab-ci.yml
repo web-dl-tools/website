@@ -10,7 +10,7 @@ stages:
 
 before_script:
   - apk update
-  - apk add --no-cache py2-pip nodejs npm git openssh
+  - apk add --no-cache py3-pip nodejs npm git openssh
   - npm install -g yarn
   - pip install --no-cache-dir docker-compose==1.29.1
   - pip install docker-compose
