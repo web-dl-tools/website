@@ -33,7 +33,9 @@
                   )
                 }}
                 <br v-if="$vuetify.breakpoint.smAndDown" />
-                ({{ formatDateFromNow(item.created_at) }})
+                <span :class="$vuetify.breakpoint.mdAndUp ? 'ml-1' : 'ml-8'">
+                  ({{ formatDateFromNow(item.created_at) }})
+                </span>
               </span>
             </p>
           </v-col>

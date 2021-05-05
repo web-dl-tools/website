@@ -20,7 +20,9 @@
             v-if="'average_rating' in item.data"
             :value="item.data.average_rating"
             background-color="orange lighten-3"
-            :class="$vuetify.breakpoint.mdAndUp ? 'mt-n2 float-right' : 'mt-2'"
+            :class="
+              $vuetify.breakpoint.mdAndUp ? 'mt-n2 float-right' : 'mt-2 ml-n2'
+            "
             color="orange"
             half-increments
             readonly
