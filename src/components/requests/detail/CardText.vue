@@ -32,6 +32,7 @@
                     "[Requested on] dddd, LL [at] HH:mm:ss"
                   )
                 }}
+                <br v-if="$vuetify.breakpoint.smAndDown" />
                 ({{ formatDateFromNow(item.created_at) }})
               </span>
             </p>
