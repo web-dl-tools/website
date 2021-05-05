@@ -9,19 +9,25 @@
         </span>
         <span>on {{ item.data.extractor_key }}</span>
       </p>
-      <span>{{ Number(item.data.view_count).toLocaleString() }} plays</span>
-      &middot;
-      <span>{{ formatDate(item.data.upload_date, "LL") }}</span>
-      <v-rating
-        v-if="'average_rating' in item.data"
-        :value="item.data.average_rating"
-        background-color="orange lighten-3"
-        class="mt-n2 float-right"
-        color="orange"
-        half-increments
-        readonly
-        small
-      />
+      <v-row>
+        <v-col cols="12" md="8" class="py-0">
+          <span>{{ Number(item.data.view_count).toLocaleString() }} plays</span>
+          &middot;
+          <span>{{ formatDate(item.data.upload_date, "LL") }}</span>
+        </v-col>
+        <v-col cols="12" md="4" class="py-0">
+          <v-rating
+            v-if="'average_rating' in item.data"
+            :value="item.data.average_rating"
+            background-color="orange lighten-3"
+            :class="$vuetify.breakpoint.mdAndUp ? 'mt-n2 float-right' : 'mt-2'"
+            color="orange"
+            half-increments
+            readonly
+            small
+          />
+        </v-col>
+      </v-row>
       <v-divider class="mt-4" />
       <pre class="mt-4 mb-8 body-2 font-weight-light" id="pre-description">
         {{ item.data.description }}
