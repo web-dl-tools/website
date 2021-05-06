@@ -1,0 +1,12 @@
+.theme--dark.v-treeview--hoverable .v-treeview-node__root:hover:before,
+.theme--dark.v-treeview .v-treeview-node--click>.v-treeview-node__root:hover:before {
+  border-radius: 4px;
+}
+
+button.v-icon.notranslate.v-treeview-node__toggle.v-icon--link.mdi.mdi-menu-down.theme--dark.v-treeview-node__toggle--open {
+  margin-left: 0;
+}
+
+.single-dir-view .v-treeview-node__root .v-treeview-node__level:first-of-type {
+  width: 4px;
+}

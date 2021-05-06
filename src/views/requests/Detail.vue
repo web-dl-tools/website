@@ -211,13 +211,13 @@ export default {
       });
   },
   /**
-   * Clean out retrieved data.
+   * Clean out retrieved data and call children to clean out.
    */
   beforeDestroy() {
     this.$store.dispatch("application/setTitlePrefix", "");
     this.$store.commit("requests/GET", {});
-    this.$refs.files.onBeforeDestroy();
-    this.$refs.logs.onBeforeDestroy();
+    if (this.$refs.files) this.$refs.files.onBeforeDestroy();
+    if (this.$refs.logs) this.$refs.logs.onBeforeDestroy();
   },
 };
 </script>

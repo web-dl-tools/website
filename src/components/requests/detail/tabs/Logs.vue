@@ -63,6 +63,7 @@ export default {
     protect: false,
     logs_loading: false,
     logs_loaded: false,
+    error: false,
   }),
   props: {
     active: Boolean,
@@ -86,9 +87,11 @@ export default {
     retrieveLogs(force = false) {
       if (!this.logs_loaded || force) {
         this.logs_loading = true;
+        this.error = false;
         this.$store
           .dispatch("requests/getLogs", this.request_id)
           .then(() => (this.logs_loaded = true))
+          .catch(() => (this.error = true))
           .finally(() => (this.logs_loading = false));
       }
     },

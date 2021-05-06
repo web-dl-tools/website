@@ -281,7 +281,7 @@ export default {
           {
             ext: "Various",
             format: "Automatic",
-            format_id: "bestvideo+bestaudio",
+            format_id: "best",
             format_note: "Automatic best file option",
           },
         ];
