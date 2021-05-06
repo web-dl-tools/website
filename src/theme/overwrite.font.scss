@@ -1,0 +1,33 @@
+@font-face {
+  font-family: "Barlow";
+  src: url("../assets/fonts/Barlow/Barlow-Light.ttf");
+  font-weight: 100;
+}
+
+@font-face {
+  font-family: "Barlow";
+  src: url("../assets/fonts/Barlow/Barlow-Medium.ttf");
+  font-weight: 500;
+}
+
+.v-application,
+.v-application .display-1,
+.v-application .display-2,
+.v-application .headline,
+.v-application .title,
+.v-application .body-2,
+.v-application .subtitle-1,
+.v-application .subtitle-2,
+.v-application .text-caption,
+.v-application .text-overline {
+  font-family: Barlow, Roboto, sans-serif !important;
+}
+
+.v-application,
+.v-application .body-2,
+.v-application .subtitle-2,
+.v-card__text,
+.v-application .text-caption,
+.v-tab {
+  font-weight: 100 !important;
+}

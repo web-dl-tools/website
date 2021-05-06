@@ -45,11 +45,19 @@ _axios.interceptors.response.use(
     return response;
   },
   (error) => {
-    if (error.response && error.response.status === 401) {
-      store.dispatch("application/logout");
-    } else {
-      store.commit("application/SET_API_ERROR", true);
+    if (error.response) {
+      switch (error.response.status) {
+        case 401:
+          store.dispatch("application/logout");
+          break;
+        case 404:
+          break;
+        default:
+          store.commit("application/SET_API_ERROR", true);
+          break;
+      }
     }
+
     return Promise.reject(error);
   }
 );

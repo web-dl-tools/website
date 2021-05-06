@@ -96,6 +96,7 @@ export default {
   data: () => ({
     files_loading: false,
     files_loaded: false,
+    error: false,
     files_tree: [],
     files_open: [],
     files_icons: {
@@ -144,9 +145,11 @@ export default {
     retrieveFiles(force = false) {
       if (!this.files_loaded || force) {
         this.files_loading = true;
+        this.error = false;
         this.$store
           .dispatch("requests/getFiles", this.request_id)
           .then(() => (this.files_loaded = true))
+          .catch(() => (this.error = true))
           .finally(() => (this.files_loading = false));
       }
     },

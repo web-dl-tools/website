@@ -18,10 +18,11 @@
     <v-spacer />
     {{ this.$router.path }}
     <v-text-field
-      v-show="this.$route.name !== 'requests.create'"
-      v-if="this.active === undefined"
+      v-show="
+        this.$route.name !== 'requests.create' && this.active === undefined
+      "
       v-model="url"
-      prepend-inner-icon="mdi-plus"
+      append-icon="mdi-plus"
       color="info"
       :placeholder="url_label"
       :label="url_label"
@@ -30,12 +31,14 @@
       flat
       hide-details
       solo
+      @click:append="createRequest"
       v-on:keyup.enter.native="createRequest"
     />
     <v-text-field
-      v-show="this.$route.name !== 'requests.create'"
-      v-else
-      prepend-inner-icon="mdi-magnify"
+      v-show="
+        this.$route.name !== 'requests.create' && this.active !== undefined
+      "
+      append-icon="mdi-magnify"
       color="accent"
       :value="search"
       :placeholder="search_label"
