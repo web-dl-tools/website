@@ -77,7 +77,7 @@
         </v-col>
         <v-col class="py-0 body-2 font-weight-thin" cols="9">
           {{ item.format_selection }}
-          <span class="font-weight-regular info--text" v-if="item.audio_format">
+          <span class="info--text" v-if="item.audio_format">
             <br />
             Recoded to {{ item.audio_format }} audio format
           </span>
