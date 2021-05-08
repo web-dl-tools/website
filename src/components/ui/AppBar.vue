@@ -26,7 +26,6 @@
       color="info"
       :placeholder="url_label"
       :label="url_label"
-      clearable
       dense
       flat
       hide-details

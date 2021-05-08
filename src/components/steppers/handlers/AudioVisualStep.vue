@@ -170,7 +170,7 @@
               v-model="audio_format"
               :items="audio_formats"
               label="Select a new audio format"
-              solo-inverted
+              outlined
             ></v-select>
           </v-col>
         </v-row>

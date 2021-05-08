@@ -41,7 +41,6 @@ _axios.interceptors.request.use(
  */
 _axios.interceptors.response.use(
   (response) => {
-    // Do something with response data
     return response;
   },
   (error) => {
@@ -50,6 +49,7 @@ _axios.interceptors.response.use(
         case 401:
           store.dispatch("application/logout");
           break;
+        case 400:
         case 404:
           break;
         default:

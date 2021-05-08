@@ -10,9 +10,11 @@
           color="accent"
           label="Username"
           name="username"
+          placeholder="Username"
           prepend-icon="mdi-account"
           type="text"
           autofocus
+          solo-inverted
         />
         <v-text-field
           class="pr-3"
@@ -21,9 +23,11 @@
           id="password"
           label="Password"
           name="password"
+          placeholder="password"
           prepend-icon="mdi-lock"
           type="password"
           hide-details
+          solo-inverted
           v-on:keyup.enter.native="login"
         />
       </v-form>
