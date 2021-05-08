@@ -1,7 +1,7 @@
 <template>
   <v-tab-item>
     <v-row>
-      <v-col class="pr-md-0" cols="12" md="8">
+      <v-col class="pr-md-0 pb-0 pb-md-3" cols="12" md="8">
         <v-skeleton-loader v-if="files_loading" class="pt-4" type="paragraph" />
         <v-treeview
           v-else-if="files.length"

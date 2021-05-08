@@ -87,6 +87,7 @@
         </v-btn>
       </v-col>
     </v-row>
+
     <v-row v-if="show_single_file_formats">
       <v-col v-if="hasVideoOrAudioFormats" cols="12" md="6">
         <p class="text-center caption">Video</p>
@@ -158,6 +159,20 @@
               </v-card-text>
             </selectable-card>
           </v-col>
+          <v-col cols="12">
+            <p class="body-2 mb-n1">Reformat audio</p>
+            <small class="font-weight-light grey--text text--lighten-1">
+              Specify a audio format to optionally recode to.
+            </small>
+          </v-col>
+          <v-col cols="12" class="pt-0">
+            <v-select
+              v-model="audio_format"
+              :items="audio_formats"
+              label="Select a new audio format"
+              solo-inverted
+            ></v-select>
+          </v-col>
         </v-row>
       </v-col>
       <v-col v-if="!hasVideoOrAudioFormats" cols="12" md="6">
@@ -200,6 +215,8 @@ export default {
       video_format_selection: "",
       audio_format_selection: "",
       output: "%(title)s.%(ext)s",
+      audio_format: null,
+      audio_formats: ["best", "aac", "m4a", "mp3", "opus", "vorbis", "wav"],
       show_single_file_formats: false,
       tab: 0,
     };
@@ -279,9 +296,9 @@ export default {
         // eslint-disable-next-line vue/no-mutating-props, vue/no-side-effects-in-computed-properties
         this.data.options = [
           {
-            ext: "Various",
-            format: "Automatic",
-            format_id: "best",
+            ext: "Various extensions",
+            format: "Automatic format",
+            format_id: "bestvideo+bestaudio/best",
             format_note: "Automatic best file option",
           },
         ];
@@ -352,6 +369,12 @@ export default {
     output() {
       this.updateData(this.valid);
     },
+    /**
+     * Trigger an update data check when the audio format has changed.
+     */
+    audio_format() {
+      this.updateData(this.valid);
+    },
   },
   methods: {
     /**
@@ -366,6 +389,7 @@ export default {
           data: {
             format_selection: this.format_selection,
             output: this.output,
+            audio_format: this.audio_format,
           },
           label: "",
         });
