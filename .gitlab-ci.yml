@@ -10,14 +10,15 @@ stages:
 
 before_script:
   - apk update
-  - apk add --no-cache nodejs npm git
+  - apk add nodejs npm git
   - npm install -g yarn
 
 cache:
   paths:
-    - node_modules/
-    - .bundled/
-    - .yarn
+    - node_modules
+    - ~/.bundled
+    - ~/.yarn
+    - ~/.cache
 
 lint:
   stage: lint
@@ -34,3 +35,14 @@ build website:
     name: "web-dl_website"
     paths:
       - "dist/*"
+
+build containers:
+  stage: docker
+  before_script:
+    - apk add --no-cache py-pip python3-dev libffi-dev openssl-dev gcc libc-dev make rust cargo
+    - pip install docker-compose
+  script:
+    - docker-compose up -d
+    - docker ps
+  after_script:
+    - docker-compose down --remove-orphans || true
