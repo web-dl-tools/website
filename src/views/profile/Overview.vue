@@ -30,18 +30,12 @@
                 </v-col>
                 <v-col cols="8" class="pb-0">{{ user.username }}</v-col>
               </v-row>
-              <v-row>
-                <v-col cols="4" class="pt-0 font-weight-regular">
-                  Full name
-                </v-col>
-                <v-col cols="8" class="pt-0">{{ user.full_name }}</v-col>
-              </v-row>
 
               <v-row>
-                <v-col cols="4" class="py-0 font-weight-regular">
+                <v-col cols="4" class="pb-0 font-weight-regular">
                   Joined on
                 </v-col>
-                <v-col cols="8" class="py-0">
+                <v-col cols="8" class="pb-0">
                   {{ formatDate(user.date_joined, "dddd LL [at] HH:mm:ss") }}
                 </v-col>
               </v-row>

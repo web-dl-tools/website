@@ -36,8 +36,8 @@ export default Vue.mixin({
     /**
      * Check if a given array is empty.
      *
-     * @param array
      * @returns {boolean}
+     * @param arr
      */
     isEmptyArray(arr) {
       return arr.length === 0;

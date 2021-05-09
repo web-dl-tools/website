@@ -10,10 +10,8 @@ stages:
 
 before_script:
   - apk update
-  - apk add --no-cache py3-pip nodejs npm git openssh
+  - apk add --no-cache nodejs npm git
   - npm install -g yarn
-  # - pip install --no-cache-dir docker-compose==1.29.1
-  # - pip install docker-compose
 
 cache:
   paths:
@@ -27,7 +25,7 @@ lint:
     - yarn install
     - yarn lint
 
-build image:
+build website:
   stage: build
   script:
     - yarn install
@@ -36,11 +34,3 @@ build image:
     name: "web-dl_website"
     paths:
       - "dist/*"
-
-# compose services:
-#   stage: docker
-#   script:
-#     - docker-compose up -d
-#     - docker ps
-#   after_script:
-#     - docker-compose down --remove-orphans || true
