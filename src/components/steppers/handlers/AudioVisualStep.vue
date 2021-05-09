@@ -171,6 +171,7 @@
               :items="audio_formats"
               label="Select a new audio format"
               outlined
+              hide-details
             ></v-select>
           </v-col>
         </v-row>
