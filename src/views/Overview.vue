@@ -25,7 +25,7 @@
               {{
                 activeRequests.length > 5
                   ? `View all (${activeRequests.length})`
-                  : `In detail`
+                  : `More details`
               }}
             </v-btn>
           </v-subheader>
@@ -50,7 +50,7 @@
               {{
                 completedRequests.length > 5
                   ? `View all (${completedRequests.length})`
-                  : `In detail`
+                  : `More details`
               }}
             </v-btn>
           </v-subheader>
@@ -78,7 +78,7 @@
               {{
                 failedRequests.length > 5
                   ? `View all (${failedRequests.length})`
-                  : `In detail`
+                  : `More details`
               }}
             </v-btn>
           </v-subheader>
