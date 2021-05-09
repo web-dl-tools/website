@@ -53,26 +53,6 @@ export const getAllActive = (state) =>
     .concat(state.items.filter((i) => i.status === "pending"));
 
 /**
- * Get all the pending requests.
- *
- * @param state
- * @returns {*[]}
- */
-export const getAllPending = (state) =>
-  state.items.filter((i) => i.status === "pending");
-
-/**
- * Get all the processing requests.
- *
- * @param state
- * @returns {*[]}
- */
-export const getAllProcessing = (state) =>
-  state.items.filter((i) =>
-    ["pre_processing", "downloading", "post_processing"].includes(i.status)
-  );
-
-/**
  * Get all the completed requests.
  *
  * @param state

@@ -21,8 +21,13 @@
               x-small
               text
               @click="$router.push({ name: 'requests.active' }).catch(() => {})"
-              >View all</v-btn
             >
+              {{
+                activeRequests.length > 5
+                  ? `View all (${activeRequests.length})`
+                  : `In detail`
+              }}
+            </v-btn>
           </v-subheader>
         </v-col>
       </v-row>
@@ -41,8 +46,13 @@
               @click="
                 $router.push({ name: 'requests.completed' }).catch(() => {})
               "
-              >View all</v-btn
             >
+              {{
+                completedRequests.length > 5
+                  ? `View all (${completedRequests.length})`
+                  : `In detail`
+              }}
+            </v-btn>
           </v-subheader>
         </v-col>
       </v-row>
@@ -64,8 +74,13 @@
               x-small
               text
               @click="$router.push({ name: 'requests.failed' }).catch(() => {})"
-              >View all</v-btn
             >
+              {{
+                failedRequests.length > 5
+                  ? `View all (${failedRequests.length})`
+                  : `In detail`
+              }}
+            </v-btn>
           </v-subheader>
         </v-col>
       </v-row>
@@ -94,6 +109,9 @@ export default {
   computed: {
     ...mapGetters({
       title: "application/getTitle",
+      completedRequests: "requests/getAllCompleted",
+      activeRequests: "requests/getAllActive",
+      failedRequests: "requests/getAllFailed",
     }),
   },
 };
