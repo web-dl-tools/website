@@ -9,7 +9,12 @@
       </v-col>
     </v-row>
     <v-row v-else-if="activeItems.length">
-      <v-col v-for="item in activeItems" :key="item.id" cols="12" md="6">
+      <v-col
+        v-for="item in activeItems.slice(0, 5)"
+        :key="item.id"
+        cols="12"
+        md="6"
+      >
         <card-mini :request="item" />
       </v-col>
     </v-row>
