@@ -20,7 +20,7 @@ cache:
     - ~/.yarn
     - ~/.cache
 
-lint:
+lint source:
   stage: lint
   script:
     - yarn install
