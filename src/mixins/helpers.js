@@ -43,6 +43,16 @@ export default Vue.mixin({
       return arr.length === 0;
     },
     /**
+     * Check if a string is a valid date and parsable by moment.js.
+     *
+     * @param date
+     * @returns {boolean}
+     */
+    isValidDate(date) {
+      console.log(date);
+      return moment(date).isValid();
+    },
+    /**
      * Check if two datetime objects/strings are on the same day.
      *
      * @param d1

@@ -2,7 +2,7 @@
   <v-main class="background-wallpaper">
     <v-container>
       <v-row>
-        <v-col class="px-0 py-0" cols="12" md="8">
+        <v-col class="pa-0" cols="12" md="8">
           <p
             class="mx-3 my-12 black--text font-weight-thin display-3 text-shadow"
           >
@@ -25,7 +25,7 @@
               {{
                 activeRequests.length > 5
                   ? `View all (${activeRequests.length})`
-                  : `More details`
+                  : `All details`
               }}
             </v-btn>
           </v-subheader>
@@ -50,7 +50,7 @@
               {{
                 completedRequests.length > 5
                   ? `View all (${completedRequests.length})`
-                  : `More details`
+                  : `All details`
               }}
             </v-btn>
           </v-subheader>
@@ -78,7 +78,7 @@
               {{
                 failedRequests.length > 5
                   ? `View all (${failedRequests.length})`
-                  : `More details`
+                  : `All details`
               }}
             </v-btn>
           </v-subheader>
