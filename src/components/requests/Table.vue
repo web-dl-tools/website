@@ -12,7 +12,7 @@
         :sort-desc="sort_desc"
         loading-text="Loading requests..."
         no-results-text="No matching requests found."
-        sort-by="created_at"
+        sort-by="created_at_formatted"
         @click:row="viewDetail"
       >
         <template
