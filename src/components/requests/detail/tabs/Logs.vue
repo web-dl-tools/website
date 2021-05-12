@@ -137,7 +137,7 @@ export default {
   created() {
     setTimeout(() => {
       if (!this.logs_loading && !this.logs_loaded) this.retrieveLogs();
-    }, 2000);
+    }, 2500);
   },
 };
 </script>

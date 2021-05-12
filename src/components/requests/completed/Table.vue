@@ -35,13 +35,13 @@ export default {
         },
         {
           align: "left",
-          sortable: true,
+          sortable: this.extended,
           text: "Domain",
           value: "domain",
         },
         {
           align: "left",
-          sortable: true,
+          sortable: this.extended,
           text: "Request type",
           value: "request_type_label",
         },
@@ -49,9 +49,9 @@ export default {
           align: "right",
           filterable: false,
           sort: this.sortDates,
-          sortable: true,
-          text: "Requested on",
-          value: "created_at",
+          sortable: this.extended,
+          text: this.extended ? "Requested on" : "Requested",
+          value: "created_at_formatted",
         },
       ],
     };
@@ -72,7 +72,10 @@ export default {
      */
     _items() {
       const items = this.items;
-      items.forEach(this.formatItem);
+      items
+        .sort((a, b) => this.sortDates(a.created_at, b.created_at))
+        .reverse()
+        .forEach(this.formatItem);
       return items;
     },
   },
@@ -84,9 +87,10 @@ export default {
      * @returns {*}
      */
     formatItem(item) {
-      item.title = this.capitalize(item.title);
       item.domain = this.formatDomain(item.url);
-      item.created_at = this.formatDate(item.created_at, "LL [@] HH:mm");
+      item.created_at_formatted = this.extended
+        ? this.formatDate(item.created_at, "LL [at] HH:mm")
+        : this.formatDateFromNow(item.created_at);
       item.request_type_label = this.formatRequest(item.request_type);
       return item;
     },
