@@ -48,7 +48,7 @@ export default {
         {
           align: "right",
           filterable: false,
-          sort: this.sortDates,
+          sort: (a, b) => this.sortDates(a, b, "LL [at] HH:mm"),
           sortable: this.extended,
           text: this.extended ? "Requested on" : "Requested",
           value: "created_at_formatted",

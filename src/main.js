@@ -18,6 +18,7 @@ import "./theme/overwrite.nav.scss";
 import "./theme/overwrite.table.scss";
 import "./theme/overwrite.tree.scss";
 import "./theme/overwrite.chip.scss";
+import "./theme/overwrite.ratings.scss";
 
 import "./theme/general.pre.scss";
 import "./theme/general.background.scss";
