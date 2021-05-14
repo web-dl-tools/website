@@ -67,10 +67,11 @@ export default Vue.mixin({
      *
      * @param d1
      * @param d2
+     * @param format
      * @returns {number}
      */
-    sortDates(d1, d2) {
-      return moment(d1).unix() - moment(d2).unix();
+    sortDates(d1, d2, format = "") {
+      return moment(d1, format).unix() - moment(d2, format).unix();
     },
     /**
      * Filter an array down to only unique values.
