@@ -1,37 +1,60 @@
 <template>
   <div>
     <v-row>
-      <v-col cols="12">
+      <v-col cols="12" md="6">
         <p class="body-2 mb-n1">Minimum size</p>
         <small class="font-weight-light grey--text text--lighten-1">
           Select the minimum size for each resource. 0 bytes will download all
           resources.
         </small>
+        <v-col cols="12" class="px-0">
+          <v-slider
+            v-model="min_bytes"
+            min="0"
+            max="5242880"
+            step="262144"
+            ticks="always"
+            hide-details
+          >
+            <template v-slot:label>
+              <small class="font-weight-light grey--text text--lighten-2">
+                Size
+              </small>
+            </template>
+            <template v-slot:append>
+              <small class="font-weight-light grey--text text--lighten-2">
+                {{ formatBytes(min_bytes, 1) }}
+              </small>
+            </template>
+          </v-slider>
+        </v-col>
       </v-col>
-      <v-col class="py-0" cols="12">
-        <v-row>
-          <v-col cols="12">
-            <v-slider
-              v-model="min_bytes"
-              min="0"
-              max="5242880"
-              step="262144"
-              ticks="always"
-              hide-details
-            >
-              <template v-slot:label>
-                <small class="font-weight-light grey--text text--lighten-2">
-                  Size
-                </small>
-              </template>
-              <template v-slot:append>
-                <small class="font-weight-light grey--text text--lighten-2">
-                  {{ formatBytes(min_bytes, 1) }}
-                </small>
-              </template>
-            </v-slider>
-          </v-col>
-        </v-row>
+      <v-col cols="12" md="6">
+        <p class="body-2 mb-n1">Delay</p>
+        <small class="font-weight-light grey--text text--lighten-1">
+          Select a delay between each resource download.
+        </small>
+        <v-col cols="12" class="px-0">
+          <v-slider
+            v-model="delay"
+            min="0"
+            max="1000"
+            step="25"
+            ticks="always"
+            hide-details
+          >
+            <template v-slot:label>
+              <small class="font-weight-light grey--text text--lighten-2">
+                Delay
+              </small>
+            </template>
+            <template v-slot:append>
+              <small class="font-weight-light grey--text text--lighten-2">
+                {{ delay }} ms
+              </small>
+            </template>
+          </v-slider>
+        </v-col>
       </v-col>
     </v-row>
     <v-row>
@@ -160,7 +183,7 @@ export default {
   name: "components.steppers.handlers.resource-step",
   mixin: [formatters],
   data() {
-    const image_extensions = ["gif", "jpeg", "jpg", "png", "tiff"];
+    const image_extensions = ["gif", "jpeg", "jpg", "png", "tiff", "webp"];
     const video_extensions = ["avi", "mov", "qt", "mpeg", "mpg", "mp4", "webm"];
     const audio_extensions = ["mid", "midi", "mp3", "wav"];
     const archive_extensions = ["7z", "rar", "zip", "exe"];
@@ -184,6 +207,7 @@ export default {
       web_extensions: web_extensions,
       extensions: [],
       min_bytes: 0,
+      delay: 25,
     };
   },
   props: {
@@ -221,6 +245,12 @@ export default {
     min_bytes() {
       this.updateData(this.valid);
     },
+    /**
+     * Trigger an update data check when the delay value is changed.
+     */
+    delay() {
+      this.updateData(this.valid);
+    },
   },
   methods: {
     /**
@@ -235,6 +265,7 @@ export default {
           data: {
             extensions: this.extensions,
             min_bytes: this.min_bytes,
+            delay: this.delay,
           },
           label: "",
         });
