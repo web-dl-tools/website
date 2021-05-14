@@ -15,17 +15,22 @@
         </span>
       </v-btn>
     </v-toolbar-title>
-    <v-spacer />
-    {{ this.$router.path }}
+    <v-spacer
+      v-show="
+        this.$route.name === 'requests.create' || this.active !== undefined
+      "
+    />
     <v-text-field
       v-show="
         this.$route.name !== 'requests.create' && this.active === undefined
       "
       v-model="url"
-      append-icon="mdi-plus"
+      background-color="transparent"
       color="info"
+      :append-icon="url ? 'mdi-chevron-right' : ''"
       :placeholder="url_label"
       :label="url_label"
+      clearable
       dense
       flat
       hide-details
@@ -37,9 +42,9 @@
       v-show="
         this.$route.name !== 'requests.create' && this.active !== undefined
       "
+      v-model="search"
       append-icon="mdi-magnify"
       color="accent"
-      :value="search"
       :placeholder="search_label"
       :label="search_label"
       clearable
@@ -49,7 +54,11 @@
       solo-inverted
       @input="setSearch"
     />
-    <v-spacer />
+    <v-spacer
+      v-show="
+        this.$route.name === 'requests.create' || this.active !== undefined
+      "
+    />
     <v-toolbar-items class="hidden-sm-and-down">
       <v-btn
         text
@@ -121,7 +130,7 @@ export default {
   },
   data: () => ({
     url: "",
-    url_label: "Create a new request",
+    url_label: "Create a new request...",
     search_label: "Search",
   }),
   computed: {
