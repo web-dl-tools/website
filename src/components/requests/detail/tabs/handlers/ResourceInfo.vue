@@ -17,6 +17,12 @@
         the minimum size limit.
       </p>
       <v-row>
+        <v-col class="py-0 font-weight-light" cols="3"> Delay </v-col>
+        <v-col class="py-0 pl-1 body-2 font-weight-thin" cols="9">
+          {{ item.delay }} ms
+        </v-col>
+      </v-row>
+      <v-row>
         <v-col class="py-0 font-weight-light" cols="3">
           Minimum size limit
         </v-col>
