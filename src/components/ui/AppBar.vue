@@ -25,7 +25,6 @@
         this.$route.name !== 'requests.create' && this.active === undefined
       "
       v-model="url"
-      class="pt-1"
       background-color="transparent"
       color="info"
       :placeholder="url_label"
