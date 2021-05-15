@@ -25,28 +25,30 @@
         this.$route.name !== 'requests.create' && this.active === undefined
       "
       v-model="url"
+      class="pt-1"
       background-color="transparent"
       color="info"
-      :append-icon="url ? 'mdi-chevron-right' : ''"
       :placeholder="url_label"
       :label="url_label"
-      clearable
       dense
       flat
       hide-details
       solo
-      @click:append="createRequest"
       v-on:keyup.enter.native="createRequest"
-    />
+    >
+      <template v-if="this.url" v-slot:append>
+        <v-icon class="pr-2" @click="createRequest"> mdi-plus-circle </v-icon>
+      </template>
+    </v-text-field>
     <v-text-field
       v-show="
         this.$route.name !== 'requests.create' && this.active !== undefined
       "
-      v-model="search"
       append-icon="mdi-magnify"
       color="accent"
       :placeholder="search_label"
       :label="search_label"
+      :value="search"
       clearable
       dense
       flat
@@ -63,7 +65,7 @@
       <v-btn
         text
         class="transparent"
-        v-show="this.$route.name !== 'requests.create'"
+        v-show="this.$route.name !== 'requests.create' && !this.url"
         @click="$router.push({ name: 'requests.create' }).catch(() => {})"
       >
         <v-icon> mdi-plus-circle-outline </v-icon>
@@ -156,6 +158,13 @@ export default {
      */
     setSearch(search) {
       this.$store.dispatch("application/setSearch", search);
+    },
+  },
+  watch: {
+    active(n) {
+      if (this.url && this.active !== undefined) {
+        this.url = "";
+      }
     },
   },
 };

@@ -2,12 +2,19 @@
   <div>
     <v-text-field
       v-model="url"
+      class="mb-5"
       color="accent"
-      label="URL"
+      :label="placeholder"
+      :placeholder="placeholder"
       name="url"
       type="text"
       autofocus
       clearable
+      hide-details
+      outlined
+      solo
+      dense
+      flat
       v-on:keyup.enter.native="automaticAction"
     />
   </div>
@@ -21,6 +28,7 @@ export default {
   mixins: [helpers],
   data: () => ({
     url: "",
+    placeholder: "URL",
   }),
   props: {
     active: Boolean,
