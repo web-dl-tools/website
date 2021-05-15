@@ -165,7 +165,10 @@
               dense
               hide-details
               hide-selected
+              flat
               multiple
+              outlined
+              solo
               small-chips
             ></v-combobox>
           </v-col>
