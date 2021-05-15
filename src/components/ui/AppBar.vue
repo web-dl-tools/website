@@ -161,6 +161,11 @@ export default {
     },
   },
   watch: {
+    /**
+     * Clear the url input if switching to a non-url field page.
+     *
+     * @param n
+     */
     active(n) {
       if (this.url && this.active !== undefined) {
         this.url = "";
