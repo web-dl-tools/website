@@ -169,6 +169,7 @@
             <v-select
               v-model="audio_format"
               :items="audio_formats"
+              color="info"
               label="Select a new audio format"
               outlined
               hide-details

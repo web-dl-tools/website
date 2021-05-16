@@ -55,7 +55,11 @@
               <v-tabs color="info" grow show-arrows v-model="tab">
                 <v-tab>Information</v-tab>
                 <v-tab>
-                  <v-badge v-if="files_count" :content="files_count">
+                  <v-badge
+                    v-if="files_count"
+                    color="secondary"
+                    :content="files_count"
+                  >
                     Files
                   </v-badge>
                   <span v-else>Files</span>
@@ -63,7 +67,11 @@
                 <v-tab>Timeline</v-tab>
                 <v-tab>Raw</v-tab>
                 <v-tab>
-                  <v-badge v-if="logs_count" :content="logs_count">
+                  <v-badge
+                    v-if="logs_count"
+                    color="secondary"
+                    :content="logs_count"
+                  >
                     Logs
                   </v-badge>
                   <span v-else>Logs</span>
