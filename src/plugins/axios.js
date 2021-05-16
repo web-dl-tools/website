@@ -56,6 +56,8 @@ _axios.interceptors.response.use(
           store.commit("application/SET_API_ERROR", true);
           break;
       }
+    } else {
+      store.commit("application/SET_API_ERROR", true);
     }
 
     return Promise.reject(error);

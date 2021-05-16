@@ -2,9 +2,7 @@
   <v-main class="background-wallpaper">
     <v-container class="pt-3">
       <v-row>
-        <p
-          class="mx-3 my-12 black--text font-weight-thin display-3 text-shadow"
-        >
+        <p class="mx-3 my-12 font-weight-thin display-3">
           {{ title }}
         </p>
       </v-row>
@@ -54,7 +52,7 @@
               class="px-8"
             />
             <v-card-text v-else class="pb-1">
-              <v-tabs color="secondary" grow show-arrows v-model="tab">
+              <v-tabs color="info" grow show-arrows v-model="tab">
                 <v-tab>Information</v-tab>
                 <v-tab>
                   <v-badge v-if="files_count" :content="files_count">

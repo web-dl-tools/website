@@ -2,9 +2,7 @@
   <v-main class="background-wallpaper">
     <v-container class="pt-3">
       <v-row>
-        <p
-          class="mx-3 my-12 black--text font-weight-thin display-3 text-shadow"
-        >
+        <p class="mx-3 my-12 font-weight-thin display-3">
           {{ title }}
         </p>
       </v-row>
@@ -47,7 +45,6 @@
                 @data-change="dataChange"
               />
               <v-btn
-                class="mt-2"
                 block
                 outlined
                 text
