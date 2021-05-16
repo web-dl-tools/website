@@ -9,7 +9,7 @@
       <v-row>
         <v-col cols="12">
           <v-stepper v-model="step" class="elevation-8 pb-0" vertical>
-            <v-stepper-step :complete="step > 1" step="1">
+            <v-stepper-step :complete="step > 1" color="secondary" step="1">
               Submit a URL
               <small>{{ step1Label }}</small>
             </v-stepper-step>
@@ -33,7 +33,7 @@
               </v-btn>
             </v-stepper-content>
 
-            <v-stepper-step :complete="step > 2" step="2">
+            <v-stepper-step :complete="step > 2" color="secondary" step="2">
               Select a handler
               <small>{{ step2Label }}</small>
             </v-stepper-step>
@@ -57,7 +57,7 @@
               </v-btn>
             </v-stepper-content>
 
-            <v-stepper-step step="3">
+            <v-stepper-step color="secondary" step="3">
               Configure the handler
               <small>What are the specifics to download?</small>
             </v-stepper-step>

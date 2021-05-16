@@ -10,7 +10,7 @@
         <v-col cols="12" class="px-0">
           <v-slider
             v-model="min_bytes"
-            color="secondary"
+            color="info"
             min="0"
             max="5242880"
             step="262144"
@@ -38,7 +38,7 @@
         <v-col cols="12" class="px-0">
           <v-slider
             v-model="delay"
-            color="secondary"
+            color="info"
             min="0"
             max="1000"
             step="25"
@@ -71,7 +71,7 @@
         <v-checkbox
           :value="hasExtensionPreset('image', true)"
           :indeterminate="hasExtensionPreset('image', false)"
-          color="secondary"
+          color="info"
           prepend-icon="mdi-image"
           label="Images"
           dense
@@ -86,7 +86,7 @@
         <v-checkbox
           :value="hasExtensionPreset('video', true)"
           :indeterminate="hasExtensionPreset('video', false)"
-          color="secondary"
+          color="info"
           prepend-icon="mdi-video"
           label="Video's"
           dense
@@ -101,7 +101,7 @@
         <v-checkbox
           :value="hasExtensionPreset('audio', true)"
           :indeterminate="hasExtensionPreset('audio', false)"
-          color="secondary"
+          color="info"
           prepend-icon="mdi-music"
           label="Audio"
           dense
@@ -116,7 +116,7 @@
         <v-checkbox
           :value="hasExtensionPreset('archive', true)"
           :indeterminate="hasExtensionPreset('archive', false)"
-          color="secondary"
+          color="info"
           prepend-icon="mdi-zip-box"
           label="Archives"
           dense
@@ -134,7 +134,7 @@
         <v-checkbox
           :value="hasExtensionPreset('document', true)"
           :indeterminate="hasExtensionPreset('document', false)"
-          color="secondary"
+          color="info"
           prepend-icon="mdi-file-document-outline"
           label="Documents"
           dense
@@ -152,7 +152,7 @@
         <v-checkbox
           :value="hasExtensionPreset('web', true)"
           :indeterminate="hasExtensionPreset('web', false)"
-          color="secondary"
+          color="info"
           prepend-icon="mdi-web"
           label="Web"
           dense
@@ -169,7 +169,7 @@
             <v-combobox
               v-model="extensions"
               :items="default_extensions"
-              color="secondary"
+              color="info"
               label="Extensions"
               dense
               hide-details

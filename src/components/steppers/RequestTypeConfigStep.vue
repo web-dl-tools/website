@@ -1,6 +1,6 @@
 <template>
   <div>
-    <v-row>
+    <v-row class="mb-3">
       <v-col cols="12">
         <p class="body-2 mb-n1">No config needed.</p>
         <small class="font-weight-light grey--text text--lighten-1">

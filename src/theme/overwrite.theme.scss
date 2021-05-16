@@ -6,3 +6,19 @@
 .v-card__subtitle {
   color: inherit !important;
 }
+
+.v-list-item--link:before {
+  background-color: white;
+}
+
+.v-list-item__content {
+  color: white;
+}
+
+i.v-icon.notranslate.mdi.mdi-menu-down.theme--dark.primary--text {
+  color: white !important;
+}
+
+.v-data-table ::after {
+  border-color: white !important;
+}
