@@ -6,24 +6,28 @@
       <v-form>
         <v-text-field
           v-model="username"
+          :label="username_label"
+          :placeholder="username_label"
+          class="mb-4"
           color="accent"
-          label="Username"
           name="username"
-          placeholder="Username"
           prepend-icon="mdi-account"
           type="text"
           autofocus
+          flat
+          hide-details
           solo-inverted
         />
         <v-text-field
           v-model="password"
+          :label="password_label"
+          :placeholder="password_label"
           color="accent"
           id="password"
-          label="Password"
           name="password"
-          placeholder="password"
           prepend-icon="mdi-lock"
           type="password"
+          flat
           hide-details
           solo-inverted
           v-on:keyup.enter.native="login"
@@ -51,7 +55,9 @@ export default {
   name: "components.auth.card-login",
   data: () => ({
     username: "",
+    username_label: "Username",
     password: "",
+    password_label: "Password",
     loading: false,
     error: false,
   }),

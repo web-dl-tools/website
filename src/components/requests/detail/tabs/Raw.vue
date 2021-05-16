@@ -47,25 +47,25 @@ export default {
   }
   .jv-item {
     &.jv-array {
-      color: #efe4d1;
+      color: #cbd6c5;
     }
     &.jv-boolean {
-      color: #9eadab;
+      color: #5e6d7a;
     }
     &.jv-function {
-      color: #203452;
+      color: #202034;
     }
     &.jv-number {
-      color: #f23e16;
+      color: #e45a33;
     }
     &.jv-object {
       color: #fff;
     }
     &.jv-undefined {
-      color: #fb8c00;
+      color: #f08e29;
     }
     &.jv-string {
-      color: #bdf2c9;
+      color: #6ce6a0;
       word-break: break-word;
       white-space: normal;
     }
@@ -88,6 +88,6 @@ export default {
 }
 
 .v-application a {
-  color: #efe4d1;
+  color: #cbd6c5;
 }
 </style>

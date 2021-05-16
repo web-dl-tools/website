@@ -128,9 +128,9 @@ export default Vue.mixin({
       switch (background) {
         case "info":
         case "success":
-        case "secondary":
           return "black--text";
         case "primary":
+        case "secondary":
         case "accent":
         case "error":
         case "warning":

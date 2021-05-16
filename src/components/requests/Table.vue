@@ -66,9 +66,3 @@ export default {
   },
 };
 </script>
-
-<style scoped>
-.search-field {
-  margin-top: -130px;
-}
-</style>

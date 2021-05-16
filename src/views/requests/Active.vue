@@ -3,9 +3,7 @@
     <v-container>
       <v-row>
         <v-col class="pa-0" cols="12">
-          <p
-            class="mx-3 my-12 black--text font-weight-thin display-3 text-shadow"
-          >
+          <p class="mx-3 my-12 font-weight-thin display-3">
             {{ title }}
           </p>
         </v-col>

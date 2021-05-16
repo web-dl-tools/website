@@ -2,7 +2,7 @@
   <div>
     <v-text-field
       v-model="url"
-      class="mb-5"
+      class="mb-6"
       color="accent"
       :label="placeholder"
       :placeholder="placeholder"
