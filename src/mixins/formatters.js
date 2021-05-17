@@ -110,7 +110,6 @@ export default Vue.mixin({
         case "downloading":
           return "info";
         case "pre_processing":
-          return "primary";
         case "post_processing":
           return "secondary";
         case "pending":
@@ -128,12 +127,12 @@ export default Vue.mixin({
       switch (background) {
         case "info":
         case "success":
+        case "warning":
           return "black--text";
         case "primary":
         case "secondary":
         case "accent":
         case "error":
-        case "warning":
         default:
           return "white--text";
       }

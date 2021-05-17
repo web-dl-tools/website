@@ -2,8 +2,8 @@
   <v-row>
     <v-col class="mb-n1" cols="12" md="7">
       <p class="mb-0 body-1">
-        Found {{ item.data.filtered_paths.length }} unique paths matching the
-        given extensions.
+        Found {{ item.data.filtered_paths.length }} unique paths (possibly)
+        matching the given extensions.
       </p>
       <p class="body-2 font-weight-light">
         From
@@ -45,7 +45,7 @@
         </v-col>
       </v-row>
     </v-col>
-    <v-col class="mb-n1" cols="12" md="5">
+    <v-col cols="12" md="5">
       <v-parallax
         @click="openFile(path)"
         :src="path"

@@ -1,10 +1,18 @@
 <template>
   <v-tab-item>
-    <v-row v-if="item.status !== 'completed'">
+    <v-row v-if="item.status !== 'completed' && item.status !== 'failed'">
       <v-col cols="12">
         <p class="mb-0">
-          Request has not finished processing. Information will appear after the
-          request has completed.
+          Request has not finished downloading/processing. Information will
+          appear after the request has completed.
+        </p>
+      </v-col>
+    </v-row>
+    <v-row v-else-if="item.status === 'failed'">
+      <v-col cols="12">
+        <p class="mb-0">
+          Request has failed downloading. Please retry the request again
+          (later).
         </p>
       </v-col>
     </v-row>
@@ -24,6 +32,14 @@
       v-else-if="item.request_type === 'ResourceRequest'"
       :item="item"
     />
+    <v-row v-else>
+      <v-col cols="12">
+        <p class="mb-0">
+          Request has finished downloading but no details view is available for
+          this request type.
+        </p>
+      </v-col>
+    </v-row>
   </v-tab-item>
 </template>
 
