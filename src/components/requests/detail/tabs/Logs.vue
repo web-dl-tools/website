@@ -21,7 +21,12 @@
       dense
       reverse
     >
-      <v-timeline-item v-for="log in logs" :key="log.id" small>
+      <v-timeline-item
+        v-for="log in logs"
+        :key="log.id"
+        :color="formatLogLevelColor(log.level)"
+        small
+      >
         <v-row justify="space-between">
           <v-col cols="7">
             <v-col cols="12" md="4" lg="2" class="pa-0 d-inline-flex">
