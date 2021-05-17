@@ -11,8 +11,7 @@
     <v-row v-else-if="item.status === 'failed'">
       <v-col cols="12">
         <p class="mb-0">
-          Request has failed downloading. Please retry the request again
-          (later).
+          Request has failed. Please retry the request again (later).
         </p>
       </v-col>
     </v-row>
