@@ -106,19 +106,20 @@
 
     <v-dialog v-model="dialog" max-width="500">
       <v-card outlined raised class="pb-1">
-        <v-card-title>Delete</v-card-title>
-        <v-card-text>
-          Are you sure you want to delete this request?
-        </v-card-text>
-        <v-card-text class="error--text font-weight-light mt-n4">
-          {{ request.status === "completed" ? request.title : request.url }}
+        <v-card-title class="subtitle-1"> Delete request </v-card-title>
+        <v-card-subtitle class="subtitle-2">
+          Are you sure you want to delete the following request?
+        </v-card-subtitle>
+        <v-card-text class="pb-3">
+          {{ request.status === "completed" ? request.title : "" }}
+          <span class="font-italic">
+            {{ request.url }}
+          </span>
         </v-card-text>
         <v-card-actions>
           <v-spacer></v-spacer>
-          <v-btn color="warning darken-1" text @click="dialog = false">
-            Cancel
-          </v-btn>
-          <v-btn color="error darken-1" text @click="remove"> Delete </v-btn>
+          <v-btn color="warning" text @click="dialog = false"> Cancel </v-btn>
+          <v-btn color="error" text @click="remove"> Delete </v-btn>
         </v-card-actions>
       </v-card>
     </v-dialog>

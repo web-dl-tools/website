@@ -178,8 +178,7 @@
               multiple
               outlined
               solo
-              small-chips
-            ></v-combobox>
+            />
           </v-col>
         </v-row>
       </v-col>
