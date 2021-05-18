@@ -2,10 +2,14 @@
   <div>
     <v-row v-if="loading">
       <v-col cols="12" md="6">
-        <v-skeleton-loader type="article" />
+        <v-card raised>
+          <v-skeleton-loader type="article" />
+        </v-card>
       </v-col>
       <v-col cols="12" md="6">
-        <v-skeleton-loader type="article" />
+        <v-card raised>
+          <v-skeleton-loader type="article" />
+        </v-card>
       </v-col>
     </v-row>
     <v-row v-else-if="activeItems.length">
