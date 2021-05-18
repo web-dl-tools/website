@@ -110,7 +110,7 @@
         <v-card-subtitle class="subtitle-2">
           Are you sure you want to delete the following request?
         </v-card-subtitle>
-        <v-card-text class="pb-3 font-italic info--text">
+        <v-card-text class="pb-3 info--text">
           {{ request.status === "completed" ? request.title : request.url }}
         </v-card-text>
         <v-card-actions>
