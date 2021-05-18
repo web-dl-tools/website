@@ -1,0 +1,39 @@
+.v-bottom-navigation--fixed,
+.v-app-bar--fixed.grey.darken-4 {
+  opacity: .95;
+}
+
+.theme--dark.v-list {
+  background-color: rgb(30 30 30 / 95%);
+}
+
+.theme--dark.v-stepper,
+.theme--dark.v-card {
+  background-color: rgb(30 30 30 / 99%);
+}
+
+.theme--dark.v-data-table,
+.theme--dark.v-tabs>.v-tabs-bar,
+.theme--dark.v-tabs-items {
+  background-color: rgb(30 30 30 / 0%);
+}
+
+.theme--dark.v-skeleton-loader .v-skeleton-loader__actions,
+.theme--dark.v-skeleton-loader.v-skeleton-loader__article,
+.theme--dark.v-skeleton-loader .v-skeleton-loader__card-heading,
+.theme--dark.v-skeleton-loader .v-skeleton-loader__card-text,
+.theme--dark.v-skeleton-loader .v-skeleton-loader__date-picker,
+.theme--dark.v-skeleton-loader .v-skeleton-loader__list-item,
+.theme--dark.v-skeleton-loader .v-skeleton-loader__list-item-avatar,
+.theme--dark.v-skeleton-loader .v-skeleton-loader__list-item-avatar-three-line,
+.theme--dark.v-skeleton-loader .v-skeleton-loader__list-item-avatar-two-line,
+.theme--dark.v-skeleton-loader .v-skeleton-loader__list-item-text,
+.theme--dark.v-skeleton-loader .v-skeleton-loader__list-item-three-line,
+.theme--dark.v-skeleton-loader .v-skeleton-loader__list-item-two-line,
+.theme--dark.v-skeleton-loader .v-skeleton-loader__table-heading,
+.theme--dark.v-skeleton-loader .v-skeleton-loader__table-tbody,
+.theme--dark.v-skeleton-loader .v-skeleton-loader__table-tfoot,
+.theme--dark.v-skeleton-loader .v-skeleton-loader__table-thead,
+.theme--dark.v-skeleton-loader .v-skeleton-loader__article {
+  background: inherit;
+}

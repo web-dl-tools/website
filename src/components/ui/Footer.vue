@@ -11,14 +11,13 @@
         >
           <v-col class="pb-0" cols="12">
             <span class="font-weight-bold">Web DL Client</span>
-            v{{ buildInfo.tag }} (Build {{ buildInfo.abbreviated_commit }},
-            {{ formatDate(buildInfo.commiter.date, "LL") }})
+            v{{ buildInfo.tag }} &middot;
+            {{ formatDate(buildInfo.commiter.date, "LL") }}
           </v-col>
           <v-col class="pt-0" cols="12">
             <span class="font-weight-bold">Web DL API</span>
-            v{{ apiBuildInfo.tag }} (Build
-            {{ apiBuildInfo.abbreviated_commit }},
-            {{ formatDate(apiBuildInfo.commiter.date, "LL") }})
+            v{{ apiBuildInfo.tag }} &middot;
+            {{ formatDate(apiBuildInfo.commiter.date, "LL") }}
           </v-col>
         </div>
       </v-row>
