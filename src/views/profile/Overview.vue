@@ -15,7 +15,7 @@
             <v-skeleton-loader type="actions" />
           </v-card>
           <v-card raised v-else>
-            <v-card-title class="subtitle-1 text-capitalize">
+            <v-card-title class="subtitle-1">
               Hello {{ user.first_name || user.username }},
             </v-card-title>
             <v-card-subtitle class="subtitle-2">
@@ -39,7 +39,7 @@
               </v-row>
               <v-row>
                 <v-col cols="4" class="py-0"></v-col>
-                <v-col cols="8" class="py-0">
+                <v-col cols="8" class="py-0 text-capitalize-sentence">
                   {{ formatDateFromNow(user.date_joined) }}
                 </v-col>
               </v-row>

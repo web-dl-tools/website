@@ -79,6 +79,23 @@
             </v-col>
           </v-row>
         </v-card>
+        <v-skeleton-loader
+          type="image"
+          class="mt-3"
+          height="35"
+          v-if="files_loading"
+        />
+        <v-btn
+          v-else
+          class="mt-3"
+          color="info"
+          block
+          light
+          outlined
+          @click="openFile(`${request.path}.zip`)"
+        >
+          Download archive
+        </v-btn>
       </v-col>
     </v-row>
   </v-tab-item>
@@ -124,6 +141,7 @@ export default {
   },
   computed: {
     ...mapGetters({
+      request: "requests/get",
       files: "requests/getFiles",
     }),
     /**
@@ -239,9 +257,13 @@ export default {
    * Delay loading files in the background.
    */
   created() {
-    setTimeout(() => {
-      if (!this.files_loading && !this.files_loaded) this.retrieveFiles();
-    }, 1500);
+    if (this.active) {
+      this.retrieveFiles();
+    } else {
+      setTimeout(() => {
+        if (!this.files_loading && !this.files_loaded) this.retrieveFiles();
+      }, 1500);
+    }
   },
 };
 </script>

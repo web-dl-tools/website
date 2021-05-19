@@ -132,9 +132,11 @@ import Timeline from "../../components/requests/detail/tabs/Timeline";
 import Raw from "../../components/requests/detail/tabs/Raw";
 import Files from "../../components/requests/detail/tabs/Files";
 import Logs from "../../components/requests/detail/tabs/Logs";
+import formatters from "../../mixins/formatters";
 
 export default {
   name: "views.requests.detail",
+  mixins: [formatters],
   components: {
     Status,
     CardText,
@@ -180,6 +182,9 @@ export default {
         this.$store.dispatch("application/setTitlePrefix", r.title);
       }
     },
+    tab(t) {
+      this.$router.push({ query: { t } }).catch(() => {});
+    },
   },
   methods: {
     /**
@@ -213,6 +218,12 @@ export default {
       .finally(() => {
         this.request_loading = false;
       });
+  },
+  /**
+   * Switch to the active tab (if passed).
+   */
+  mounted() {
+    if ("t" in this.$route.query) this.tab = parseInt(this.$route.query.t);
   },
   /**
    * Clean out retrieved data and call children to clean out.
