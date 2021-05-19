@@ -41,16 +41,33 @@ export default Vue.mixin({
      * @param startDate
      * @param endDate
      * @param format
-     * @returns {string|number}
+     * @param template
+     * @returns string
      */
-    formatDateDuration(startDate, endDate, format) {
+    formatDateDuration(
+      startDate,
+      endDate,
+      format,
+      template = ["{formatted}", "{formatted}"]
+    ) {
       startDate = moment(startDate);
       endDate = moment(endDate);
       const duration = moment.duration(endDate.diff(startDate));
-      if (format === "humanize") {
-        return duration.humanize();
+      let formatted;
+
+      switch (format) {
+        case "humanize":
+          formatted = duration.humanize();
+          if (duration.milliseconds() < 0) formatted = null;
+          break;
+        default:
+          formatted = duration.as(format);
+          break;
       }
-      return duration.as(format);
+
+      return formatted
+        ? template[0].replace("{formatted}", formatted)
+        : template[1];
     },
     /**
      * Format a bytes value to a human readable format.

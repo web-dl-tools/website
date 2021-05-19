@@ -140,9 +140,13 @@ export default {
    * Delay loading logs in the background.
    */
   created() {
-    setTimeout(() => {
-      if (!this.logs_loading && !this.logs_loaded) this.retrieveLogs();
-    }, 2500);
+    if (this.active) {
+      this.retrieveLogs();
+    } else {
+      setTimeout(() => {
+        if (!this.logs_loading && !this.logs_loaded) this.retrieveLogs();
+      }, 2500);
+    }
   },
 };
 </script>

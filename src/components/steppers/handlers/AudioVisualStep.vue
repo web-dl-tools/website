@@ -294,17 +294,6 @@ export default {
      * @returns {*}
      */
     bestSingleFileFormat() {
-      if (!("format_id" in this.data.options[this.data.options.length - 1])) {
-        // eslint-disable-next-line vue/no-mutating-props, vue/no-side-effects-in-computed-properties
-        this.data.options = [
-          {
-            ext: "Various extensions",
-            format: "Automatic format",
-            format_id: "bestvideo+bestaudio/best",
-            format_note: "Automatic best file option",
-          },
-        ];
-      }
       return this.data.options[this.data.options.length - 1].format_id;
     },
     /**
@@ -410,7 +399,8 @@ export default {
      * @returns {*}
      */
     getSelection(id) {
-      return this.data.options.find((f) => f.format_id === id).format_note;
+      const f = this.data.options.find((f) => f.format_id === id);
+      return "format_note" in f ? f.format_note : f.format;
     },
   },
 };

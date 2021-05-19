@@ -76,12 +76,15 @@
             >
               <v-icon> mdi-timer-sand </v-icon>
               <span class="ml-1">
-                In queue for
                 {{
                   formatDateDuration(
                     item.created_at,
                     item.start_processing_at,
-                    "humanize"
+                    "humanize",
+                    [
+                      "In queue for {formatted}",
+                      "Started processing immediately",
+                    ]
                   )
                 }}
               </span>
@@ -89,12 +92,12 @@
             <p v-if="item.status === 'completed'" class="mb-2">
               <v-icon> mdi-progress-download </v-icon>
               <span class="ml-1">
-                Processed in
                 {{
                   formatDateDuration(
                     item.start_processing_at,
                     item.completed_at,
-                    "humanize"
+                    "humanize",
+                    ["Processed in {formatted}", "Instantly processed"]
                   )
                 }}
               </span>
