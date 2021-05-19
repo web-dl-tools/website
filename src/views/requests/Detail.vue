@@ -154,6 +154,7 @@ export default {
     request_still_processing: false,
     files_count: null,
     logs_count: null,
+    from: null,
   }),
   computed: {
     ...mapGetters({
@@ -199,7 +200,11 @@ export default {
     remove() {
       this.$store
         .dispatch("requests/remove", this.$route.params.requestId)
-        .then(() => this.$router.back());
+        .then(() =>
+          this.from
+            ? this.$router.push(this.from).catch(() => {})
+            : this.$router.push({ name: "overview" }).catch(() => {})
+        );
     },
     /**
      * Retry the request.
@@ -207,6 +212,14 @@ export default {
     retry() {
       this.$store.dispatch("requests/retry", this.$route.params.requestId);
     },
+  },
+  /**
+   * Store the previous route.
+   */
+  beforeRouteEnter(to, from, next) {
+    next((vm) => {
+      vm.from = from;
+    });
   },
   /**
    * Retrieve the request information.
