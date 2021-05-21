@@ -154,7 +154,6 @@ export default {
     request_still_processing: false,
     files_count: null,
     logs_count: null,
-    from: null,
   }),
   computed: {
     ...mapGetters({
@@ -183,9 +182,6 @@ export default {
         this.$store.dispatch("application/setTitlePrefix", r.title);
       }
     },
-    tab(t) {
-      this.$router.push({ query: { t } }).catch(() => {});
-    },
   },
   methods: {
     /**
@@ -200,11 +196,7 @@ export default {
     remove() {
       this.$store
         .dispatch("requests/remove", this.$route.params.requestId)
-        .then(() =>
-          this.from
-            ? this.$router.push(this.from).catch(() => {})
-            : this.$router.push({ name: "overview" }).catch(() => {})
-        );
+        .then(() => this.$router.back());
     },
     /**
      * Retry the request.
@@ -212,14 +204,6 @@ export default {
     retry() {
       this.$store.dispatch("requests/retry", this.$route.params.requestId);
     },
-  },
-  /**
-   * Store the previous route.
-   */
-  beforeRouteEnter(to, from, next) {
-    next((vm) => {
-      vm.from = from;
-    });
   },
   /**
    * Retrieve the request information.
@@ -231,12 +215,6 @@ export default {
       .finally(() => {
         this.request_loading = false;
       });
-  },
-  /**
-   * Switch to the active tab (if passed).
-   */
-  mounted() {
-    if ("t" in this.$route.query) this.tab = parseInt(this.$route.query.t);
   },
   /**
    * Clean out retrieved data and call children to clean out.

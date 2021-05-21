@@ -77,25 +77,39 @@
                 {{ file_extension }}
               </v-chip>
             </v-col>
+            <v-col cols="12" class="px-0 pt-0">
+              <v-btn
+                v-if="!request.start_compressing_at || !request.compressed_at"
+                class="ml-n2 px-2"
+                :loading="request.start_compressing_at != null"
+                color="grey"
+                text
+                @click="compress"
+              >
+                <template v-slot:loader>
+                  <v-progress-circular
+                    class="ml-2"
+                    indeterminate
+                    size="22"
+                    width="2"
+                  />
+                  <span class="ml-3">Creating archive</span>
+                </template>
+                Create archive (zip)
+              </v-btn>
+              <v-btn
+                v-else
+                color="info"
+                block
+                light
+                outlined
+                @click="openFile(`${request.path}.zip`)"
+              >
+                Download archive (zip)
+              </v-btn>
+            </v-col>
           </v-row>
         </v-card>
-        <v-skeleton-loader
-          type="image"
-          class="mt-3"
-          height="35"
-          v-if="files_loading"
-        />
-        <v-btn
-          v-else
-          class="mt-3"
-          color="info"
-          block
-          light
-          outlined
-          @click="openFile(`${request.path}.zip`)"
-        >
-          Download archive
-        </v-btn>
       </v-col>
     </v-row>
   </v-tab-item>
@@ -218,6 +232,12 @@ export default {
       this.file_extensions = this.unique(file_extensions);
 
       return [folders_count, files_count, size, file_extensions];
+    },
+    /**
+     * Compress the request files.
+     */
+    compress() {
+      this.$store.dispatch("requests/compress", this.$route.params.requestId);
     },
     /**
      * Reload all the files when the request finished downloading.

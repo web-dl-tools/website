@@ -75,6 +75,18 @@ export const retry = ({ commit }, id) =>
     .then((response) => commit("UPDATE", response.data));
 
 /**
+ * Compress a request.
+ *
+ * @param commit
+ * @param id
+ * @returns {*}
+ */
+export const compress = ({ commit }, id) =>
+  Vue.$axios
+    .put(`requests/${id}/compress`)
+    .then((response) => commit("UPDATE", response.data));
+
+/**
  * Remove a request by ID.
  *
  * @param commit
