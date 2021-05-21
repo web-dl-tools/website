@@ -10,7 +10,7 @@
             {{ formatDate(item.compressed_at) }}
           </v-card-subtitle>
           <v-card-text>
-            The request has been compressed and an archive has been created in
+            The request archive has been created in
             {{
               formatDateDuration(
                 item.start_compressing_at,
@@ -36,7 +36,7 @@
             {{ formatDate(item.start_compressing_at) }}
           </v-card-subtitle>
           <v-card-text>
-            The request has been planned for, and started compressing.
+            The request archive has started compressing.
           </v-card-text>
         </v-card>
       </v-timeline-item>
