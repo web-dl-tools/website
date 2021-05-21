@@ -12,9 +12,9 @@
         </v-card>
       </v-col>
     </v-row>
-    <v-row v-else-if="activeItems.length">
+    <v-row v-else-if="sortedActiveRequests.length">
       <v-col
-        v-for="item in activeItems.slice(0, 5)"
+        v-for="item in sortedActiveRequests.slice(0, 5)"
         :key="item.id"
         cols="12"
         md="6"
@@ -41,17 +41,25 @@
 <script>
 import { mapGetters } from "vuex";
 import CardMini from "./CardMini";
+import helpers from "../../../mixins/formatters";
 
 export default {
   name: "components.requests.active.overview",
+  mixin: [helpers],
   components: {
     CardMini,
   },
   computed: {
     ...mapGetters({
       loading: "application/isLoading",
-      activeItems: "requests/getAllActive",
+      activeRequests: "requests/getAllActive",
     }),
+    sortedActiveRequests() {
+      const activeItems = this.activeRequests;
+      return activeItems.sort((a, b) =>
+        this.sortDates(a.created_at, b.created_at)
+      );
+    },
   },
 };
 </script>

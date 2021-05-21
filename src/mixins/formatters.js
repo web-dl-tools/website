@@ -58,7 +58,7 @@ export default Vue.mixin({
       switch (format) {
         case "humanize":
           formatted = duration.humanize();
-          if (duration.milliseconds() < 0) formatted = null;
+          if (duration.asMilliseconds() < 1000) formatted = null;
           break;
         default:
           formatted = duration.as(format);
