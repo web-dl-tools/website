@@ -11,7 +11,7 @@
           class="mb-4"
           color="accent"
           name="username"
-          prepend-icon="mdi-account"
+          prepend-inner-icon="mdi-account"
           type="text"
           autofocus
           flat
@@ -25,7 +25,7 @@
           color="accent"
           id="password"
           name="password"
-          prepend-icon="mdi-lock"
+          prepend-inner-icon="mdi-lock"
           type="password"
           flat
           hide-details

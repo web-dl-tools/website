@@ -2,7 +2,7 @@
   <v-main class="background-wallpaper">
     <v-container class="pt-3">
       <v-row>
-        <p class="mx-3 my-12 font-weight-thin display-3">
+        <p class="mx-3 my-12 font-weight-thin display-3 text-shadow">
           {{ title }}
         </p>
       </v-row>

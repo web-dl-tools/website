@@ -77,39 +77,43 @@
                 {{ file_extension }}
               </v-chip>
             </v-col>
-            <v-col cols="12" class="px-0 pt-0">
-              <v-btn
-                v-if="!request.start_compressing_at || !request.compressed_at"
-                class="ml-n2 px-2"
-                :loading="request.start_compressing_at != null"
-                color="grey"
-                text
-                @click="compress"
-              >
-                <template v-slot:loader>
-                  <v-progress-circular
-                    class="ml-2"
-                    indeterminate
-                    size="22"
-                    width="2"
-                  />
-                  <span class="ml-3">Creating archive</span>
-                </template>
-                Create archive (zip)
-              </v-btn>
-              <v-btn
-                v-else
-                color="info"
-                block
-                light
-                outlined
-                @click="openFile(`${request.path}.zip`)"
-              >
-                Download archive (zip)
-              </v-btn>
-            </v-col>
           </v-row>
         </v-card>
+        <v-row>
+          <v-col>
+            <v-btn
+              v-if="!request.start_compressing_at || !request.compressed_at"
+              :loading="request.start_compressing_at != null"
+              color="grey"
+              block
+              small
+              text
+              @click="compress"
+            >
+              <template v-slot:loader>
+                <v-progress-circular
+                  class=""
+                  indeterminate
+                  size="18"
+                  width="2"
+                />
+                <span class="pl-2">Creating archive...</span>
+              </template>
+              Create archive (zip)
+            </v-btn>
+            <v-btn
+              v-else
+              color="info"
+              block
+              light
+              outlined
+              small
+              @click="openFile(`${request.path}.zip`)"
+            >
+              Download archive (zip)
+            </v-btn>
+          </v-col>
+        </v-row>
       </v-col>
     </v-row>
   </v-tab-item>

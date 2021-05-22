@@ -3,7 +3,7 @@
     <v-container>
       <v-row>
         <v-col class="pa-0" cols="12" md="8">
-          <p class="mx-3 my-12 font-weight-thin display-3">
+          <p class="mx-3 my-12 font-weight-thin display-3 text-shadow">
             {{ title }}
           </p>
         </v-col>
@@ -32,8 +32,8 @@
 
       <v-row>
         <v-col cols="12" class="pb-0 mb-n2">
-          <v-subheader class="subtitle-2 pl-0 pr-0 mr-n2"
-            >Completed requests
+          <v-subheader class="subtitle-2 pl-0 pr-0 mr-n2">
+            Completed requests
             <v-spacer />
             <v-btn
               class="text-no-transform"
