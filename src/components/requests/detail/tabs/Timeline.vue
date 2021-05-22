@@ -1,13 +1,27 @@
 <template>
   <v-tab-item>
     <v-timeline :dense="$vuetify.breakpoint.smAndDown">
+      <v-timeline-item color="grey" small>
+        <v-card outlined>
+          <v-card-title class="font-weight-light font-size-18">
+            Request state updated.
+          </v-card-title>
+          <v-card-subtitle class="font-weight-bold grey--text">
+            {{ item.modified_at }}
+          </v-card-subtitle>
+          <v-card-text>
+            The request received it's latest state update.
+          </v-card-text>
+        </v-card>
+      </v-timeline-item>
+
       <v-timeline-item v-if="item.compressed_at !== null" color="success" small>
         <v-card outlined>
           <v-card-title class="font-weight-light font-size-18">
             Request archive created.
           </v-card-title>
           <v-card-subtitle class="font-weight-bold success--text">
-            {{ formatDate(item.compressed_at) }}
+            {{ item.compressed_at }}
           </v-card-subtitle>
           <v-card-text>
             The request archive has been created in
@@ -16,9 +30,9 @@
                 item.start_compressing_at,
                 item.compressed_at,
                 "seconds",
-                ["{formatted} seconds", "unknown seconds."]
+                ["{formatted} seconds.", "unknown seconds."]
               )
-            }}.
+            }}
           </v-card-text>
         </v-card>
       </v-timeline-item>
@@ -33,10 +47,18 @@
             Request archive started compressing.
           </v-card-title>
           <v-card-subtitle class="font-weight-bold info--text">
-            {{ formatDate(item.start_compressing_at) }}
+            {{ item.start_compressing_at }}
           </v-card-subtitle>
           <v-card-text>
-            The request archive has started compressing.
+            The request archive has started compressing. Task was triggered
+            {{
+              formatDateDuration(
+                item.completed_at,
+                item.start_compressing_at,
+                "humanize"
+              )
+            }}
+            after the request was completed.
           </v-card-text>
         </v-card>
       </v-timeline-item>
@@ -47,7 +69,7 @@
             Request failed.
           </v-card-title>
           <v-card-subtitle class="font-weight-bold error--text">
-            {{ formatDate(item.modified_at) }}
+            {{ item.modified_at }}
           </v-card-subtitle>
           <v-card-text> The request failed to download. </v-card-text>
         </v-card>
@@ -59,10 +81,18 @@
             Request has completed.
           </v-card-title>
           <v-card-subtitle class="font-weight-bold success--text">
-            {{ formatDate(item.completed_at) }}
+            {{ item.completed_at }}
           </v-card-subtitle>
           <v-card-text>
-            The request has finished downloading and processing.
+            The request has finished processing. The total processing time took
+            {{
+              formatDateDuration(
+                item.start_processing_at,
+                item.completed_at,
+                "seconds",
+                ["{formatted} seconds.", "unknown seconds."]
+              )
+            }}
           </v-card-text>
         </v-card>
       </v-timeline-item>
@@ -77,11 +107,19 @@
             Request has started processing.
           </v-card-title>
           <v-card-subtitle class="font-weight-bold accent--text">
-            {{ formatDate(item.start_processing_at) }}
+            {{ item.start_processing_at }}
           </v-card-subtitle>
           <v-card-text>
             The request has started processing with the
-            {{ formatRequest(item.request_type) }} handler.
+            {{ formatRequest(item.request_type) }} handler. It was queued for
+            {{
+              formatDateDuration(
+                item.created_at,
+                item.start_processing_at,
+                "seconds",
+                ["{formatted} seconds.", "unknown seconds."]
+              )
+            }}
           </v-card-text>
         </v-card>
       </v-timeline-item>
@@ -92,7 +130,7 @@
             Request has been created.
           </v-card-title>
           <v-card-subtitle class="font-weight-bold info--text">
-            {{ formatDate(item.created_at) }}
+            {{ item.created_at }}
           </v-card-subtitle>
           <v-card-text class="white--text">
             A request to download
