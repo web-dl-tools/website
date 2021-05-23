@@ -80,10 +80,12 @@
           </v-row>
         </v-card>
         <v-row>
-          <v-col>
+          <v-col class="pb-0">
             <v-btn
               v-if="!request.start_compressing_at || !request.compressed_at"
               :loading="request.start_compressing_at != null"
+              :outlined="request.start_compressing_at == null"
+              class="text--darken-2"
               color="grey"
               block
               small
@@ -91,12 +93,7 @@
               @click="compress"
             >
               <template v-slot:loader>
-                <v-progress-circular
-                  class=""
-                  indeterminate
-                  size="18"
-                  width="2"
-                />
+                <v-progress-circular indeterminate size="18" width="2" />
                 <span class="pl-2">Creating archive...</span>
               </template>
               Create archive (zip)

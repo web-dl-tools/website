@@ -29,6 +29,10 @@
                 :disabled="loading || !isEmptyObject(step1Data)"
                 @click="getHandlers"
               >
+                <template v-slot:loader>
+                  <v-progress-circular indeterminate size="18" width="2" />
+                  <span class="pl-2">Getting handlers</span>
+                </template>
                 Get handlers
               </v-btn>
             </v-stepper-content>
