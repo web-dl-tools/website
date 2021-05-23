@@ -84,7 +84,6 @@
             <v-btn
               v-if="!request.start_compressing_at || !request.compressed_at"
               :loading="request.start_compressing_at != null"
-              :outlined="request.start_compressing_at == null"
               class="text--darken-2"
               color="grey"
               block
@@ -100,7 +99,7 @@
             </v-btn>
             <v-btn
               v-else
-              color="info"
+              color="grey"
               block
               light
               outlined
