@@ -2,6 +2,9 @@
   <v-tab-item>
     <v-timeline :dense="$vuetify.breakpoint.smAndDown">
       <v-timeline-item color="grey" small>
+        <template v-slot:opposite>
+          {{ formatDate(item.modified_at, "LL H:mm:ss") }}
+        </template>
         <v-card outlined>
           <v-card-title class="font-weight-light font-size-18">
             Request state updated.
@@ -16,6 +19,9 @@
       </v-timeline-item>
 
       <v-timeline-item v-if="item.compressed_at !== null" color="success" small>
+        <template v-slot:opposite>
+          {{ formatDate(item.compressed_at, "LL H:mm:ss") }}
+        </template>
         <v-card outlined>
           <v-card-title class="font-weight-light font-size-18">
             Request archive created.
@@ -42,6 +48,9 @@
         color="info"
         small
       >
+        <template v-slot:opposite>
+          {{ formatDate(item.start_compressing_at, "LL H:mm:ss") }}
+        </template>
         <v-card outlined>
           <v-card-title class="font-weight-light font-size-18">
             Request archive started compressing.
@@ -64,6 +73,9 @@
       </v-timeline-item>
 
       <v-timeline-item v-if="item.status === 'failed'" color="error" small>
+        <template v-slot:opposite>
+          {{ formatDate(item.modified_at, "LL H:mm:ss") }}
+        </template>
         <v-card outlined>
           <v-card-title class="font-weight-light font-size-18">
             Request failed.
@@ -76,6 +88,9 @@
       </v-timeline-item>
 
       <v-timeline-item v-if="item.status === 'completed'" color="success" small>
+        <template v-slot:opposite>
+          {{ formatDate(item.completed_at, "LL H:mm:ss") }}
+        </template>
         <v-card outlined>
           <v-card-title class="font-weight-light font-size-18">
             Request has completed.
@@ -102,6 +117,9 @@
         color="accent"
         small
       >
+        <template v-slot:opposite>
+          {{ formatDate(item.start_processing_at, "LL H:mm:ss") }}
+        </template>
         <v-card outlined>
           <v-card-title class="font-weight-light font-size-18">
             Request has started processing.
@@ -125,6 +143,9 @@
       </v-timeline-item>
 
       <v-timeline-item color="info" small>
+        <template v-slot:opposite>
+          {{ formatDate(item.created_at, "LL H:mm:ss") }}
+        </template>
         <v-card outlined>
           <v-card-title class="font-weight-light font-size-18">
             Request has been created.

@@ -11,3 +11,9 @@
   border-top-left-radius: 0 !important;
   border-top-right-radius: 0 !important;
 }
+
+@media only screen and (max-width: 600px) {
+  .v-data-table-header {
+    display: none;
+  }
+}
