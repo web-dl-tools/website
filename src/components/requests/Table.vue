@@ -2,6 +2,9 @@
   <div>
     <v-card raised>
       <v-data-table
+        :class="{
+          extended: !extended,
+        }"
         :headers="headers"
         :hide-default-footer="!extended"
         :items-per-page="parseInt(items_per_page)"

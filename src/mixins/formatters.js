@@ -48,7 +48,7 @@ export default Vue.mixin({
       startDate,
       endDate,
       format,
-      template = ["{formatted}", "{formatted}"]
+      template = ["{formatted}", ""]
     ) {
       startDate = moment(startDate);
       endDate = moment(endDate);
