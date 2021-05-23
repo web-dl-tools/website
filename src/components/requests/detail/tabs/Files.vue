@@ -80,7 +80,7 @@
           </v-row>
         </v-card>
         <v-row>
-          <v-col class="pb-0">
+          <v-col class="pb-0" v-show="!files_loading">
             <v-btn
               v-if="!request.start_compressing_at || !request.compressed_at"
               :loading="request.start_compressing_at != null"
