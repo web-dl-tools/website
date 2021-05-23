@@ -14,6 +14,15 @@
           </v-card-subtitle>
           <v-card-text>
             The request received it's latest state update.
+            {{
+              formatDateDuration(
+                item.created_at,
+                item.modified_at,
+                "humanize",
+                ["It has been {formatted}", "No time has passed (yet)"]
+              )
+            }}
+            since the request initially was created.
           </v-card-text>
         </v-card>
       </v-timeline-item>
@@ -172,7 +181,6 @@ import formatters from "../../../../mixins/formatters";
 export default {
   name: "components.requests.detail.tabs.timeline",
   mixin: [formatters],
-  data: () => ({}),
   props: {
     active: Boolean,
     item: Object,
