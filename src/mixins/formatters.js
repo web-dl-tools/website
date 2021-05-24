@@ -5,6 +5,9 @@ import { formatRequest } from "./public";
 
 export default Vue.mixin({
   methods: {
+    /**
+     * @inheritDoc
+     */
     formatRequest,
     /**
      * Format a datetime object/string to a given string format.

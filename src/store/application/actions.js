@@ -93,7 +93,7 @@ export const handleWebsocketEvent = (
   const data = JSON.parse(event.data);
   switch (data.type) {
     case "requests.group.joined":
-      dispatch("handleWebsocketGroupJoinedEvent", data);
+      dispatch("handleWebsocketGroupJoinedEvent");
       break;
     case "requests.update":
       dispatch("handleWebsocketRequestUpdateEvent", data);
@@ -114,15 +114,10 @@ export const handleWebsocketEvent = (
 /**
  * Handle the group joined websocket event.
  *
- * @param commit
  * @param dispatch
- * @param rootGetters
  * @param data
  */
-export const handleWebsocketGroupJoinedEvent = (
-  { commit, dispatch, rootGetters },
-  data
-) => {
+export const handleWebsocketGroupJoinedEvent = ({ dispatch }) => {
   dispatch("addMessage", {
     text: "Joined authenticated <b>Web DL API</b> WebSocket channel.",
     type: "info",

@@ -4,6 +4,9 @@ import { truncate } from "./public";
 
 export default Vue.mixin({
   methods: {
+    /**
+     * @inheritDoc
+     */
     truncate,
     /**
      * Check if a given object is empty.
