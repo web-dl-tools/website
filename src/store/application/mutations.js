@@ -119,6 +119,26 @@ export const GET_API_BUILD_INFO = (state, apiBuildInfo) =>
 export const ADD_MESSAGE = (state, message) => state.messages.push(message);
 
 /**
+ * Show an existing message.
+ *
+ * @param state
+ * @param i
+ * @constructor
+ */
+export const SHOW_MESSAGE = (state, i) =>
+  Vue.set(state.messages, i, { ...state.messages[i], ...{ show: true } });
+
+/**
+ * Clear an existing message.
+ *
+ * @param state
+ * @param i
+ * @constructor
+ */
+export const CLEAR_MESSAGE = (state, i) =>
+  Vue.set(state.messages, i, { ...state.messages[i], ...{ show: false } });
+
+/**
  * Remove an existing message.
  *
  * @param state
