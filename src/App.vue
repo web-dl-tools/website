@@ -1,17 +1,17 @@
 <template>
   <v-app>
     <router-view />
-    <snackbars />
+    <messages />
   </v-app>
 </template>
 
 <script>
-import Snackbars from "./components/ui/Messages";
+import Messages from "./components/ui/Messages";
 
 export default {
   name: "App",
   components: {
-    Snackbars,
+    Messages,
   },
 };
 </script>

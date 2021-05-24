@@ -50,12 +50,6 @@ export const connectWebsocket = ({ commit, dispatch }) => {
   );
 
   websocket.onopen = () => {
-    dispatch("addMessage", {
-      text: "Web DL API WebSocket connection established successfully.",
-      type: "success",
-      action: null,
-      timeout: 2500,
-    });
     websocket.send(
       JSON.stringify({
         type: "requests.group.join",
@@ -69,7 +63,7 @@ export const connectWebsocket = ({ commit, dispatch }) => {
 
   websocket.onerror = () =>
     dispatch("addMessage", {
-      text: "An error occurred with the WebSocket connection.",
+      text: "An error occurred with the Web DL WebSocket connection.",
       type: "error",
       action: null,
       timeout: 10000,
@@ -105,7 +99,9 @@ export const handleWebsocketEvent = (
             dispatch("addMessage", {
               text: `Started processing ${formatRequest(
                 request.request_type
-              )} Request (${truncate(request.url, 45)}).`,
+              )} Request
+              <br />
+              <span class="info--text">${truncate(request.url, 45)}</span>.`,
               type: "info",
               action: null,
               timeout: 2500,
@@ -113,9 +109,9 @@ export const handleWebsocketEvent = (
             break;
           case "completed":
             dispatch("addMessage", {
-              text: `Finished ${formatRequest(request.request_type)} Request '${
-                request.title
-              }'.`,
+              text: `Finished ${formatRequest(request.request_type)} Request
+              <br />
+              <span class="info--text">${request.title}</span>.`,
               type: "success",
               action: () =>
                 router
@@ -130,7 +126,9 @@ export const handleWebsocketEvent = (
             dispatch("addMessage", {
               text: `Failed to download ${formatRequest(
                 request.request_type
-              )} Request (${truncate(request.url, 45)}).`,
+              )} Request
+              <br />
+              <span class="info--text">${truncate(request.url, 45)}</span>.`,
               type: "error",
               action: () =>
                 router
@@ -234,7 +232,10 @@ export const getApiBuildInfo = ({ commit }) =>
  * @returns {*}
  */
 export const addMessage = ({ commit, state }, message) => {
+  if (state.messages.find((i) => i.text === message.text)) return;
+
   commit("ADD_MESSAGE", message);
+
   setTimeout(
     () => {
       const i = state.messages.indexOf(message);
