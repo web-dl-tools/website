@@ -328,7 +328,7 @@ export const addMessage = ({ commit, state }, message) => {
           commit("REMOVE_MESSAGE", i);
         }
       },
-      "timeout" in message ? message.timeout : 5000
+      "timeout" in message ? message.timeout : 3000
     );
   }
 };
