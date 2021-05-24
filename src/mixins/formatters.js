@@ -1,21 +1,11 @@
 import Vue from "vue";
 import moment from "moment";
 import psl from "psl";
+import { formatRequest } from "./public";
 
 export default Vue.mixin({
   methods: {
-    /**
-     * Format a request type to a request string for use in labels.
-     *
-     * @param request
-     * @returns {*}
-     */
-    formatRequest(request) {
-      return request
-        .replace(/([A-Z])/g, " $1")
-        .replace(/^./, (str) => str.toUpperCase())
-        .replace("Request", "");
-    },
+    formatRequest,
     /**
      * Format a datetime object/string to a given string format.
      *

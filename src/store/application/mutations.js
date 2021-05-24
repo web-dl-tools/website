@@ -110,11 +110,19 @@ export const GET_API_BUILD_INFO = (state, apiBuildInfo) =>
   (state.api_build_info = apiBuildInfo);
 
 /**
- * Set the api error.
+ * Add a new message.
  *
  * @param state
- * @param api_error
+ * @param message
  * @constructor
  */
-export const SET_API_ERROR = (state, api_error) =>
-  (state.api_error = api_error);
+export const ADD_MESSAGE = (state, message) => state.messages.push(message);
+
+/**
+ * Remove an existing message.
+ *
+ * @param state
+ * @param i
+ * @constructor
+ */
+export const REMOVE_MESSAGE = (state, i) => state.messages.splice(i, 1);

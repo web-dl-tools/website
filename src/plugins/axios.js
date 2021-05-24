@@ -53,11 +53,21 @@ _axios.interceptors.response.use(
         case 404:
           break;
         default:
-          store.commit("application/SET_API_ERROR", true);
+          store.dispatch("application/addMessage", {
+            text: `An error occurred with the Web DL API. Please try again later.`,
+            type: "error",
+            action: null,
+            timeout: 10000,
+          });
           break;
       }
     } else {
-      store.commit("application/SET_API_ERROR", true);
+      store.dispatch("application/addMessage", {
+        text: `An error occurred with the Web DL API. Please try again later.`,
+        type: "error",
+        action: null,
+        timeout: 10000,
+      });
     }
 
     return Promise.reject(error);
