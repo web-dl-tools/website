@@ -8,6 +8,7 @@
           v-model="username"
           :label="username_label"
           :placeholder="username_label"
+          autocomplete="off"
           class="mb-4"
           color="accent"
           name="username"

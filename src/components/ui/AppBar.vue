@@ -30,6 +30,7 @@
         this.$route.name !== 'requests.create' && this.active === undefined
       "
       v-model="url"
+      autocomplete="off"
       background-color="transparent"
       color="info"
       :placeholder="url_label"
@@ -49,6 +50,7 @@
         this.$route.name !== 'requests.create' && this.active !== undefined
       "
       append-icon="mdi-magnify"
+      autocomplete="off"
       color="accent"
       :placeholder="search_label"
       :label="search_label"
