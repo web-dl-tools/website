@@ -114,7 +114,7 @@ export const handleWebsocketEvent = (
 export const handleWebsocketGroupJoinedEvent = ({ dispatch }) => {
   dispatch("addMessage", {
     text: "<b>Web DL API</b> WebSocket connection established successfully.",
-    type: "success",
+    type: "info",
     action: null,
     timeout: 3000,
   });
