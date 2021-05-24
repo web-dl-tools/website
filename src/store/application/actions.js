@@ -101,7 +101,7 @@ export const handleWebsocketEvent = (
                 request.request_type
               )} Request
               <br />
-              <span class="info--text">${truncate(request.url, 45)}</span>.`,
+              <span class="info--text">${truncate(request.url, 45)}</span>`,
               type: "info",
               action: null,
               timeout: 2500,
@@ -111,7 +111,7 @@ export const handleWebsocketEvent = (
             dispatch("addMessage", {
               text: `Finished ${formatRequest(request.request_type)} Request
               <br />
-              <span class="info--text">${request.title}</span>.`,
+              <span class="info--text">${request.title}</span>`,
               type: "success",
               action: () =>
                 router
@@ -128,7 +128,7 @@ export const handleWebsocketEvent = (
                 request.request_type
               )} Request
               <br />
-              <span class="info--text">${truncate(request.url, 45)}</span>.`,
+              <span class="info--text">${truncate(request.url, 45)}</span>`,
               type: "error",
               action: () =>
                 router
