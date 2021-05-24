@@ -154,7 +154,7 @@ export const handleWebsocketRequestStatusUpdateEvent = (
         dispatch("addMessage", {
           text: `Started processing ${formatRequest(
             request.request_type
-          )} Request:
+          )} Request
           <br />
           <span class="info--text">${truncate(request.url, 45)}</span>`,
           type: "info",
@@ -163,7 +163,7 @@ export const handleWebsocketRequestStatusUpdateEvent = (
         break;
       case "completed":
         dispatch("addMessage", {
-          text: `Finished ${formatRequest(request.request_type)} Request:
+          text: `Finished ${formatRequest(request.request_type)} Request
           <br />
           <span class="info--text">${request.title}</span>`,
           type: "success",
@@ -180,7 +180,7 @@ export const handleWebsocketRequestStatusUpdateEvent = (
         dispatch("addMessage", {
           text: `Failed to download ${formatRequest(
             request.request_type
-          )} Request:
+          )} Request
           <br />
           <span class="info--text">${truncate(request.url, 45)}</span>`,
           type: "error",
@@ -217,7 +217,7 @@ export const handleWebsocketRequestTaskFinishedEvent = (
         dispatch("addMessage", {
           text: `Finished compressing ${formatRequest(
             request.request_type
-          )} Request:
+          )} Request
           <br />
           <span class="info--text">${request.title}</span>`,
           type: "info",
@@ -311,24 +311,43 @@ export const getApiBuildInfo = ({ commit }) =>
  * Add a new message.
  *
  * @param commit
+ * @param dispatch
  * @param state
  * @param message
  * @returns {*}
  */
-export const addMessage = ({ commit, state }, message) => {
+export const addMessage = ({ commit, dispatch, state }, message) => {
   if (state.messages.find((i) => i.text === message.text)) return;
 
   commit("ADD_MESSAGE", message);
+  setTimeout(() => {
+    commit(
+      "SHOW_MESSAGE",
+      state.messages.findIndex((i) => i.text === message.text)
+    );
+  }, 1);
 
   if (!("timeout" in message && message.timeout === -1)) {
     setTimeout(
       () => {
-        const i = state.messages.indexOf(message);
-        if (i > -1) {
-          commit("REMOVE_MESSAGE", i);
-        }
+        const i = state.messages.findIndex((i) => i.text === message.text);
+        if (i > -1) dispatch("removeMessage", i);
       },
-      "timeout" in message ? message.timeout : 3000
+      "timeout" in message ? message.timeout : 6000
     );
   }
+};
+
+/**
+ * Remove an existing message.
+ *
+ * @param commit
+ * @param i
+ * @returns {*}
+ */
+export const removeMessage = ({ commit }, i) => {
+  commit("CLEAR_MESSAGE", i);
+  setTimeout(() => {
+    commit("REMOVE_MESSAGE", i);
+  }, 100);
 };
