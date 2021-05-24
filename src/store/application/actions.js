@@ -72,7 +72,7 @@ export const connectWebsocket = ({ commit, dispatch }) => {
       text: "An error occurred with the Web DL WebSocket connection.",
       type: "error",
       action: null,
-      timeout: 10000,
+      timeout: -1,
     });
 
   commit("CONNECT_WEBSOCKET", websocket);
@@ -123,8 +123,6 @@ export const handleWebsocketGroupJoinedEvent = (
   { commit, dispatch, rootGetters },
   data
 ) => {
-  // eslint-disable-next-line no-console
-  console.log(`Joined authenticated channel group (${data.content}).`);
   dispatch("addMessage", {
     text: "Joined authenticated <b>Web DL API</b> WebSocket channel.",
     type: "info",
@@ -204,7 +202,6 @@ export const handleWebsocketRequestStatusUpdateEvent = (
                 params: { requestId: request.id },
               })
               .catch(() => {}),
-          timeout: 10000,
         });
         break;
     }
@@ -334,13 +331,15 @@ export const addMessage = ({ commit, state }, message) => {
 
   commit("ADD_MESSAGE", message);
 
-  setTimeout(
-    () => {
-      const i = state.messages.indexOf(message);
-      if (i > -1) {
-        commit("REMOVE_MESSAGE", i);
-      }
-    },
-    "timeout" in message ? message.timeout : 5000
-  );
+  if (!("timeout" in message && message.timeout === -1)) {
+    setTimeout(
+      () => {
+        const i = state.messages.indexOf(message);
+        if (i > -1) {
+          commit("REMOVE_MESSAGE", i);
+        }
+      },
+      "timeout" in message ? message.timeout : 5000
+    );
+  }
 };
