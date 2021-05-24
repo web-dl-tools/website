@@ -50,6 +50,12 @@ export const connectWebsocket = ({ commit, dispatch }) => {
   );
 
   websocket.onopen = () => {
+    dispatch("addMessage", {
+      text: "<b>Web DL API</b> WebSocket connection established successfully.",
+      type: "success",
+      action: null,
+      timeout: 3500,
+    });
     websocket.send(
       JSON.stringify({
         type: "requests.group.join",
@@ -87,65 +93,158 @@ export const handleWebsocketEvent = (
   const data = JSON.parse(event.data);
   switch (data.type) {
     case "requests.group.joined":
+      dispatch("handleWebsocketGroupJoinedEvent", data);
       break;
     case "requests.update":
-      commit("requests/UPDATE", data.content, { root: true });
+      dispatch("handleWebsocketRequestUpdateEvent", data);
       break;
     case "requests.status.update":
-      const request = rootGetters["requests/getById"](data.content.id);
-      if (request) {
-        switch (data.content.status) {
-          case "pre_processing":
-            dispatch("addMessage", {
-              text: `Started processing ${formatRequest(
-                request.request_type
-              )} Request
-              <br />
-              <span class="info--text">${truncate(request.url, 45)}</span>`,
-              type: "info",
-              action: null,
-            });
-            break;
-          case "completed":
-            dispatch("addMessage", {
-              text: `Finished ${formatRequest(request.request_type)} Request
-              <br />
-              <span class="info--text">${request.title}</span>`,
-              type: "success",
-              action: () =>
-                router
-                  .push({
-                    name: "requests.detail",
-                    params: { requestId: request.id },
-                  })
-                  .catch(() => {}),
-            });
-            break;
-          case "failed":
-            dispatch("addMessage", {
-              text: `Failed to download ${formatRequest(
-                request.request_type
-              )} Request
-              <br />
-              <span class="info--text">${truncate(request.url, 45)}</span>`,
-              type: "error",
-              action: () =>
-                router
-                  .push({
-                    name: "requests.detail",
-                    params: { requestId: request.id },
-                  })
-                  .catch(() => {}),
-              timeout: 10000,
-            });
-            break;
-        }
-      }
+      dispatch("handleWebsocketRequestStatusUpdateEvent", data);
+      break;
+    case "requests.task.finished":
+      dispatch("handleWebsocketRequestTaskFinishedEvent", data);
       break;
     default:
       // eslint-disable-next-line no-console
       console.error("Unsupported websocket event received");
       break;
+  }
+};
+
+/**
+ * Handle the group joined websocket event.
+ *
+ * @param commit
+ * @param dispatch
+ * @param rootGetters
+ * @param data
+ */
+export const handleWebsocketGroupJoinedEvent = (
+  { commit, dispatch, rootGetters },
+  data
+) => {
+  // eslint-disable-next-line no-console
+  console.log(`Joined authenticated channel group (${data.content}).`);
+  dispatch("addMessage", {
+    text: "Joined authenticated <b>Web DL API</b> WebSocket channel.",
+    type: "info",
+    action: null,
+    timeout: 3000,
+  });
+};
+
+/**
+ * Handle the request update websocket event.
+ *
+ * @param commit
+ * @param dispatch
+ * @param rootGetters
+ * @param data
+ */
+export const handleWebsocketRequestUpdateEvent = (
+  { commit, dispatch, rootGetters },
+  data
+) => {
+  commit("requests/UPDATE", data.content, { root: true });
+};
+
+/**
+ * Handle the request status update websocket event.
+ *
+ * @param commit
+ * @param dispatch
+ * @param rootGetters
+ * @param data
+ */
+export const handleWebsocketRequestStatusUpdateEvent = (
+  { commit, dispatch, rootGetters },
+  data
+) => {
+  const request = rootGetters["requests/getById"](data.content.id);
+  if (request) {
+    switch (data.content.status) {
+      case "pre_processing":
+        dispatch("addMessage", {
+          text: `Started processing ${formatRequest(
+            request.request_type
+          )} Request:
+          <br />
+          <span class="info--text">${truncate(request.url, 45)}</span>`,
+          type: "info",
+          action: null,
+        });
+        break;
+      case "completed":
+        dispatch("addMessage", {
+          text: `Finished ${formatRequest(request.request_type)} Request:
+          <br />
+          <span class="info--text">${request.title}</span>`,
+          type: "success",
+          action: () =>
+            router
+              .push({
+                name: "requests.detail",
+                params: { requestId: request.id },
+              })
+              .catch(() => {}),
+        });
+        break;
+      case "failed":
+        dispatch("addMessage", {
+          text: `Failed to download ${formatRequest(
+            request.request_type
+          )} Request:
+          <br />
+          <span class="info--text">${truncate(request.url, 45)}</span>`,
+          type: "error",
+          action: () =>
+            router
+              .push({
+                name: "requests.detail",
+                params: { requestId: request.id },
+              })
+              .catch(() => {}),
+          timeout: 10000,
+        });
+        break;
+    }
+  }
+};
+
+/**
+ * Handle the request task finished websocket event.
+ *
+ * @param commit
+ * @param dispatch
+ * @param rootGetters
+ * @param data
+ */
+export const handleWebsocketRequestTaskFinishedEvent = (
+  { commit, dispatch, rootGetters },
+  data
+) => {
+  const request = rootGetters["requests/getById"](data.content.id);
+  if (request) {
+    switch (data.content.task) {
+      case "compress_request":
+        const request = rootGetters["requests/getById"](data.content.id);
+        dispatch("addMessage", {
+          text: `Finished compressing ${formatRequest(
+            request.request_type
+          )} Request:
+          <br />
+          <span class="info--text">${request.title}</span>`,
+          type: "info",
+          action: () =>
+            router
+              .push({
+                name: "requests.detail",
+                params: { requestId: request.id },
+              })
+              .catch(() => {}),
+        });
+        break;
+    }
   }
 };
 

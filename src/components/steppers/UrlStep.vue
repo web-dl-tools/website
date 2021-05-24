@@ -2,6 +2,7 @@
   <div>
     <v-text-field
       v-model="url"
+      autocomplete="off"
       class="mb-6"
       color="accent"
       :label="placeholder"
