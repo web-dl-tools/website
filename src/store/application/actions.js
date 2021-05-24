@@ -50,12 +50,6 @@ export const connectWebsocket = ({ commit, dispatch }) => {
   );
 
   websocket.onopen = () => {
-    dispatch("addMessage", {
-      text: "<b>Web DL API</b> WebSocket connection established successfully.",
-      type: "success",
-      action: null,
-      timeout: 3500,
-    });
     websocket.send(
       JSON.stringify({
         type: "requests.group.join",
@@ -119,8 +113,8 @@ export const handleWebsocketEvent = (
  */
 export const handleWebsocketGroupJoinedEvent = ({ dispatch }) => {
   dispatch("addMessage", {
-    text: "Joined authenticated <b>Web DL API</b> WebSocket channel.",
-    type: "info",
+    text: "<b>Web DL API</b> WebSocket connection established successfully.",
+    type: "success",
     action: null,
     timeout: 3000,
   });
