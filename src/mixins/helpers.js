@@ -1,18 +1,10 @@
 import Vue from "vue";
 import moment from "moment";
+import { truncate } from "./public";
 
 export default Vue.mixin({
   methods: {
-    /**
-     * Truncate a string to a given length.
-     *
-     * @param str
-     * @param len
-     * @returns {*} The truncated string.
-     */
-    truncate(str, len) {
-      return str.length > len ? `${str.slice(0, len)}...` : str;
-    },
+    truncate,
     /**
      * Check if a given object is empty.
      *

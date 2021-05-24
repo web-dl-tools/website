@@ -76,7 +76,7 @@ export const getApiBuildInfo = (state) => {
     return null;
   }
 
-  const regex = /tag: [\w\.\-]+,/g;
+  const regex = /tag: [\w.\-]+,/g;
   let tags = apiBuildInfo.refs.match(regex);
 
   apiBuildInfo.tag = tags
@@ -87,9 +87,9 @@ export const getApiBuildInfo = (state) => {
 };
 
 /**
- * Did the Web DL API fail?
+ * Messages to show to the user.
  *
  * @param state
  * @returns {string}
  */
-export const hasApiError = (state) => state.api_error;
+export const getMessages = (state) => state.messages;

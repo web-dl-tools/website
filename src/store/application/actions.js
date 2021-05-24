@@ -1,5 +1,6 @@
 import Vue from "vue";
 import router from "../../router";
+import { truncate, formatRequest } from "../../mixins/public";
 
 /**
  * Make the authentication (login) request and trigger the login mutation.
@@ -47,9 +48,14 @@ export const connectWebsocket = ({ commit, dispatch }) => {
   websocket.addEventListener("message", (e) =>
     dispatch("handleWebsocketEvent", e)
   );
+
   websocket.onopen = () => {
-    // eslint-disable-next-line no-console
-    console.log("Web DL API WebSocket connection established successfully.");
+    dispatch("addMessage", {
+      text: "Web DL API WebSocket connection established successfully.",
+      type: "success",
+      action: null,
+      timeout: 2500,
+    });
     websocket.send(
       JSON.stringify({
         type: "requests.group.join",
@@ -60,6 +66,15 @@ export const connectWebsocket = ({ commit, dispatch }) => {
       })
     );
   };
+
+  websocket.onerror = () =>
+    dispatch("addMessage", {
+      text: "An error occurred with the WebSocket connection.",
+      type: "error",
+      action: null,
+      timeout: 10000,
+    });
+
   commit("CONNECT_WEBSOCKET", websocket);
 };
 
@@ -67,17 +82,68 @@ export const connectWebsocket = ({ commit, dispatch }) => {
  * Handle received websocket messages.
  *
  * @param commit
+ * @param dispatch
+ * @param rootGetters
  * @param event
  */
-export const handleWebsocketEvent = ({ commit }, event) => {
+export const handleWebsocketEvent = (
+  { commit, dispatch, rootGetters },
+  event
+) => {
   const data = JSON.parse(event.data);
   switch (data.type) {
     case "requests.group.joined":
-      // eslint-disable-next-line no-console
-      console.log(`Joined authenticated channel group (${data.content}).`);
       break;
     case "requests.update":
       commit("requests/UPDATE", data.content, { root: true });
+      break;
+    case "requests.status.update":
+      const request = rootGetters["requests/getById"](data.content.id);
+      if (request) {
+        switch (data.content.status) {
+          case "pre_processing":
+            dispatch("addMessage", {
+              text: `Started processing ${formatRequest(
+                request.request_type
+              )} Request (${truncate(request.url, 45)}).`,
+              type: "info",
+              action: null,
+              timeout: 2500,
+            });
+            break;
+          case "completed":
+            dispatch("addMessage", {
+              text: `Finished ${formatRequest(request.request_type)} Request '${
+                request.title
+              }'.`,
+              type: "success",
+              action: () =>
+                router
+                  .push({
+                    name: "requests.detail",
+                    params: { requestId: request.id },
+                  })
+                  .catch(() => {}),
+            });
+            break;
+          case "failed":
+            dispatch("addMessage", {
+              text: `Failed to download ${formatRequest(
+                request.request_type
+              )} Request (${truncate(request.url, 45)}).`,
+              type: "error",
+              action: () =>
+                router
+                  .push({
+                    name: "requests.detail",
+                    params: { requestId: request.id },
+                  })
+                  .catch(() => {}),
+              timeout: 10000,
+            });
+            break;
+        }
+      }
       break;
     default:
       // eslint-disable-next-line no-console
@@ -158,3 +224,24 @@ export const getApiBuildInfo = ({ commit }) =>
       commit("GET_API_BUILD_INFO", response.data);
     })
     .catch(() => Promise.reject());
+
+/**
+ * Add a new message.
+ *
+ * @param commit
+ * @param state
+ * @param message
+ * @returns {*}
+ */
+export const addMessage = ({ commit, state }, message) => {
+  commit("ADD_MESSAGE", message);
+  setTimeout(
+    () => {
+      const i = state.messages.indexOf(message);
+      if (i > -1) {
+        commit("REMOVE_MESSAGE", i);
+      }
+    },
+    "timeout" in message ? message.timeout : 5000
+  );
+};
