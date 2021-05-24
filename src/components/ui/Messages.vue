@@ -1,5 +1,5 @@
 <template>
-  <div class="messages">
+  <div class="messages hidden-sm-and-down">
     <v-alert
       v-for="(m, i) in messages"
       :key="i"

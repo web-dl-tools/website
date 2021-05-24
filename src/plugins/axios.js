@@ -58,7 +58,7 @@ _axios.interceptors.response.use(
             <span class="grey--text">Please try again later.</span>`,
             type: "error",
             action: null,
-            timeout: 10000,
+            timeout: -1,
           });
           break;
       }
@@ -68,7 +68,7 @@ _axios.interceptors.response.use(
         <span class="grey--text">Please try again later.</span>`,
         type: "error",
         action: null,
-        timeout: 10000,
+        timeout: -1,
       });
     }
 
