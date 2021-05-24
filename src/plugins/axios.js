@@ -54,7 +54,8 @@ _axios.interceptors.response.use(
           break;
         default:
           store.dispatch("application/addMessage", {
-            text: `An error occurred with the Web DL API. Please try again later.`,
+            text: `An error occurred with the Web DL API.
+            <span class="grey--text">Please try again later.</span>`,
             type: "error",
             action: null,
             timeout: 10000,
@@ -63,7 +64,8 @@ _axios.interceptors.response.use(
       }
     } else {
       store.dispatch("application/addMessage", {
-        text: `An error occurred with the Web DL API. Please try again later.`,
+        text: `An error occurred with the Web DL API.
+        <span class="grey--text">Please try again later.</span>`,
         type: "error",
         action: null,
         timeout: 10000,

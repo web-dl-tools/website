@@ -11,9 +11,7 @@
       colored-border
       @click="runCallable(m.action)"
     >
-      <span class="body-2 pr-3">
-        {{ m.text }}
-      </span>
+      <span class="body-2 pr-3" v-html="m.text"></span>
       <!--      <template slot="close">-->
       <!--        <v-btn icon x-small @click="remove(i)">-->
       <!--          <v-icon>mdi-close-circle</v-icon>-->
