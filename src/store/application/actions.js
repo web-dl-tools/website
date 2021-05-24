@@ -104,7 +104,6 @@ export const handleWebsocketEvent = (
               <span class="info--text">${truncate(request.url, 45)}</span>`,
               type: "info",
               action: null,
-              timeout: 2500,
             });
             break;
           case "completed":
