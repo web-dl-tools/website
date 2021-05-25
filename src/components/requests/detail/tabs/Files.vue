@@ -222,7 +222,7 @@ export default {
         } else {
           files_count++;
           size += f.size;
-          file_extensions.push(f.extension.replace(".", ""));
+          if (f.extension) file_extensions.push(f.extension.replace(".", ""));
         }
       });
 

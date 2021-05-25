@@ -46,12 +46,26 @@ export default Vue.mixin({
       startDate = moment(startDate);
       endDate = moment(endDate);
       const duration = moment.duration(endDate.diff(startDate));
-      let formatted;
+      let formatted, timeframe;
 
       switch (format) {
         case "humanize":
           formatted = duration.humanize();
           if (duration.asMilliseconds() < 1000) formatted = null;
+          break;
+        case "automatic":
+          if (duration.asMonths() >= moment.relativeTimeThreshold("M"))
+            timeframe = "years";
+          if (duration.asDays() >= moment.relativeTimeThreshold("d"))
+            timeframe = "months";
+          if (duration.asHours() >= moment.relativeTimeThreshold("h"))
+            timeframe = "days";
+          if (duration.asMinutes() >= moment.relativeTimeThreshold("m"))
+            timeframe = "hours";
+          if (duration.asSeconds() >= moment.relativeTimeThreshold("s"))
+            timeframe = "minutes";
+          else timeframe = "seconds";
+          formatted = duration.as(timeframe);
           break;
         default:
           formatted = duration.as(format);
@@ -59,7 +73,9 @@ export default Vue.mixin({
       }
 
       return formatted
-        ? template[0].replace("{formatted}", formatted)
+        ? template[0]
+            .replace("{formatted}", formatted)
+            .replace("{timeframe}", timeframe)
         : template[1];
     },
     /**
