@@ -9,13 +9,13 @@
       :class="{ 'cursor-pointer': m.action }"
       border="right"
       elevation="8"
-      transition="scale-transition"
+      transition="slide-fade"
       colored-border
       @click="runCallable(m.action)"
     >
       <span class="body-2 pr-3" v-html="m.text" />
       <!--      <template slot="close">-->
-      <!--        <v-btn icon x-small @click="remove(i)">-->
+      <!--        <v-btn icon x-small @click="remove(m.text)">-->
       <!--          <v-icon>mdi-close-circle</v-icon>-->
       <!--        </v-btn>-->
       <!--      </template>-->
@@ -45,10 +45,10 @@ export default {
     /**
      * Trigger the removal of a message.
      *
-     * @param i
+     * @param t
      */
-    remove(i) {
-      this.$store.dispatch("application/removeMessage", i);
+    remove(t) {
+      this.$store.dispatch("application/removeMessage", t);
     },
   },
 };
@@ -61,5 +61,15 @@ export default {
   right: 10px;
   padding-left: 10px;
   max-width: 500px;
+}
+
+.slide-fade-enter-active,
+.slide-fade-leave-active {
+  transition: all 1s ease;
+}
+
+.slide-fade-enter,
+.slide-fade-leave-to {
+  transform: translateX(120%);
 }
 </style>

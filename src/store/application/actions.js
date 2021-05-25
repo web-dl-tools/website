@@ -317,21 +317,20 @@ export const getApiBuildInfo = ({ commit }) =>
  * @returns {*}
  */
 export const addMessage = ({ commit, dispatch, state }, message) => {
-  if (state.messages.find((i) => i.text === message.text)) return;
+  if (state.messages.find((m) => m.text === message.text)) return;
 
   commit("ADD_MESSAGE", message);
   setTimeout(() => {
     commit(
       "SHOW_MESSAGE",
-      state.messages.findIndex((i) => i.text === message.text)
+      state.messages.findIndex((m) => m.text === message.text)
     );
   }, 1);
 
   if (!("timeout" in message && message.timeout === -1)) {
     setTimeout(
       () => {
-        const i = state.messages.findIndex((i) => i.text === message.text);
-        if (i > -1) dispatch("removeMessage", i);
+        dispatch("removeMessage", message.text);
       },
       "timeout" in message ? message.timeout : 6000
     );
@@ -342,12 +341,19 @@ export const addMessage = ({ commit, dispatch, state }, message) => {
  * Remove an existing message.
  *
  * @param commit
- * @param i
+ * @param state
+ * @param text
  * @returns {*}
  */
-export const removeMessage = ({ commit }, i) => {
-  commit("CLEAR_MESSAGE", i);
+export const removeMessage = ({ commit, state }, text) => {
+  commit(
+    "CLEAR_MESSAGE",
+    state.messages.findIndex((m) => m.text === text)
+  );
   setTimeout(() => {
-    commit("REMOVE_MESSAGE", i);
-  }, 100);
+    commit(
+      "REMOVE_MESSAGE",
+      state.messages.findIndex((m) => m.text === text)
+    );
+  }, 2000);
 };
