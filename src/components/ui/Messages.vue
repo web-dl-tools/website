@@ -63,9 +63,12 @@ export default {
   max-width: 500px;
 }
 
-.slide-fade-enter-active,
-.slide-fade-leave-active {
+.slide-fade-enter-active {
   transition: all 1s ease;
+}
+
+.slide-fade-leave-active {
+  transition: all 1.25s ease;
 }
 
 .slide-fade-enter,
