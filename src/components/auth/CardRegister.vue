@@ -26,6 +26,7 @@
               v-model="last_name"
               :label="last_name_label"
               :placeholder="last_name_label"
+              autocomplete="off"
               color="accent"
               id="lastname"
               name="lastname"
