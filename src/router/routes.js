@@ -1,30 +1,5 @@
 export default [
   {
-    path: "",
-    component: () => import("../layouts/SingleComponent"),
-    children: [
-      {
-        path: "/",
-        name: "login",
-        component: () => import("../components/auth/CardLogin"),
-        meta: {
-          title: "Login",
-        },
-      },
-      {
-        path: "register",
-        name: "register",
-        component: () => import("../components/auth/CardRegister"),
-        meta: {
-          title: "Register",
-        },
-      },
-    ],
-    meta: {
-      authenticated: false,
-    },
-  },
-  {
     path: "/requests",
     component: () => import("../layouts/Default"),
     children: [
@@ -129,6 +104,22 @@ export default [
     path: "*",
     component: () => import("../layouts/SingleComponent"),
     children: [
+      {
+        path: "/login",
+        name: "login",
+        component: () => import("../components/auth/CardLogin"),
+        meta: {
+          title: "Login",
+        },
+      },
+      {
+        path: "/register",
+        name: "register",
+        component: () => import("../components/auth/CardRegister"),
+        meta: {
+          title: "Register",
+        },
+      },
       {
         path: "*",
         name: "error.404",
