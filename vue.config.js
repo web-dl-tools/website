@@ -5,6 +5,5 @@ const command =
 
 buildInfo = execSync(command).toString().slice(0, -1);
 process.env.VUE_APP_BUILD_INFO = buildInfo;
-console.log(buildInfo);
 
 module.exports = {};
