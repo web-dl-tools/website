@@ -28,28 +28,6 @@
               >
                 <v-icon> mdi-account-edit-outline </v-icon>
               </v-btn>
-              <v-btn
-                v-show="edit"
-                class="float-right mr-2"
-                :color="error ? 'error' : 'success'"
-                :disabled="!this.username"
-                :outlined="error"
-                icon
-                small
-                @click="update"
-              >
-                <v-icon> mdi-account-check </v-icon>
-              </v-btn>
-              <v-btn
-                v-show="edit"
-                class="float-right"
-                color="error"
-                icon
-                small
-                @click="edit = false"
-              >
-                <v-icon> mdi-account-cancel </v-icon>
-              </v-btn>
             </v-card-title>
             <v-card-subtitle class="subtitle-2">
               Below you can find your information currently stored in Web DL.
@@ -65,6 +43,7 @@
                 <v-col cols="8" class="pb-0" v-else>
                   <v-text-field
                     v-model="username"
+                    autocomplete="off"
                     id="username"
                     color="secondary"
                     name="username"
@@ -86,6 +65,7 @@
                 <v-col cols="8" class="pb-0" v-else>
                   <v-text-field
                     v-model="first_name"
+                    autocomplete="off"
                     id="first_name"
                     color="secondary"
                     name="first_name"
@@ -106,6 +86,7 @@
                 <v-col cols="8" class="pb-0" v-else>
                   <v-text-field
                     v-model="last_name"
+                    autocomplete="off"
                     id="last_name"
                     color="secondary"
                     name="last_name"
@@ -117,7 +98,7 @@
                 </v-col>
               </v-row>
 
-              <v-row>
+              <v-row v-if="!edit">
                 <v-col cols="4" class="pb-0 font-weight-regular">
                   Joined on
                 </v-col>
@@ -125,13 +106,40 @@
                   {{ formatDate(user.date_joined, "dddd LL [at] HH:mm:ss") }}
                 </v-col>
               </v-row>
-              <v-row>
+              <v-row v-if="!edit">
                 <v-col cols="4" class="py-0"></v-col>
                 <v-col cols="8" class="py-0 text-capitalize-sentence">
                   {{ formatDateFromNow(user.date_joined) }}
                 </v-col>
               </v-row>
             </v-card-text>
+            <v-card-actions v-show="edit" class="px-4 pb-3">
+              <v-row class="px-3">
+                <v-col cols="5" md="3" class="py-0 pl-0">
+                  <v-btn
+                    color="grey"
+                    tabindex="-1"
+                    block
+                    large
+                    outlined
+                    @click="edit = false"
+                  >
+                    Cancel
+                  </v-btn>
+                </v-col>
+                <v-col cols="7" md="5" offset-md="4" off class="pa-0">
+                  <v-btn
+                    :color="error ? 'error' : 'success'"
+                    :disabled="!this.username"
+                    block
+                    large
+                    @click="update"
+                  >
+                    Update
+                  </v-btn>
+                </v-col>
+              </v-row>
+            </v-card-actions>
           </v-card>
         </v-col>
       </v-row>
