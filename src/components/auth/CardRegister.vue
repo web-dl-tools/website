@@ -1,9 +1,41 @@
 <template>
   <v-card outlined raised class="pb-1">
-    <v-card-title> Login </v-card-title>
-    <v-card-subtitle> Authenticate with Web DL. </v-card-subtitle>
+    <v-card-title> Register </v-card-title>
+    <v-card-subtitle> Register with Web DL. </v-card-subtitle>
     <v-card-text>
       <v-form>
+        <v-row>
+          <v-col cols="6" class="py-0 pr-2">
+            <v-text-field
+              v-model="first_name"
+              :label="first_name_label"
+              :placeholder="first_name_label"
+              autocomplete="off"
+              class="mb-4"
+              color="accent"
+              name="firstname"
+              type="text"
+              autofocus
+              flat
+              hide-details
+              solo-inverted
+            />
+          </v-col>
+          <v-col cols="6" class="py-0 pl-2">
+            <v-text-field
+              v-model="last_name"
+              :label="last_name_label"
+              :placeholder="last_name_label"
+              color="accent"
+              id="lastname"
+              name="lastname"
+              type="text"
+              flat
+              hide-details
+              solo-inverted
+            />
+          </v-col>
+        </v-row>
         <v-row>
           <v-col cols="12" class="py-0">
             <v-text-field
@@ -35,7 +67,7 @@
               flat
               hide-details
               solo-inverted
-              v-on:keyup.enter.native="login"
+              v-on:keyup.enter.native="register"
             />
           </v-col>
         </v-row>
@@ -44,15 +76,8 @@
     <v-card-actions class="px-4 mb-1">
       <v-row class="px-3">
         <v-col cols="5" md="3" class="py-0 pl-0">
-          <v-btn
-            color="grey"
-            tabindex="-1"
-            block
-            large
-            outlined
-            @click="register"
-          >
-            Register
+          <v-btn color="grey" tabindex="-1" block large outlined @click="login">
+            Login
           </v-btn>
         </v-col>
         <v-col cols="7" md="5" offset-md="4" off class="pa-0">
@@ -62,9 +87,9 @@
             :loading="loading"
             block
             large
-            @click="login"
+            @click="register"
           >
-            Login
+            Register
           </v-btn>
         </v-col>
       </v-row>
@@ -76,6 +101,10 @@
 export default {
   name: "components.auth.card-login",
   data: () => ({
+    first_name: "",
+    first_name_label: "First name",
+    last_name: "",
+    last_name_label: "Last name",
     username: "",
     username_label: "Username",
     password: "",
@@ -95,14 +124,16 @@ export default {
   },
   methods: {
     /**
-     * (Attempt) to authenticate the login credentials with the API.
+     * (Attempt) to register the user details with the API.
      */
-    login() {
+    register() {
       if (this.valid) {
         this.error = false;
         this.loading = true;
         this.$store
-          .dispatch("application/login", {
+          .dispatch("users/register", {
+            first_name: this.first_name,
+            last_name: this.last_name,
             username: this.username,
             password: this.password,
           })
@@ -111,13 +142,25 @@ export default {
       }
     },
     /**
-     * Switch to the register page.
+     * Switch to the login page.
      */
-    register() {
-      this.$router.push({ name: "register" }).catch(() => {});
+    login() {
+      this.$router.push({ name: "login" }).catch(() => {});
     },
   },
   watch: {
+    /**
+     * Removes the error message if the first name is changed.
+     */
+    first_name() {
+      this.error = false;
+    },
+    /**
+     * Removes the error message if the last name is changed.
+     */
+    last_name() {
+      this.error = false;
+    },
     /**
      * Removes the error message if the username is changed.
      */
