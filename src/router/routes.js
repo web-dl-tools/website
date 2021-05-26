@@ -1,14 +1,22 @@
 export default [
   {
-    path: "/login",
+    path: "",
     component: () => import("../layouts/SingleComponent"),
     children: [
       {
-        path: "",
+        path: "/",
         name: "login",
         component: () => import("../components/auth/CardLogin"),
         meta: {
           title: "Login",
+        },
+      },
+      {
+        path: "register",
+        name: "register",
+        component: () => import("../components/auth/CardRegister"),
+        meta: {
+          title: "Register",
         },
       },
     ],

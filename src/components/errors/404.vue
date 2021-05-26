@@ -1,6 +1,6 @@
 <template>
   <v-card outlined raised class="pb-1">
-    <v-card-title> Something went wrong. </v-card-title>
+    <v-card-title> Something went wrong </v-card-title>
     <v-card-subtitle> This page does not exist. </v-card-subtitle>
     <v-card-actions>
       <v-spacer />
