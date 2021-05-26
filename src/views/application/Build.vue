@@ -71,15 +71,9 @@
                 </v-col>
               </v-row>
               <v-row>
-                <v-col cols="4" class="py-0 font-weight-regular">Author</v-col>
-                <v-col cols="8" class="py-0">
-                  {{ buildInfo.author.name }}
-                </v-col>
-              </v-row>
-              <v-row>
-                <v-col cols="4" class="pt-0"></v-col>
+                <v-col cols="4" class="pt-0 font-weight-regular">Author</v-col>
                 <v-col cols="8" class="pt-0">
-                  {{ buildInfo.author.email }}
+                  {{ buildInfo.author.name }}
                 </v-col>
               </v-row>
 
@@ -173,15 +167,9 @@
                 </v-col>
               </v-row>
               <v-row>
-                <v-col cols="4" class="py-0 font-weight-regular">Author</v-col>
-                <v-col cols="8" class="py-0">
-                  {{ apiBuildInfo.author.name }}
-                </v-col>
-              </v-row>
-              <v-row>
-                <v-col cols="4" class="pt-0"></v-col>
+                <v-col cols="4" class="pt-0 font-weight-regular">Author</v-col>
                 <v-col cols="8" class="pt-0">
-                  {{ apiBuildInfo.author.email }}
+                  {{ apiBuildInfo.author.name }}
                 </v-col>
               </v-row>
 

@@ -10,7 +10,7 @@
             Request state updated.
           </v-card-title>
           <v-card-subtitle class="font-weight-bold grey--text">
-            {{ formatDate(item.modified_at, "LL H:mm:ss") }}
+            {{ formatDate(item.modified_at, "L H:mm:ss") }}
           </v-card-subtitle>
           <v-card-text>
             The request received it's latest state update.
@@ -36,7 +36,7 @@
             Request archive created.
           </v-card-title>
           <v-card-subtitle class="font-weight-bold success--text">
-            {{ formatDate(item.compressed_at, "LL H:mm:ss") }}
+            {{ formatDate(item.compressed_at, "L H:mm:ss") }}
           </v-card-subtitle>
           <v-card-text>
             The request archive has been created in
@@ -65,7 +65,7 @@
             Request archive started compressing.
           </v-card-title>
           <v-card-subtitle class="font-weight-bold info--text">
-            {{ formatDate(item.start_compressing_at, "LL H:mm:ss") }}
+            {{ formatDate(item.start_compressing_at, "L H:mm:ss") }}
           </v-card-subtitle>
           <v-card-text>
             The request archive has started compressing. Task was triggered
@@ -90,7 +90,7 @@
             Request failed.
           </v-card-title>
           <v-card-subtitle class="font-weight-bold error--text">
-            {{ formatDate(item.modified_at, "LL H:mm:ss") }}
+            {{ formatDate(item.modified_at, "L H:mm:ss") }}
           </v-card-subtitle>
           <v-card-text> The request failed to download. </v-card-text>
         </v-card>
@@ -105,7 +105,7 @@
             Request has completed.
           </v-card-title>
           <v-card-subtitle class="font-weight-bold success--text">
-            {{ formatDate(item.completed_at, "LL H:mm:ss") }}
+            {{ formatDate(item.completed_at, "L H:mm:ss") }}
           </v-card-subtitle>
           <v-card-text>
             The request has finished processing. The total processing time took
@@ -134,7 +134,7 @@
             Request has started processing.
           </v-card-title>
           <v-card-subtitle class="font-weight-bold accent--text">
-            {{ formatDate(item.start_processing_at, "LL H:mm:ss") }}
+            {{ formatDate(item.start_processing_at, "L H:mm:ss") }}
           </v-card-subtitle>
           <v-card-text>
             The request has started processing with the
@@ -160,7 +160,7 @@
             Request has been created.
           </v-card-title>
           <v-card-subtitle class="font-weight-bold info--text">
-            {{ formatDate(item.created_at, "LL H:mm:ss") }}
+            {{ formatDate(item.created_at, "L H:mm:ss") }}
           </v-card-subtitle>
           <v-card-text class="white--text">
             A request to download
