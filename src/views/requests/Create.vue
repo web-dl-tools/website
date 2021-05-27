@@ -1,11 +1,7 @@
 <template>
   <v-main class="background-wallpaper">
     <v-container class="pt-3">
-      <v-row>
-        <p class="mx-3 my-12 font-weight-thin display-3 text-shadow">
-          {{ title }}
-        </p>
-      </v-row>
+      <app-title />
       <v-row>
         <v-col cols="12">
           <v-stepper v-model="step" class="elevation-8 pb-0" vertical>
@@ -108,6 +104,7 @@
 import { mapGetters } from "vuex";
 import helpers from "../../mixins/helpers";
 import formatters from "../../mixins/formatters";
+import AppTitle from "../../components/ui/AppTitle";
 import UrlStep from "../../components/steppers/UrlStep";
 import RequestTypeStep from "../../components/steppers/RequestTypeStep";
 import RequestTypeConfigStep from "../../components/steppers/RequestTypeConfigStep";
@@ -118,6 +115,7 @@ export default {
   name: "views.requests.create",
   mixin: [helpers, formatters],
   components: {
+    AppTitle,
     UrlStep,
     RequestTypeStep,
     RequestTypeConfigStep,

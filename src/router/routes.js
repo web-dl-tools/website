@@ -122,8 +122,8 @@ export default [
       },
       {
         path: "*",
-        name: "error.404",
-        component: () => import("../components/errors/404"),
+        name: "error.generic",
+        component: () => import("../components/errors/CardGenericError"),
         meta: {
           title: "Something went wrong",
         },

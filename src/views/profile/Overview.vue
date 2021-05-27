@@ -1,22 +1,16 @@
 <template>
   <v-main class="background-wallpaper">
     <v-container>
-      <v-row>
-        <v-col class="pa-0" cols="12" md="8">
-          <p class="mx-3 my-12 font-weight-thin display-3 text-shadow">
-            {{ title }}
-          </p>
-        </v-col>
-      </v-row>
+      <app-title />
       <v-row>
         <v-col cols="12" md="6">
           <v-card raised v-if="!user">
             <v-skeleton-loader type="article" />
             <v-skeleton-loader type="actions" />
           </v-card>
-          <v-card raised v-else>
-            <v-card-title class="subtitle-1">
-              Hello {{ user.full_name }},
+          <v-card raised class="pb-1" v-else>
+            <v-card-title>
+              Information
               <v-spacer />
               <v-btn
                 v-show="!edit"
@@ -29,29 +23,17 @@
                 <v-icon> mdi-account-edit-outline </v-icon>
               </v-btn>
             </v-card-title>
-            <v-card-subtitle class="subtitle-2">
-              Below you can find your information currently stored in Web DL.
+            <v-card-subtitle class="subtitle-2 col-8">
+              Hi {{ user.full_name }}, below you can find your account details
+              stored in Web DL.
             </v-card-subtitle>
-            <v-card-text>
+            <v-card-text v-if="!edit">
               <v-row>
                 <v-col cols="4" class="pb-0 font-weight-regular">
                   Username
                 </v-col>
-                <v-col cols="8" class="pb-0" v-if="!edit">
+                <v-col cols="8" class="pb-0">
                   {{ user.username }}
-                </v-col>
-                <v-col cols="8" class="pb-0" v-else>
-                  <v-text-field
-                    v-model="username"
-                    autocomplete="off"
-                    id="username"
-                    color="secondary"
-                    name="username"
-                    type="text"
-                    dense
-                    flat
-                    hide-details
-                  />
                 </v-col>
               </v-row>
 
@@ -59,46 +41,20 @@
                 <v-col cols="4" class="pb-0 font-weight-regular">
                   First name
                 </v-col>
-                <v-col cols="8" class="pb-0" v-if="!edit">
+                <v-col cols="8" class="pb-0">
                   {{ user.first_name }}
-                </v-col>
-                <v-col cols="8" class="pb-0" v-else>
-                  <v-text-field
-                    v-model="first_name"
-                    autocomplete="off"
-                    id="first_name"
-                    color="secondary"
-                    name="first_name"
-                    type="text"
-                    dense
-                    flat
-                    hide-details
-                  />
                 </v-col>
               </v-row>
               <v-row>
                 <v-col cols="4" class="py-0 font-weight-regular">
                   Last name
                 </v-col>
-                <v-col cols="8" class="py-0" v-if="!edit">
+                <v-col cols="8" class="py-0">
                   {{ user.last_name }}
-                </v-col>
-                <v-col cols="8" class="pb-0" v-else>
-                  <v-text-field
-                    v-model="last_name"
-                    autocomplete="off"
-                    id="last_name"
-                    color="secondary"
-                    name="last_name"
-                    type="text"
-                    dense
-                    flat
-                    hide-details
-                  />
                 </v-col>
               </v-row>
 
-              <v-row v-if="!edit">
+              <v-row>
                 <v-col cols="4" class="pb-0 font-weight-regular">
                   Joined on
                 </v-col>
@@ -106,12 +62,67 @@
                   {{ formatDate(user.date_joined, "dddd LL [at] HH:mm:ss") }}
                 </v-col>
               </v-row>
-              <v-row v-if="!edit">
+              <v-row>
                 <v-col cols="4" class="py-0"></v-col>
                 <v-col cols="8" class="py-0 text-capitalize-sentence">
                   {{ formatDateFromNow(user.date_joined) }}
                 </v-col>
               </v-row>
+            </v-card-text>
+            <v-card-text v-else>
+              <v-form>
+                <v-row class="px-3">
+                  <v-col cols="12" class="pa-0">
+                    <v-text-field
+                      v-model="username"
+                      :label="username_label"
+                      :placeholder="username_label"
+                      autocomplete="off"
+                      class="mb-4"
+                      color="accent"
+                      name="username"
+                      prepend-inner-icon="mdi-account"
+                      type="text"
+                      autofocus
+                      flat
+                      hide-details
+                      solo-inverted
+                    />
+                  </v-col>
+                  <v-col cols="12" md="6" class="pa-0 pr-md-2">
+                    <v-text-field
+                      v-model="first_name"
+                      :label="first_name_label"
+                      :placeholder="first_name_label"
+                      autocomplete="off"
+                      class="mb-4 mb-md-0"
+                      color="accent"
+                      name="firstname"
+                      type="text"
+                      autofocus
+                      flat
+                      hide-details
+                      solo-inverted
+                    />
+                  </v-col>
+                  <v-col cols="12" md="6" class="pa-0 pl-md-2">
+                    <v-text-field
+                      v-model="last_name"
+                      :label="last_name_label"
+                      :placeholder="last_name_label"
+                      autocomplete="off"
+                      class="mb-0"
+                      color="accent"
+                      id="lastname"
+                      name="lastname"
+                      type="text"
+                      flat
+                      hide-details
+                      solo-inverted
+                    />
+                  </v-col>
+                </v-row>
+              </v-form>
             </v-card-text>
             <v-card-actions v-show="edit" class="px-4 pb-3">
               <v-row class="px-3">
@@ -127,7 +138,7 @@
                     Cancel
                   </v-btn>
                 </v-col>
-                <v-col cols="7" md="5" offset-md="4" off class="pa-0">
+                <v-col cols="7" md="5" offset-md="4" class="pa-0">
                   <v-btn
                     :color="error ? 'error' : 'success'"
                     :disabled="!this.username"
@@ -150,16 +161,23 @@
 <script>
 import { mapGetters } from "vuex";
 import formatters from "../../mixins/formatters";
+import AppTitle from "../../components/ui/AppTitle";
 
 export default {
   name: "views.profile.overview",
   mixin: [formatters],
+  components: {
+    AppTitle,
+  },
   data: () => ({
     edit: false,
     error: false,
     username: "",
+    username_label: "Username",
     first_name: "",
+    first_name_label: "First name",
     last_name: "",
+    last_name_label: "First name",
   }),
   computed: {
     ...mapGetters({
@@ -182,7 +200,16 @@ export default {
             last_name: this.last_name,
           })
           .then(() => (this.edit = false))
-          .catch(() => (this.error = true));
+          .catch(() => {
+            this.$store.dispatch("application/addMessage", {
+              text: `An error occurred when updating.<br />
+              <span class="grey--text">Please check your details and/or try again later.</span>`,
+              type: "error",
+              action: null,
+              timeout: 3000,
+            });
+            this.error = true;
+          });
       }
     },
   },

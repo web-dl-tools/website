@@ -3,15 +3,18 @@
     <div>
       <div v-if="item.status !== 'completed'">
         <v-card-title class="pt-0 title">
-          {{ truncate(item.url, 160) }}
+          Request hasn't completed yet...
         </v-card-title>
+        <v-card-subtitle class="pt-0 subtitle-2">
+          {{ truncate(item.url, 120) }}
+        </v-card-subtitle>
       </div>
       <div v-else>
         <v-card-title class="pt-0 title">
           {{ item.title }}
         </v-card-title>
         <v-card-subtitle class="pt-0 subtitle-2">
-          {{ truncate(item.url, 160) }}
+          {{ truncate(item.url, 120) }}
         </v-card-subtitle>
       </div>
       <v-card-text class="py-0">

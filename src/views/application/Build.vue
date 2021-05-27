@@ -1,18 +1,16 @@
 <template>
   <v-main class="background-wallpaper">
     <v-container>
-      <v-row>
-        <v-col class="pa-0" cols="12" md="8">
-          <p class="mx-3 my-12 font-weight-thin display-3 text-shadow">
-            {{ title }}
-          </p>
-        </v-col>
-      </v-row>
+      <app-title />
       <v-row>
         <v-col cols="12" md="7">
           <v-card raised>
-            <v-card-title class="subtitle-1"> Website </v-card-title>
-            <v-card-subtitle class="subtitle-2">
+            <v-card-title>
+              Website
+              <v-spacer />
+              <v-icon>mdi-laptop-mac</v-icon>
+            </v-card-title>
+            <v-card-subtitle class="subtitle-2 col-8">
               Below you can find information about the current website build of
               Web DL.
             </v-card-subtitle>
@@ -97,8 +95,12 @@
 
         <v-col cols="12" md="5">
           <v-card raised>
-            <v-card-title class="subtitle-1"> API </v-card-title>
-            <v-card-subtitle class="subtitle-2">
+            <v-card-title>
+              API
+              <v-spacer />
+              <v-icon>mdi-link-variant</v-icon>
+            </v-card-title>
+            <v-card-subtitle class="subtitle-2 col-8">
               Below you can find information about the current API build of Web
               DL.
             </v-card-subtitle>
@@ -198,10 +200,14 @@
 <script>
 import { mapGetters } from "vuex";
 import formatters from "../../mixins/formatters";
+import AppTitle from "../../components/ui/AppTitle";
 
 export default {
   name: "views.application.overview",
   mixin: [formatters],
+  components: {
+    AppTitle,
+  },
   computed: {
     ...mapGetters({
       title: "application/getTitle",

@@ -14,11 +14,6 @@
       @click="runCallable(m.action)"
     >
       <span class="body-2 pr-3" v-html="m.text" />
-      <!--      <template slot="close">-->
-      <!--        <v-btn icon x-small @click="remove(m.text)">-->
-      <!--          <v-icon>mdi-close-circle</v-icon>-->
-      <!--        </v-btn>-->
-      <!--      </template>-->
     </v-alert>
   </div>
 </template>
@@ -61,6 +56,10 @@ export default {
   right: 10px;
   padding-left: 10px;
   max-width: 500px;
+}
+
+.single-component + .messages {
+  top: 10px;
 }
 
 .slide-fade-enter-active {
