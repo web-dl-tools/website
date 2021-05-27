@@ -63,7 +63,7 @@ export const connectWebsocket = ({ commit, dispatch }) => {
 
   websocket.onerror = () =>
     dispatch("addMessage", {
-      text: "An error occurred with the Web DL WebSocket connection.",
+      text: "An error occurred with the <b>Web DL WebSocket</b> connection.",
       type: "error",
       action: null,
       timeout: -1,

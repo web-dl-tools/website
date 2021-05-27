@@ -1,13 +1,7 @@
 <template>
   <v-main class="background-wallpaper">
     <v-container>
-      <v-row>
-        <v-col class="pa-0" cols="12">
-          <p class="mx-3 my-12 font-weight-thin display-3 text-shadow">
-            {{ title }}
-          </p>
-        </v-col>
-      </v-row>
+      <app-title />
       <v-row>
         <v-col cols="12">
           <completed-table :extended="true" items_per_page="15" />
@@ -19,11 +13,15 @@
 
 <script>
 import { mapGetters } from "vuex";
+import AppTitle from "../../components/ui/AppTitle";
 import CompletedTable from "../../components/requests/completed/Table";
 
 export default {
   name: "views.requests.completed",
-  components: { CompletedTable },
+  components: {
+    AppTitle,
+    CompletedTable,
+  },
   computed: {
     ...mapGetters({
       title: "application/getTitle",

@@ -4,8 +4,8 @@
     <v-card-subtitle> Authenticate with Web DL. </v-card-subtitle>
     <v-card-text>
       <v-form>
-        <v-row>
-          <v-col cols="12" class="py-0">
+        <v-row class="px-3">
+          <v-col cols="12" class="pa-0">
             <v-text-field
               v-model="username"
               :label="username_label"
@@ -22,7 +22,7 @@
               solo-inverted
             />
           </v-col>
-          <v-col cols="12" class="py-0">
+          <v-col cols="12" class="pa-0">
             <v-text-field
               v-model="password"
               :label="password_label"
@@ -55,7 +55,7 @@
             Register
           </v-btn>
         </v-col>
-        <v-col cols="7" md="5" offset-md="4" off class="pa-0">
+        <v-col cols="7" md="5" offset-md="4" class="pa-0">
           <v-btn
             :color="error ? 'error' : 'success'"
             :disabled="loading || !valid"
@@ -106,7 +106,16 @@ export default {
             username: this.username,
             password: this.password,
           })
-          .catch(() => (this.error = true))
+          .catch(() => {
+            this.error = true;
+            this.$store.dispatch("application/addMessage", {
+              text: `An error occurred when logging in.<br />
+              <span class="grey--text">Please check your credentials and/or try again later.</span>`,
+              type: "error",
+              action: null,
+              timeout: 3000,
+            });
+          })
           .finally(() => (this.loading = false));
       }
     },

@@ -4,8 +4,8 @@
     <v-card-subtitle> Register with Web DL. </v-card-subtitle>
     <v-card-text>
       <v-form>
-        <v-row>
-          <v-col cols="6" class="py-0 pr-2">
+        <v-row class="px-3">
+          <v-col cols="12" md="6" class="pa-0 pr-md-2">
             <v-text-field
               v-model="first_name"
               :label="first_name_label"
@@ -21,12 +21,13 @@
               solo-inverted
             />
           </v-col>
-          <v-col cols="6" class="py-0 pl-2">
+          <v-col cols="12" md="6" class="pa-0 pl-md-2">
             <v-text-field
               v-model="last_name"
               :label="last_name_label"
               :placeholder="last_name_label"
               autocomplete="off"
+              class="mb-4"
               color="accent"
               id="lastname"
               name="lastname"
@@ -36,9 +37,7 @@
               solo-inverted
             />
           </v-col>
-        </v-row>
-        <v-row>
-          <v-col cols="12" class="py-0">
+          <v-col cols="12" class="pa-0">
             <v-text-field
               v-model="username"
               :label="username_label"
@@ -55,7 +54,7 @@
               solo-inverted
             />
           </v-col>
-          <v-col cols="12" class="py-0">
+          <v-col cols="12" class="pa-0">
             <v-text-field
               v-model="password"
               :label="password_label"
@@ -81,7 +80,7 @@
             Login
           </v-btn>
         </v-col>
-        <v-col cols="7" md="5" offset-md="4" off class="pa-0">
+        <v-col cols="7" md="5" offset-md="4" class="pa-0">
           <v-btn
             :color="error ? 'error' : 'success'"
             :disabled="loading || !valid"
@@ -138,7 +137,16 @@ export default {
             username: this.username,
             password: this.password,
           })
-          .catch(() => (this.error = true))
+          .catch(() => {
+            this.$store.dispatch("application/addMessage", {
+              text: `An error occurred when registering.<br />
+              <span class="grey--text">Please check your credentials and/or try again later.</span>`,
+              type: "error",
+              action: null,
+              timeout: 3000,
+            });
+            this.error = true;
+          })
           .finally(() => (this.loading = false));
       }
     },

@@ -1,11 +1,7 @@
 <template>
   <v-main class="background-wallpaper">
     <v-container class="pt-3">
-      <v-row>
-        <p class="mx-3 my-12 font-weight-thin display-3 text-shadow">
-          {{ title }}
-        </p>
-      </v-row>
+      <app-title />
       <v-row>
         <v-col cols="12">
           <v-card raised>
@@ -125,6 +121,7 @@
 
 <script>
 import { mapGetters } from "vuex";
+import AppTitle from "../../components/ui/AppTitle";
 import Status from "../../components/requests/Status";
 import CardText from "../../components/requests/detail/CardText";
 import Info from "../../components/requests/detail/tabs/Info";
@@ -138,6 +135,7 @@ export default {
   name: "views.requests.detail",
   mixins: [formatters],
   components: {
+    AppTitle,
     Status,
     CardText,
     Info,

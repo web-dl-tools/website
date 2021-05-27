@@ -1,13 +1,7 @@
 <template>
   <v-main class="background-wallpaper">
     <v-container>
-      <v-row>
-        <v-col class="pa-0" cols="12" md="8">
-          <p class="mx-3 my-12 font-weight-thin display-3 text-shadow">
-            {{ title }}
-          </p>
-        </v-col>
-      </v-row>
+      <app-title />
       <v-row class="mt-n5">
         <v-col cols="12" class="pb-0 mb-n2">
           <v-subheader class="subtitle-2 pl-0 pr-0 mr-n2"
@@ -89,6 +83,7 @@
 
 <script>
 import { mapGetters } from "vuex";
+import AppTitle from "../components/ui/AppTitle";
 import ActiveOverview from "../components/requests/active/Overview";
 import CompletedTable from "../components/requests/completed/Table";
 import FailedTable from "../components/requests/failed/Table";
@@ -96,6 +91,7 @@ import FailedTable from "../components/requests/failed/Table";
 export default {
   name: "views.overview",
   components: {
+    AppTitle,
     ActiveOverview,
     CompletedTable,
     FailedTable,

@@ -54,7 +54,7 @@ export default {
      */
     label() {
       return this.valid && !this.active
-        ? `Download from ${this.truncate(this.url, 160)}`
+        ? `Download from ${this.truncate(this.url, 120)}`
         : "Where is the resource located?";
     },
   },
