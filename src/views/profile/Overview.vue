@@ -23,7 +23,7 @@
                 <v-icon> mdi-account-edit-outline </v-icon>
               </v-btn>
             </v-card-title>
-            <v-card-subtitle class="subtitle-2 col-8">
+            <v-card-subtitle class="subtitle-2 col-8 pl-4">
               Hi {{ user.full_name }}, below you can find your account details
               stored in Web DL.
             </v-card-subtitle>
