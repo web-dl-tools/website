@@ -67,7 +67,7 @@
       </v-row>
       <v-row v-if="'license' in item.data && item.data.license">
         <v-col class="py-0 font-weight-light" cols="3"> Copyright </v-col>
-        <v-col class="py-0 body-2 font-weight-thin" cols="9">
+        <v-col class="py-0 body-2 font-weight-light" cols="9">
           {{ item.data.license }}
         </v-col>
       </v-row>
