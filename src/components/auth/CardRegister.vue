@@ -9,23 +9,20 @@
             <v-text-field
               v-model="first_name"
               :label="first_name_label"
-              :placeholder="first_name_label"
               autocomplete="off"
               class="mb-4"
               color="accent"
               name="firstname"
               type="text"
-              autofocus
               flat
               hide-details
-              solo-inverted
+              outlined
             />
           </v-col>
           <v-col cols="12" md="6" class="pa-0 pl-md-2">
             <v-text-field
               v-model="last_name"
               :label="last_name_label"
-              :placeholder="last_name_label"
               autocomplete="off"
               class="mb-4"
               color="accent"
@@ -34,14 +31,13 @@
               type="text"
               flat
               hide-details
-              solo-inverted
+              outlined
             />
           </v-col>
           <v-col cols="12" class="pa-0">
             <v-text-field
               v-model="username"
               :label="username_label"
-              :placeholder="username_label"
               autocomplete="off"
               class="mb-4"
               color="accent"
@@ -51,14 +47,13 @@
               autofocus
               flat
               hide-details
-              solo-inverted
+              outlined
             />
           </v-col>
           <v-col cols="12" class="pa-0">
             <v-text-field
               v-model="password"
               :label="password_label"
-              :placeholder="password_label"
               color="accent"
               id="password"
               name="password"
@@ -66,7 +61,7 @@
               type="password"
               flat
               hide-details
-              solo-inverted
+              outlined
               v-on:keyup.enter.native="register"
             />
           </v-col>
@@ -83,7 +78,7 @@
         <v-col cols="7" md="5" offset-md="4" class="pa-0">
           <v-btn
             :color="error ? 'error' : 'success'"
-            :disabled="loading || !valid"
+            :disabled="!valid"
             :loading="loading"
             block
             large
@@ -137,6 +132,15 @@ export default {
             username: this.username,
             password: this.password,
           })
+          .then(() =>
+            this.$store.dispatch("application/addMessage", {
+              text: `Welcome to <b>Web DL</b>.<br />
+              <span class="grey--text">Please login to start downloading.</span>`,
+              type: "success",
+              action: null,
+              timeout: 3000,
+            })
+          )
           .catch(() => {
             this.$store.dispatch("application/addMessage", {
               text: `An error occurred when registering.<br />

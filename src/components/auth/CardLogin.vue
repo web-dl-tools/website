@@ -9,7 +9,6 @@
             <v-text-field
               v-model="username"
               :label="username_label"
-              :placeholder="username_label"
               autocomplete="off"
               class="mb-4"
               color="accent"
@@ -19,14 +18,13 @@
               autofocus
               flat
               hide-details
-              solo-inverted
+              outlined
             />
           </v-col>
           <v-col cols="12" class="pa-0">
             <v-text-field
               v-model="password"
               :label="password_label"
-              :placeholder="password_label"
               color="accent"
               id="password"
               name="password"
@@ -34,7 +32,7 @@
               type="password"
               flat
               hide-details
-              solo-inverted
+              outlined
               v-on:keyup.enter.native="login"
             />
           </v-col>
@@ -58,7 +56,7 @@
         <v-col cols="7" md="5" offset-md="4" class="pa-0">
           <v-btn
             :color="error ? 'error' : 'success'"
-            :disabled="loading || !valid"
+            :disabled="!valid"
             :loading="loading"
             block
             large

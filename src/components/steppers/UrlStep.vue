@@ -29,7 +29,7 @@ export default {
   mixins: [helpers],
   data: () => ({
     url: "",
-    placeholder: "URL",
+    placeholder: "URL or Magnet URI",
   }),
   props: {
     active: Boolean,
