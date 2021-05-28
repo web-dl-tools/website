@@ -24,8 +24,9 @@
               </v-btn>
             </v-card-title>
             <v-card-subtitle class="subtitle-2 col-8 pl-4">
-              Hi {{ user.full_name }}, below you can find your account details
-              stored in Web DL.
+              Hi {{ user.full_name }}, below you can
+              {{ edit ? "edit" : "find" }} your account details stored in Web
+              DL.
             </v-card-subtitle>
             <v-card-text v-if="!edit">
               <v-row>
@@ -76,7 +77,6 @@
                     <v-text-field
                       v-model="username"
                       :label="username_label"
-                      :placeholder="username_label"
                       autocomplete="off"
                       class="mb-4"
                       color="accent"
@@ -86,14 +86,13 @@
                       autofocus
                       flat
                       hide-details
-                      solo-inverted
+                      outlined
                     />
                   </v-col>
                   <v-col cols="12" md="6" class="pa-0 pr-md-2">
                     <v-text-field
                       v-model="first_name"
                       :label="first_name_label"
-                      :placeholder="first_name_label"
                       autocomplete="off"
                       class="mb-4 mb-md-0"
                       color="accent"
@@ -101,14 +100,13 @@
                       type="text"
                       flat
                       hide-details
-                      solo-inverted
+                      outlined
                     />
                   </v-col>
                   <v-col cols="12" md="6" class="pa-0 pl-md-2">
                     <v-text-field
                       v-model="last_name"
                       :label="last_name_label"
-                      :placeholder="last_name_label"
                       autocomplete="off"
                       class="mb-0"
                       color="accent"
@@ -117,7 +115,7 @@
                       type="text"
                       flat
                       hide-details
-                      solo-inverted
+                      outlined
                     />
                   </v-col>
                 </v-row>
@@ -141,6 +139,7 @@
                   <v-btn
                     :color="error ? 'error' : 'success'"
                     :disabled="!this.username"
+                    :loading="loading"
                     block
                     large
                     @click="update"
@@ -170,13 +169,14 @@ export default {
   },
   data: () => ({
     edit: false,
+    loading: false,
     error: false,
     username: "",
     username_label: "Username",
     first_name: "",
     first_name_label: "First name",
     last_name: "",
-    last_name_label: "First name",
+    last_name_label: "Last name",
   }),
   computed: {
     ...mapGetters({
@@ -191,6 +191,7 @@ export default {
     update() {
       if (this.username) {
         this.error = false;
+        this.loading = true;
         this.$store
           .dispatch("users/update", {
             id: this.user.id,
@@ -208,7 +209,8 @@ export default {
               timeout: 3000,
             });
             this.error = true;
-          });
+          })
+          .finally(() => (this.loading = false));
       }
     },
   },

@@ -33,7 +33,7 @@
       autocomplete="off"
       background-color="transparent"
       color="info"
-      :placeholder="url_label"
+      :placeholder="url_placeholder"
       :label="url_label"
       dense
       flat
@@ -138,6 +138,7 @@ export default {
   },
   data: () => ({
     url: "",
+    url_placeholder: "URL or Magnet URI",
     url_label: "Create a new request...",
     search_label: "Search",
   }),
