@@ -99,7 +99,6 @@
                       color="accent"
                       name="firstname"
                       type="text"
-                      autofocus
                       flat
                       hide-details
                       solo-inverted
