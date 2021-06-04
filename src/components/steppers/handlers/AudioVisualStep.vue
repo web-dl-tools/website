@@ -182,9 +182,9 @@
       <v-col cols="12" class="pt-0">
         <v-row>
           <v-col cols="12" class="pt-0">
-            <p class="body-2 mb-n1">Manually select</p>
+            <p class="body-2 mb-n1">Raw selection</p>
             <small class="font-weight-light grey--text text--lighten-1">
-              Select a file format completely manually.
+              Select a raw file format manually.
             </small>
           </v-col>
           <v-col cols="12">
@@ -192,8 +192,10 @@
               v-model="videoFormatObject"
               :items="data.options"
               color="info"
-              label="Select a new format"
-              :item-text="(i) => `#${i.format_id} - ${i.format_note}`"
+              label="Select a raw format"
+              :item-text="
+                (i) => `Format ${i.format_id} - ${i.format} - ${i.format_note}`
+              "
               item-value="format_id"
               dense
               outlined
@@ -344,6 +346,16 @@ export default {
     },
   },
   watch: {
+    /**
+     * Check if there are video or audio formats
+     * and possibly pre-trigger the manual formats view.
+     */
+    active() {
+      if (!(this.hasVideoFormats || this.hasAudioFormats)) {
+        this.show_single_file_formats = false;
+        this.show_manual_formats = true;
+      }
+    },
     /**
      * Trigger an update data check the when validity of the step has changed.
      *
