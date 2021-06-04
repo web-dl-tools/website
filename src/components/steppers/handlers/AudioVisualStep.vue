@@ -1,6 +1,6 @@
 <template>
   <div>
-    <v-row class="mt-n3">
+    <v-row class="mt-n3" v-if="!show_manual_formats">
       <v-col cols="12">
         <p class="body-2 mb-n1">File format</p>
         <small class="font-weight-light grey--text text--lighten-1">
@@ -51,45 +51,20 @@
               </v-card-subtitle>
             </selectable-card>
           </v-col>
-          <v-col v-if="!hasVideoOrAudioFormats" cols="12" md="6">
-            <selectable-card
-              :selected="
-                video_format_selection === bestSingleFileFormat &&
-                audio_format_selection === ''
-              "
-              :disabled="false"
-              :title="`Best single file`"
-              @onClick="
-                () => {
-                  video_format_selection = bestSingleFileFormat;
-                  audio_format_selection = '';
-                }
-              "
-            >
-              <v-card-subtitle class="caption">
-                Best quality format represented by a single file.
-              </v-card-subtitle>
-            </selectable-card>
-          </v-col>
         </v-row>
       </v-col>
     </v-row>
 
-    <v-row>
+    <v-row v-show="!show_manual_formats && !show_single_file_formats">
       <v-col cols="12" class="pt-0 mb-3 text-center">
-        <v-btn
-          v-show="!show_single_file_formats"
-          @click="show_single_file_formats = true"
-          text
-          x-small
-        >
+        <v-btn @click="show_single_file_formats = true" text x-small>
           {{ format_selection_pretty }} Or compile your own
         </v-btn>
       </v-col>
     </v-row>
 
-    <v-row v-if="show_single_file_formats">
-      <v-col v-if="hasVideoOrAudioFormats" cols="12" md="6">
+    <v-row v-if="!show_manual_formats && show_single_file_formats">
+      <v-col v-if="hasVideoFormats" cols="12" md="6">
         <p class="text-center caption">Video</p>
         <selectable-card
           class="mb-6"
@@ -125,7 +100,7 @@
           </v-col>
         </v-row>
       </v-col>
-      <v-col v-if="hasVideoOrAudioFormats" cols="12" md="6">
+      <v-col v-if="hasAudioFormats" cols="12" md="6">
         <p class="text-center caption">Audio</p>
         <selectable-card
           class="mb-6"
@@ -165,36 +140,65 @@
               Specify a audio format to optionally recode to.
             </small>
           </v-col>
-          <v-col cols="12" class="pt-0">
+          <v-col cols="12" class="py-0">
             <v-select
               v-model="audio_format"
               :items="audio_formats"
               color="info"
               label="Select a new audio format"
+              dense
               outlined
               hide-details
             ></v-select>
           </v-col>
         </v-row>
       </v-col>
-      <v-col v-if="!hasVideoOrAudioFormats" cols="12" md="6">
-        <p class="text-center caption">Single file</p>
+    </v-row>
+
+    <v-row v-show="show_single_file_formats && !show_manual_formats">
+      <v-col cols="12" class="py-0">
         <v-row>
-          <v-col
-            v-for="format in this.data.options"
-            :key="format.format_id"
-            cols="6"
-          >
-            <selectable-card
-              :selected="video_format_selection === format.format_id"
-              :disabled="false"
-              :title="format.format"
-              @onClick="video_format_selection = format.format_id"
+          <v-col cols="12" class="pt-0 mb-3 text-center">
+            <v-btn
+              @click="
+                () => {
+                  this.show_single_file_formats = false;
+                  this.show_manual_formats = true;
+                  this.video_format_selection = '';
+                  this.audio_format_selection = '';
+                }
+              "
+              text
+              x-small
             >
-              <v-card-text class="overline">
-                {{ format.ext }}
-              </v-card-text>
-            </selectable-card>
+              Or go full manual
+            </v-btn>
+          </v-col>
+        </v-row>
+      </v-col>
+    </v-row>
+
+    <v-row v-if="!show_single_file_formats && show_manual_formats">
+      <v-col cols="12" class="pt-0">
+        <v-row>
+          <v-col cols="12" class="pt-0">
+            <p class="body-2 mb-n1">Manually select</p>
+            <small class="font-weight-light grey--text text--lighten-1">
+              Select a file format completely manually.
+            </small>
+          </v-col>
+          <v-col cols="12">
+            <v-select
+              v-model="videoFormatObject"
+              :items="data.options"
+              color="info"
+              label="Select a new format"
+              :item-text="(i) => `#${i.format_id} - ${i.format_note}`"
+              item-value="format_id"
+              dense
+              outlined
+              hide-details
+            ></v-select>
           </v-col>
         </v-row>
       </v-col>
@@ -220,6 +224,7 @@ export default {
       audio_format: null,
       audio_formats: ["best", "aac", "m4a", "mp3", "opus", "vorbis", "wav"],
       show_single_file_formats: false,
+      show_manual_formats: false,
       tab: 0,
     };
   },
@@ -289,20 +294,19 @@ export default {
       return this.videoOnlyFormats.length;
     },
     /**
-     * Return the best possible single file format available.
+     * Get and set the first input selection (video) via a select input.
      *
-     * @returns {*}
+     * @returns {string}
      */
-    bestSingleFileFormat() {
-      return this.data.options[this.data.options.length - 1].format_id;
-    },
-    /**
-     * Check whether there are any audio or video formats available.
-     *
-     * @returns {*}
-     */
-    hasVideoOrAudioFormats() {
-      return this.audioOnlyFormats.length || this.videoOnlyFormats.length;
+    videoFormatObject: {
+      get() {
+        return this.data.options.find(
+          (i) => i.format_id === this.video_format_selection
+        );
+      },
+      set(id) {
+        this.video_format_selection = id;
+      },
     },
     /**
      * Combine the chosen video and audio option into a single format selection.
