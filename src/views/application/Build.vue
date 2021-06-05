@@ -18,13 +18,38 @@
               <v-row>
                 <v-col cols="4" class="font-weight-regular"> Version </v-col>
                 <v-col cols="8">
-                  {{ buildInfo.tag }}
+                  {{ websiteBuildInfo.tag }}
+                  <v-btn
+                    v-if="websiteVersionCheck"
+                    class="ml-2"
+                    :color="
+                      websiteVersionCheck.includes('latest')
+                        ? 'success'
+                        : 'warning'
+                    "
+                    text
+                    x-small
+                    href="https://gitlab.com/web-dl/website"
+                  >
+                    {{ websiteVersionCheck }}
+                  </v-btn>
+                  <v-btn
+                    v-else
+                    class="ml-2"
+                    :color="websiteVersionError ? 'error' : 'grey'"
+                    :disabled="websiteVersionLoading"
+                    text
+                    x-small
+                    @click="checkLatestRepoVersion('website')"
+                  >
+                    Check for updates
+                  </v-btn>
                 </v-col>
               </v-row>
               <v-row>
                 <v-col cols="4" class="py-0 font-weight-regular">Build</v-col>
                 <v-col cols="8" class="py-0">
-                  {{ buildInfo.commit }}
+                  {{ websiteBuildInfo.commit }}
                 </v-col>
               </v-row>
               <v-row>
@@ -33,14 +58,17 @@
                 </v-col>
                 <v-col cols="8" class="py-0">
                   {{
-                    formatDate(buildInfo.commiter.date, "dddd LL [at] HH:mm:ss")
+                    formatDate(
+                      websiteBuildInfo.commiter.date,
+                      "dddd LL [at] HH:mm:ss"
+                    )
                   }}
                 </v-col>
               </v-row>
               <v-row>
                 <v-col cols="4" class="py-0"></v-col>
                 <v-col cols="8" class="py-0">
-                  Build {{ formatDateFromNow(buildInfo.commiter.date) }}
+                  Build {{ formatDateFromNow(websiteBuildInfo.commiter.date) }}
                 </v-col>
               </v-row>
               <v-row>
@@ -49,7 +77,7 @@
                 </v-col>
                 <v-col cols="8" class="pt-0">
                   <v-chip
-                    v-for="ref in buildInfo.refs.split(',')"
+                    v-for="ref in websiteBuildInfo.refs.split(',')"
                     :key="ref"
                     class="ma-1 ml-0"
                     label
@@ -65,13 +93,13 @@
                   Latest change
                 </v-col>
                 <v-col cols="8" class="py-0">
-                  {{ buildInfo.subject }}
+                  {{ websiteBuildInfo.subject }}
                 </v-col>
               </v-row>
               <v-row>
                 <v-col cols="4" class="pt-0 font-weight-regular">Author</v-col>
                 <v-col cols="8" class="pt-0">
-                  {{ buildInfo.author.name }}
+                  {{ websiteBuildInfo.author.name }}
                 </v-col>
               </v-row>
 
@@ -116,6 +144,29 @@
                 <v-col cols="4" class="font-weight-regular"> Version </v-col>
                 <v-col cols="8">
                   {{ apiBuildInfo.tag }}
+                  <v-btn
+                    v-if="apiVersionCheck"
+                    class="ml-2"
+                    :color="
+                      apiVersionCheck.includes('latest') ? 'success' : 'warning'
+                    "
+                    text
+                    x-small
+                    href="https://gitlab.com/web-dl/api"
+                  >
+                    {{ apiVersionCheck }}
+                  </v-btn>
+                  <v-btn
+                    v-else
+                    class="ml-2"
+                    :color="apiVersionError ? 'error' : 'grey'"
+                    :disabled="apiVersionLoading"
+                    text
+                    x-small
+                    @click="checkLatestRepoVersion('api')"
+                  >
+                    Check for updates
+                  </v-btn>
                 </v-col>
               </v-row>
               <v-row>
@@ -236,6 +287,7 @@
 </template>
 
 <script>
+import semver from "semver";
 import { mapGetters } from "vuex";
 import formatters from "../../mixins/formatters";
 import AppTitle from "../../components/ui/AppTitle";
@@ -243,13 +295,21 @@ import AppTitle from "../../components/ui/AppTitle";
 export default {
   name: "views.application.overview",
   mixin: [formatters],
+  data: () => ({
+    websiteVersionLoading: false,
+    websiteVersionError: false,
+    websiteVersionCheck: "",
+    apiVersionLoading: false,
+    apiVersionError: false,
+    apiVersionCheck: "",
+  }),
   components: {
     AppTitle,
   },
   computed: {
     ...mapGetters({
       title: "application/getTitle",
-      buildInfo: "application/getBuildInfo",
+      websiteBuildInfo: "application/getBuildInfo",
       apiBuildInfo: "application/getApiBuildInfo",
       websocket: "application/getWebsocket",
     }),
@@ -283,6 +343,31 @@ export default {
       }
 
       return formatted;
+    },
+    /**
+     * Check the latest version for a repo.
+     *
+     * @param repo
+     */
+    checkLatestRepoVersion(repo) {
+      this[`${repo}VersionError`] = false;
+      this[`${repo}VersionLoading`] = true;
+      this.$store
+        .dispatch("application/getLatestRepoVersion", repo)
+        .then((tag) => {
+          if (semver.lt(this[`${repo}BuildInfo`].tag, tag)) {
+            this[`${repo}VersionCheck`] = `New ${semver.diff(
+              this[`${repo}BuildInfo`].tag,
+              tag
+            )} version available!`;
+          } else {
+            this[`${repo}VersionCheck`] = "You're on the latest version";
+          }
+        })
+        .catch(() => {
+          this[`${repo}VersionError`] = true;
+        })
+        .finally(() => (this[`${repo}VersionLoading`] = false));
     },
   },
 };

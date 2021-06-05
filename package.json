@@ -23,6 +23,7 @@
     "moment": "2.29.1",
     "psl": "1.8.0",
     "roboto-fontface": "*",
+    "semver": "^7.3.5",
     "vue": "2.6.12",
     "vue-json-viewer": "2.2.19",
     "vue-router": "3.5.1",
