@@ -64,7 +64,7 @@
     </v-row>
 
     <v-row v-if="!show_manual_formats && show_single_file_formats">
-      <v-col v-if="hasVideoFormats" cols="12" md="6">
+      <v-col v-if="hasVideoFormats" cols="12" md="6" class="pb-0">
         <p class="text-center caption">Video</p>
         <selectable-card
           class="mb-6"
@@ -100,7 +100,7 @@
           </v-col>
         </v-row>
       </v-col>
-      <v-col v-if="hasAudioFormats" cols="12" md="6">
+      <v-col v-if="hasAudioFormats" cols="12" md="6" class="pb-0">
         <p class="text-center caption">Audio</p>
         <selectable-card
           class="mb-6"
@@ -140,7 +140,7 @@
               Specify a audio format to optionally recode to.
             </small>
           </v-col>
-          <v-col cols="12" class="py-0">
+          <v-col cols="12" class="pt-0">
             <v-select
               v-model="audio_format"
               :items="audio_formats"

@@ -9,12 +9,18 @@
           class="cursor-pointer"
           @click="$router.push({ name: 'application.build' }).catch(() => {})"
         >
-          <v-col class="pb-0" cols="12">
+          <v-col
+            :class="$vuetify.breakpoint.mdAndUp ? 'pb-0' : 'pa-0'"
+            cols="12"
+          >
             <span class="font-weight-bold">Web DL Client</span>
             v{{ buildInfo.tag }} &middot;
             {{ formatDate(buildInfo.commiter.date, "LL") }}
           </v-col>
-          <v-col class="pt-0" cols="12">
+          <v-col
+            :class="$vuetify.breakpoint.mdAndUp ? 'pt-0' : 'pa-0'"
+            cols="12"
+          >
             <span class="font-weight-bold">Web DL API</span>
             v{{ apiBuildInfo.tag }} &middot;
             {{ formatDate(apiBuildInfo.commiter.date, "LL") }}

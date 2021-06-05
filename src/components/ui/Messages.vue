@@ -2,6 +2,7 @@
   <div class="messages hidden-sm-and-down">
     <v-alert
       v-for="(m, i) in messages"
+      class="mb-3"
       :value="'show' in messages[i] && messages[i].show"
       :key="i"
       :type="m.type"
@@ -31,19 +32,13 @@ export default {
   methods: {
     /**
      * Run callable if available.
+     *
+     * @param c
      */
     runCallable(c) {
       if (c) {
         c();
       }
-    },
-    /**
-     * Trigger the removal of a message.
-     *
-     * @param t
-     */
-    remove(t) {
-      this.$store.dispatch("application/removeMessage", t);
     },
   },
 };

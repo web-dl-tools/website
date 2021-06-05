@@ -3,7 +3,7 @@
     <v-container>
       <app-title />
       <v-row>
-        <v-col cols="12" md="7">
+        <v-col cols="12" md="6">
           <v-card raised>
             <v-card-title>
               Website
@@ -93,7 +93,7 @@
           </v-card>
         </v-col>
 
-        <v-col cols="12" md="5">
+        <v-col cols="12" md="6">
           <v-card raised>
             <v-card-title>
               API
@@ -192,6 +192,44 @@
             </v-card-text>
           </v-card>
         </v-col>
+
+        <v-col cols="12" md="6">
+          <v-card raised>
+            <v-card-title>
+              Websocket
+              <v-spacer />
+              <v-icon>mdi-broadcast</v-icon>
+            </v-card-title>
+            <v-card-subtitle class="subtitle-2 col-8 pl-4">
+              Below you can find information about the API websocket connection.
+            </v-card-subtitle>
+            <v-card-text class="pb-0" v-if="!websocket">
+              <v-row>
+                <v-col cols="12">
+                  <v-skeleton-loader type="text" />
+                </v-col>
+              </v-row>
+            </v-card-text>
+            <v-card-text v-else>
+              <v-row>
+                <v-col cols="4" class="pb-0 font-weight-regular">
+                  Status
+                </v-col>
+                <v-col
+                  cols="8"
+                  class="pb-0"
+                  :class="{
+                    'warning--text': [0, 2].includes(websocket.readyState),
+                    'success--text': websocket.readyState === 1,
+                    'error--text': ![0, 1, 2].includes(websocket.readyState),
+                  }"
+                >
+                  {{ getWebsocketFormattedState(websocket.readyState) }}
+                </v-col>
+              </v-row>
+            </v-card-text>
+          </v-card>
+        </v-col>
       </v-row>
     </v-container>
   </v-main>
@@ -213,7 +251,39 @@ export default {
       title: "application/getTitle",
       buildInfo: "application/getBuildInfo",
       apiBuildInfo: "application/getApiBuildInfo",
+      websocket: "application/getWebsocket",
     }),
+  },
+  methods: {
+    /**
+     * Get the websocket state as a formatted string.
+     *
+     * @param state
+     * @returns {string}
+     */
+    getWebsocketFormattedState(state) {
+      let formatted;
+
+      switch (state) {
+        case 0:
+          formatted = "Connecting";
+          break;
+        case 1:
+          formatted = "Open";
+          break;
+        case 2:
+          formatted = "Closing";
+          break;
+        case 3:
+          formatted = "Closed";
+          break;
+        default:
+          formatted = "Unknown";
+          break;
+      }
+
+      return formatted;
+    },
   },
 };
 </script>
