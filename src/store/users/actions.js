@@ -38,3 +38,15 @@ export const update = ({ commit }, payload) =>
     .patch(`users/${payload.id}`, payload)
     .then((response) => commit("ME", response.data))
     .catch(() => Promise.reject());
+
+/**
+ * Get the logged in user logs.
+ *
+ * @param commit
+ * @param id
+ * @returns {*}
+ */
+export const getLogs = ({ commit }, id) =>
+  Vue.$axios
+    .get("users/logs")
+    .then((response) => commit("GET_LOGS", response.data));

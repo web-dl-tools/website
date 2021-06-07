@@ -19,31 +19,6 @@
                 <v-col cols="4" class="font-weight-regular"> Version </v-col>
                 <v-col cols="8">
                   {{ websiteBuildInfo.tag }}
-                  <v-btn
-                    v-if="websiteVersionCheck"
-                    class="ml-2"
-                    :color="
-                      websiteVersionCheck.includes('latest')
-                        ? 'success'
-                        : 'warning'
-                    "
-                    text
-                    x-small
-                    href="https://gitlab.com/web-dl/website"
-                  >
-                    {{ websiteVersionCheck }}
-                  </v-btn>
-                  <v-btn
-                    v-else
-                    class="ml-2"
-                    :color="websiteVersionError ? 'error' : 'grey'"
-                    :disabled="websiteVersionLoading"
-                    text
-                    x-small
-                    @click="checkLatestRepoVersion('website')"
-                  >
-                    Check for updates
-                  </v-btn>
                 </v-col>
               </v-row>
               <v-row>
@@ -144,29 +119,6 @@
                 <v-col cols="4" class="font-weight-regular"> Version </v-col>
                 <v-col cols="8">
                   {{ apiBuildInfo.tag }}
-                  <v-btn
-                    v-if="apiVersionCheck"
-                    class="ml-2"
-                    :color="
-                      apiVersionCheck.includes('latest') ? 'success' : 'warning'
-                    "
-                    text
-                    x-small
-                    href="https://gitlab.com/web-dl/api"
-                  >
-                    {{ apiVersionCheck }}
-                  </v-btn>
-                  <v-btn
-                    v-else
-                    class="ml-2"
-                    :color="apiVersionError ? 'error' : 'grey'"
-                    :disabled="apiVersionLoading"
-                    text
-                    x-small
-                    @click="checkLatestRepoVersion('api')"
-                  >
-                    Check for updates
-                  </v-btn>
                 </v-col>
               </v-row>
               <v-row>
@@ -270,8 +222,8 @@
                   cols="8"
                   class="pb-0"
                   :class="{
-                    'warning--text': [0, 2].includes(websocket.readyState),
                     'success--text': websocket.readyState === 1,
+                    'warning--text': [0, 2].includes(websocket.readyState),
                     'error--text': ![0, 1, 2].includes(websocket.readyState),
                   }"
                 >
@@ -295,14 +247,6 @@ import AppTitle from "../../components/ui/AppTitle";
 export default {
   name: "views.application.overview",
   mixin: [formatters],
-  data: () => ({
-    websiteVersionLoading: false,
-    websiteVersionError: false,
-    websiteVersionCheck: "",
-    apiVersionLoading: false,
-    apiVersionError: false,
-    apiVersionCheck: "",
-  }),
   components: {
     AppTitle,
   },
@@ -343,31 +287,6 @@ export default {
       }
 
       return formatted;
-    },
-    /**
-     * Check the latest version for a repo.
-     *
-     * @param repo
-     */
-    checkLatestRepoVersion(repo) {
-      this[`${repo}VersionError`] = false;
-      this[`${repo}VersionLoading`] = true;
-      this.$store
-        .dispatch("application/getLatestRepoVersion", repo)
-        .then((tag) => {
-          if (semver.lt(this[`${repo}BuildInfo`].tag, tag)) {
-            this[`${repo}VersionCheck`] = `New ${semver.diff(
-              this[`${repo}BuildInfo`].tag,
-              tag
-            )} version available!`;
-          } else {
-            this[`${repo}VersionCheck`] = "You're on the latest version";
-          }
-        })
-        .catch(() => {
-          this[`${repo}VersionError`] = true;
-        })
-        .finally(() => (this[`${repo}VersionLoading`] = false));
     },
   },
 };

@@ -321,13 +321,13 @@ export const getApiBuildInfo = ({ commit }) =>
  */
 export const getLatestRepoVersion = ({ commit }, repo) =>
   Vue.$axios
-    .get(`https://api.github.com/repos/web-dl-tools/${repo}/releases/latest`, {
+    .get(`https://api.github.com/repos/web-dl-tools/${repo}/tags`, {
       transformRequest: (data, headers) => {
         delete headers.common["Authorization"];
         return data;
       },
     })
-    .then((response) => response.data.tag_name)
+    .then((response) => response.data[0].name)
     .catch(() => Promise.reject());
 
 /**

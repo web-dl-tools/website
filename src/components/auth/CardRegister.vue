@@ -55,6 +55,21 @@
               v-model="password"
               :label="password_label"
               color="accent"
+              class="mb-4"
+              id="password"
+              name="password"
+              prepend-inner-icon="mdi-lock"
+              type="password"
+              flat
+              hide-details
+              outlined
+            />
+          </v-col>
+          <v-col cols="12" class="pa-0">
+            <v-text-field
+              v-model="confirm_password"
+              :label="confirm_password_label"
+              color="accent"
               id="password"
               name="password"
               prepend-inner-icon="mdi-lock"
@@ -104,6 +119,8 @@ export default {
     username_label: "Username",
     password: "",
     password_label: "Password",
+    confirm_password: "",
+    confirm_password_label: "Confirm password",
     loading: false,
     error: false,
   }),
@@ -114,7 +131,10 @@ export default {
      * @returns {boolean}
      */
     valid() {
-      return !!(this.username && this.password);
+      return (
+        !!(this.username && this.password) &&
+        this.password === this.confirm_password
+      );
     },
   },
   methods: {
