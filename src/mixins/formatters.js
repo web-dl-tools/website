@@ -193,11 +193,16 @@ export default Vue.mixin({
       switch (level) {
         case 50:
         case 40:
+        case "DELETE":
           return "error";
         case 30:
           return "warning";
         case 20:
+        case "PATCH":
+        case "PUT":
           return "secondary";
+        case "POST":
+          return "success";
         case 10:
         case 0:
         default:

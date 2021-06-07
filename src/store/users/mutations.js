@@ -17,5 +17,5 @@ export const ME = (state, payload) => {
  * @constructor
  */
 export const GET_LOGS = (state, logs) => {
-  state.logs = logs.reverse();
+  state.logs = logs;
 };
