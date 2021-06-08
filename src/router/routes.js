@@ -107,7 +107,7 @@ export default [
       {
         path: "/login",
         name: "login",
-        component: () => import("../components/auth/CardLogin"),
+        component: () => import("../components/authentication/CardLogin"),
         meta: {
           title: "Login",
         },
@@ -115,7 +115,7 @@ export default [
       {
         path: "/register",
         name: "register",
-        component: () => import("../components/auth/CardRegister"),
+        component: () => import("../components/authentication/CardRegister"),
         meta: {
           title: "Register",
         },

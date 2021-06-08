@@ -214,53 +214,7 @@
         </v-col>
 
         <v-col cols="12">
-          <v-card flat>
-            <v-timeline class="pt-4" align-top dense reverse>
-              <v-timeline-item class="pb-1" hide-dot>
-                <v-card-title class="pt-0"> Logs </v-card-title>
-                <v-card-subtitle class="subtitle-2 col-8 pl-4">
-                  below you can find the latest requests you've made to Web DL.
-                </v-card-subtitle>
-              </v-timeline-item>
-
-              <div v-if="!logs.length">
-                <v-skeleton-loader v-for="n in 8" :key="n" type="list-item" />
-              </div>
-
-              <div v-else class="max-height-400 overflow-y-auto">
-                <v-timeline-item
-                  v-for="log in logs"
-                  :key="log.id"
-                  class="pb-0"
-                  color="accent"
-                  small
-                >
-                  <v-row class="ml-0">
-                    <v-col cols="7" class="body-2">
-                      <v-chip
-                        class="mr-2"
-                        :color="formatLogLevelColor(log.method)"
-                        :class="
-                          formatTextColor(formatLogLevelColor(log.method))
-                        "
-                        label
-                        x-small
-                      >
-                        {{ log.method }}
-                      </v-chip>
-                      {{ log.url }}
-                      <div v-if="log.data" class="mt-2 grey--text log">
-                        {{ log.data }}
-                      </div>
-                    </v-col>
-                    <v-col class="body-2 text-right grey--text" cols="5">
-                      {{ formatDate(log.created_at, "YYYY-MM-DD H:mm:ss.SSS") }}
-                    </v-col>
-                  </v-row>
-                </v-timeline-item>
-              </div>
-            </v-timeline>
-          </v-card>
+          <card-logs />
         </v-col>
       </v-row>
     </v-container>
@@ -271,12 +225,14 @@
 import { mapGetters } from "vuex";
 import formatters from "../../mixins/formatters";
 import AppTitle from "../../components/ui/AppTitle";
+import CardLogs from "../../components/application/CardLogs";
 
 export default {
   name: "views.application.overview",
   mixin: [formatters],
   components: {
     AppTitle,
+    CardLogs,
   },
   computed: {
     ...mapGetters({
@@ -284,7 +240,6 @@ export default {
       websiteBuildInfo: "application/getBuildInfo",
       apiBuildInfo: "application/getApiBuildInfo",
       websocket: "application/getWebsocket",
-      logs: "users/getLogs",
     }),
   },
   methods: {
@@ -317,12 +272,6 @@ export default {
 
       return formatted;
     },
-  },
-  /**
-   * Load in the log data.
-   */
-  created() {
-    this.$store.dispatch("users/getLogs");
   },
 };
 </script>

@@ -151,6 +151,9 @@
             </v-card-actions>
           </v-card>
         </v-col>
+        <v-col cols="12" md="6">
+          <card-logs :technical="false" />
+        </v-col>
       </v-row>
     </v-container>
   </v-main>
@@ -160,12 +163,14 @@
 import { mapGetters } from "vuex";
 import formatters from "../../mixins/formatters";
 import AppTitle from "../../components/ui/AppTitle";
+import CardLogs from "../../components/application/CardLogs";
 
 export default {
   name: "views.profile.overview",
   mixin: [formatters],
   components: {
     AppTitle,
+    CardLogs,
   },
   data: () => ({
     edit: false,
@@ -210,7 +215,10 @@ export default {
             });
             this.error = true;
           })
-          .finally(() => (this.loading = false));
+          .finally(() => {
+            this.loading = false;
+            this.$store.dispatch("users/getLogs");
+          });
       }
     },
   },

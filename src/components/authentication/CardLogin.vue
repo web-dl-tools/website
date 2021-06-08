@@ -72,7 +72,7 @@
 
 <script>
 export default {
-  name: "components.auth.card-login",
+  name: "components.authentication.card-login",
   data: () => ({
     username: "",
     username_label: "Username",

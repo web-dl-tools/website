@@ -1,7 +1,7 @@
 import Vue from "vue";
 
 /**
- * Check the current auth state, store the auth token and
+ * Check the current authentication state, store the authentication token and
  * add a default axios authorization header.
  * @param state
  * @constructor
@@ -38,7 +38,7 @@ export const SET_TITLE = (state, title) => {
 };
 
 /**
- * Set the auth state and axios default authorization header.
+ * Set the authentication state and axios default authorization header.
  *
  * @param state
  * @param token
@@ -51,7 +51,7 @@ export const LOGIN = (state, token) => {
 };
 
 /**
- * Remove the auth state and axios default authorization header.
+ * Remove the authentication state and axios default authorization header.
  *
  * @param state
  * @constructor
