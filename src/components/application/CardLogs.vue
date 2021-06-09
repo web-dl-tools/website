@@ -4,7 +4,8 @@
       <v-timeline-item class="pb-1" hide-dot>
         <v-card-title class="pt-0"> Logs </v-card-title>
         <v-card-subtitle class="subtitle-2 col-8 pl-4">
-          below you can find the requests you've made to Web DL today.
+          below you can find the {{ logs.length }} requests you've made to Web
+          DL today.
         </v-card-subtitle>
       </v-timeline-item>
 
@@ -37,11 +38,6 @@
               </div>
             </v-col>
             <v-col class="body-2 text-right grey--text" cols="5">
-              <div
-                class="hidden-sm-and-down float-left text-capitalize-sentence"
-              >
-                {{ formatDateFromNow(log.created_at) }}
-              </div>
               {{ formatDate(log.created_at, "YYYY-MM-DD H:mm:ss.SSS") }}
             </v-col>
           </v-row>
