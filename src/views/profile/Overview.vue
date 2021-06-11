@@ -6,7 +6,6 @@
         <v-col cols="12" md="6">
           <v-card raised v-if="!user">
             <v-skeleton-loader type="article" />
-            <v-skeleton-loader type="actions" />
           </v-card>
           <v-card raised class="pb-1" v-else>
             <v-card-title>
@@ -151,6 +150,42 @@
             </v-card-actions>
           </v-card>
         </v-col>
+
+        <v-col cols="12" md="3">
+          <v-card raised v-if="!user">
+            <v-skeleton-loader type="image" />
+          </v-card>
+          <v-card raised class="pb-1" v-else>
+            <v-card-text>
+              <v-row class="text-center">
+                <v-col class="pb-0" cols="12">
+                  <div class="text-h3 font-weight-thin">
+                    {{ formatBytes(user.storage, 2) }}
+                  </div>
+                  <div>Storage</div>
+                </v-col>
+              </v-row>
+            </v-card-text>
+          </v-card>
+        </v-col>
+
+        <v-col cols="12" md="3">
+          <v-card raised v-if="!user">
+            <v-skeleton-loader type="image" />
+          </v-card>
+          <v-card raised class="pb-1" v-else>
+            <v-card-text>
+              <v-row class="text-center">
+                <v-col class="pb-0" cols="12">
+                  <div class="text-h3 font-weight-thin">
+                    {{ requests.length }}
+                  </div>
+                  <div>Requests</div>
+                </v-col>
+              </v-row>
+            </v-card-text>
+          </v-card>
+        </v-col>
       </v-row>
     </v-container>
   </v-main>
@@ -182,6 +217,7 @@ export default {
     ...mapGetters({
       title: "application/getTitle",
       user: "users/getMe",
+      requests: "requests/getAll",
     }),
   },
   methods: {
