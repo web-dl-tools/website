@@ -151,36 +151,34 @@
           </v-card>
         </v-col>
 
-        <v-col cols="12" md="3">
+        <v-col cols="12" md="6">
           <v-card raised v-if="!user">
-            <v-skeleton-loader type="image" />
+            <v-skeleton-loader type="article" />
           </v-card>
           <v-card raised class="pb-1" v-else>
+            <v-card-title>
+              Storage
+              <v-spacer />
+              <v-icon> mdi-database </v-icon>
+            </v-card-title>
+            <v-card-subtitle class="subtitle-2 col-8 pl-4">
+              Below you can find your storage details in Web DL.
+            </v-card-subtitle>
             <v-card-text>
-              <v-row class="text-center">
-                <v-col class="pb-0" cols="12">
-                  <div class="text-h3 font-weight-thin">
-                    {{ formatBytes(user.storage, 2) }}
-                  </div>
-                  <div>Storage</div>
+              <v-row>
+                <v-col cols="4" class="pb-0 font-weight-regular">
+                  Total storage
+                </v-col>
+                <v-col cols="8" class="pb-0">
+                  {{ formatBytes(user.storage, 2) }}
                 </v-col>
               </v-row>
-            </v-card-text>
-          </v-card>
-        </v-col>
-
-        <v-col cols="12" md="3">
-          <v-card raised v-if="!user">
-            <v-skeleton-loader type="image" />
-          </v-card>
-          <v-card raised class="pb-1" v-else>
-            <v-card-text>
-              <v-row class="text-center">
-                <v-col class="pb-0" cols="12">
-                  <div class="text-h3 font-weight-thin">
-                    {{ requests.length }}
-                  </div>
-                  <div>Requests</div>
+              <v-row>
+                <v-col cols="4" class="py-0 font-weight-regular">
+                  Requests
+                </v-col>
+                <v-col cols="8" class="py-0 text-capitalize-sentence">
+                  {{ requests.length }}
                 </v-col>
               </v-row>
             </v-card-text>
