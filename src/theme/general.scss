@@ -10,6 +10,10 @@
   overflow-x: auto;
 }
 
+.overflow-x::-webkit-scrollbar {
+  display: none;
+}
+
 .text-capitalize-sentence:first-letter{
   text-transform: capitalize;
 }

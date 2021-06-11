@@ -213,7 +213,7 @@
           </v-card>
         </v-col>
 
-        <v-col cols="12" md="6">
+        <v-col cols="12">
           <card-logs />
         </v-col>
       </v-row>
