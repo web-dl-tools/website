@@ -73,7 +73,7 @@ import { mapGetters } from "vuex";
 import formatters from "../../mixins/formatters";
 
 export default {
-  name: "components.application.logs",
+  name: "components.application.card-logs",
   mixin: [formatters],
   computed: {
     ...mapGetters({

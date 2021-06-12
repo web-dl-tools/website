@@ -19,3 +19,14 @@ export const ME = (state, payload) => {
 export const GET_LOGS = (state, logs) => {
   state.logs = logs;
 };
+
+/**
+ * Set the logged in user's stogage.
+ *
+ * @param state
+ * @param storage
+ * @constructor
+ */
+export const GET_STORAGE = (state, storage) => {
+  state.storage = storage;
+};

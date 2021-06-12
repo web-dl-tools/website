@@ -1,7 +1,7 @@
 import Vue from "vue";
 import moment from "moment";
 import psl from "psl";
-import { formatRequest } from "./public";
+import { formatRequest, formatBytes } from "./public";
 
 export default Vue.mixin({
   methods: {
@@ -9,6 +9,10 @@ export default Vue.mixin({
      * @inheritDoc
      */
     formatRequest,
+    /**
+     * @inheritDoc
+     */
+    formatBytes,
     /**
      * Format a datetime object/string to a given string format.
      *
@@ -77,25 +81,6 @@ export default Vue.mixin({
             .replace("{formatted}", formatted)
             .replace("{timeframe}", timeframe)
         : template[1];
-    },
-    /**
-     * Format a bytes value to a human readable format.
-     *
-     * @url https://stackoverflow.com/a/18650828
-     * @param bytes
-     * @param decimals
-     * @returns {string}
-     */
-    formatBytes(bytes, decimals) {
-      if (bytes === 0) return "0 Bytes";
-
-      const k = 1024;
-      const dm = decimals < 0 ? 0 : decimals;
-      const sizes = ["Bytes", "KB", "MB", "GB", "TB", "PB", "EB", "ZB", "YB"];
-
-      const i = Math.floor(Math.log(bytes) / Math.log(k));
-
-      return parseFloat((bytes / Math.pow(k, i)).toFixed(dm)) + " " + sizes[i];
     },
     /**
      * Format the request status.

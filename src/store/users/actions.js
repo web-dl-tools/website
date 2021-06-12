@@ -50,3 +50,15 @@ export const getLogs = ({ commit }, id) =>
   Vue.$axios
     .get("users/logs")
     .then((response) => commit("GET_LOGS", response.data));
+
+/**
+ * Get the logged in user storage.
+ *
+ * @param commit
+ * @param id
+ * @returns {*}
+ */
+export const getStorage = ({ commit }, id) =>
+  Vue.$axios
+    .get("users/storage")
+    .then((response) => commit("GET_STORAGE", response.data));
