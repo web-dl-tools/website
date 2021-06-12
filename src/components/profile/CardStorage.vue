@@ -1,22 +1,51 @@
 <template>
   <div>
-    <v-card flat color="transparent" v-if="!storage">
-      <v-skeleton-loader type="image" />
+    <v-card raised v-if="!storage">
+      <v-skeleton-loader type="article" />
     </v-card>
-    <v-card flat color="transparent" class="pb-1" v-else>
-      <v-row>
-        <v-col cols="12" class="pa-0">
-          <div id="storage-chart">
-            <div class="donut-inner text-center">
-              <h2 class="font-weight-thin grey--text mb-n2">
-                {{ formatBytes(total, 2) }}
-              </h2>
-              <p class="font-weight-black grey--text overline mb-0">Storage</p>
-            </div>
-            <doughnut-chart :chart-data="chartData" :options="options" />
-          </div>
-        </v-col>
-      </v-row>
+    <v-card raised class="pb-1" v-else>
+      <v-card-title>
+        Storage
+        <v-spacer />
+        <v-icon> mdi-database </v-icon>
+      </v-card-title>
+      <v-card-subtitle class="subtitle-2 col-8 pl-4">
+        Below you can explore your current storage usage in Web DL.
+      </v-card-subtitle>
+      <v-card-text class="pt-3">
+        <v-row v-for="request in storage" :key="request.id">
+          <v-col
+            cols="8"
+            class="py-0 cursor-pointer"
+            @click="
+              $router
+                .push({
+                  name: 'requests.detail',
+                  params: { requestId: request.id },
+                })
+                .catch(() => {})
+            "
+          >
+            {{
+              truncate(request.title, $vuetify.breakpoint.mdAndDown ? 30 : 50)
+            }}
+          </v-col>
+          <v-col cols="4" class="py-0 text-end">
+            {{ formatBytes(request.size, 2) }}
+          </v-col>
+        </v-row>
+        <v-row>
+          <v-col cols="8" class="pb-0 font-weight-regular"> Total </v-col>
+          <v-col cols="4" class="pb-0 font-weight-regular text-end">
+            {{
+              formatBytes(
+                storage.reduce((acc, cur) => acc + cur.size, 0),
+                2
+              )
+            }}
+          </v-col>
+        </v-row>
+      </v-card-text>
     </v-card>
   </div>
 </template>
@@ -24,64 +53,24 @@
 <script>
 import { mapGetters } from "vuex";
 import formatters from "../../mixins/formatters";
-import { truncate, formatBytes } from "../../mixins/public";
-import DoughnutChart from "../charts/DoughnutChart";
+import helpers from "../../mixins/helpers";
 
 export default {
   name: "components.profile.card-storage",
-  mixin: [formatters],
-  components: {
-    DoughnutChart,
-  },
-  data() {
-    return {
-      total: 0,
-      chartData: {},
-      options: {
-        cutout: "10%",
-        responsive: true,
-        maintainAspectRatio: false,
-        legend: {
-          display: false,
-        },
-        tooltips: {
-          caretPadding: 0,
-          displayColors: false,
-          callbacks: {
-            title: () => "Request",
-            label: (tooltipItem, data) => data.labels[tooltipItem.index],
-            afterLabel: (tooltipItem, data) =>
-              formatBytes(data.datasets[0]["data"][tooltipItem.index], 2),
-          },
-        },
-      },
-    };
-  },
+  mixin: [formatters, helpers],
   computed: {
     ...mapGetters({
-      storage: "users/getStorage",
+      _storage: "users/getStorage",
     }),
-  },
-  watch: {
-    storage(n) {
-      let labels = [];
-      let data = [];
-
-      n.forEach((r) => {
-        this.total += r.size;
-        labels.push(truncate(r.title, 40));
-        data.push(r.size);
-      });
-
-      this.chartData = {
-        labels: labels,
-        datasets: [
-          {
-            backgroundColor: "#00000061",
-            data: data,
-          },
-        ],
-      };
+    storage() {
+      const storage = this._storage;
+      if (storage)
+        return storage.sort((a, b) => {
+          if (a.size < b.size) return 1;
+          if (a.size > b.size) return -1;
+          return 0;
+        });
+      return null;
     },
   },
   /**
@@ -92,16 +81,3 @@ export default {
   },
 };
 </script>
-
-<style>
-canvas#doughnut-chart {
-  height: 260px !important;
-}
-
-.donut-inner {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -35%);
-}
-</style>

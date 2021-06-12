@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "repository": {
     "type": "git",
-    "url": "https://gitlab.com/web-dl/website.git"
+    "url": "https://github.com/web-dl-tools/website.git"
   },
   "author": "Rinesh Ramadhin",
   "private": true,
@@ -18,7 +18,6 @@
     "@sentry/tracing": "^6.3.6",
     "@sentry/vue": "^6.3.6",
     "axios": "0.21.1",
-    "chart.js": "2",
     "core-js": "3.12.1",
     "lodash": "4.17.21",
     "moment": "2.29.1",
@@ -26,7 +25,6 @@
     "roboto-fontface": "*",
     "semver": "^7.3.5",
     "vue": "2.6.12",
-    "vue-chartjs": "^3.5.1",
     "vue-json-viewer": "2.2.19",
     "vue-router": "3.5.1",
     "vuetify": "2.5.0",
