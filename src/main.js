@@ -26,6 +26,7 @@ import "./theme/general.background.scss";
 import "./theme/general.font.scss";
 import "./theme/general.text.scss";
 import "./theme/general.border.scss";
+import "./theme/general.overflow.scss";
 import "./theme/general.scss";
 
 import * as Sentry from "@sentry/vue";

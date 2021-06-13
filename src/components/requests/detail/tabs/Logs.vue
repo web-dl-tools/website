@@ -40,7 +40,7 @@
                 {{ log.level_display }}
               </v-chip>
             </v-col>
-            <v-col cols="9" class="pa-0 d-inline-flex overflow-x">
+            <v-col cols="9" class="pa-0 d-inline-flex overflow-x-auto">
               {{ log.message }}
             </v-col>
           </v-col>

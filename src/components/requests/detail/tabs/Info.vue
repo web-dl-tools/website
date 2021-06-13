@@ -1,20 +1,10 @@
 <template>
   <v-tab-item>
-    <v-row v-if="item.status !== 'completed' && item.status !== 'failed'">
-      <v-col cols="12">
-        <p class="mb-0">
-          Request has not finished downloading/processing. Information will
-          appear after the request has completed.
-        </p>
-      </v-col>
-    </v-row>
-    <v-row v-else-if="item.status === 'failed'">
-      <v-col cols="12">
-        <p class="mb-0">
-          Request has failed. Please retry the request again (later).
-        </p>
-      </v-col>
-    </v-row>
+    <active-info
+      v-if="item.status !== 'completed' && item.status !== 'failed'"
+      :item="item"
+    />
+    <failed-info v-else-if="item.status === 'failed'" :item="item" />
     <audio-visual-info
       v-else-if="item.request_type === 'AudioVisualRequest'"
       :item="item"
@@ -44,6 +34,8 @@
 
 <script>
 import formatters from "../../../../mixins/formatters";
+import ActiveInfo from "./handlers/ActiveInfo";
+import FailedInfo from "./handlers/FailedInfo";
 import AudioVisualInfo from "./handlers/AudioVisualInfo";
 import DirectInfo from "./handlers/DirectInfo";
 import TorrentInfo from "./handlers/TorrentInfo";
@@ -53,6 +45,8 @@ export default {
   name: "components.requests.detail.tabs.info",
   mixin: [formatters],
   components: {
+    ActiveInfo,
+    FailedInfo,
     AudioVisualInfo,
     DirectInfo,
     TorrentInfo,

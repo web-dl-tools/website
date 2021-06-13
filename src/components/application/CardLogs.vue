@@ -1,5 +1,5 @@
 <template>
-  <v-card flat>
+  <v-card outlined raised>
     <v-timeline class="pt-4" align-top dense reverse>
       <v-timeline-item class="pb-1" hide-dot>
         <v-card-title class="pt-0"> Logs </v-card-title>
@@ -9,7 +9,7 @@
         </v-card-subtitle>
       </v-timeline-item>
 
-      <div v-if="!logs.length">
+      <div v-if="loading">
         <v-skeleton-loader v-for="n in 8" :key="n" type="list-item" />
       </div>
 
@@ -75,6 +75,9 @@ import formatters from "../../mixins/formatters";
 export default {
   name: "components.application.card-logs",
   mixin: [formatters],
+  data: () => ({
+    loading: true,
+  }),
   computed: {
     ...mapGetters({
       logs: "users/getLogs",
@@ -90,7 +93,7 @@ export default {
    * Load in the log data.
    */
   created() {
-    this.$store.dispatch("users/getLogs");
+    this.$store.dispatch("users/getLogs").finally(() => (this.loading = false));
   },
 };
 </script>

@@ -61,14 +61,16 @@ export const connectWebsocket = ({ commit, dispatch }) => {
     );
   };
 
-  websocket.onclose = () =>
-    dispatch("addMessage", {
-      text: `The <b>Web DL Websocket</b> connection has closed.<br />
-      <span class="grey--text">Please refresh the page to reconnect.</span>`,
-      type: "error",
-      action: null,
-      timeout: -1,
-    });
+  websocket.onclose = () => {
+    if (router.currentRoute.name !== "login")
+      dispatch("addMessage", {
+        text: `The <b>Web DL Websocket</b> connection has closed.<br />
+        <span class="grey--text">Please refresh the page to reconnect.</span>`,
+        type: "error",
+        action: null,
+        timeout: -1,
+      });
+  };
 
   websocket.onerror = () =>
     dispatch("addMessage", {

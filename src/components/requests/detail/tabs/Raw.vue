@@ -53,7 +53,7 @@ export default {
       color: #5e6d7a;
     }
     &.jv-function {
-      color: #202034;
+      color: #0b85db;
     }
     &.jv-number {
       color: #e45a33;

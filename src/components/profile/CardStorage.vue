@@ -1,9 +1,9 @@
 <template>
   <div>
-    <v-card raised v-if="!storage">
+    <v-card outlined raised v-if="loading">
       <v-skeleton-loader type="article" />
     </v-card>
-    <v-card raised class="pb-1" v-else>
+    <v-card outlined raised class="pb-1" v-else>
       <v-card-title>
         Storage
         <v-spacer />
@@ -35,14 +35,16 @@
           </v-col>
         </v-row>
         <v-row>
-          <v-col cols="8" class="pb-0 font-weight-regular"> Total </v-col>
+          <v-col cols="8" class="pb-0 font-weight-regular"> Total usage </v-col>
           <v-col cols="4" class="pb-0 font-weight-regular text-end">
-            {{
-              formatBytes(
-                storage.reduce((acc, cur) => acc + cur.size, 0),
-                2
-              )
-            }}
+            <v-chip outlined label small color="success">
+              {{
+                formatBytes(
+                  storage.reduce((acc, cur) => acc + cur.size, 0),
+                  2
+                )
+              }}
+            </v-chip>
           </v-col>
         </v-row>
       </v-card-text>
@@ -58,6 +60,9 @@ import helpers from "../../mixins/helpers";
 export default {
   name: "components.profile.card-storage",
   mixin: [formatters, helpers],
+  data: () => ({
+    loading: true,
+  }),
   computed: {
     ...mapGetters({
       _storage: "users/getStorage",
@@ -77,7 +82,9 @@ export default {
    * Load in the user storage data.
    */
   created() {
-    this.$store.dispatch("users/getStorage");
+    this.$store
+      .dispatch("users/getStorage")
+      .finally(() => (this.loading = false));
   },
 };
 </script>

@@ -1,5 +1,5 @@
 <template>
-  <v-card raised>
+  <v-card outlined raised>
     <v-card-title>
       Website
       <v-spacer />

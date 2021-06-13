@@ -4,7 +4,7 @@
       <app-title />
       <v-row>
         <v-col cols="12">
-          <v-card raised>
+          <v-card outlined raised>
             <v-skeleton-loader v-if="request_loading" type="table-heading" />
             <v-card-subtitle v-else>
               <status :request="request" :with_progress="true" />

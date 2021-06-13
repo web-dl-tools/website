@@ -1,6 +1,6 @@
 <template>
   <div>
-    <v-card raised>
+    <v-card outlined raised>
       <v-data-table
         :class="{
           extended: !extended,

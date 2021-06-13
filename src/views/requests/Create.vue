@@ -4,7 +4,7 @@
       <app-title />
       <v-row>
         <v-col cols="12">
-          <v-stepper v-model="step" class="elevation-8 pb-0" vertical>
+          <v-stepper outlined v-model="step" class="elevation-8 pb-0" vertical>
             <v-stepper-step :complete="step > 1" color="secondary" step="1">
               Submit a URL
               <small>{{ step1Label }}</small>

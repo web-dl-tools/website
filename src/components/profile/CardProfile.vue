@@ -1,9 +1,9 @@
 <template>
   <div>
-    <v-card raised v-if="!user">
+    <v-card outlined raised v-if="!user">
       <v-skeleton-loader type="article" />
     </v-card>
-    <v-card raised class="pb-1" v-else>
+    <v-card outlined raised class="pb-1" v-else>
       <v-card-title>
         Information
         <v-spacer />

@@ -6,7 +6,7 @@
     :disabled="disabled"
     @click="click"
   >
-    <v-card-title>
+    <v-card-title class="pt-3">
       {{ title }}
       <v-spacer />
       <v-icon :light="selected" v-if="selected">
