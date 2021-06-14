@@ -69,7 +69,7 @@ export default Vue.mixin({
           if (duration.asSeconds() >= moment.relativeTimeThreshold("s"))
             timeframe = "minutes";
           else timeframe = "seconds";
-          formatted = duration.as(timeframe).toPrecision(5);
+          formatted = duration.as(timeframe).toPrecision(3);
           break;
         default:
           formatted = duration.as(format);

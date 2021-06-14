@@ -47,7 +47,7 @@
               type="table-thead"
               class="px-8"
             />
-            <v-card-text v-else class="pb-1">
+            <v-card-text v-else class="pb-0">
               <v-tabs color="info" grow show-arrows v-model="tab">
                 <v-tab>Information</v-tab>
                 <v-tab>

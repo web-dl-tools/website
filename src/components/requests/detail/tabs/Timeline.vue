@@ -44,8 +44,8 @@
               formatDateDuration(
                 item.start_compressing_at,
                 item.compressed_at,
-                "seconds",
-                ["{formatted} seconds.", "unknown seconds."]
+                "automatic",
+                ["{formatted} {timeframe}.", "an unknown timeframe."]
               )
             }}
           </v-card-text>

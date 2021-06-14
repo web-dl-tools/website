@@ -1,7 +1,13 @@
 <template>
   <div>
     <div>
-      <div v-if="item.status !== 'completed'">
+      <div v-if="item.status === 'failed'">
+        <v-card-title class="pt-0 title"> Request has failed </v-card-title>
+        <v-card-subtitle class="pt-0 subtitle-2">
+          {{ truncate(item.url, 120) }}
+        </v-card-subtitle>
+      </div>
+      <div v-else-if="item.status !== 'completed'">
         <v-card-title class="pt-0 title">
           Request hasn't completed yet...
         </v-card-title>

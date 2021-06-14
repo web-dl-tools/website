@@ -8,7 +8,7 @@
       />
       <p class="mt-4 mb-0">
         <span class="font-weight-bold">
-          Request has not finished downloading/processing.
+          Request has not finished downloading/processing...
         </span>
         <br />
         Information will appear after the request has completed.
