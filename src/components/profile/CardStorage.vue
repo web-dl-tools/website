@@ -27,14 +27,17 @@
             "
           >
             {{
-              truncate(request.title, $vuetify.breakpoint.mdAndDown ? 30 : 50)
+              truncate(
+                request.title ? request.title : request.id,
+                $vuetify.breakpoint.mdAndDown ? 30 : 50
+              )
             }}
           </v-col>
           <v-col cols="4" class="py-0 text-end">
             {{ formatBytes(request.size, 2) }}
           </v-col>
         </v-row>
-        <v-row>
+        <v-row class="mb-n1">
           <v-col cols="8" class="pb-0 font-weight-regular"> Total usage </v-col>
           <v-col cols="4" class="pb-0 font-weight-regular text-end">
             <v-chip outlined label small color="success">
