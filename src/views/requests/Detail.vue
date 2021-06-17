@@ -8,6 +8,17 @@
             <v-skeleton-loader v-if="request_loading" type="table-heading" />
             <v-card-subtitle v-else>
               <status :request="request" :with_progress="true" />
+              <v-chip
+                v-if="
+                  request.status === 'completed' && 'storage_size' in request
+                "
+                class="ml-2 px-2 grey--text"
+                label
+                outlined
+                small
+              >
+                {{ formatBytes(request.storage_size) }}
+              </v-chip>
               <v-btn
                 icon
                 class="float-right mt-n2 mr-n2"
