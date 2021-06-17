@@ -191,12 +191,9 @@ export default {
      * @param path
      */
     openFile(path) {
-      const url = `${
-        Vue.$axios.defaults.baseURL
-      }download/file?auth_token=${Vue.$axios.defaults.headers.common.Authorization.replace(
-        "Token ",
-        ""
-      )}&path=${encodeURIComponent(path)}`;
+      const url = `${Vue.$axios.defaults.baseURL}download/file/${btoa(
+        encodeURIComponent(path)
+      )}`;
       window.open(url, "_blank");
     },
     /**

@@ -1,4 +1,5 @@
 import Vue from "vue";
+import VueCookies from "vue-cookies";
 
 /**
  * Check the current authentication state, store the authentication token and
@@ -7,9 +8,10 @@ import Vue from "vue";
  * @constructor
  */
 export const CHECK = (state) => {
-  state.authenticated = !!localStorage.getItem("auth_token");
+  state.authenticated = !!VueCookies.get("auth_token");
   if (state.authenticated) {
-    Vue.$axios.defaults.headers.common.Authorization = `Token ${localStorage.getItem(
+    SET_AUTH_TOKEN(VueCookies.get("auth_token"));
+    Vue.$axios.defaults.headers.common.Authorization = `Token ${VueCookies.get(
       "auth_token"
     )}`;
   }
@@ -37,6 +39,9 @@ export const SET_TITLE = (state, title) => {
   state.title = title;
 };
 
+export const SET_AUTH_TOKEN = (token) =>
+  VueCookies.set("auth_token", token, "30h");
+
 /**
  * Set the authentication state and axios default authorization header.
  *
@@ -45,7 +50,7 @@ export const SET_TITLE = (state, title) => {
  * @constructor
  */
 export const LOGIN = (state, token) => {
-  localStorage.setItem("auth_token", token);
+  SET_AUTH_TOKEN(token);
   Vue.$axios.defaults.headers.common.Authorization = `Token ${token}`;
   state.authenticated = true;
 };
@@ -57,7 +62,7 @@ export const LOGIN = (state, token) => {
  * @constructor
  */
 export const LOGOUT = (state) => {
-  localStorage.removeItem("auth_token");
+  VueCookies.remove("auth_token");
   Vue.$axios.defaults.headers.common.Authorization = "";
   state.authenticated = false;
 };

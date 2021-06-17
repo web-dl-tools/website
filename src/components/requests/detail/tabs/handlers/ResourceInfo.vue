@@ -72,13 +72,8 @@ export default {
      * Generate and calculate the screenshot path.
      */
     path() {
-      return `${
-        Vue.$axios.defaults.baseURL
-      }download/file?auth_token=${Vue.$axios.defaults.headers.common.Authorization.replace(
-        "Token ",
-        ""
-      )}&path=${encodeURIComponent(
-        this.item.path + "/" + this.item.id + ".png"
+      return `${Vue.$axios.defaults.baseURL}download/file/${btoa(
+        encodeURIComponent(this.item.path + "/" + this.item.id + ".png")
       )}`;
     },
   },
