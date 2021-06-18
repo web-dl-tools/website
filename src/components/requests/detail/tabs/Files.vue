@@ -31,7 +31,7 @@
           </template>
           <template v-slot:label="{ item, leaf }">
             <span v-if="!leaf" class="font-weight-black">{{ item.name }}</span>
-            <div v-else @click="openFile(item.path)">
+            <div v-else @click="openFile(item.path, item.name)">
               <p class="pt-2 mb-0 font-weight-500">
                 {{ item.name }}
               </p>
@@ -189,11 +189,13 @@ export default {
      * Generate and open the file download/access link in a new tab.
      *
      * @param path
+     * @param slug
      */
-    openFile(path) {
-      const url = `${Vue.$axios.defaults.baseURL}download/file/${btoa(
+    openFile(path, slug) {
+      let url = `${Vue.$axios.defaults.baseURL}download/file/${btoa(
         encodeURIComponent(path)
       )}`;
+      if (slug) url += `/${slug}`;
       window.open(url, "_blank");
     },
     /**

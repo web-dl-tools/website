@@ -125,7 +125,7 @@ export const handleWebsocketEvent = (
  */
 export const handleWebsocketGroupJoinedEvent = ({ dispatch }) => {
   dispatch("addMessage", {
-    text: "<b>Web DL API</b> connection established successfully.",
+    text: "<b>Web DL</b> connection established successfully.",
     type: "info",
     action: () =>
       router

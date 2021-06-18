@@ -13,6 +13,9 @@
         Below you can explore your current storage usage in Web DL.
       </v-card-subtitle>
       <v-card-text class="pt-3">
+        <v-row class="mb-6 justify-center">
+          <vue-apex-charts type="donut" :options="options" :series="series" />
+        </v-row>
         <v-row v-for="request in storage" :key="request.id">
           <v-col
             cols="8"
@@ -57,13 +60,20 @@
 
 <script>
 import { mapGetters } from "vuex";
+import VueApexCharts from "vue-apexcharts";
 import formatters from "../../mixins/formatters";
 import helpers from "../../mixins/helpers";
+import { truncate, formatBytes } from "../../mixins/public";
 
 export default {
   name: "components.profile.card-storage",
   mixin: [formatters, helpers],
+  components: {
+    VueApexCharts,
+  },
   data: () => ({
+    options: {},
+    series: [],
     loading: true,
   }),
   computed: {
@@ -79,6 +89,41 @@ export default {
           return 0;
         });
       return null;
+    },
+  },
+  watch: {
+    storage(n) {
+      let labels = [];
+      let data = [];
+
+      n.forEach((r) => {
+        labels.push(truncate(r.title, 40));
+        data.push(r.size);
+      });
+
+      this.series = data;
+      this.options = {
+        chart: {
+          type: "donut",
+        },
+        labels: labels,
+        legend: {
+          show: false,
+        },
+        theme: {
+          monochrome: {
+            enabled: true,
+            color: "#5E6D7A",
+          },
+        },
+        tooltip: {
+          y: {
+            formatter: function (value) {
+              return formatBytes(value);
+            },
+          },
+        },
+      };
     },
   },
   /**
