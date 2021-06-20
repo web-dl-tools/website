@@ -13,7 +13,7 @@
             :class="$vuetify.breakpoint.mdAndUp ? 'pb-0' : 'pa-0'"
             cols="12"
           >
-            <span class="font-weight-bold">Web DL Client</span>
+            <span class="font-weight-bold">Web DL Website</span>
             v{{ buildInfo.tag }} &middot;
             {{ formatDate(buildInfo.commiter.date, "LL") }}
           </v-col>
@@ -31,7 +31,7 @@
     <v-col v-else class="text-caption" cols="12">
       <v-row>
         <v-col class="pb-0" cols="12">
-          <span class="font-weight-bold">Web DL Client</span>
+          <span class="font-weight-bold">Web DL Website</span>
           v{{ buildInfo.tag }}
         </v-col>
         <v-col class="pt-0" cols="12">

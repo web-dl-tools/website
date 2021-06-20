@@ -21,7 +21,7 @@
           color="accent"
           small
         >
-          <v-row class="ml-1" v-if="technical">
+          <v-row class="ml-1">
             <v-col cols="7" class="body-2">
               <v-chip
                 class="mr-2"
@@ -38,28 +38,10 @@
               </div>
             </v-col>
             <v-col class="body-2 text-right grey--text" cols="5">
+              <span class="hidden-sm-and-down">
+                {{ formatDateFromNow(log.created_at) }} ·
+              </span>
               {{ formatDate(log.created_at, "YYYY-MM-DD H:mm:ss.SSS") }}
-            </v-col>
-          </v-row>
-
-          <v-row class="ml-1" v-else>
-            <v-col cols="7" class="body-2">
-              <v-chip
-                class="mr-2"
-                :color="formatLogLevelColor(log.method)"
-                :class="formatTextColor(formatLogLevelColor(log.method))"
-                label
-                x-small
-              >
-                {{ log.method }}
-              </v-chip>
-              {{ log.url }}
-              <div v-if="log.data" class="mt-2 grey--text log">
-                {{ log.data }}
-              </div>
-            </v-col>
-            <v-col class="body-2 text-right grey--text" cols="5">
-              {{ formatDateFromNow(log.created_at) }}
             </v-col>
           </v-row>
         </v-timeline-item>
@@ -82,12 +64,6 @@ export default {
     ...mapGetters({
       logs: "users/getLogs",
     }),
-  },
-  props: {
-    technical: {
-      type: Boolean,
-      default: true,
-    },
   },
   /**
    * Load in the log data.

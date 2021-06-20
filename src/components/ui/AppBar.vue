@@ -140,13 +140,15 @@ export default {
     url: "",
     url_placeholder: "URL or Magnet URI",
     url_label: "Create a new request...",
-    search_label: "Search",
   }),
   computed: {
     ...mapGetters({
       menuItems: "application/getMenuItems",
       search: "application/getSearch",
     }),
+    search_label() {
+      return `Search ${this.$route.meta.title.toLowerCase()}`;
+    },
   },
   methods: {
     /**

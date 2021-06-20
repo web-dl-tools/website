@@ -69,11 +69,11 @@
         <v-col cols="4" class="py-0 font-weight-regular"> Source </v-col>
         <v-col cols="8" class="py-0">
           <a
-            href="https://gitlab.com/web-dl/website"
+            href="https://github.com/web-dl-tools/website"
             class="accent--text"
             target="_blank"
           >
-            https://gitlab.com/web-dl/website
+            https://github.com/web-dl-tools/website
           </a>
         </v-col>
       </v-row>

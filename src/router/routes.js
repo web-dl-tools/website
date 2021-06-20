@@ -36,7 +36,7 @@ export default [
         },
       },
       {
-        path: "detail/:requestId",
+        path: "details/:requestId",
         name: "requests.detail",
         component: () => import("../views/requests/Detail"),
         meta: {

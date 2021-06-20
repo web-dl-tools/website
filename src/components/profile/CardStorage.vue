@@ -19,7 +19,7 @@
         <v-row v-for="request in storage" :key="request.id">
           <v-col
             cols="8"
-            class="py-0 cursor-pointer"
+            class="py-0 cursor-pointer text-truncate"
             @click="
               $router
                 .push({
@@ -29,12 +29,7 @@
                 .catch(() => {})
             "
           >
-            {{
-              truncate(
-                request.title ? request.title : request.id,
-                $vuetify.breakpoint.mdAndDown ? 30 : 50
-              )
-            }}
+            {{ request.title ? request.title : request.id }}
           </v-col>
           <v-col cols="4" class="py-0 text-end">
             {{ formatBytes(request.size, 2) }}
@@ -108,6 +103,9 @@ export default {
         },
         labels: labels,
         legend: {
+          show: false,
+        },
+        stroke: {
           show: false,
         },
         theme: {
