@@ -40,7 +40,7 @@ export const SET_TITLE = (state, title) => {
 };
 
 export const SET_AUTH_TOKEN = (token) =>
-  VueCookies.set("auth_token", token, "30h");
+  VueCookies.set("auth_token", token, "3m");
 
 /**
  * Set the authentication state and axios default authorization header.
