@@ -20,7 +20,7 @@
       <v-spacer />
       <status :request="request" />
     </v-card-title>
-    <v-card-subtitle class="subtitle-2 text-capitalize-sentence">
+    <v-card-subtitle class="subtitle-2">
       {{ this.formatRequest(request.request_type) }} request
     </v-card-subtitle>
   </v-card>

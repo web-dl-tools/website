@@ -6,11 +6,6 @@
   min-width: 40px !important;
 }
 
-
-.text-capitalize-sentence {
-  display: inline-block;
-}
-
 .text-capitalize-sentence::first-letter {
   text-transform: uppercase;
 }

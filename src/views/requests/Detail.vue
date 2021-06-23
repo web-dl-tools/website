@@ -69,9 +69,9 @@
                   </v-badge>
                   <span v-else>Files</span>
                 </v-tab>
-                <v-tab v-show="false">Timeline</v-tab>
-                <v-tab v-show="false">Raw</v-tab>
-                <v-tab v-show="false">
+                <v-tab>Timeline</v-tab>
+                <v-tab>Raw</v-tab>
+                <v-tab>
                   <v-badge
                     v-if="logs_count"
                     color="secondary"
