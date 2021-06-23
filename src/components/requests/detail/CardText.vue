@@ -29,7 +29,7 @@
             <p class="mb-2">
               <v-icon> mdi-shape-outline </v-icon>
               <span class="ml-1">
-                {{ formatRequest(item.request_type) }} Request
+                {{ formatRequest(item.request_type) }} request
               </span>
             </p>
             <p class="mb-2">

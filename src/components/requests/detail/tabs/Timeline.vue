@@ -138,7 +138,8 @@
           </v-card-subtitle>
           <v-card-text>
             The request has started processing with the
-            {{ formatRequest(item.request_type) }} handler. It was queued for
+            {{ formatRequest(item.request_type).toLowerCase() }} handler. It was
+            queued for
             {{
               formatDateDuration(
                 item.created_at,
@@ -166,8 +167,9 @@
             A request to download
             <a :href="item.url" class="info--text">{{ item.url }}</a>
             <br />
-            using the {{ formatRequest(item.request_type) }} handler has been
-            submitted.
+            using the
+            {{ formatRequest(item.request_type).toLowerCase() }} handler has
+            been submitted.
           </v-card-text>
         </v-card>
       </v-timeline-item>

@@ -96,7 +96,11 @@
       <v-divider class="mx-2 hidden-sm-and-down" inset vertical />
       <v-menu :rounded="'0 b'" offset-y>
         <template v-slot:activator="{ on, attrs }">
-          <v-btn v-on="on" v-bind="attrs" icon>
+          <v-btn v-on="on" v-bind="attrs" text>
+            <v-skeleton-loader v-if="!user" class="mr-3" type="table-cell" />
+            <span v-else class="hidden-sm-and-down mr-3">
+              {{ user.username }}
+            </span>
             <v-icon> mdi-account-circle-outline </v-icon>
           </v-btn>
         </template>
@@ -104,16 +108,19 @@
           <v-list-item
             @click="$router.push({ name: 'profile.overview' }).catch(() => {})"
           >
-            <v-list-item-icon>
+            <v-list-item-icon class="mr-3">
               <v-icon>mdi-account-circle-outline</v-icon>
             </v-list-item-icon>
             <v-list-item-content>
               <v-list-item-title>Your profile</v-list-item-title>
+              <v-list-item-subtitle>
+                {{ user ? user.full_name : "" }}
+              </v-list-item-subtitle>
             </v-list-item-content>
           </v-list-item>
           <v-divider />
           <v-list-item @click="$store.dispatch('application/logout')">
-            <v-list-item-icon>
+            <v-list-item-icon class="mr-3">
               <v-icon>mdi-exit-to-app</v-icon>
             </v-list-item-icon>
             <v-list-item-content>
@@ -145,6 +152,7 @@ export default {
     ...mapGetters({
       menuItems: "application/getMenuItems",
       search: "application/getSearch",
+      user: "users/getMe",
     }),
     search_label() {
       return `Search ${this.$route.meta.title.toLowerCase()}`;

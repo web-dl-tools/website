@@ -102,6 +102,7 @@
                 flat
                 hide-details
                 outlined
+                v-on:keyup.enter.native="update"
               />
             </v-col>
           </v-row>
@@ -191,15 +192,24 @@ export default {
           .finally(() => (this.loading = false));
       }
     },
+
+    /**
+     * Clone the user properties to local properties.
+     *
+     * @param user
+     */
+    process_user(user) {
+      this.username = user.username;
+      this.first_name = user.first_name;
+      this.last_name = user.last_name;
+    },
   },
   watch: {
     /**
-     * Clone the user properties to local properties whenever new changes come in.
+     * process local data whenever new changes come in.
      */
     user(n) {
-      this.username = n.username;
-      this.first_name = n.first_name;
-      this.last_name = n.last_name;
+      this.process_user(n);
     },
     /**
      * Removes the error message if the username is changed.
@@ -219,6 +229,12 @@ export default {
     username() {
       this.error = false;
     },
+  },
+  /**
+   * Load in the user data.
+   */
+  created() {
+    if (this.user) this.process_user(this.user);
   },
 };
 </script>

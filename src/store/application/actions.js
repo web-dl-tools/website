@@ -171,7 +171,7 @@ export const handleWebsocketRequestStatusUpdateEvent = (
         dispatch("addMessage", {
           text: `Started processing ${formatRequest(
             request.request_type
-          )} Request
+          )} request
           <br />
           <span class="info--text">${truncate(request.url, 45)}</span>`,
           type: "info",
@@ -180,7 +180,7 @@ export const handleWebsocketRequestStatusUpdateEvent = (
         break;
       case "completed":
         dispatch("addMessage", {
-          text: `Finished ${formatRequest(request.request_type)} Request
+          text: `Finished ${formatRequest(request.request_type)} request
           <br />
           <span class="info--text">${request.title}</span>`,
           type: "success",
@@ -197,7 +197,7 @@ export const handleWebsocketRequestStatusUpdateEvent = (
         dispatch("addMessage", {
           text: `Failed to download ${formatRequest(
             request.request_type
-          )} Request
+          )} request
           <br />
           <span class="info--text">${truncate(request.url, 45)}</span>`,
           type: "error",
@@ -234,7 +234,7 @@ export const handleWebsocketRequestTaskFinishedEvent = (
         dispatch("addMessage", {
           text: `Finished compressing ${formatRequest(
             request.request_type
-          )} Request
+          )} request
           <br />
           <span class="info--text">${request.title}</span>`,
           type: "info",

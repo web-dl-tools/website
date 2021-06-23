@@ -35,11 +35,5 @@ export default {
       title: "application/getTitle",
     }),
   },
-  /**
-   * Load in the user data.
-   */
-  created() {
-    this.$store.dispatch("users/getMe");
-  },
 };
 </script>

@@ -117,6 +117,7 @@ export default {
    */
   created() {
     this.setActive(this.$router.currentRoute.name);
+    this.$store.dispatch("users/getMe");
     this.$store.dispatch("requests/getAll");
     this.$store.dispatch("application/connectWebsocket");
   },
