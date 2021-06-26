@@ -67,7 +67,7 @@
       <v-col v-if="hasVideoFormats" cols="12" md="6" class="pb-0">
         <p class="text-center caption">Video</p>
         <selectable-card
-          class="mb-6"
+          class="mb-3"
           :selected="video_format_selection === ''"
           :disabled="false"
           :title="`No video stream`"
@@ -103,7 +103,7 @@
       <v-col v-if="hasAudioFormats" cols="12" md="6" class="pb-0">
         <p class="text-center caption">Audio</p>
         <selectable-card
-          class="mb-6"
+          class="mb-3"
           :selected="audio_format_selection === ''"
           :disabled="false"
           :title="`No audio stream`"
