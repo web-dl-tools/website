@@ -37,7 +37,7 @@
               </p>
               <p class="mt-n2 mb-0 overline font-weight-light">
                 {{ item.extension.replace(".", "") }} &middot;
-                {{ formatBytes(item.size, 2) }} &middot;
+                {{ formatBytes(item.size, technical ? 2 : 0) }} &middot;
                 {{ formatDate(item.created_at, "L") }}
               </p>
             </div>
@@ -53,7 +53,7 @@
           <v-row class="px-4 mx-0" v-else>
             <v-col class="pb-0 pl-0" cols="12" md="12">
               <v-icon class="mr-1"> mdi-database </v-icon>
-              {{ formatBytes(size, 2) }} size
+              {{ formatBytes(size, technical ? 2 : 0) }} size
             </v-col>
             <v-col class="pb-0 pl-0" cols="12" md="12">
               <v-icon class="mr-1"> mdi-folder-outline </v-icon>
@@ -160,6 +160,7 @@ export default {
     ...mapGetters({
       request: "requests/get",
       files: "requests/getFiles",
+      technical: "users/isTechnical",
     }),
     /**
      * Calculate if the files contain directories (on root level).

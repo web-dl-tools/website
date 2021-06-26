@@ -3,8 +3,14 @@
     <v-container>
       <app-title />
       <v-row>
-        <v-col cols="12" md="6">
-          <card-profile />
+        <v-col cols="12" md="6" class="pa-0">
+          <v-col cols="12">
+            <card-profile />
+          </v-col>
+
+          <v-col cols="12">
+            <card-settings />
+          </v-col>
         </v-col>
 
         <v-col cols="12" md="6">
@@ -20,6 +26,7 @@ import { mapGetters } from "vuex";
 import formatters from "../../mixins/formatters";
 import AppTitle from "../../components/ui/AppTitle";
 import CardProfile from "../../components/profile/CardProfile";
+import CardSettings from "../../components/profile/CardSettings";
 import CardStorage from "../../components/profile/CardStorage";
 
 export default {
@@ -28,6 +35,7 @@ export default {
   components: {
     AppTitle,
     CardProfile,
+    CardSettings,
     CardStorage,
   },
   computed: {

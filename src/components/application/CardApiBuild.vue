@@ -15,7 +15,7 @@
         </v-col>
       </v-row>
     </v-card-text>
-    <v-card-text v-else>
+    <v-card-text v-else-if="technical">
       <v-row>
         <v-col cols="4" class="font-weight-regular"> Version </v-col>
         <v-col cols="8">
@@ -100,6 +100,26 @@
         </v-col>
       </v-row>
     </v-card-text>
+    <v-card-text v-else>
+      <v-row>
+        <v-col cols="4" class="font-weight-regular"> Version </v-col>
+        <v-col cols="8">
+          {{ apiBuildInfo.tag }}
+        </v-col>
+      </v-row>
+      <v-row>
+        <v-col cols="4" class="py-0 font-weight-regular"> Created </v-col>
+        <v-col cols="8" class="py-0">
+          {{ formatDate(apiBuildInfo.commiter.date, "dddd LL") }}
+        </v-col>
+      </v-row>
+      <v-row>
+        <v-col cols="4" class="py-0"></v-col>
+        <v-col cols="8" class="py-0">
+          {{ formatDateFromNow(apiBuildInfo.commiter.date) }}
+        </v-col>
+      </v-row>
+    </v-card-text>
   </v-card>
 </template>
 
@@ -114,6 +134,7 @@ export default {
     ...mapGetters({
       apiBuildInfo: "application/getApiBuildInfo",
       websocket: "application/getWebsocket",
+      technical: "users/isTechnical",
     }),
   },
   methods: {

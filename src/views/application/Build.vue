@@ -11,7 +11,7 @@
           <card-api-build />
         </v-col>
 
-        <v-col cols="12">
+        <v-col cols="12" v-if="technical">
           <card-logs />
         </v-col>
       </v-row>
@@ -39,6 +39,7 @@ export default {
   computed: {
     ...mapGetters({
       title: "application/getTitle",
+      technical: "users/isTechnical",
     }),
   },
 };

@@ -93,7 +93,7 @@
                 {{ format.width }}x{{ format.height }} &middot;
                 {{ format.fps }} fps &middot; {{ format.tbr }} KBit/s
               </v-card-subtitle>
-              <v-card-text class="overline mb-n1">
+              <v-card-text class="overline mb-n2">
                 {{ format.ext }} &middot; {{ format.vcodec }}
               </v-card-text>
             </selectable-card>
@@ -128,7 +128,7 @@
               <v-card-subtitle class="caption">
                 {{ format.asr }} Hertz
               </v-card-subtitle>
-              <v-card-text class="overline mb-n1">
+              <v-card-text class="overline mb-n2">
                 {{ format.ext }} &middot; {{ format.format_note }} &middot;
                 {{ format.acodec }}
               </v-card-text>

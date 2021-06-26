@@ -69,9 +69,9 @@
                   </v-badge>
                   <span v-else>Files</span>
                 </v-tab>
-                <v-tab>Timeline</v-tab>
-                <v-tab>Raw</v-tab>
-                <v-tab>
+                <v-tab v-if="technical">Timeline</v-tab>
+                <v-tab v-if="technical">Raw</v-tab>
+                <v-tab v-if="technical">
                   <v-badge
                     v-if="logs_count"
                     color="secondary"
@@ -90,9 +90,14 @@
                   @count-change="(n) => (files_count = n)"
                   ref="files"
                 />
-                <timeline :active="tab === 2" :item="request" />
-                <raw :active="tab === 3" :item="request" />
+                <timeline
+                  v-if="technical"
+                  :active="tab === 2"
+                  :item="request"
+                />
+                <raw v-if="technical" :active="tab === 3" :item="request" />
                 <logs
+                  v-if="technical"
                   :active="tab === 4"
                   :request_id="this.$route.params.requestId"
                   @count-change="(n) => (logs_count = n)"
@@ -166,6 +171,7 @@ export default {
     ...mapGetters({
       request: "requests/get",
       title: "application/getTitle",
+      technical: "users/isTechnical",
     }),
   },
   watch: {

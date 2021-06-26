@@ -6,7 +6,7 @@
           {{ formatDateFromNow(item.modified_at) }}
         </template>
         <v-card outlined>
-          <v-card-title class="font-weight-light font-size-18">
+          <v-card-title class="font-weight-light font-size-18 mt-n1">
             Request state updated.
           </v-card-title>
           <v-card-subtitle class="font-weight-bold grey--text">
@@ -32,7 +32,7 @@
           {{ formatDateFromNow(item.compressed_at) }}
         </template>
         <v-card outlined>
-          <v-card-title class="font-weight-light font-size-18">
+          <v-card-title class="font-weight-light font-size-18 mt-n1">
             Request archive created.
           </v-card-title>
           <v-card-subtitle class="font-weight-bold success--text">
@@ -61,7 +61,7 @@
           {{ formatDateFromNow(item.start_compressing_at) }}
         </template>
         <v-card outlined>
-          <v-card-title class="font-weight-light font-size-18">
+          <v-card-title class="font-weight-light font-size-18 mt-n1">
             Request archive started compressing.
           </v-card-title>
           <v-card-subtitle class="font-weight-bold info--text">
@@ -86,7 +86,7 @@
           {{ formatDateFromNow(item.modified_at) }}
         </template>
         <v-card outlined>
-          <v-card-title class="font-weight-light font-size-18">
+          <v-card-title class="font-weight-light font-size-18 mt-n1">
             Request failed.
           </v-card-title>
           <v-card-subtitle class="font-weight-bold error--text">
@@ -101,7 +101,7 @@
           {{ formatDateFromNow(item.completed_at) }}
         </template>
         <v-card outlined>
-          <v-card-title class="font-weight-light font-size-18">
+          <v-card-title class="font-weight-light font-size-18 mt-n1">
             Request has completed.
           </v-card-title>
           <v-card-subtitle class="font-weight-bold success--text">
@@ -130,7 +130,7 @@
           {{ formatDateFromNow(item.start_processing_at) }}
         </template>
         <v-card outlined>
-          <v-card-title class="font-weight-light font-size-18">
+          <v-card-title class="font-weight-light font-size-18 mt-n1">
             Request has started processing.
           </v-card-title>
           <v-card-subtitle class="font-weight-bold accent--text">
@@ -157,7 +157,7 @@
           {{ formatDateFromNow(item.created_at) }}
         </template>
         <v-card outlined>
-          <v-card-title class="font-weight-light font-size-18">
+          <v-card-title class="font-weight-light font-size-18 mt-n1">
             Request has been created.
           </v-card-title>
           <v-card-subtitle class="font-weight-bold info--text">

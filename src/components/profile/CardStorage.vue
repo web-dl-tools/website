@@ -32,7 +32,7 @@
             {{ request.title ? request.title : request.id }}
           </v-col>
           <v-col cols="4" class="py-0 text-end">
-            {{ formatBytes(request.size, 2) }}
+            {{ formatBytes(request.size, technical ? 2 : 0) }}
           </v-col>
         </v-row>
         <v-row class="mb-n1">
@@ -42,7 +42,7 @@
               {{
                 formatBytes(
                   storage.reduce((acc, cur) => acc + cur.size, 0),
-                  2
+                  technical ? 2 : 0
                 )
               }}
             </v-chip>
@@ -74,6 +74,7 @@ export default {
   computed: {
     ...mapGetters({
       _storage: "users/getStorage",
+      technical: "users/isTechnical",
     }),
     storage() {
       const storage = this._storage;

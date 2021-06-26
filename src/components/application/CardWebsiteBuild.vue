@@ -8,7 +8,7 @@
     <v-card-subtitle class="subtitle-2 col-8 pl-4">
       Below you can find information about the current website build of Web DL.
     </v-card-subtitle>
-    <v-card-text>
+    <v-card-text v-if="technical">
       <v-row>
         <v-col cols="4" class="font-weight-regular"> Version </v-col>
         <v-col cols="8">
@@ -78,6 +78,26 @@
         </v-col>
       </v-row>
     </v-card-text>
+    <v-card-text v-else>
+      <v-row>
+        <v-col cols="4" class="font-weight-regular"> Version </v-col>
+        <v-col cols="8">
+          {{ websiteBuildInfo.tag }}
+        </v-col>
+      </v-row>
+      <v-row>
+        <v-col cols="4" class="py-0 font-weight-regular"> Created </v-col>
+        <v-col cols="8" class="py-0">
+          {{ formatDate(websiteBuildInfo.commiter.date, "dddd LL") }}
+        </v-col>
+      </v-row>
+      <v-row>
+        <v-col cols="4" class="py-0"></v-col>
+        <v-col cols="8" class="py-0">
+          {{ formatDateFromNow(websiteBuildInfo.commiter.date) }}
+        </v-col>
+      </v-row>
+    </v-card-text>
   </v-card>
 </template>
 
@@ -91,6 +111,7 @@ export default {
   computed: {
     ...mapGetters({
       websiteBuildInfo: "application/getBuildInfo",
+      technical: "users/isTechnical",
     }),
   },
 };
