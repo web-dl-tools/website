@@ -107,7 +107,7 @@ export default {
         .catch(() => {
           this.$store.dispatch("application/addMessage", {
             text: `An error occurred when updating.<br />
-              <span class="grey--text">Please check your details and/or try again later.</span>`,
+              <span class="grey--text">Please check your preferences and/or try again later.</span>`,
             type: "error",
             action: null,
             timeout: 3000,
