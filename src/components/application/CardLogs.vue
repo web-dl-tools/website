@@ -4,8 +4,7 @@
       <v-timeline-item class="pb-1" hide-dot>
         <v-card-title class="pt-0"> Logs </v-card-title>
         <v-card-subtitle class="subtitle-2 col-8 pl-4">
-          below you can find the {{ logs.length }} requests you've made to Web
-          DL today.
+          You've made {{ logs.length }} requests to Web DL today.
         </v-card-subtitle>
       </v-timeline-item>
 

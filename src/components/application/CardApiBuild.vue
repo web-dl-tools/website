@@ -6,7 +6,7 @@
       <v-icon>mdi-link-variant</v-icon>
     </v-card-title>
     <v-card-subtitle class="subtitle-2 col-8 pl-4">
-      Below you can find information about the current API build of Web DL.
+      Information about the current API build of Web DL.
     </v-card-subtitle>
     <v-card-text class="pb-0" v-if="!apiBuildInfo">
       <v-row>

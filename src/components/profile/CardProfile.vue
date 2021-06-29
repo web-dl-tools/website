@@ -19,8 +19,8 @@
         </v-btn>
       </v-card-title>
       <v-card-subtitle class="subtitle-2 col-8 pl-4">
-        Hi {{ user.full_name }}, below you can {{ edit ? "edit" : "find" }} your
-        account details stored in Web DL.
+        Hi {{ user.full_name }}, here you can
+        {{ edit ? "edit" : "review" }} your account details stored in Web DL.
       </v-card-subtitle>
       <v-card-text v-if="!edit">
         <v-row>
@@ -64,7 +64,7 @@
                 v-model="username"
                 :label="username_label"
                 autocomplete="off"
-                class="mb-4"
+                class="mb-4 pt-4"
                 color="accent"
                 name="username"
                 prepend-inner-icon="mdi-account"

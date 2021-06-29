@@ -10,7 +10,7 @@
         <v-icon> mdi-database </v-icon>
       </v-card-title>
       <v-card-subtitle class="subtitle-2 col-8 pl-4">
-        Below you can explore your current storage usage in Web DL.
+        Your storage usage in Web DL.
       </v-card-subtitle>
       <v-card-text class="pt-3">
         <v-row class="mb-6 justify-center">
