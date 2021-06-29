@@ -15,7 +15,7 @@
                 outlined
                 small
               >
-                {{ formatBytes(request.storage_size) }}
+                {{ formatBytes(request.storage_size, technical ? 2 : 0) }}
               </v-chip>
               <v-btn
                 icon

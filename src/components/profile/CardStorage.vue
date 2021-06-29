@@ -14,6 +14,17 @@
       </v-card-subtitle>
       <v-card-text class="pt-3">
         <v-row class="mb-6 justify-center">
+          <div class="donut-inner text-center">
+            <h2 class="font-weight-thin grey--text mb-n2">
+              {{
+                formatBytes(
+                  storage.reduce((acc, cur) => acc + cur.size, 0),
+                  technical ? 2 : 0
+                )
+              }}
+            </h2>
+            <p class="font-weight-black grey--text overline mb-0">Total</p>
+          </div>
           <vue-apex-charts type="donut" :options="options" :series="series" />
         </v-row>
         <v-row v-for="request in storage" :key="request.id">
@@ -118,7 +129,7 @@ export default {
         tooltip: {
           y: {
             formatter: function (value) {
-              return formatBytes(value);
+              return formatBytes(value, 2);
             },
           },
         },
@@ -135,3 +146,12 @@ export default {
   },
 };
 </script>
+
+<style>
+.donut-inner {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -35%);
+}
+</style>

@@ -10,20 +10,40 @@
           @click="$router.push({ name: 'application.build' }).catch(() => {})"
         >
           <v-col
+            v-if="technical"
             :class="$vuetify.breakpoint.mdAndUp ? 'pb-0' : 'pa-0'"
             cols="12"
           >
             <span class="font-weight-bold">Web DL Website</span>
-            v{{ buildInfo.tag }} &middot;
+            v{{ buildInfo.tag }} &middot; Build
+            {{ buildInfo.abbreviated_commit }} &middot;
             {{ formatDate(buildInfo.commiter.date, "LL") }}
           </v-col>
           <v-col
+            v-else
+            :class="$vuetify.breakpoint.mdAndUp ? 'pb-0' : 'pa-0'"
+            cols="12"
+          >
+            <span class="font-weight-bold">Web DL Website</span>
+            v{{ buildInfo.tag }}
+          </v-col>
+          <v-col
+            v-if="technical"
             :class="$vuetify.breakpoint.mdAndUp ? 'pt-0' : 'pa-0'"
             cols="12"
           >
             <span class="font-weight-bold">Web DL API</span>
-            v{{ apiBuildInfo.tag }} &middot;
+            v{{ apiBuildInfo.tag }} &middot; Build
+            {{ apiBuildInfo.abbreviated_commit }} &middot;
             {{ formatDate(apiBuildInfo.commiter.date, "LL") }}
+          </v-col>
+          <v-col
+            v-else
+            :class="$vuetify.breakpoint.mdAndUp ? 'pt-0' : 'pa-0'"
+            cols="12"
+          >
+            <span class="font-weight-bold">Web DL API</span>
+            v{{ apiBuildInfo.tag }}
           </v-col>
         </div>
       </v-row>
@@ -54,6 +74,7 @@ export default {
     ...mapGetters({
       buildInfo: "application/getBuildInfo",
       apiBuildInfo: "application/getApiBuildInfo",
+      technical: "users/isTechnical",
     }),
   },
   props: {

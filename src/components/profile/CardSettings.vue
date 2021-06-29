@@ -19,7 +19,8 @@
         </v-btn>
       </v-card-title>
       <v-card-subtitle class="subtitle-2 col-8 pl-4">
-        Below you can {{ edit ? "set" : "find" }} your user preferences in Web DL.
+        Below you can {{ edit ? "set" : "find" }} your user preferences in Web
+        DL.
       </v-card-subtitle>
       <v-card-text>
         <v-row>
