@@ -74,7 +74,7 @@ export const connectWebsocket = ({ commit, dispatch }) => {
 
   websocket.onerror = () =>
     dispatch("addMessage", {
-      text: `An error occurred with the <b>Web DL webSocket</b> connection.<br />
+      text: `An error occurred with the <b>Web DL websocket</b> connection.<br />
       <span class="grey--text">Please refresh the page to reconnect.</span>`,
       type: "error",
       action: null,
