@@ -16,6 +16,7 @@ import "./theme/overwrite.font.scss";
 import "./theme/overwrite.layout.scss";
 import "./theme/overwrite.opacity.scss";
 import "./theme/overwrite.alert.scss";
+import "./theme/overwrite.tab.scss";
 import "./theme/overwrite.table.scss";
 import "./theme/overwrite.tree.scss";
 import "./theme/overwrite.chip.scss";

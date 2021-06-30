@@ -64,7 +64,7 @@ export const connectWebsocket = ({ commit, dispatch }) => {
   websocket.onclose = () => {
     if (router.currentRoute.name !== "login")
       dispatch("addMessage", {
-        text: `The <b>Web DL Websocket</b> connection has closed.<br />
+        text: `The <b>Web DL websocket</b> connection has closed.<br />
         <span class="grey--text">Please refresh the page to reconnect.</span>`,
         type: "error",
         action: null,
@@ -74,7 +74,7 @@ export const connectWebsocket = ({ commit, dispatch }) => {
 
   websocket.onerror = () =>
     dispatch("addMessage", {
-      text: `An error occurred with the <b>Web DL WebSocket</b> connection.<br />
+      text: `An error occurred with the <b>Web DL webSocket</b> connection.<br />
       <span class="grey--text">Please refresh the page to reconnect.</span>`,
       type: "error",
       action: null,

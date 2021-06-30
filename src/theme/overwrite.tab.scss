@@ -1,0 +1,14 @@
+.v-tabs-slider {
+  border-radius: 1px;
+}
+
+.theme--dark.v-tabs .v-tab:hover:before {
+  border-radius: 4px;
+}
+
+.theme--dark.v-tabs .v-tab--active:before,
+.theme--dark.v-tabs .v-tab--active:hover:before,
+.theme--dark.v-tabs .v-tab:focus:before {
+  border-bottom-left-radius: 0;
+  border-bottom-right-radius: 0;
+}
