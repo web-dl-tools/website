@@ -1,7 +1,9 @@
 <template>
   <div>
     <v-card outlined raised v-if="loading">
-      <v-skeleton-loader type="article" />
+      <v-skeleton-loader type="card-heading" />
+      <v-skeleton-loader type="image" />
+      <v-skeleton-loader type="list-item-three-line" />
     </v-card>
     <v-card outlined raised class="pb-1" v-else>
       <v-card-title>
