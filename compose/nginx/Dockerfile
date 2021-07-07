@@ -21,7 +21,7 @@ FROM nginx:1.19.6
 
 LABEL version = "1.0"
 LABEL description = "Nginx docker container"
-LABEL maintainer = "rinesh.ramadhin@gmail.com"
+LABEL maintainer = "Rinesh Ramadhin"
 
 COPY --from=builder code/dist /usr/share/nginx/html
 COPY compose/nginx/nginx.conf /etc/nginx/conf.d/default.conf
