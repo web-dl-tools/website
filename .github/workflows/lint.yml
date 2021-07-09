@@ -1,4 +1,4 @@
-name: CI
+name: Lint
 
 on:
   push:
@@ -18,7 +18,7 @@ jobs:
       - uses: actions/checkout@v2
 
       # Install the node.js application dependencies
-      - name: Install the dependencies
+      - name: Install dependencies
         run: yarn install
 
       # Lint the source code

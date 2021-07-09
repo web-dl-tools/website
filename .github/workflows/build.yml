@@ -1,0 +1,32 @@
+name: Build
+
+on:
+  push:
+    branches: [ master ]
+  pull_request:
+    branches: [ master ]
+
+  # Allows you to run this workflow manually from the Actions tab
+  workflow_dispatch:
+
+jobs:
+  build_application:
+    runs-on: ubuntu-latest
+
+    steps:
+      # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
+      - uses: actions/checkout@v2
+
+      # Install the node.js application dependencies
+      - name: Install dependencies
+        run: yarn install
+
+      # Build the application
+      - name: build application
+        run: yarn build
+
+      # Save the build files artifacts
+      - uses: actions/upload-artifact@v2
+        with:
+          name: 'web-dl_website'
+          path: 'dist/*'
