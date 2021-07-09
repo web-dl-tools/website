@@ -1,0 +1,30 @@
+name: CI
+
+on:
+  push:
+    branches: [ master ]
+  pull_request:
+    branches: [ master ]
+
+  # Allows you to run this workflow manually from the Actions tab
+  workflow_dispatch:
+
+jobs:
+  smoke_test_docker_containers:
+    runs-on: ubuntu-latest
+
+    steps:
+      # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
+      - uses: actions/checkout@v2
+
+      # Build and start the containers
+      - name: Build the docker-compose stack
+        run: docker-compose up -d
+
+      # Check the containers
+      - name: Check running containers
+        run: docker ps -a
+
+      # Shutdown the containers
+      - name: shutdown the containers
+        run: docker-compose down --remove-orphans
