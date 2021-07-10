@@ -1,6 +1,7 @@
 # Web DL Website
 ![Web DL website overview page](.github/assets/overview.png)
 
+![release](https://badgen.net/github/release/web-dl-tools/website)
 ![lint workflow](https://github.com/web-dl-tools/website/actions/workflows/lint.yml/badge.svg)
 ![test workflow](https://github.com/web-dl-tools/website/actions/workflows/test.yml/badge.svg)
 ![build workflow](https://github.com/web-dl-tools/website/actions/workflows/build.yml/badge.svg)
