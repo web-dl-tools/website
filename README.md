@@ -15,7 +15,7 @@ It's the official browser client for the Web DL tools stack.
 * Authenticated user access to resources and files.
 * Websocket live connection for automatic status and progress updates.
 * Charts for data storage insights.
-* Much more features...
+* Even more...
 
 ## Installation
 The Wel DL Website requires the following software and OS to be installed:
@@ -25,7 +25,7 @@ The Wel DL Website requires the following software and OS to be installed:
 
 On lower versions of macOS, Windows, or on Linux, the 
 [Docker Engine](https://hub.docker.com/search?offering=community&operating_system=linux&q=&type=edition)
-can also be installed, although the Web DL Website was not originally developed using this tools.
+can also be installed, although the Web DL Website was not originally developed using this tool.
 
 ### Runtime environment
 - Docker 18.09.2+
@@ -53,8 +53,7 @@ $ make stop && make clean
 For development the Web DL Website requires the following software to be installed:
 - [Node.js](https://nodejs.org/en)
 - [Yarn](https://classic.yarnpkg.com/en/docs/install/#mac-stable)
-
-In additional several packages will be installed via Yarn.
+- Several additional packages installed via Yarn.
 
 ### Runtime environment
 - Node.js 15.5.1+
