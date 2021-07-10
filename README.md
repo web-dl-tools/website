@@ -1,5 +1,5 @@
 # Web DL Website
-![Web DL website overview page](.github/assets/overview-framed.png)
+![Web DL website overview page](.github/assets/overview.png)
 
 ![lint workflow](https://github.com/web-dl-tools/website/actions/workflows/lint.yml/badge.svg)
 ![test workflow](https://github.com/web-dl-tools/website/actions/workflows/test.yml/badge.svg)
