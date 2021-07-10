@@ -1,15 +1,23 @@
 # Web DL Website
 
-Vue.js SPA Website for Web DL.
+![Web DL website overview page](.github/assets/overview-framed.png)
+
+![lint workflow](https://github.com/web-dl-tools/website/actions/workflows/lint.yml/badge.svg)
+![test workflow](https://github.com/web-dl-tools/website/actions/workflows/test.yml/badge.svg)
+![build workflow](https://github.com/web-dl-tools/website/actions/workflows/build.yml/badge.svg)
+
+**Web DL website** is a Vue.js SPA Website built to fully integrate the Web DL API and all of its features. 
+It's the official browser client for the Web DL tools stack.
 
 ## Installation
-
 The Wel DL Website requires the following software and OS to be installed:
 
-- Apple Mac OS Yosemite 10.10.3+ or Microsoft Windows 10 Professional/Enterprise 64-bit
+- Apple macOS Yosemite 10.10.3+ or Microsoft Windows 10 Professional/Enterprise 64-bit
 - [Docker Desktop](https://www.docker.com/products/docker-desktop) 
 
-On lower versions of Mac OS, Windows, or on Linux, the [Docker Toolbox](https://docs.docker.com/toolbox/toolbox_install_windows/) can also be installed, although the Web DL Website is not originally developed using this tools.
+On lower versions of macOS, Windows, or on Linux, the 
+[Docker Engine](https://hub.docker.com/search?offering=community&operating_system=linux&q=&type=edition)
+can also be installed, although the Web DL Website was not originally developed using this tools.
 
 ### Runtime environment
 - Docker 18.09.2+
@@ -44,6 +52,12 @@ $ make stop && make clean
 ```
 
 ## Development
+For development the Wel DL Website requires the following software to be installed:
+
+- [Node.js](https://nodejs.org/en)
+- [Yarn](https://classic.yarnpkg.com/en/docs/install/#mac-stable)
+
+In additional several packages will be installed via Yarn.
 
 ### Runtime environment
 - Node.js 15.5.1+
