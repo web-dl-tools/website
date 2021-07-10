@@ -1,5 +1,4 @@
 # Web DL Website
-
 ![Web DL website overview page](.github/assets/overview-framed.png)
 
 ![lint workflow](https://github.com/web-dl-tools/website/actions/workflows/lint.yml/badge.svg)
@@ -8,6 +7,15 @@
 
 **Web DL website** is a Vue.js SPA Website built to fully integrate the Web DL API and all of its features. 
 It's the official browser client for the Web DL tools stack.
+
+### Some features
+* Responsive for all screen sizes, from mobile to ultra-wide.
+* Compiled for all modern web browsers.
+* 100% integrated with Web DL API.
+* Authenticated user access to resources and files.
+* Websocket live connection for automatic status and progress updates.
+* Charts for data storage insights.
+* Much more features...
 
 ## Installation
 The Wel DL Website requires the following software and OS to be installed:
@@ -24,35 +32,25 @@ can also be installed, although the Web DL Website was not originally developed 
 - Docker Compose 1.23.2+
 
 ### Startup guide
-
- - Open a terminal window in the project folder.
- - Run the following code to prepare and start the required containers.
-
+Prepare and start the required containers.
 ``` bash
 $ make build && make start
 ```
 
 ### Update guide
-
- - Open a terminal window in the project folder.
- - Run the following code to update the containers.
-
+Shutdown, update and restart the containers.
 ``` bash
 $ make update && make start
 ```
 
 ### Shutdown and cleaning up guide
-
- - Open a terminal window in the project folder.
- - Run the following code to stop, remove the running containers and all images.
-
+Stop, shutdown and remove the running containers and all images.
 ``` bash
 $ make stop && make clean
 ```
 
 ## Development
-For development the Wel DL Website requires the following software to be installed:
-
+For development the Web DL Website requires the following software to be installed:
 - [Node.js](https://nodejs.org/en)
 - [Yarn](https://classic.yarnpkg.com/en/docs/install/#mac-stable)
 
@@ -63,30 +61,31 @@ In additional several packages will be installed via Yarn.
 - yarn 1.22.5+
 
 ### Project setup
+Install all required dependencies in order to run and develop the application.
 ``` bash
 $ yarn install
 ```
 
-### Compiles and hot-reloads for development
-
+### Live serving
+Compiles and hot-reloads the application for development.
 ``` bash
 $ yarn serve
 ```
 
-### Lints and fixes files
-
+### Lint
+Lints and fixes files.
 ``` bash
 $ yarn lint
 ```
 
-### Compiles and minifies for production
-
+### Build
+Compiles and minifies the application for production.
 ``` bash
 $ yarn build
 ```
 
-### Build production container(s) for testing purposes
-
+### Dockerize
+Build production container(s) for testing purposes.
 ``` bash
 $ make build && make start_debug
 ```
