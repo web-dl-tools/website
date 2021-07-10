@@ -21,10 +21,10 @@ It's the official browser client for the Web DL tools stack.
 Configuration for the Web DL Website is managed by an environment file. A base example is provided in the
 repository as _.env.dist_. Please copy and rename this file to _.env_ and fill in the values.
 
-| Property           | Description                           | Required | Example                                               |
-|--------------------|---------------------------------------|----------|-------------------------------------------------------|
-| VUE_APP_API_URL    | The URL of the Web DL API             | Yes      | http://localhost:8000/api/                            |
-| VUE_APP_SENTRY_DSN | The DSN URL for Sentry error tracking | No       | https://1234567890abcdef@12345.ingest.sentry.io/67890 |
+| Property               | Description                           | Required | Example                                               |
+|------------------------|---------------------------------------|----------|-------------------------------------------------------|
+| **VUE_APP_API_URL**    | The URL of the Web DL API             | Yes      | http://localhost:8000/api/                            |
+| **VUE_APP_SENTRY_DSN** | The DSN URL for Sentry error tracking | No       | https://1234567890abcdef@12345.ingest.sentry.io/67890 |
 
 ## Installation
 The WeB DL Website requires the following software and OS to be installed:
