@@ -38,14 +38,13 @@ $ make build && make start
  - Run the following code to update the containers.
 
 ``` bash
-$ make stop && make clean
-$ make update
+$ make update && make start
 ```
 
-### Shutdown guide
+### Shutdown and cleaning up guide
 
  - Open a terminal window in the project folder.
- - Run the following code to stop and remove the running containers.
+ - Run the following code to stop, remove the running containers and all images.
 
 ``` bash
 $ make stop && make clean
@@ -84,4 +83,10 @@ $ yarn lint
 
 ``` bash
 $ yarn build
+```
+
+### Build production container(s) for testing purposes
+
+``` bash
+$ make build && make start_debug
 ```
