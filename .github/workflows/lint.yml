@@ -11,6 +11,7 @@ on:
 
 jobs:
   lint_source_code:
+    name: Lint source code
     runs-on: ubuntu-latest
 
     steps:
