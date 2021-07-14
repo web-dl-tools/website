@@ -13,6 +13,7 @@ on:
 
 jobs:
   build_application:
+    name: Build application
     runs-on: ubuntu-latest
 
     steps:
