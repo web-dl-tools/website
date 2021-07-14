@@ -11,6 +11,7 @@ on:
 
 jobs:
   smoke_test_docker_containers:
+    name: Smoke test Docker containers
     runs-on: ubuntu-latest
 
     steps:
