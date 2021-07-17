@@ -48,7 +48,7 @@ can also be installed, although the Web DL Website was not originally developed 
 ### Startup guide
 Prepare and start the required containers.
 ``` bash
-$ make build && make start
+$ make start
 ```
 
 ### Update guide
@@ -100,5 +100,5 @@ $ yarn build
 ### Dockerize
 Build production container(s) for testing purposes.
 ``` bash
-$ make build && make start_debug
+$ make start_debug
 ```
