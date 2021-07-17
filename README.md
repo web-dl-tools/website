@@ -37,7 +37,8 @@ The WeB DL Website requires the following software and OS to be installed:
 <a name="lower_os_versions">1</a>: On lower versions of macOS, Windows, or on Linux, the 
 [Docker Engine](https://hub.docker.com/search?offering=community&operating_system=linux&q=&type=edition)
 can also be installed, although the Web DL Website was not originally developed using this tool.
-<a name="apple_silicon">1</a>: Docker Desktop for Mac on Apple Silicon is available but requires a 
+
+<a name="apple_silicon">2</a>: Docker Desktop for Mac on Apple Silicon is available but requires a 
 [manual install of Rosetta 2](https://docs.docker.com/docker-for-mac/apple-silicon/#system-requirements).
 
 ### Runtime environment
