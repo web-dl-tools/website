@@ -101,3 +101,19 @@ export const getApiBuildInfo = (state) => {
  * @returns {string}
  */
 export const getMessages = (state) => state.messages;
+
+/**
+ * Get the latest website release.
+ *
+ * @param state
+ * @returns object
+ */
+export const getLatestWebsiteRelease = (state) => state.latest_website_release;
+
+/**
+ * Get the latest api release.
+ *
+ * @param state
+ * @returns object
+ */
+export const getLatestApiRelease = (state) => state.latest_api_release;

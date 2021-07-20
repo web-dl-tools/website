@@ -12,7 +12,8 @@
       <v-row>
         <v-col cols="4" class="font-weight-regular"> Version </v-col>
         <v-col cols="8">
-          {{ websiteBuildInfo.tag }}
+          {{ websiteBuildInfo.tag }} <br />
+          <latest-release-check repo="website" />
         </v-col>
       </v-row>
       <v-row>
@@ -104,10 +105,14 @@
 <script>
 import { mapGetters } from "vuex";
 import formatters from "../../mixins/formatters";
+import LatestReleaseCheck from "./LatestReleaseCheck";
 
 export default {
   name: "components.application.card-website-build",
   mixin: [formatters],
+  components: {
+    LatestReleaseCheck,
+  },
   computed: {
     ...mapGetters({
       websiteBuildInfo: "application/getBuildInfo",

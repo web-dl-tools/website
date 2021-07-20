@@ -2,6 +2,7 @@ import Vue from "vue";
 import moment from "moment";
 import psl from "psl";
 import { formatRequest, formatBytes } from "./public";
+import semver from "semver";
 
 export default Vue.mixin({
   methods: {
@@ -211,6 +212,16 @@ export default Vue.mixin({
       hostname = hostname.split("?")[0];
 
       return psl.parse(hostname).domain;
+    },
+    /**
+     * Compare two semantic versions and return the comparable release type.
+     *
+     * @param v1
+     * @param v2
+     * @returns {string}
+     */
+    formatVersioningDifference(v1, v2) {
+      return semver.diff(v1, v2);
     },
   },
 });

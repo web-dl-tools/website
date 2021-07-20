@@ -103,6 +103,24 @@ export default {
     setSearch(search) {
       this.$store.dispatch("application/setSearch", search);
     },
+    /**
+     * Prepare the web application for creation (delayable requests).
+     */
+    delayedCreated() {
+      setTimeout(
+        () => this.$store.dispatch("application/getApiBuildInfo"),
+        1500
+      );
+      setTimeout(
+        () =>
+          this.$store.dispatch("application/getLatestRepoRelease", "website"),
+        5000
+      );
+      setTimeout(
+        () => this.$store.dispatch("application/getLatestRepoRelease", "api"),
+        5000
+      );
+    },
   },
   /**
    * Update the current active route on route changes.
@@ -120,6 +138,7 @@ export default {
     this.$store.dispatch("users/getMe");
     this.$store.dispatch("requests/getAll");
     this.$store.dispatch("application/connectWebsocket");
+    this.delayedCreated();
   },
   /**
    * Prepare the web application for destruction.

@@ -19,7 +19,8 @@
       <v-row>
         <v-col cols="4" class="font-weight-regular"> Version </v-col>
         <v-col cols="8">
-          {{ apiBuildInfo.tag }}
+          {{ apiBuildInfo.tag }} <br />
+          <latest-release-check repo="api" />
         </v-col>
       </v-row>
       <v-row>
@@ -126,10 +127,14 @@
 <script>
 import { mapGetters } from "vuex";
 import formatters from "../../mixins/formatters";
+import LatestReleaseCheck from "./LatestReleaseCheck";
 
 export default {
   name: "components.application.card-api-build",
   mixin: [formatters],
+  components: {
+    LatestReleaseCheck,
+  },
   computed: {
     ...mapGetters({
       apiBuildInfo: "application/getApiBuildInfo",

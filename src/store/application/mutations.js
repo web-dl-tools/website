@@ -18,31 +18,6 @@ export const CHECK = (state) => {
 };
 
 /**
- * Set the page title prefix.
- *
- * @param state
- * @param prefix
- * @constructor
- */
-export const SET_TITLE_PREFIX = (state, prefix) => {
-  state.title_prefix = prefix;
-};
-
-/**
- * Set the page title including suffix.
- *
- * @param state
- * @param title
- * @constructor
- */
-export const SET_TITLE = (state, title) => {
-  state.title = title;
-};
-
-export const SET_AUTH_TOKEN = (token) =>
-  VueCookies.set("auth_token", token, "3m");
-
-/**
  * Set the authentication state and axios default authorization header.
  *
  * @param state
@@ -68,6 +43,31 @@ export const LOGOUT = (state) => {
 };
 
 /**
+ * Set the page title prefix.
+ *
+ * @param state
+ * @param prefix
+ * @constructor
+ */
+export const SET_TITLE_PREFIX = (state, prefix) => {
+  state.title_prefix = prefix;
+};
+
+/**
+ * Set the page title including suffix.
+ *
+ * @param state
+ * @param title
+ * @constructor
+ */
+export const SET_TITLE = (state, title) => {
+  state.title = title;
+};
+
+export const SET_AUTH_TOKEN = (token) =>
+  VueCookies.set("auth_token", token, "3m");
+
+/**
  * Set the loading state.
  *
  * @param state
@@ -75,6 +75,15 @@ export const LOGOUT = (state) => {
  * @constructor
  */
 export const SET_LOADING = (state, loading) => (state.loading = loading);
+
+/**
+ * Set the search query.
+ *
+ * @param state
+ * @param search
+ * @constructor
+ */
+export const SET_SEARCH = (state, search) => (state.search = search);
 
 /**
  * Set the websocket reference.
@@ -94,25 +103,6 @@ export const CONNECT_WEBSOCKET = (state, websocket) =>
  * @constructor
  */
 export const DISCONNECT_WEBSOCKET = (state) => (state.websocket = null);
-
-/**
- * Set the search query.
- *
- * @param state
- * @param search
- * @constructor
- */
-export const SET_SEARCH = (state, search) => (state.search = search);
-
-/**
- * Get the API build information.
- *
- * @param state
- * @param apiBuildInfo
- * @constructor
- */
-export const GET_API_BUILD_INFO = (state, apiBuildInfo) =>
-  (state.api_build_info = apiBuildInfo);
 
 /**
  * Add a new message.
@@ -151,3 +141,23 @@ export const CLEAR_MESSAGE = (state, i) =>
  * @constructor
  */
 export const REMOVE_MESSAGE = (state, i) => state.messages.splice(i, 1);
+
+/**
+ * Get the API build information.
+ *
+ * @param state
+ * @param apiBuildInfo
+ * @constructor
+ */
+export const GET_API_BUILD_INFO = (state, apiBuildInfo) =>
+  (state.api_build_info = apiBuildInfo);
+
+/**
+ * Set the latest version for a repository.
+ *
+ * @param state
+ * @param payload
+ * @constructor
+ */
+export const GET_LATEST_REPO_RELEASE = (state, payload) =>
+  (state[`latest_${payload.repo}_release`] = payload);

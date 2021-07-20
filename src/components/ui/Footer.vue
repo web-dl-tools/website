@@ -27,6 +27,7 @@
             <span class="font-weight-bold">Web DL Website</span>
             v{{ buildInfo.tag }}
           </v-col>
+
           <v-col
             v-if="technical"
             :class="$vuetify.breakpoint.mdAndUp ? 'pt-0' : 'pa-0'"
@@ -54,6 +55,7 @@
           <span class="font-weight-bold">Web DL Website</span>
           v{{ buildInfo.tag }}
         </v-col>
+
         <v-col class="pt-0" cols="12">
           <span class="font-weight-bold">Web DL API</span>
           v{{ apiBuildInfo.tag }}
@@ -79,12 +81,6 @@ export default {
   },
   props: {
     full: Boolean,
-  },
-  /**
-   * Retrieve external API build info for footer.
-   */
-  created() {
-    setTimeout(() => this.$store.dispatch("application/getApiBuildInfo"), 1000);
   },
 };
 </script>

@@ -25,6 +25,8 @@ export default {
     },
   ],
   search: "",
-  api_build_info: null,
   messages: [],
+  api_build_info: null,
+  latest_website_release: null,
+  latest_api_release: null,
 };
