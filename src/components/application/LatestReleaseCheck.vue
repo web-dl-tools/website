@@ -21,9 +21,9 @@
       label
       x-small
     >
-      New
+      A
       {{ versionDifference }}
-      version available
+      version update is available
     </v-chip>
     <v-chip
       v-else
@@ -33,7 +33,7 @@
       label
       x-small
     >
-      Latest version
+      You're on the latest version
     </v-chip>
   </a>
 </template>
