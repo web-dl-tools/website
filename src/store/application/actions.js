@@ -97,18 +97,23 @@ export const getApiBuildInfo = ({ commit }) =>
  * @param repo
  * @returns {*}
  */
-export const getLatestRepoRelease = ({ commit }, repo) =>
-  Vue.$axios
-    .get(`https://api.github.com/repos/web-dl-tools/${repo}/releases/latest`, {
-      transformRequest: (data, headers) => {
-        delete headers.common["Authorization"];
-        return data;
-      },
-    })
-    .then((response) =>
-      commit("GET_LATEST_REPO_RELEASE", { ...response.data, ...{ repo } })
-    )
-    .catch(() => Promise.reject());
+export const getLatestRepoRelease = ({ commit, state }, repo) =>
+  !state[`latest_${repo}_release`]
+    ? Vue.$axios
+        .get(
+          `https://api.github.com/repos/web-dl-tools/${repo}/releases/latest`,
+          {
+            transformRequest: (data, headers) => {
+              delete headers.common["Authorization"];
+              return data;
+            },
+          }
+        )
+        .then((response) =>
+          commit("GET_LATEST_REPO_RELEASE", { ...response.data, ...{ repo } })
+        )
+        .catch(() => Promise.reject())
+    : state[`latest_${repo}_release`];
 
 /**
  * Add a new message.

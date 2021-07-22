@@ -66,5 +66,14 @@ export default Vue.mixin({
     unique(arr) {
       return [...new Set(arr)];
     },
+    /**
+     * Capitalize the first letter of a word/sentence.
+     *
+     * @param word
+     * @returns {string}
+     */
+    capitalize(word) {
+      return word.charAt(0).toUpperCase() + word.slice(1);
+    },
   },
 });

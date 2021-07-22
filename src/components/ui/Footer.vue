@@ -74,13 +74,19 @@ export default {
   mixins: [formatters],
   computed: {
     ...mapGetters({
-      buildInfo: "application/getBuildInfo",
+      buildInfo: "application/getWebsiteBuildInfo",
       apiBuildInfo: "application/getApiBuildInfo",
       technical: "users/isTechnical",
     }),
   },
   props: {
     full: Boolean,
+  },
+  /**
+   * Retrieve external API build info for footer.
+   */
+  created() {
+    setTimeout(() => this.$store.dispatch("application/getApiBuildInfo"), 1500);
   },
 };
 </script>

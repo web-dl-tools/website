@@ -51,7 +51,7 @@ export const getWebsocket = (state) => state.websocket;
  *
  * @returns {any}
  */
-export const getBuildInfo = () => {
+export const getWebsiteBuildInfo = () => {
   const regex = /tag: [\w\.\-]+,/g;
   let buildInfo = JSON.parse(process.env.VUE_APP_BUILD_INFO);
   let tags = buildInfo.refs.match(regex);
