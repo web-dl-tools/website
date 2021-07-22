@@ -19,7 +19,7 @@
           >
             A
             {{ versionDifference }}
-            version update is available
+            version update is available ({{ latestReleaseInfo.tag_name }})
           </v-btn>
         </v-col>
         <v-col cols="6" class="pa-0">
