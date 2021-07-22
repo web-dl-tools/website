@@ -10,19 +10,24 @@
     </v-col>
     <v-col v-else-if="versionDifference" class="pb-0">
       <v-row class="mx-0">
-        <v-col class="pa-0 mb-1">
+        <v-col cols="12" class="pa-0 mb-1">
           <v-btn
             block
             x-small
             :color="versionDifference === 'major' ? 'warning' : 'grey'"
             :href="`https://github.com/web-dl-tools/${repo}/releases`"
           >
-            A
-            {{ versionDifference }}
-            version update is available ({{ latestReleaseInfo.tag_name }})
+            A {{ versionDifference }} update is available (v{{
+              latestReleaseInfo.tag_name
+            }})
           </v-btn>
         </v-col>
-        <v-col cols="6" class="pa-0">
+        <v-col cols="4" class="pa-0">
+          <v-btn block disabled text x-small>
+            Created {{ formatDateFromNow(this.latestReleaseInfo.created_at) }}
+          </v-btn>
+        </v-col>
+        <v-col cols="4" class="pa-0">
           <v-btn
             block
             text
@@ -33,7 +38,7 @@
             Update guide
           </v-btn>
         </v-col>
-        <v-col cols="6" class="pa-0">
+        <v-col cols="4" class="pa-0">
           <v-btn
             block
             text
@@ -41,7 +46,7 @@
             color="white"
             :href="`https://github.com/web-dl-tools/${repo}/compare/${buildInfo.tag}...${latestReleaseInfo.tag_name}`"
           >
-            View changelog
+            Changelog
           </v-btn>
         </v-col>
       </v-row>
