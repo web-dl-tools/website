@@ -16,12 +16,14 @@
       </v-row>
     </v-card-text>
     <v-card-text v-else>
-      <v-row class="mb-3">
+      <v-row>
         <v-col class="text-center">
           <span class="font-weight-bold"> v{{ apiBuildInfo.tag }} </span>
+          <v-divider class="mt-3" />
           <latest-release-check repo="api" />
         </v-col>
       </v-row>
+      <v-divider class="mb-3" />
       <div v-if="technical">
         <v-row>
           <v-col cols="4" class="py-0 font-weight-regular">Build</v-col>

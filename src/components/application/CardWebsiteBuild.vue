@@ -9,12 +9,14 @@
       Information about the current website build of Web DL.
     </v-card-subtitle>
     <v-card-text>
-      <v-row class="mb-3">
+      <v-row>
         <v-col class="text-center">
           <span class="font-weight-bold"> v{{ websiteBuildInfo.tag }} </span>
+          <v-divider class="mt-3" />
           <latest-release-check repo="website" />
         </v-col>
       </v-row>
+      <v-divider class="mb-3" />
       <div v-if="technical">
         <v-row>
           <v-col cols="4" class="py-0 font-weight-regular">Build</v-col>

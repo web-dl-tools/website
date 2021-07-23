@@ -1,7 +1,7 @@
 <template>
   <v-row>
     <v-col v-if="!this.buildInfo || !this.latestReleaseInfo" class="pb-0">
-      <v-btn block loading outlined x-small>
+      <v-btn block loading text x-small>
         <template v-slot:loader>
           <v-progress-circular indeterminate size="10" width="1" />
           <span class="pl-2">Checking for updates...</span>
@@ -10,21 +10,16 @@
     </v-col>
     <v-col v-else-if="versionDifference" class="pb-0">
       <v-row class="mx-0">
-        <v-col cols="12" class="pa-0 mb-1">
+        <v-col cols="12" class="pa-0 mb-2">
           <v-btn
             block
+            text
             x-small
-            :color="versionDifference === 'major' ? 'warning' : 'grey'"
+            :color="versionDifference === 'patch' ? 'warning' : 'accent'"
             :href="`https://github.com/web-dl-tools/${repo}/releases`"
           >
-            A {{ versionDifference }} update is available (v{{
-              latestReleaseInfo.tag_name
-            }})
-          </v-btn>
-        </v-col>
-        <v-col cols="4" class="pa-0">
-          <v-btn block disabled text x-small>
-            Created {{ formatDateFromNow(this.latestReleaseInfo.created_at) }}
+            <v-icon class="mr-2" small> mdi-refresh </v-icon>
+            A {{ versionDifference }} update is available
           </v-btn>
         </v-col>
         <v-col cols="4" class="pa-0">
@@ -36,6 +31,12 @@
             :href="`https://github.com/web-dl-tools/${repo}#update-guide`"
           >
             Update guide
+          </v-btn>
+        </v-col>
+        <v-col cols="4" class="pa-0">
+          <v-btn block disabled text x-small>
+            v{{ latestReleaseInfo.tag_name }} &middot; Created
+            {{ formatDateFromNow(this.latestReleaseInfo.created_at) }}
           </v-btn>
         </v-col>
         <v-col cols="4" class="pa-0">
@@ -54,11 +55,12 @@
     <v-col v-else class="pb-0">
       <v-btn
         block
-        outlined
+        text
         x-small
         color="success"
         :href="`https://github.com/web-dl-tools/${repo}/releases`"
       >
+        <v-icon class="mr-2" small> mdi-check </v-icon>
         You're on the latest version
       </v-btn>
     </v-col>
