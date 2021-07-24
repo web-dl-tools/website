@@ -13,13 +13,13 @@
         <v-col cols="12" class="pa-0 mb-2">
           <v-btn
             block
-            text
             x-small
-            :color="versionDifference === 'patch' ? 'warning' : 'accent'"
+            :color="getVersionDifferenceColor(versionDifference)"
             :href="`https://github.com/web-dl-tools/${repo}/releases`"
+            :text="versionDifference !== 'major'"
           >
             <v-icon class="mr-2" small> mdi-refresh </v-icon>
-            A {{ versionDifference }} update is available
+            New {{ versionDifference }} version available
           </v-btn>
         </v-col>
         <v-col cols="4" class="pa-0">
@@ -74,6 +74,11 @@ import helpers from "../../mixins/helpers";
 export default {
   name: "components.application.latest-release-check",
   mixin: [formatters, helpers],
+  props: {
+    repo: {
+      type: String,
+    },
+  },
   computed: {
     buildInfo() {
       return this.$store.getters[
@@ -95,9 +100,23 @@ export default {
       return null;
     },
   },
-  props: {
-    repo: {
-      type: String,
+  methods: {
+    /**
+     * Generate a color from the version difference level.
+     *
+     * @param difference
+     * @returns {string}
+     */
+    getVersionDifferenceColor(difference) {
+      switch (difference) {
+        case "major":
+          return "error";
+        case "minor":
+          return "warning";
+        case "patch":
+        default:
+          return "info";
+      }
     },
   },
   /**
