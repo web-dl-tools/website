@@ -35,8 +35,8 @@
               <p class="pt-2 mb-0 font-weight-500">
                 {{ item.name }}
               </p>
-              <p class="mt-n2 mb-0 overline font-weight-light">
-                {{ item.extension.replace(".", "") }} &middot;
+              <p class="mb-0 caption font-weight-light grey--text">
+                {{ item.extension.replace(".", "").toUpperCase() }} &middot;
                 {{ formatBytes(item.size, technical ? 2 : 0) }} &middot;
                 {{
                   formatDate(
