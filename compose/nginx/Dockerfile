@@ -17,7 +17,7 @@ WORKDIR code
 RUN yarn install
 RUN yarn build
 
-FROM nginx:1.19.6
+FROM nginx:1.21.1
 
 LABEL version = "1.0"
 LABEL description = "Nginx docker container"

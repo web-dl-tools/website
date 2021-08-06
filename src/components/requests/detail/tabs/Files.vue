@@ -35,7 +35,7 @@
               <p class="pt-2 mb-0 font-weight-500">
                 {{ item.name }}
               </p>
-              <p class="mb-0 caption font-weight-light grey--text">
+              <p class="mb-2 caption font-weight-light grey--text">
                 {{ item.extension.replace(".", "").toUpperCase() }} &middot;
                 {{ formatBytes(item.size, technical ? 2 : 0) }} &middot;
                 {{
