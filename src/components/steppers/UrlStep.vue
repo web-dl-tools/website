@@ -1,9 +1,9 @@
 <template>
-  <div>
+  <v-col class="pa-0" cols="12" md="8">
     <v-text-field
       v-model="url"
       autocomplete="off"
-      class="mb-6"
+      :class="$vuetify.breakpoint.mdAndUp ? 'no-radius-right' : 'mb-6'"
       color="accent"
       :label="placeholder"
       :placeholder="placeholder"
@@ -18,7 +18,7 @@
       flat
       v-on:keyup.enter.native="automaticAction"
     />
-  </div>
+  </v-col>
 </template>
 
 <script>
@@ -42,7 +42,7 @@ export default {
      */
     valid() {
       const url_regex = RegExp(
-        "[-a-zA-Z0-9@:%._\\+~#=]{1,256}\\.[a-zA-Z0-9()]{1,6}\\b([-a-zA-Z0-9()@:%_\\+.~#?&//=]*)"
+        "[-a-zA-Z0-9@:%._+~#=]{1,256}\\.[a-zA-Z0-9()]{1,6}\\b([-a-zA-Z0-9()@:%_+.~#?&/=]*)"
       );
       const magnet_regex = RegExp("magnet:\\?xt=urn:btih:[a-zA-Z0-9]*");
       return url_regex.test(this.url) || magnet_regex.test(this.url);

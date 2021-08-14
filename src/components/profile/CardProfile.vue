@@ -119,6 +119,7 @@
               outlined
               @click="edit = false"
             >
+              <v-icon left> mdi-cancel </v-icon>
               Cancel
             </v-btn>
           </v-col>
@@ -131,6 +132,7 @@
               large
               @click="update"
             >
+              <v-icon left> mdi-content-save-outline </v-icon>
               Update
             </v-btn>
           </v-col>
@@ -192,7 +194,6 @@ export default {
           .finally(() => (this.loading = false));
       }
     },
-
     /**
      * Clone the user properties to local properties.
      *

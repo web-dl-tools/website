@@ -11,26 +11,36 @@
             </v-stepper-step>
 
             <v-stepper-content step="1">
-              <url-step
-                :active="step === 1"
-                @data-change="dataChange"
-                @automatic-action="getHandlers"
-              />
-              <v-btn
-                block
-                outlined
-                text
-                :color="error ? 'error' : 'white'"
-                :loading="loading"
-                :disabled="loading || !isEmptyObject(step1Data)"
-                @click="getHandlers"
-              >
-                <template v-slot:loader>
-                  <v-progress-circular indeterminate size="18" width="2" />
-                  <span class="pl-2">Getting handlers</span>
-                </template>
-                Get handlers
-              </v-btn>
+              <v-row class="mx-0">
+                <url-step
+                  :active="step === 1"
+                  @data-change="dataChange"
+                  @automatic-action="getHandlers"
+                />
+                <v-col class="pa-0" cols="12" md="4">
+                  <v-btn
+                    :class="{
+                      'no-border-left no-radius-left':
+                        $vuetify.breakpoint.mdAndUp,
+                    }"
+                    height="40"
+                    block
+                    outlined
+                    text
+                    :color="error ? 'error' : 'white'"
+                    :loading="loading"
+                    :disabled="loading || !isEmptyObject(step1Data)"
+                    @click="getHandlers"
+                  >
+                    <template v-slot:loader>
+                      <v-progress-circular indeterminate size="18" width="2" />
+                      <span class="pl-2">Getting handlers</span>
+                    </template>
+                    <v-icon left> mdi-search-web </v-icon>
+                    Get handlers
+                  </v-btn>
+                </v-col>
+              </v-row>
             </v-stepper-content>
 
             <v-stepper-step :complete="step > 2" color="secondary" step="2">
@@ -53,6 +63,7 @@
                 :disabled="loading || !isEmptyObject(step2Data)"
                 @click="step = 3"
               >
+                <v-icon left> mdi-tools </v-icon>
                 Configure
               </v-btn>
             </v-stepper-content>
@@ -90,6 +101,7 @@
                 :disabled="loading || !isEmptyObject(step3Data)"
                 @click="createRequest"
               >
+                <v-icon left> mdi-cloud-download-outline </v-icon>
                 Download
               </v-btn>
             </v-stepper-content>

@@ -103,6 +103,7 @@
                 <v-progress-circular indeterminate size="18" width="2" />
                 <span class="pl-2">Creating archive...</span>
               </template>
+              <v-icon left> mdi-folder-zip-outline </v-icon>
               Create archive (zip)
             </v-btn>
             <v-btn
@@ -114,6 +115,7 @@
               small
               @click="openFile(`${request.path}.zip`)"
             >
+              <v-icon left> mdi-folder-zip </v-icon>
               Download archive (zip)
             </v-btn>
           </v-col>

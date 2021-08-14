@@ -50,6 +50,7 @@
             outlined
             @click="register"
           >
+            <v-icon left> mdi-account-plus-outline </v-icon>
             Register
           </v-btn>
         </v-col>
@@ -62,6 +63,7 @@
             large
             @click="login"
           >
+            <v-icon left> mdi-login </v-icon>
             Login
           </v-btn>
         </v-col>

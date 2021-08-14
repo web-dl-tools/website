@@ -87,6 +87,7 @@
       <v-row class="px-3">
         <v-col cols="5" md="3" class="py-0 pl-0">
           <v-btn color="grey" tabindex="-1" block large outlined @click="login">
+            <v-icon left> mdi-login </v-icon>
             Login
           </v-btn>
         </v-col>
@@ -99,6 +100,7 @@
             large
             @click="register"
           >
+            <v-icon left> mdi-account-plus-outline </v-icon>
             Register
           </v-btn>
         </v-col>
