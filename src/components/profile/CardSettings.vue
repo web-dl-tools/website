@@ -21,11 +21,7 @@
       <v-card-subtitle class="subtitle-2 col-8 pl-4">
         {{ edit ? "Set your" : "Your" }} user preferences in Web DL.
       </v-card-subtitle>
-      <v-card-text
-        :class="{
-          'pb-2': edit,
-        }"
-      >
+      <v-card-text class="pb-3">
         <v-row>
           <v-col cols="7" class="pb-0 font-weight-regular">
             Show technical details

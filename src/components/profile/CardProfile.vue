@@ -22,7 +22,7 @@
         Hi {{ user.full_name }}, here you can
         {{ edit ? "edit" : "review" }} your account details stored in Web DL.
       </v-card-subtitle>
-      <v-card-text v-if="!edit">
+      <v-card-text class="pb-3" v-if="!edit">
         <v-row>
           <v-col cols="4" class="pb-0 font-weight-regular"> Username </v-col>
           <v-col cols="8" class="pb-0">
