@@ -5,7 +5,7 @@
 ![test workflow](https://github.com/web-dl-tools/website/actions/workflows/test.yml/badge.svg)
 ![build workflow](https://github.com/web-dl-tools/website/actions/workflows/build.yml/badge.svg)
 
-**Web DL website** is a Vue.js SPA Website built to fully integrate the Web DL API and all of its features. 
+**Web DL website** is a Vue.js SPA Website build to fully integrate the Web DL API and all of its features. 
 It's the official browser client for the Web DL stack.
 
 ### Some features
