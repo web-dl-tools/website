@@ -21,7 +21,7 @@
             :value="item.data.average_rating"
             background-color="orange lighten-3"
             :class="
-              $vuetify.breakpoint.mdAndUp ? 'mt-n2 float-right' : 'mt-2 ml-n2'
+              $vuetify.breakpoint.smAndDown ? 'mt-2 ml-n2' : 'mt-n2 float-right'
             "
             color="orange"
             half-increments

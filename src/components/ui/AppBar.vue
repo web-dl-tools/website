@@ -4,7 +4,7 @@
       <v-btn
         class=""
         :icon="$vuetify.breakpoint.smAndDown"
-        :text="!$vuetify.breakpoint.smAndDown"
+        :text="$vuetify.breakpoint.mdAndUp"
         @click="$router.push({ name: 'overview' }).catch(() => {})"
       >
         <v-icon class="px-2"> mdi-cloud-download-outline </v-icon>

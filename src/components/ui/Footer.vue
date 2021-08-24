@@ -11,7 +11,7 @@
         >
           <v-col
             v-if="technical"
-            :class="$vuetify.breakpoint.mdAndUp ? 'pb-0' : 'pa-0'"
+            :class="$vuetify.breakpoint.smAndDown ? 'pa-0' : 'pb-0'"
             cols="12"
           >
             <span class="font-weight-bold">Web DL Website</span>
@@ -21,7 +21,7 @@
           </v-col>
           <v-col
             v-else
-            :class="$vuetify.breakpoint.mdAndUp ? 'pb-0' : 'pa-0'"
+            :class="$vuetify.breakpoint.smAndDown ? 'pa-0' : 'pb-0'"
             cols="12"
           >
             <span class="font-weight-bold">Web DL Website</span>
@@ -30,7 +30,7 @@
 
           <v-col
             v-if="technical"
-            :class="$vuetify.breakpoint.mdAndUp ? 'pt-0' : 'pa-0'"
+            :class="$vuetify.breakpoint.smAndDown ? 'pa-0' : 'pt-0'"
             cols="12"
           >
             <span class="font-weight-bold">Web DL API</span>
@@ -40,7 +40,7 @@
           </v-col>
           <v-col
             v-else
-            :class="$vuetify.breakpoint.mdAndUp ? 'pt-0' : 'pa-0'"
+            :class="$vuetify.breakpoint.smAndDown ? 'pa-0' : 'pt-0'"
             cols="12"
           >
             <span class="font-weight-bold">Web DL API</span>

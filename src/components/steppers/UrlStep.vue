@@ -3,7 +3,7 @@
     <v-text-field
       v-model="url"
       autocomplete="off"
-      :class="$vuetify.breakpoint.mdAndUp ? 'no-radius-right' : 'mb-6'"
+      :class="$vuetify.breakpoint.smAndDown ? 'mb-6' : 'no-radius-right'"
       color="accent"
       :label="placeholder"
       :placeholder="placeholder"

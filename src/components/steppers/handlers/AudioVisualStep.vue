@@ -17,6 +17,7 @@
               "
               :disabled="false"
               :title="`Best video file`"
+              :icon="'mdi-movie'"
               @onClick="
                 () => {
                   video_format_selection = bestVideoFormat;
@@ -38,6 +39,7 @@
               "
               :disabled="false"
               :title="`Best audio file`"
+              icon="mdi-music"
               @onClick="
                 () => {
                   video_format_selection = '';
