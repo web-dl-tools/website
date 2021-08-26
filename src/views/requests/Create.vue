@@ -19,17 +19,18 @@
                 />
                 <v-col class="pa-0" cols="12" md="4">
                   <v-btn
-                    :class="{
-                      'no-border-left no-radius-left':
-                        $vuetify.breakpoint.mdAndUp,
-                    }"
+                    :class="[
+                      {
+                        'no-border-left no-radius-left':
+                          $vuetify.breakpoint.mdAndUp,
+                      },
+                    ]"
                     height="40"
                     block
-                    outlined
-                    text
-                    :color="error ? 'error' : 'white'"
+                    :color="error ? 'error' : 'secondary'"
+                    :disabled="step1continue"
                     :loading="loading"
-                    :disabled="loading || !isEmptyObject(step1Data)"
+                    :outlined="step1continue"
                     @click="getHandlers"
                   >
                     <template v-slot:loader>
@@ -56,11 +57,10 @@
               />
               <v-btn
                 block
-                outlined
-                text
-                :color="error ? 'error' : 'white'"
+                :color="error ? 'error' : 'secondary'"
+                :disabled="step2continue"
                 :loading="loading"
-                :disabled="loading || !isEmptyObject(step2Data)"
+                :outlined="step2continue"
                 @click="step = 3"
               >
                 <v-icon left> mdi-tools </v-icon>
@@ -93,12 +93,11 @@
               />
               <v-btn
                 block
-                outlined
-                text
-                class="mb-6"
+                class="mb-6 grey--text text--darken-4"
                 :color="error ? 'error' : 'success'"
+                :disabled="step3continue"
                 :loading="loading"
-                :disabled="loading || !isEmptyObject(step3Data)"
+                :outlined="step3continue"
                 @click="createRequest"
               >
                 <v-icon left> mdi-cloud-download-outline </v-icon>
@@ -150,6 +149,15 @@ export default {
     ...mapGetters({
       title: "application/getTitle",
     }),
+    step1continue() {
+      return this.loading || !this.isEmptyObject(this.step1Data);
+    },
+    step2continue() {
+      return this.loading || !this.isEmptyObject(this.step2Data);
+    },
+    step3continue() {
+      return this.loading || !this.isEmptyObject(this.step3Data);
+    },
   },
   methods: {
     /**

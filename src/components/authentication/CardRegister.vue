@@ -93,6 +93,7 @@
         </v-col>
         <v-col cols="7" md="5" offset-md="4" class="pa-0">
           <v-btn
+            class="grey--text text--darken-4"
             :color="error ? 'error' : 'success'"
             :disabled="!valid"
             :loading="loading"

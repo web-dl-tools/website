@@ -17,7 +17,7 @@
               "
               :disabled="false"
               :title="`Best video file`"
-              :icon="'mdi-movie'"
+              :icon="'mdi-movie-outline'"
               @onClick="
                 () => {
                   video_format_selection = bestVideoFormat;
@@ -60,7 +60,8 @@
     <v-row v-show="!show_manual_formats && !show_single_file_formats">
       <v-col cols="12" class="pt-0 mb-3 text-center">
         <v-btn @click="show_single_file_formats = true" text x-small>
-          {{ format_selection_pretty }} Or compile your own
+          <v-icon class="mr-2" x-small> mdi-hammer-wrench </v-icon>
+          {{ format_selection_pretty }} Compile your own
         </v-btn>
       </v-col>
     </v-row>
@@ -173,7 +174,8 @@
               text
               x-small
             >
-              Or go full manual and select a single raw file
+              <v-icon class="mr-2" x-small> mdi-draw </v-icon>
+              Select a raw file
             </v-btn>
           </v-col>
         </v-row>
@@ -183,7 +185,7 @@
     <v-row v-if="!show_single_file_formats && show_manual_formats">
       <v-col cols="12" class="pt-0">
         <v-row>
-          <v-col cols="12" class="pt-0">
+          <v-col cols="12" class="pt-0 pb-2">
             <p class="body-2 mb-n1">Raw selection</p>
             <small class="font-weight-light grey--text text--lighten-1">
               Select a raw file format manually.
