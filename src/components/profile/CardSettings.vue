@@ -63,7 +63,6 @@
               :loading="loading"
               block
               large
-              light
               @click="update"
             >
               <v-icon left> mdi-content-save-outline </v-icon>
