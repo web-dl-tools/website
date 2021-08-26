@@ -61,7 +61,7 @@
       <v-col cols="12" class="pt-0 mb-3 text-center">
         <v-btn @click="show_single_file_formats = true" text x-small>
           <v-icon class="mr-2" x-small> mdi-hammer-wrench </v-icon>
-          {{ format_selection_pretty }} Compile your own
+          {{ format_selection_pretty }} Or compile your own
         </v-btn>
       </v-col>
     </v-row>
@@ -175,7 +175,7 @@
               x-small
             >
               <v-icon class="mr-2" x-small> mdi-draw </v-icon>
-              Select a raw file
+              Or go full manual and select a (single) raw file
             </v-btn>
           </v-col>
         </v-row>
