@@ -18,7 +18,7 @@
     "@sentry/tracing": "^6.11.0",
     "@sentry/vue": "^6.11.0",
     "apexcharts": "^3.27.3",
-    "axios": "0.21.1",
+    "axios": "0.21.2",
     "core-js": "3.16.0",
     "lodash": "4.17.21",
     "moment": "2.29.1",
