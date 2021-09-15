@@ -235,6 +235,7 @@ export default {
       "xls",
       "xlsx",
       "xml",
+      "yaml",
       "yml",
     ];
     const web_extensions = ["css", "htm", "html", "js"];
