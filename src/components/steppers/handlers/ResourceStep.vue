@@ -194,12 +194,50 @@ export default {
   name: "components.steppers.handlers.resource-step",
   mixin: [formatters],
   data() {
-    const image_extensions = ["gif", "jpeg", "jpg", "png", "tiff", "webp"];
-    const video_extensions = ["avi", "mov", "qt", "mpeg", "mpg", "mp4", "webm"];
-    const audio_extensions = ["mid", "midi", "mp3", "wav"];
-    const archive_extensions = ["7z", "rar", "zip", "exe"];
-    const document_extensions = ["doc", "pdf", "txt"];
-    const web_extensions = ["css", "htm", "html"];
+    const image_extensions = [
+      "bmp",
+      "gif",
+      "jpeg",
+      "jpg",
+      "png",
+      "tiff",
+      "webp",
+    ];
+    const video_extensions = [
+      "avi",
+      "mkv",
+      "mov",
+      "mp4",
+      "mpeg",
+      "mpg",
+      "webm",
+      "qt",
+    ];
+    const audio_extensions = [
+      "aac",
+      "flac",
+      "m4a",
+      "mid",
+      "midi",
+      "mp3",
+      "wav",
+    ];
+    const archive_extensions = ["7z", "rar", "zip"];
+    const document_extensions = [
+      "doc",
+      "docx",
+      "json",
+      "odt",
+      "pdf",
+      "ppt",
+      "pptx",
+      "txt",
+      "xls",
+      "xlsx",
+      "xml",
+      "yml",
+    ];
+    const web_extensions = ["css", "htm", "html", "js"];
 
     return {
       default_extensions: [].concat(
