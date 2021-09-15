@@ -15,7 +15,7 @@
             cols="12"
           >
             <span class="font-weight-bold">Web DL Website</span>
-            v{{ buildInfo.tag }} &middot; build
+            v{{ buildInfo.version }} &middot; build
             {{ buildInfo.abbreviated_commit }} &middot;
             {{ formatDate(buildInfo.commiter.date, "LL") }}
           </v-col>
