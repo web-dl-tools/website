@@ -15,7 +15,7 @@
                 video_format_selection === bestVideoFormat &&
                 audio_format_selection === bestAudioFormat
               "
-              :disabled="false"
+              :disabled="audio_format !== null"
               :title="`Best video file`"
               :icon="'mdi-movie-outline'"
               @onClick="
@@ -88,7 +88,7 @@
           >
             <selectable-card
               :selected="video_format_selection === format.format_id"
-              :disabled="false"
+              :disabled="audio_format !== null"
               :title="`${format.format_note}`"
               @onClick="video_format_selection = format.format_id"
             >
@@ -228,7 +228,15 @@ export default {
       audio_format_selection: "",
       output: "%(title)s.%(ext)s",
       audio_format: null,
-      audio_formats: ["best", "aac", "m4a", "mp3", "opus", "vorbis", "wav"],
+      audio_formats: [
+        { text: "Use best available encoding", value: null },
+        { text: "Advanced Audio Coding (.aac)", value: "aac" },
+        { text: "MPEG-4 Part 14 (.m4a)", value: "m4a" },
+        { text: "MP3", value: "mp3" },
+        { text: "OPUS", value: "opus" },
+        { text: "Vorbis", value: "vorbis" },
+        { text: "Waveform Audio File Format (.wav)", value: "wav" },
+      ],
       show_single_file_formats: false,
       show_manual_formats: false,
       tab: 0,
@@ -384,6 +392,7 @@ export default {
      * Trigger an update data check when the audio format has changed.
      */
     audio_format() {
+      this.video_format_selection = "";
       this.updateData(this.valid);
     },
   },
