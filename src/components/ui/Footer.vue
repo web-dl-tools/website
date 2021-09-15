@@ -25,7 +25,7 @@
             cols="12"
           >
             <span class="font-weight-bold">Web DL Website</span>
-            v{{ buildInfo.tag }}
+            v{{ buildInfo.version }}
           </v-col>
 
           <v-col
@@ -34,7 +34,7 @@
             cols="12"
           >
             <span class="font-weight-bold">Web DL API</span>
-            v{{ apiBuildInfo.tag }} &middot; build
+            v{{ apiBuildInfo.version }} &middot; build
             {{ apiBuildInfo.abbreviated_commit }} &middot;
             {{ formatDate(apiBuildInfo.commiter.date, "LL") }}
           </v-col>
@@ -44,7 +44,7 @@
             cols="12"
           >
             <span class="font-weight-bold">Web DL API</span>
-            v{{ apiBuildInfo.tag }}
+            v{{ apiBuildInfo.version }}
           </v-col>
         </div>
       </v-row>
@@ -53,12 +53,12 @@
       <v-row>
         <v-col class="pb-0" cols="12">
           <span class="font-weight-bold">Web DL Website</span>
-          v{{ buildInfo.tag }}
+          v{{ buildInfo.version }}
         </v-col>
 
         <v-col class="pt-0" cols="12">
           <span class="font-weight-bold">Web DL API</span>
-          v{{ apiBuildInfo.tag }}
+          v{{ apiBuildInfo.version }}
         </v-col>
       </v-row>
     </v-col>

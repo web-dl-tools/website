@@ -18,7 +18,7 @@
     <v-card-text v-else>
       <v-row>
         <v-col class="text-center">
-          <span class="font-weight-bold"> v{{ apiBuildInfo.tag }} </span>
+          <span class="font-weight-bold"> v{{ apiBuildInfo.version }} </span>
           <v-divider class="mt-3" />
           <latest-release-check repo="api" />
         </v-col>

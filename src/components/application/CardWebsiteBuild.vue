@@ -11,7 +11,9 @@
     <v-card-text>
       <v-row>
         <v-col class="text-center">
-          <span class="font-weight-bold"> v{{ websiteBuildInfo.tag }} </span>
+          <span class="font-weight-bold">
+            v{{ websiteBuildInfo.version }}
+          </span>
           <v-divider class="mt-3" />
           <latest-release-check repo="website" />
         </v-col>

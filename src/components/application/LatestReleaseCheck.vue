@@ -45,7 +45,7 @@
             text
             x-small
             color="white"
-            :href="`https://github.com/web-dl-tools/${repo}/compare/${buildInfo.tag}...${latestReleaseInfo.tag_name}`"
+            :href="`https://github.com/web-dl-tools/${repo}/compare/${buildInfo.version}...${latestReleaseInfo.tag_name}`"
           >
             Changelog
           </v-btn>
@@ -93,7 +93,7 @@ export default {
     versionDifference() {
       if (this.buildInfo && this.latestReleaseInfo) {
         return this.formatVersioningDifference(
-          this.buildInfo.tag,
+          this.buildInfo.version,
           this.latestReleaseInfo.tag_name
         );
       }
