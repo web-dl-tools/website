@@ -15,9 +15,8 @@
             cols="12"
           >
             <span class="font-weight-bold">Web DL Website</span>
-            v{{ buildInfo.version }} &middot; build
-            {{ buildInfo.abbreviated_commit }} &middot;
-            {{ formatDate(buildInfo.commiter.date, "LL") }}
+            v{{ buildInfo.version }} &middot;
+            {{ formatDate(buildInfo.commiter.date, "Y.M.D") }}
           </v-col>
           <v-col
             v-else
@@ -34,9 +33,8 @@
             cols="12"
           >
             <span class="font-weight-bold">Web DL API</span>
-            v{{ apiBuildInfo.version }} &middot; build
-            {{ apiBuildInfo.abbreviated_commit }} &middot;
-            {{ formatDate(apiBuildInfo.commiter.date, "LL") }}
+            v{{ apiBuildInfo.version }} &middot;
+            {{ formatDate(apiBuildInfo.commiter.date, "Y.M.D") }}
           </v-col>
           <v-col
             v-else
