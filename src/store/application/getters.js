@@ -39,14 +39,6 @@ export const getMenuItems = (state) => state.menu_items;
 export const isLoading = (state) => state.loading;
 
 /**
- * Get the websocket state.
- *
- * @param state
- * @returns {null}
- */
-export const getWebsocket = (state) => state.websocket;
-
-/**
  * Calculate the build tag and return the website build information.
  *
  * @returns {any}

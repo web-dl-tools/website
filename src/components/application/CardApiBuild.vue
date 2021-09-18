@@ -78,23 +78,6 @@
         </v-row>
 
         <v-row>
-          <v-col cols="4" class="pt-0 font-weight-regular">
-            Websocket connection
-          </v-col>
-          <v-col
-            cols="8"
-            class="pt-0"
-            :class="{
-              'success--text': websocket.readyState === 1,
-              'warning--text': [0, 2].includes(websocket.readyState),
-              'error--text': ![0, 1, 2].includes(websocket.readyState),
-            }"
-          >
-            {{ getWebsocketFormattedState(websocket.readyState) }}
-          </v-col>
-        </v-row>
-
-        <v-row>
           <v-col cols="4" class="py-0 font-weight-regular"> Source </v-col>
           <v-col cols="8" class="py-0">
             <a
@@ -139,40 +122,8 @@ export default {
   computed: {
     ...mapGetters({
       apiBuildInfo: "application/getApiBuildInfo",
-      websocket: "application/getWebsocket",
       technical: "users/isTechnical",
     }),
-  },
-  methods: {
-    /**
-     * Get the websocket state as a formatted string.
-     *
-     * @param state
-     * @returns {string}
-     */
-    getWebsocketFormattedState(state) {
-      let formatted;
-
-      switch (state) {
-        case 0:
-          formatted = "Connecting";
-          break;
-        case 1:
-          formatted = "Open";
-          break;
-        case 2:
-          formatted = "Closing";
-          break;
-        case 3:
-          formatted = "Closed";
-          break;
-        default:
-          formatted = "Unknown";
-          break;
-      }
-
-      return formatted;
-    },
   },
 };
 </script>

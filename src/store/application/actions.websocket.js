@@ -18,7 +18,9 @@ export const connectWebsocket = ({ commit, dispatch }) => {
   document.addEventListener("beforeunload", () =>
     dispatch("disconnectWebsocket")
   );
+
   const websocket = new WebSocket(`${webSocketUrl}requests`);
+
   websocket.addEventListener("message", (e) =>
     dispatch("handleWebsocketEvent", e)
   );
