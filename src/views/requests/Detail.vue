@@ -224,7 +224,17 @@ export default {
   created() {
     this.$store
       .dispatch("requests/get", this.$route.params.requestId)
-      .catch(() => this.$router.push({ name: "overview" }).catch(() => {}))
+      .catch(() =>
+        this.$router
+          .push({
+            name: "error.generic",
+            params: {
+              reason:
+                "The request doesn't exist or can't be retrieved right now.",
+            },
+          })
+          .catch(() => {})
+      )
       .finally(() => {
         this.request_loading = false;
       });

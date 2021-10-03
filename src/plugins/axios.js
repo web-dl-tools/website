@@ -53,28 +53,26 @@ _axios.interceptors.response.use(
         case 404:
           break;
         default:
-          store.dispatch("application/addMessage", {
-            text: `An error occurred with the <b>Web DL API</b>.<br />
-            <span class="grey--text">Please try again later.</span>`,
-            type: "error",
-            action: null,
-            timeout: -1,
-          });
+          onError();
           break;
       }
     } else {
-      store.dispatch("application/addMessage", {
-        text: `An error occurred with the <b>Web DL API</b>.<br />
-        <span class="grey--text">Please try again later.</span>`,
-        type: "error",
-        action: null,
-        timeout: -1,
-      });
+      onError();
     }
 
     return Promise.reject(error);
   }
 );
+
+const onError = () => {
+  store.dispatch("application/addMessage", {
+    text: `An error occurred with the <b>Web DL API</b>.<br />
+        <span class="grey--text">Please try again later.</span>`,
+    type: "error",
+    action: null,
+    timeout: -1,
+  });
+};
 
 /**
  * Create a plugin for the Axios instance.

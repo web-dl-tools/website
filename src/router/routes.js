@@ -124,6 +124,7 @@ export default [
         path: "*",
         name: "error.generic",
         component: () => import("../components/errors/CardGenericError"),
+        props: true,
         meta: {
           title: "Something went wrong",
         },
