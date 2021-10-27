@@ -70,8 +70,8 @@ For development the Web DL Website requires the following software to be install
 - Several additional packages installed via Yarn
 
 ### Runtime environment
-- Node.js 15.5.1+
-- yarn 1.22.5+
+- Node.js LTS
+- yarn Classic stable
 
 ### Project setup
 Install all required dependencies in order to run and develop the application.
