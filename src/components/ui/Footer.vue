@@ -68,7 +68,7 @@ import { mapGetters } from "vuex";
 import formatters from "../../mixins/formatters";
 
 export default {
-  name: "components.ui.footer",
+  name: "components-ui-footer",
   mixins: [formatters],
   computed: {
     ...mapGetters({

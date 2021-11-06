@@ -12,7 +12,7 @@
 import { mapGetters } from "vuex";
 
 export default {
-  name: "components.ui.title",
+  name: "components-ui-title",
   computed: {
     ...mapGetters({
       title: "application/getTitle",

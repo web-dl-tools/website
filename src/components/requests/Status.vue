@@ -67,7 +67,7 @@
 import formatters from "../../mixins/formatters";
 
 export default {
-  name: "components.requests.status",
+  name: "components-requests-status",
   mixin: [formatters],
   props: {
     request: Object,

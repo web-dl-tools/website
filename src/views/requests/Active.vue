@@ -17,7 +17,7 @@ import AppTitle from "../../components/ui/AppTitle";
 import ActiveTable from "../../components/requests/active/Table";
 
 export default {
-  name: "views.requests.active",
+  name: "views-requests-active",
   components: {
     AppTitle,
     ActiveTable,

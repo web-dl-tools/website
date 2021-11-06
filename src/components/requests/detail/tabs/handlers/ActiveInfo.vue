@@ -21,7 +21,7 @@
 import formatters from "../../../../../mixins/formatters";
 
 export default {
-  name: "components.requests.detail.tabs.handlers.active-info",
+  name: "components-requests-detail-tabs-handlers-active-info",
   mixin: [formatters],
   props: {
     item: Object,

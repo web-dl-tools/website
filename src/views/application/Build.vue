@@ -28,7 +28,7 @@ import CardApiBuild from "../../components/application/CardApiBuild";
 import CardLogs from "../../components/application/CardLogs";
 
 export default {
-  name: "views.application.overview",
+  name: "views-application-build",
   mixin: [formatters],
   components: {
     AppTitle,

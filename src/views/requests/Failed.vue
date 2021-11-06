@@ -17,7 +17,7 @@ import AppTitle from "../../components/ui/AppTitle";
 import FailedTable from "../../components/requests/failed/Table";
 
 export default {
-  name: "views.requests.failed",
+  name: "views-requests-failed",
   components: {
     AppTitle,
     FailedTable,

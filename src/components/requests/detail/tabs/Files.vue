@@ -132,7 +132,7 @@ import helpers from "../../../../mixins/helpers";
 import formatters from "../../../../mixins/formatters";
 
 export default {
-  name: "components.requests.detail.tabs.files",
+  name: "components-requests-detail-tabs-files",
   mixin: [formatters, helpers],
   data: () => ({
     files_loading: false,

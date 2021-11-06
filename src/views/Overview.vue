@@ -89,7 +89,7 @@ import CompletedTable from "../components/requests/completed/Table";
 import FailedTable from "../components/requests/failed/Table";
 
 export default {
-  name: "views.overview",
+  name: "views-overview",
   components: {
     AppTitle,
     ActiveOverview,

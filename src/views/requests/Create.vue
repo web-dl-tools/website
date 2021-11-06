@@ -123,7 +123,7 @@ import AudioVisualStep from "../../components/steppers/handlers/AudioVisualStep"
 import ResourceStep from "../../components/steppers/handlers/ResourceStep";
 
 export default {
-  name: "views.requests.create",
+  name: "views-requests-create",
   mixin: [helpers, formatters],
   components: {
     AppTitle,

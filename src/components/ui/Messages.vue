@@ -23,7 +23,7 @@
 import { mapGetters } from "vuex";
 
 export default {
-  name: "components.ui.snackbars",
+  name: "components-ui-snackbars",
   computed: {
     ...mapGetters({
       messages: "application/getMessages",
