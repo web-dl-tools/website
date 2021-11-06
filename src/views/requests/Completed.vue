@@ -17,7 +17,7 @@ import AppTitle from "../../components/ui/AppTitle";
 import CompletedTable from "../../components/requests/completed/Table";
 
 export default {
-  name: "views.requests.completed",
+  name: "views-requests-completed",
   components: {
     AppTitle,
     CompletedTable,

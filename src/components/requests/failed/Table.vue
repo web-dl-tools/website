@@ -19,7 +19,7 @@ import helpers from "../../../mixins/helpers";
 import RequestTable from "../Table";
 
 export default {
-  name: "components.requests.failed.table",
+  name: "components-requests-failed-table",
   mixin: [formatters, helpers],
   components: {
     RequestTable,

@@ -34,7 +34,7 @@
 import { mapGetters } from "vuex";
 
 export default {
-  name: "components.requests.table",
+  name: "components-requests-table",
   props: {
     extended: Boolean,
     headers: Array,

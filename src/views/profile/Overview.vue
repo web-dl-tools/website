@@ -30,7 +30,7 @@ import CardSettings from "../../components/profile/CardSettings";
 import CardStorage from "../../components/profile/CardStorage";
 
 export default {
-  name: "views.profile.overview",
+  name: "views-profile-overview",
   mixin: [formatters],
   components: {
     AppTitle,

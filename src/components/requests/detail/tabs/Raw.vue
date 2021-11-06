@@ -9,7 +9,7 @@ import JsonViewer from "vue-json-viewer";
 import "vue-json-viewer/style.css";
 
 export default {
-  name: "components.requests.detail.tabs.timeline",
+  name: "components-requests-detail-tabs-timeline",
   components: {
     JsonViewer,
   },

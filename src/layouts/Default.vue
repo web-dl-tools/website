@@ -58,7 +58,7 @@ import AppBar from "../components/ui/AppBar";
 import UiFooter from "./../components/ui/Footer";
 
 export default {
-  name: "layouts.default",
+  name: "layouts-default",
   components: {
     AppBar,
     UiFooter,

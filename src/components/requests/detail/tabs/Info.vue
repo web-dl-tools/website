@@ -42,7 +42,7 @@ import TorrentInfo from "./handlers/TorrentInfo";
 import ResourceInfo from "./handlers/ResourceInfo";
 
 export default {
-  name: "components.requests.detail.tabs.info",
+  name: "components-requests-detail-tabs-info",
   mixin: [formatters],
   components: {
     ActiveInfo,

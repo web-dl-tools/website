@@ -181,7 +181,7 @@
 import formatters from "../../../../mixins/formatters";
 
 export default {
-  name: "components.requests.detail.tabs.timeline",
+  name: "components-requests-detail-tabs-timeline",
   mixin: [formatters],
   props: {
     active: Boolean,

@@ -24,7 +24,7 @@ import RequestTable from "../Table";
 import Status from "../Status";
 
 export default {
-  name: "components.requests.active.table",
+  name: "components-requests-active-table",
   mixin: [formatters, helpers],
   components: {
     RequestTable,

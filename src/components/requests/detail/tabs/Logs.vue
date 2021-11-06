@@ -62,7 +62,7 @@ import formatters from "../../../../mixins/formatters";
 import helpers from "../../../../mixins/helpers";
 
 export default {
-  name: "components.requests.detail.tabs.logs",
+  name: "components-requests-detail-tabs-logs",
   mixin: [formatters, helpers],
   data: () => ({
     protect: false,

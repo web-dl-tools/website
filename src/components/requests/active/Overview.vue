@@ -44,7 +44,7 @@ import CardMini from "./CardMini";
 import helpers from "../../../mixins/formatters";
 
 export default {
-  name: "components.requests.active.overview",
+  name: "components-requests-active-overview",
   mixin: [helpers],
   components: {
     CardMini,
