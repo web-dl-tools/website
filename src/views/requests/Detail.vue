@@ -146,7 +146,7 @@ import Logs from "../../components/requests/detail/tabs/Logs";
 import formatters from "../../mixins/formatters";
 
 export default {
-  name: "views.requests.detail",
+  name: "views-requests-detail",
   mixins: [formatters],
   components: {
     AppTitle,
