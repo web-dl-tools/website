@@ -1,13 +1,13 @@
 <template>
   <v-app-bar color="grey darken-4" app dark short flat class="fixed-top">
-    <v-toolbar-title class="ml-n4 mr-1 ml-md-n1">
+    <v-toolbar-title class="ml-n4 mr-1 ml-md-n1 pl-2">
       <v-btn
         class=""
         :icon="$vuetify.breakpoint.smAndDown"
         :text="$vuetify.breakpoint.mdAndUp"
         @click="$router.push({ name: 'overview' }).catch(() => {})"
       >
-        <v-icon class="px-2"> mdi-cloud-download-outline </v-icon>
+        <v-icon class="pl-1 pr-2"> mdi-cloud-download-outline </v-icon>
         <span
           class="
             title
