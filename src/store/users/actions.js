@@ -48,7 +48,7 @@ export const update = ({ commit }, payload) =>
  */
 export const getLogs = ({ commit }, id) =>
   Vue.$axios
-    .get("users/logs")
+    .get("users/me/logs")
     .then((response) => commit("GET_LOGS", response.data));
 
 /**
@@ -60,5 +60,5 @@ export const getLogs = ({ commit }, id) =>
  */
 export const getStorage = ({ commit }, id) =>
   Vue.$axios
-    .get("users/storage")
+    .get("users/me/storage")
     .then((response) => commit("GET_STORAGE", response.data));

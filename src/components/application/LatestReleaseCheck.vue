@@ -17,6 +17,7 @@
             :color="getVersionDifferenceColor(versionDifference)"
             :href="`https://github.com/web-dl-tools/${repo}/releases`"
             :text="versionDifference !== 'major'"
+            target="_blank"
           >
             <v-icon class="mr-2" small> mdi-refresh </v-icon>
             New {{ versionDifference }} version available
@@ -29,6 +30,7 @@
             x-small
             color="white"
             :href="`https://github.com/web-dl-tools/${repo}#update-guide`"
+            target="_blank"
           >
             Update guide
           </v-btn>
@@ -46,6 +48,7 @@
             x-small
             color="white"
             :href="`https://github.com/web-dl-tools/${repo}/compare/${buildInfo.version}...${latestReleaseInfo.tag_name}`"
+            target="_blank"
           >
             Changelog
           </v-btn>
@@ -59,6 +62,7 @@
         x-small
         color="success"
         :href="`https://github.com/web-dl-tools/${repo}/releases`"
+        target="_blank"
       >
         <v-icon class="mr-2" small> mdi-check </v-icon>
         You're on the latest version
