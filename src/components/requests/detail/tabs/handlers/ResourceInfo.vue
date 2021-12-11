@@ -1,6 +1,6 @@
 <template>
   <v-row>
-    <v-col class="mb-n1" cols="12" md="7">
+    <v-col cols="12" md="7">
       <p class="mb-0 body-1">
         Found {{ item.data.filtered_paths.length }} unique paths (possibly)
         matching the given extensions.

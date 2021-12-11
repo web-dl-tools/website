@@ -42,7 +42,9 @@
       v-on:keyup.enter.native="createRequest"
     >
       <template v-if="this.url" v-slot:append>
-        <v-icon class="pr-2" @click="createRequest"> mdi-plus-circle </v-icon>
+        <v-icon class="ml-6 pr-2" @click="createRequest">
+          mdi-plus-circle
+        </v-icon>
       </template>
     </v-text-field>
     <v-text-field
