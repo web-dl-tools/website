@@ -9,6 +9,10 @@
           </v-col>
 
           <v-col cols="12">
+            <card-credentials />
+          </v-col>
+
+          <v-col cols="12">
             <card-settings />
           </v-col>
         </v-col>
@@ -26,6 +30,7 @@ import { mapGetters } from "vuex";
 import formatters from "../../mixins/formatters";
 import AppTitle from "../../components/ui/AppTitle";
 import CardProfile from "../../components/profile/CardProfile";
+import CardCredentials from "../../components/profile/CardCredentials";
 import CardSettings from "../../components/profile/CardSettings";
 import CardStorage from "../../components/profile/CardStorage";
 
@@ -35,6 +40,7 @@ export default {
   components: {
     AppTitle,
     CardProfile,
+    CardCredentials,
     CardSettings,
     CardStorage,
   },

@@ -40,6 +40,19 @@ export const update = ({ commit }, payload) =>
     .catch(() => Promise.reject());
 
 /**
+ * Update an existing user' credentials.
+ *
+ * @param commit
+ * @param payload
+ * @returns {*}
+ */
+export const credentials = ({ commit }, payload) =>
+  Vue.$axios
+    .patch(`users/${payload.id}/credentials`, payload)
+    .then((response) => commit("ME", response.data))
+    .catch(() => Promise.reject());
+
+/**
  * Get the logged in user logs.
  *
  * @param commit

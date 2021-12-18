@@ -23,10 +23,10 @@
       </v-card-subtitle>
       <v-card-text class="pb-3">
         <v-row>
-          <v-col cols="7" class="pb-0 font-weight-regular">
+          <v-col cols="4" class="pb-0 font-weight-regular">
             Show technical details
           </v-col>
-          <v-col cols="5" class="pb-0" v-if="!edit">
+          <v-col cols="8" class="pb-0" v-if="!edit">
             {{ user.technical ? "Yes" : "No" }}
           </v-col>
           <v-col cols="4" class="pt-2 pb-0" v-else>

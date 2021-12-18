@@ -171,29 +171,27 @@ export default {
      * (Attempt) to update the user details with the API.
      */
     update() {
-      if (this.username) {
-        this.error = false;
-        this.loading = true;
-        this.$store
-          .dispatch("users/update", {
-            id: this.user.id,
-            username: this.username,
-            first_name: this.first_name,
-            last_name: this.last_name,
-          })
-          .then(() => (this.edit = false))
-          .catch(() => {
-            this.$store.dispatch("application/addMessage", {
-              text: `An error occurred when updating.<br />
-              <span class="grey--text">Please check your details and/or try again later.</span>`,
-              type: "error",
-              action: null,
-              timeout: 3000,
-            });
-            this.error = true;
-          })
-          .finally(() => (this.loading = false));
-      }
+      this.error = false;
+      this.loading = true;
+      this.$store
+        .dispatch("users/update", {
+          id: this.user.id,
+          username: this.username,
+          first_name: this.first_name,
+          last_name: this.last_name,
+        })
+        .then(() => (this.edit = false))
+        .catch(() => {
+          this.$store.dispatch("application/addMessage", {
+            text: `An error occurred when updating.<br />
+            <span class="grey--text">Please check your details and/or try again later.</span>`,
+            type: "error",
+            action: null,
+            timeout: 3000,
+          });
+          this.error = true;
+        })
+        .finally(() => (this.loading = false));
     },
     /**
      * Clone the user properties to local properties.

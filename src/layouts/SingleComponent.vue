@@ -23,7 +23,7 @@
         </v-col>
       </v-row>
     </v-container>
-    <ui-footer :full="false" />
+    <ui-footer v-show="$vuetify.breakpoint.mdAndUp" :full="false" />
   </v-main>
 </template>
 
