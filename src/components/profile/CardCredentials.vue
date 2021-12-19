@@ -56,7 +56,6 @@
                 name="new_password"
                 prepend-inner-icon="mdi-lock-plus"
                 type="password"
-                autofocus
                 flat
                 hide-details
                 outlined
