@@ -118,7 +118,8 @@
       <v-card outlined raised class="pb-1">
         <v-card-title class="subtitle-1"> Delete request </v-card-title>
         <v-card-subtitle class="subtitle-2">
-          Are you sure you want to delete the following request?
+          Are you sure you want to delete the following
+          {{ formatRequest(request.request_type) }} request?
         </v-card-subtitle>
         <v-card-text class="pb-3 info--text">
           {{ request.status === "completed" ? request.title : request.url }}
