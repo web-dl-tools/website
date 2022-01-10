@@ -146,7 +146,13 @@ export const handleWebsocketRequestStatusUpdateEvent = (
           <br />
           <span class="info--text">${truncate(request.url, 45)}</span>`,
           type: "info",
-          action: null,
+          action: () =>
+            router
+              .push({
+                name: "requests.detail",
+                params: { requestId: request.id },
+              })
+              .catch(() => {}),
         });
         break;
       case "completed":
