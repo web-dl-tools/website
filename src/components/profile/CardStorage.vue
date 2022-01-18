@@ -152,7 +152,7 @@ export default {
 <style>
 .donut-inner {
   position: absolute;
-  top: 20%;
+  top: 28.5%;
   left: 50%;
   transform: translate(-50%, -35%);
 }
