@@ -17,88 +17,13 @@ It's the official browser client for the Web DL stack.
 * Charts for data storage insights.
 * Even more...
 
-## Configuration
-Configuration for the Web DL Website is managed by an environment file. A base example is provided in the
-repository as _.env.dist_. Please copy and rename this file to _.env_ and fill in the values.
+## Quick start
 
-| Property               | Description                           | Required | Example                                               |
-|------------------------|---------------------------------------|----------|-------------------------------------------------------|
-| **VUE_APP_API_URL**    | The URL of the Web DL API             | Yes      | http://localhost:8000/api/                            |
-| **VUE_APP_SENTRY_DSN** | The DSN URL for Sentry error tracking | No       | https://1234567890abcdef@12345.ingest.sentry.io/67890 |
-
-## Installation
-The WeB DL Website requires the following software and OS to be installed:
-
-- Operating System<sup>[1](#lower_os_versions)</sup>
-  - Apple macOS Mojave 10.14 or higher (Intel chip)<sup>[2](#apple_silicon)</sup>
-  - Microsoft Windows 10 Home/Pro 2004 (build 19041), Enterprise/Education 1909 (build 18363) or higher (64-bit)
-- [Docker Desktop](https://www.docker.com/products/docker-desktop) 
-
-<a name="lower_os_versions">1</a>: On lower versions of macOS, Windows, or on Linux, the 
-[Docker Engine](https://hub.docker.com/search?offering=community&operating_system=linux&q=&type=edition)
-can also be installed, although the Web DL Website was not originally developed using this tool.
-
-<a name="apple_silicon">2</a>: Docker Desktop for Mac on Apple Silicon is available but requires a 
-[manual install of Rosetta 2](https://docs.docker.com/docker-for-mac/apple-silicon/#system-requirements).
-
-### Runtime environment
-- Docker 18.09.2+
-- Docker Compose 1.23.2+
-
-### Startup guide
-Prepare and start the required containers.
-``` bash
+```bash
+$ git clone git@github.com:web-dl-tools/website.git
+$ cd ./website
+// Fill in .env file
 $ make start
 ```
 
-### Update guide
-Shutdown, update and restart the containers.
-``` bash
-$ make update && make start
-```
-
-### Shutdown and cleaning up guide
-Stop, shutdown and remove the running containers and all images.
-``` bash
-$ make stop && make clean
-```
-
-## Development
-For development the Web DL Website requires the following software to be installed:
-- [Node.js](https://nodejs.org/en)
-- [Yarn](https://classic.yarnpkg.com/en/docs/install/#mac-stable)
-- Several additional packages installed via Yarn
-
-### Runtime environment
-- Node.js LTS
-- yarn Classic stable
-
-### Project setup
-Install all required dependencies in order to run and develop the application.
-``` bash
-$ yarn install
-```
-
-### Live serving
-Compiles and hot-reloads the application for development.
-``` bash
-$ yarn serve
-```
-
-### Lint
-Lints and fixes files.
-``` bash
-$ yarn lint
-```
-
-### Build
-Compiles and minifies the application for production.
-``` bash
-$ yarn build
-```
-
-### Dockerize
-Build production container(s) for testing purposes.
-``` bash
-$ make start_debug
-```
+Please review the [requirements](https://web-dl-tools.github.io/docs/#/requirements), [installation](https://web-dl-tools.github.io/docs/#/installation) and [configuration](https://web-dl-tools.github.io/docs/#/configuration) steps in [the documentation](https://web-dl-tools.github.io/docs/) for for additional information and troubleshooting.

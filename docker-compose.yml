@@ -8,6 +8,7 @@ services:
       args:
         - VUE_APP_API_URL=${VUE_APP_API_URL}
         - VUE_APP_SENTRY_DSN=${VUE_APP_SENTRY_DSN}
+    container_name: web-dl_nginx
     deploy:
       resources:
         limits:
