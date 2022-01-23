@@ -29,7 +29,7 @@
             text
             x-small
             color="white"
-            :href="`https://github.com/web-dl-tools/${repo}#update-guide`"
+            :href="'https://web-dl-tools.github.io/docs/#/upgrade?id=updating'"
             target="_blank"
           >
             Update guide
