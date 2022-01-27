@@ -26,4 +26,4 @@ $ cd ./website
 $ make start
 ```
 
-Please review the [requirements](https://web-dl-tools.github.io/docs/#/requirements), [installation](https://web-dl-tools.github.io/docs/#/installation) and [configuration](https://web-dl-tools.github.io/docs/#/configuration) steps in [the documentation](https://web-dl-tools.github.io/docs/) for for additional information and troubleshooting.
+Please review the [requirements](https://web-dl-tools.github.io/docs/#/requirements), [installation](https://web-dl-tools.github.io/docs/#/installation) and [configuration](https://web-dl-tools.github.io/docs/#/configuration) steps in [the documentation](https://web-dl-tools.github.io/docs/) for additional information and troubleshooting.
