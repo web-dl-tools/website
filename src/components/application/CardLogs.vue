@@ -37,6 +37,9 @@
               </div>
             </v-col>
             <v-col class="body-2 text-right grey--text" cols="5">
+              <span v-show="$vuetify.breakpoint.mdAndUp">
+                {{ formatDateFromNow(log.created_at) }} ·
+              </span>
               {{ formatDate(log.created_at, "H:mm:ss.SSS") }}
             </v-col>
           </v-row>

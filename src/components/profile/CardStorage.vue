@@ -14,21 +14,23 @@
       <v-card-subtitle class="subtitle-2 col-8 pl-4">
         Your storage usage in Web DL.
       </v-card-subtitle>
-      <v-card-text class="pt-3">
-        <v-row class="mb-6 justify-center">
-          <div class="donut-inner text-center">
-            <h2 class="font-weight-thin grey--text mb-n2">
-              {{
-                formatBytes(
-                  storage.reduce((acc, cur) => acc + cur.size, 0),
-                  technical ? 2 : 0
-                )
-              }}
-            </h2>
-            <p class="font-weight-black grey--text overline mb-0">Total</p>
-          </div>
-          <vue-apex-charts type="donut" :options="options" :series="series" />
-        </v-row>
+      <v-card-text class="py-3">
+        <div class="donut-outer">
+          <v-row class="mb-6 justify-center">
+            <div class="donut-inner text-center">
+              <h2 class="font-weight-thin grey--text mb-n2">
+                {{
+                  formatBytes(
+                    storage.reduce((acc, cur) => acc + cur.size, 0),
+                    technical ? 2 : 0
+                  )
+                }}
+              </h2>
+              <p class="font-weight-black grey--text overline mb-0">Total</p>
+            </div>
+            <vue-apex-charts type="donut" :options="options" :series="series" />
+          </v-row>
+        </div>
         <v-row v-for="request in storage" :key="request.id">
           <v-col
             cols="8"
@@ -46,19 +48,6 @@
           </v-col>
           <v-col cols="4" class="py-0 text-end">
             {{ formatBytes(request.size, technical ? 2 : 0) }}
-          </v-col>
-        </v-row>
-        <v-row class="mb-n1">
-          <v-col cols="8" class="pb-0 font-weight-regular"> Total usage </v-col>
-          <v-col cols="4" class="pb-0 font-weight-regular text-end">
-            <v-chip outlined label small color="success">
-              {{
-                formatBytes(
-                  storage.reduce((acc, cur) => acc + cur.size, 0),
-                  technical ? 2 : 0
-                )
-              }}
-            </v-chip>
           </v-col>
         </v-row>
       </v-card-text>
@@ -149,11 +138,15 @@ export default {
 };
 </script>
 
-<style>
+<style scoped>
+.donut-outer {
+  position: relative;
+}
+
 .donut-inner {
   position: absolute;
-  top: 28.5%;
+  top: 50%;
   left: 50%;
-  transform: translate(-50%, -35%);
+  transform: translate(-50%, -50%);
 }
 </style>
