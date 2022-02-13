@@ -114,7 +114,7 @@
       </v-row>
     </v-container>
 
-    <v-dialog v-model="dialog" max-width="500">
+    <v-dialog v-model="dialog" v-if="!request_loading" max-width="500">
       <v-card outlined raised class="pb-1">
         <v-card-title class="subtitle-1"> Delete request </v-card-title>
         <v-card-subtitle class="subtitle-2">
@@ -176,6 +176,10 @@ export default {
     }),
   },
   watch: {
+    /**
+     * When the request changes, we need to update the title.
+     * @param {Object} r request
+     */
     request(r) {
       if (!this.request_loaded) {
         this.request_loaded = true;

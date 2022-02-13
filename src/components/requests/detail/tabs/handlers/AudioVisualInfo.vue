@@ -17,7 +17,7 @@
         </v-col>
         <v-col cols="12" md="4" class="py-0">
           <v-rating
-            v-if="'average_rating' in item.data"
+            v-if="'average_rating' in item.data && item.data.average_rating"
             :value="item.data.average_rating"
             background-color="orange lighten-3"
             :class="
@@ -28,6 +28,15 @@
             readonly
             small
           />
+          <p v-else-if="'like_count' in item.data" class="mb-0 text-end">
+            <v-icon class="mr-2" small>mdi-thumb-up-outline</v-icon>
+            {{
+              Intl.NumberFormat("en-US", {
+                notation: "compact",
+                maximumFractionDigits: 1,
+              }).format(item.data.like_count)
+            }}
+          </p>
         </v-col>
       </v-row>
       <v-divider class="mt-4" />

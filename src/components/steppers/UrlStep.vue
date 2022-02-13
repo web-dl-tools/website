@@ -45,7 +45,13 @@ export default {
         "[-a-zA-Z0-9@:%._+~#=]{1,256}\\.[a-zA-Z0-9()]{1,6}\\b([-a-zA-Z0-9()@:%_+.~#?&/=]*)"
       );
       const magnet_regex = RegExp("magnet:\\?xt=urn:btih:[a-zA-Z0-9]*");
-      return url_regex.test(this.url) || magnet_regex.test(this.url);
+
+      return (
+        (url_regex.test(this.url) &&
+          (this.url.startsWith("http://") ||
+            this.url.startsWith("https://"))) ||
+        magnet_regex.test(this.url)
+      );
     },
     /**
      * Calculate the label to show for this step.
