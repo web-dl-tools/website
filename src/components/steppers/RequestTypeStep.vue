@@ -61,12 +61,10 @@ export default {
   },
   watch: {
     /**
-     * Trigger an update data check when the validity of the step has changed.
-     *
-     * @param n
+     * Trigger an update data check when the request type has changed.
      */
-    valid(n) {
-      this.updateData(n);
+    request_type() {
+      this.updateData(this.valid);
     },
     /**
      * Trigger an update data check when the label value has changed.
