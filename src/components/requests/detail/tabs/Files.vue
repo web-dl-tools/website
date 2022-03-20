@@ -58,15 +58,16 @@
           <v-row class="px-4 mx-0" v-else>
             <v-col class="pb-0 pl-0" cols="12" md="12">
               <v-icon class="mr-1"> mdi-database </v-icon>
-              {{ formatBytes(size, technical ? 2 : 0) }} size
+              {{ formatBytes(size, technical ? 2 : 0) }}
             </v-col>
             <v-col class="pb-0 pl-0" cols="12" md="12">
               <v-icon class="mr-1"> mdi-folder-outline </v-icon>
-              {{ folders_count }} folders
+              {{ folders_count }}
+              {{ folders_count === 1 ? "folder" : "folders" }}
             </v-col>
             <v-col class="pb-0 pl-0" cols="12" md="12">
               <v-icon class="mr-1"> mdi-file-document-multiple-outline </v-icon>
-              {{ files_count }} files
+              {{ files_count }} {{ files_count === 1 ? "file" : "files" }}
             </v-col>
             <v-col class="pl-0" cols="12" md="12">
               <v-icon class="mr-1"> mdi-shape-plus </v-icon>
