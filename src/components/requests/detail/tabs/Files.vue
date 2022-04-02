@@ -41,9 +41,31 @@
                 {{
                   formatDate(
                     item.created_at,
-                    technical ? "L [&middot;] HH:mm:ss" : "LL"
+                    technical && $vuetify.breakpoint.mdAndUp
+                      ? "L [&middot;] HH:mm:ss"
+                      : "LL"
                   )
                 }}
+                {{ item.last_retrieved_at ? "&middot;" : "" }}
+                <v-tooltip v-if="item.last_retrieved_at" bottom>
+                  <template v-slot:activator="{ on, attrs }">
+                    <span v-if="$vuetify.breakpoint.mdAndUp">
+                      {{ formatDateFromNow(item.last_retrieved_at) }}
+                    </span>
+                    <v-icon x-small color="success" v-bind="attrs" v-on="on">
+                      mdi-download
+                    </v-icon>
+                  </template>
+                  <span>
+                    Last retrieved on
+                    {{
+                      formatDate(
+                        item.last_retrieved_at,
+                        "dddd LL [at] HH:mm:ss"
+                      )
+                    }}
+                  </span>
+                </v-tooltip>
               </p>
             </div>
           </template>
@@ -67,7 +89,15 @@
             </v-col>
             <v-col class="pb-0 pl-0" cols="12" md="12">
               <v-icon class="mr-1"> mdi-file-document-multiple-outline </v-icon>
-              {{ files_count }} {{ files_count === 1 ? "file" : "files" }}
+              {{ files_count }} {{ files_count === 1 ? "file" : "files" }},
+              {{ retrieved_files_count }} retrieved
+              <v-col class="py-0 pl-8 pr-0">
+                <v-progress-linear
+                  color="success"
+                  :value="(retrieved_files_count / files_count) * 100"
+                  rounded
+                />
+              </v-col>
             </v-col>
             <v-col class="pl-0" cols="12" md="12">
               <v-icon class="mr-1"> mdi-shape-plus </v-icon>
@@ -157,6 +187,7 @@ export default {
     },
     folders_count: 0,
     files_count: 0,
+    retrieved_files_count: 0,
     size: 0,
     file_extensions: [],
   }),
@@ -184,11 +215,11 @@ export default {
     /**
      * Request all directories and files for this request from the API.
      *
-     * @param force
+     * @param force silently retrieve files again
      */
     retrieveFiles(force = false) {
       if (!this.files_loaded || force) {
-        this.files_loading = true;
+        if (!force) this.files_loading = true;
         this.error = false;
         this.$store
           .dispatch("requests/getFiles", this.request_id)
@@ -199,6 +230,7 @@ export default {
     },
     /**
      * Generate and open the file download/access link in a new tab.
+     * Additionally retrieve the files again to get the latest data.
      *
      * @param path
      * @param slug
@@ -209,6 +241,9 @@ export default {
       )}`;
       if (slug) url += `/${slug}`;
       window.open(url, "_blank");
+      setTimeout(() => {
+        if (!this.files_loading) this.retrieveFiles(true);
+      }, 1500);
     },
     /**
      * Recursively count all files in the request directory.
@@ -219,6 +254,7 @@ export default {
     parseFiles(obj) {
       let folders_count = 0;
       let files_count = 0;
+      let retrieved_files_count = 0;
       let size = 0;
       let file_extensions = [];
 
@@ -228,21 +264,30 @@ export default {
           folders_count++;
           folders_count += props[0];
           files_count += props[1];
-          size += props[2];
-          file_extensions = file_extensions.concat(props[3]);
+          retrieved_files_count += props[2];
+          size += props[3];
+          file_extensions = file_extensions.concat(props[4]);
         } else {
           files_count++;
           size += f.size;
           if (f.extension) file_extensions.push(f.extension.replace(".", ""));
+          if (f.last_retrieved_at) retrieved_files_count++;
         }
       });
 
       this.folders_count = folders_count;
       this.files_count = files_count;
+      this.retrieved_files_count = retrieved_files_count;
       this.size = size;
       this.file_extensions = this.unique(file_extensions);
 
-      return [folders_count, files_count, size, file_extensions];
+      return [
+        folders_count,
+        files_count,
+        retrieved_files_count,
+        size,
+        file_extensions,
+      ];
     },
     /**
      * Compress the request files.
