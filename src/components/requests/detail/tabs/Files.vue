@@ -49,7 +49,11 @@
                 {{ item.last_retrieved_at ? "&middot;" : "" }}
                 <v-tooltip v-if="item.last_retrieved_at" bottom>
                   <template v-slot:activator="{ on, attrs }">
-                    <span v-if="$vuetify.breakpoint.mdAndUp">
+                    <span
+                      v-if="$vuetify.breakpoint.mdAndUp"
+                      v-bind="attrs"
+                      v-on="on"
+                    >
                       {{ formatDateFromNow(item.last_retrieved_at) }}
                     </span>
                     <v-icon x-small color="success" v-bind="attrs" v-on="on">
