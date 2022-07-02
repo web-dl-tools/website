@@ -53,6 +53,9 @@ export const GET_LOGS = (state, payload) => {
  * @constructor
  */
 export const GET_FILES = (state, payload) => {
+  if (typeof payload === "string") {
+    payload = JSON.parse(payload);
+  }
   state.item_files = payload;
 };
 

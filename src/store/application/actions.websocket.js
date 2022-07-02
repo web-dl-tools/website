@@ -81,6 +81,9 @@ export const handleWebsocketEvent = (
     case "requests.task.finished":
       dispatch("handleWebsocketRequestTaskFinishedEvent", data);
       break;
+    case "requests.files.retrieved":
+      dispatch("handleWebsocketRequestFilesRetrievedEvent", data);
+      break;
     default:
       // eslint-disable-next-line no-console
       console.error("Unsupported websocket event received");
@@ -226,6 +229,18 @@ export const handleWebsocketRequestTaskFinishedEvent = (
         break;
     }
   }
+};
+
+/**
+ * Handle the request files retrieved websocket event.
+ *
+ * @param commit
+ * @param dispatch
+ * @param rootGetters
+ * @param data
+ */
+export const handleWebsocketRequestFilesRetrievedEvent = ({ commit }, data) => {
+  commit("requests/GET_FILES", data.content, { root: true });
 };
 
 /**

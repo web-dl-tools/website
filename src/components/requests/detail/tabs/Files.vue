@@ -223,7 +223,7 @@ export default {
      */
     retrieveFiles(force = false) {
       if (!this.files_loaded || force) {
-        if (!force) this.files_loading = true;
+        this.files_loading = true;
         this.error = false;
         this.$store
           .dispatch("requests/getFiles", this.request_id)
@@ -245,9 +245,6 @@ export default {
       )}`;
       if (slug) url += `/${slug}`;
       window.open(url, "_blank");
-      setTimeout(() => {
-        if (!this.files_loading) this.retrieveFiles(true);
-      }, 1500);
     },
     /**
      * Recursively count all files in the request directory.
