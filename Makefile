@@ -4,19 +4,19 @@ help: ## View all make targets
 
 stop: ## Stop the container stack
 	@echo "Stopping all containers..."
-	docker-compose stop && docker-compose down
+	docker compose stop && docker compose down
 
 build: ## Build the container stack
 	@echo "Building containers..."
-	docker-compose build
+	docker compose build
 
 start: ## Start the container stack
 	@echo "Starting up containers..."
-	make build && docker-compose up -d
+	make build && docker compose up -d
 
 start_debug: ## Start the container stack
 	@echo "Starting up containers..."
-	docker-compose build --progress=plain && docker-compose up
+	docker compose build --progress=plain && docker compose up
 
 clean: ## Clean out unused docker(-compose) files
 	@echo "Removing unused docker files..."
