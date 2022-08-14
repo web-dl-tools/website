@@ -1,4 +1,4 @@
-FROM node:18.7-bullseye as builder
+FROM node:18.7.0-buster as builder
 
 RUN npm config set unsafe-perm true
 
