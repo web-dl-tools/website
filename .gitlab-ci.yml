@@ -9,8 +9,8 @@ services:
 
 stages:
   - lint
-  - build
   - test
+  - build
 
 before_script:
   - apk update
@@ -30,30 +30,6 @@ lint source:
     - yarn install
     - yarn lint
 
-build website:
-  stage: build
-  script:
-    - yarn install
-    - yarn build
-  artifacts:
-    name: "web-dl_website"
-    paths:
-      - "dist/*"
-
-docker-build-latest:
-  rules:
-    - if: $CI_COMMIT_BRANCH == $CI_DEFAULT_BRANCH
-  image: docker:latest
-  stage: build
-  services:
-    - docker:dind
-  before_script:
-    - docker login -u "$CI_REGISTRY_USER" -p "$CI_REGISTRY_PASSWORD" $CI_REGISTRY
-  script:
-    - tag=""
-    - docker build --platform linux/arm/v7 --pull -t "$CI_REGISTRY_IMAGE${tag}" compose/nginx
-    - docker push "$CI_REGISTRY_IMAGE${tag}"
-
 smoke test docker containers:
   stage: test
   before_script:
@@ -64,3 +40,13 @@ smoke test docker containers:
     - docker ps
   after_script:
     - docker-compose down --remove-orphans || true
+
+build website:
+  stage: build
+  script:
+    - yarn install
+    - yarn build
+  artifacts:
+    name: "web-dl_website"
+    paths:
+      - "dist/*"

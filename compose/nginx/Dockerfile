@@ -1,4 +1,4 @@
-FROM node:16.13-stretch as builder
+FROM node:18.7-bullseye as builder
 
 RUN npm config set unsafe-perm true
 
@@ -17,7 +17,7 @@ WORKDIR code
 RUN yarn install
 RUN yarn build
 
-FROM nginx:1.21.3
+FROM nginx:1.23.1
 
 LABEL version = "1.0"
 LABEL description = "Nginx docker container"
