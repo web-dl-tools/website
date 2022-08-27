@@ -10,12 +10,12 @@
         <span>on {{ item.data.extractor_key }}</span>
       </p>
       <v-row>
-        <v-col cols="12" md="8" class="py-0">
+        <v-col cols="12" sm="8" class="py-0">
           <span>{{ Number(item.data.view_count).toLocaleString() }} plays</span>
           &middot;
           <span>{{ formatDate(item.data.upload_date, "LL") }}</span>
         </v-col>
-        <v-col cols="12" md="4" class="py-0">
+        <v-col cols="12" sm="4" class="py-0">
           <v-rating
             v-if="'average_rating' in item.data && item.data.average_rating"
             :value="item.data.average_rating"
@@ -28,7 +28,7 @@
             readonly
             small
           />
-          <p v-else-if="'like_count' in item.data" class="mb-0 text-end">
+          <p v-else-if="'like_count' in item.data" class="mb-0 text-sm-end">
             <v-icon class="mr-2" small>mdi-thumb-up-outline</v-icon>
             {{
               Intl.NumberFormat("en-US", {
