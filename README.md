@@ -20,7 +20,7 @@ It's the official browser client for the Web DL stack.
 ## Quick start
 
 ```bash
-$ git clone git@github.com:web-dl-tools/website.git
+$ git clone https://github.com/web-dl-tools/website.git
 $ cd ./website
 // Fill in .env file
 $ make start
