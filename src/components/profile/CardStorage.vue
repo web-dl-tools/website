@@ -5,7 +5,7 @@
       <v-skeleton-loader type="image" />
       <v-skeleton-loader type="list-item-three-line" />
     </v-card>
-    <v-card outlined raised class="pb-1" v-else>
+    <v-card outlined raised v-else>
       <v-card-title>
         Storage
         <v-spacer />
