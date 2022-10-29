@@ -32,7 +32,7 @@
             {{
               formatDate(
                 websiteBuildInfo.commiter.date,
-                "dddd LL [at] HH:mm:ss"
+                "dddd, LL [at] HH:mm:ss"
               )
             }}
           </v-col>

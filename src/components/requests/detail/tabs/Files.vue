@@ -65,7 +65,7 @@
                     {{
                       formatDate(
                         item.last_retrieved_at,
-                        "dddd LL [at] HH:mm:ss"
+                        "dddd, LL [at] HH:mm:ss"
                       )
                     }}
                   </span>

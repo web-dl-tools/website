@@ -35,7 +35,7 @@
           <v-col cols="4" class="py-0 font-weight-regular"> Build date </v-col>
           <v-col cols="8" class="py-0">
             {{
-              formatDate(apiBuildInfo.commiter.date, "dddd LL [at] HH:mm:ss")
+              formatDate(apiBuildInfo.commiter.date, "dddd, LL [at] HH:mm:ss")
             }}
           </v-col>
         </v-row>
