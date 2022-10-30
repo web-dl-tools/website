@@ -103,9 +103,8 @@ export const getLatestRepoRelease = ({ commit, state }, repo) =>
         .get(
           `https://api.github.com/repos/web-dl-tools/${repo}/releases/latest`,
           {
-            transformRequest: (data, headers) => {
-              delete headers.common["Authorization"];
-              return data;
+            headers: {
+              Authorization: null,
             },
           }
         )
