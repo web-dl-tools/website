@@ -12,9 +12,11 @@ services:
     deploy:
       resources:
         limits:
-          memory: 20M
+          memory: 100M
         reservations:
           memory: 10M
     ports:
       - 80:80
     restart: always
+    volumes:
+      - ${FILES_PATH}:/files

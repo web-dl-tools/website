@@ -31,7 +31,7 @@
           </template>
           <template v-slot:label="{ item, leaf }">
             <span v-if="!leaf" class="font-weight-black">{{ item.name }}</span>
-            <div v-else @click="openFile(item.path, item.name)">
+            <div v-else @click="openFile(item.path)">
               <p class="pt-2 mb-0 font-weight-500">
                 {{ item.name }}
               </p>
@@ -237,13 +237,9 @@ export default {
      * Additionally retrieve the files again to get the latest data.
      *
      * @param path
-     * @param slug
      */
-    openFile(path, slug) {
-      let url = `${Vue.$axios.defaults.baseURL}download/file/${btoa(
-        encodeURIComponent(path)
-      )}`;
-      if (slug) url += `/${slug}`;
+    openFile(path) {
+      let url = `/${path}`;
       window.open(url, "_blank");
     },
     /**

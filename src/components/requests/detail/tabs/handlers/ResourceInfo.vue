@@ -72,9 +72,7 @@ export default {
      * Generate and calculate the screenshot path.
      */
     path() {
-      return `${Vue.$axios.defaults.baseURL}download/file/${btoa(
-        encodeURIComponent(this.item.path + "/" + this.item.id + ".png")
-      )}`;
+      return `/${this.item.path}/${this.item.id}.png`;
     },
   },
   methods: {

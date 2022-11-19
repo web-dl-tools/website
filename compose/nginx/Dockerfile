@@ -19,9 +19,14 @@ RUN yarn build
 
 FROM nginx:1.23.1
 
+ARG VUE_APP_API_URL
+
 LABEL version = "1.0"
 LABEL description = "Nginx docker container"
 LABEL maintainer = "Rinesh Ramadhin"
 
 COPY --from=builder code/dist /usr/share/nginx/html
 COPY compose/nginx/nginx.conf /etc/nginx/conf.d/default.conf
+
+RUN sed -i -e 's+{VUE_APP_API_URL}+'"$VUE_APP_API_URL"'+' /etc/nginx/conf.d/default.conf
+RUN sed -i -e 's+localhost:+host.docker.internal:+' /etc/nginx/conf.d/default.conf
