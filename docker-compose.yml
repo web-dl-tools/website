@@ -6,7 +6,6 @@ services:
       context: .
       dockerfile: ./compose/nginx/Dockerfile
       args:
-        - NGINX_API_URL=${NGINX_API_URL}
         - VUE_APP_API_URL=${VUE_APP_API_URL}
         - VUE_APP_SENTRY_DSN=${VUE_APP_SENTRY_DSN}
     container_name: web-dl_nginx
@@ -16,9 +15,6 @@ services:
           memory: 100M
         reservations:
           memory: 10M
-    extra_hosts:
-      # - host.docker.internal:host-gateway for Windows/macOS
-      - host.docker.internal:127.0.0.1
     ports:
       - 80:80
     restart: always
