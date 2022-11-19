@@ -36,6 +36,7 @@ smoke test docker containers:
     - apk add py-pip python3-dev libffi-dev openssl-dev gcc libc-dev make rust cargo
     - pip install docker-compose
   script:
+    - cp .env.ci .env
     - docker-compose up -d
     - docker ps
   after_script:
