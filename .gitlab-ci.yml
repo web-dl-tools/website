@@ -2,7 +2,7 @@ include:
   - template: Security/SAST.gitlab-ci.yml
   - template: Security/Secret-Detection.gitlab-ci.yml
 
-image: docker:20.10.6
+image: docker/compose:latest
 
 services:
   - docker:dind
@@ -32,9 +32,6 @@ lint source:
 
 smoke test docker containers:
   stage: test
-  before_script:
-    - apk add py-pip python3-dev libffi-dev openssl-dev gcc libc-dev make rust cargo
-    - pip install docker-compose
   script:
     - cp .env.ci .env
     - docker-compose up -d
